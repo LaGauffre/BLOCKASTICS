@@ -1,0 +1,141 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% \usepackage{amscd, amsfonts, amsmath, amssymb, amstext, amsthm, caption, epsfig, fancyhdr, float, graphicx, latexsym, mathtools, multicol, multirow, algorithm, chngcntr}
+\usepackage[english, french]{babel}
+\usepackage{booktabs}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subfig}
+\usepackage{xspace}
+\usepackage{fourier}
+% Distributions.
+\newcommand*{\UnifDist}{\mathsf{Unif}}
+\newcommand*{\ExpDist}{\mathsf{Exp}}
+\newcommand*{\DepExpDist}{\mathsf{DepExp}}
+\newcommand*{\GammaDist}{\mathsf{Gamma}}
+\newcommand*{\LognormalDist}{\mathsf{LogNorm}}
+\newcommand*{\WeibullDist}{\mathsf{Weib}}
+\newcommand*{\ParetoDist}{\mathsf{Par}}
+\newcommand*{\NormalDist}{\mathsf{Norm}}
+
+\newcommand*{\GeometricDist}{\mathsf{Geom}}
+\newcommand*{\NegBinomialDist}{\mathsf{NegBin}}
+\newcommand*{\PoissonDist}{\mathsf{Poisson}}
+\newcommand*{\BivariatePoissonDist}{\mathsf{BPoisson}}
+\newcommand*{\CyclicalPoissonDist}{\mathsf{CPoisson}}
+
+\newcommand*{\iid}{\textbf{iid}\@\xspace}
+\newcommand*{\pdf}{\textbf{pdf}\@\xspace}
+\newcommand*{\cdf}{\textbf{cdf}\@\xspace}
+\newcommand*{\pmf}{\textbf{pmf}\@\xspace}
+\newcommand*{\abc}{{\textbf{abc}}\@\xspace}
+\newcommand*{\smc}{\textbf{smc}\@\xspace}
+\newcommand*{\mcmc}{\textbf{mcmc}\@\xspace}
+\newcommand*{\ess}{\textbf{ess}\@\xspace}
+\newcommand*{\mle}{\textbf{mle}\@\xspace}
+\newcommand*{\bic}{\textbf{bic}\@\xspace}
+\newcommand*{\kde}{\textbf{kde}\@\xspace}
+\newcommand*{\glm}{\textbf{glm}\@\xspace}
+\newcommand*{\xol}{\textbf{xol}\@\xspace}
+\newcommand*{\cpu}{\textbf{cpu}\@\xspace}
+\newcommand*{\gpu}{\textbf{gpu}\@\xspace}
+\newcommand*{\arm}{\textbf{arm}\@\xspace}
+
+\def \si {\sigma}
+\def \la {\lambda}
+\def \al {\alpha}
+% \def\e*{\end{eqnarray*}}
+\def \di{\displaystyle}
+
+\def \E{\mathbb E}
+\def \N{\mathbb N}
+\def \Z{\mathbb Z}
+\def \NZ{\mathbb{N}_0}
+\def \I{\mathbb I}
+\def \w{\widehat}
+\def \P {\mathbb P}
+\def \V{\mathbb V}
+
+
+\newcommand{\CL}{\mathbb{C}}
+\newcommand{\RL}{\mathbb{R}}
+\newcommand{\nat}{{\mathbb N}}
+\newcommand{\Laplace}{\mathscr{L}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\ve}{\bm{\mathrm{e}}} % vector e
+
+\renewcommand{\L}{\mathcal{L}} % e.g. L^2 loss.
+
+\newcommand{\ih}{\mathrm{i}}
+\newcommand{\oh}{{\mathrm{o}}}
+\newcommand{\Oh}{{\mathcal{O}}}
+\newcommand{\Exp}{\mathbb{E}}
+
+\newcommand{\Norm}{\mathcal{N}}
+\newcommand{\LN}{\mathcal{LN}}
+\newcommand{\SLN}{\mathcal{SLN}}
+
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Ind}{\mathbb I}
+\newcommand\bfsigma{\bm{\sigma}}
+\newcommand\bfSigma{\bm{\Sigma}}
+\newcommand\bfLambda{\bm{\Lambda}}
+\newcommand{\stimes}{{\times}}
+\def \limsup{\underset{n\rightarrow+\infty}{\overline{\lim}}}
+\def \liminf{\underset{n\rightarrow+\infty}{\underline{\lim}}}
+
+
+% vertical separator macro
+\newcommand{\vsep}{
+  \column{0.0\textwidth}
+    \begin{tikzpicture}
+      \draw[very thick,black!10] (0,0) -- (0,7.3);
+    \end{tikzpicture}
+}
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+% More space between lines in align
+% \setlength{\mathindent}{0pt}
+
+% Beamer theme
+\usetheme{ZMBZFMK}
+\usefonttheme[onlysmall]{structurebold}
+\mode<presentation>
+\setbeamercovered{transparent=10}
+
+% align spacing
+\setlength{\jot}{0pt}
+
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
+
+\title[BLOCKASTICS I]{Stochastic Models for blockchain analysis}
+\subtitle{Introduction}
+\author{Pierre-O. Goffard}
+\institute[ISFA]{Institut de Science Financières et d'Assurances\\
+ \texttt{pierre-olivier.goffard@univ-lyon1.fr}}
+\date{\today}
+\titlegraphic{\includegraphics[width=2.5cm]{../../Figures/bfs_logo.png}} 
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+\begin{frame}{Blockchain}
+\cite{Na08}
+
+\end{frame}
+
+\begin{frame}
+\bibliography{../../blockastics}
+\bibliographystyle{ieeetr}
+\end{frame}
+
+\end{document}
