@@ -13,7 +13,8 @@
 \def\profName{Pierre-O Goffard }
 \def\catDescrip{Concepts of blockchain; Stochastic models.}
 
-\def\courseWebpage{\href{http://www.math.ucsd.edu/~mhohn/PSTAT_120A_S17/}{www.math.ucsd.edu/$\sim$mhohn/PSTAT\_120A\_S17/}}
+\def\courseWebpage{\href{http://pierre-olivier.goffard.me/}{http://pierre-olivier.goffard.me/}}
+\def\courseGithubRepo{\href{https://github.com/LaGauffre/BLOCKASTICS}{https://github.com/LaGauffre/BLOCKASTICS}}
 
 %-----Format-----%
 \setlength\parindent{0pt}
@@ -31,12 +32,11 @@
 \vspace*{2em}}
 
 %-----Body-----%
-In 2008, Blockchain was introduced to the world as the underlying technology of the Bitcoin electronic cash system. After more than a decade of development, various blockchain systems have been proposed with application going beyond the creation of a cryptocurrency. This course is organized around four 45 minutes lectures on the topic of stochastic models in relation to the analysis of blockchain systems. 
+In 2008, Blockchain was introduced to the world as the underlying technology of the Bitcoin electronic cash system. After more than a decade of development, various blockchain systems have been proposed with application going beyond the creation of a cryptocurrency. This course is organized around four 45-minute lectures on the theme of stochastic models in relation to the analysis of blockchain systems. 
 \\
 
 \noindent \textbf{Part 1: Blockchain concepts}\\
-\noindent A blockchain is a distributed data ledger maintained by achieving consensus among a number of nodes in Peer-to-peer network. After providing some preliminary definitions, 
-we introduce the \textit{proof-of-work} and \textit{proof-of-stake} consensus protocols which are at the core of public and permissionless blochchains (like the bitcoin and ethereum ones). We further define three dimensions according to which a blockchain system may be evaluated including (1) efficiency, (2) decentralization and (3) security.    
+\noindent A blockchain is a distributed data ledger maintained by achieving consensus among a number of nodes in Peer-to-peer network. After providing some preliminary definitions, we introduce the \textit{proof-of-work} and \textit{proof-of-stake} consensus protocols which are at the core of public and permissionless blochchains (like the bitcoin and ethereum ones). We further define three dimensions according to which a blockchain system may be evaluated including (1) efficiency, (2) decentralization and (3) security.    
 \\
 
 \noindent \textbf{Part 2: Simple models for blockchain performance analysis}\\
@@ -45,12 +45,19 @@ we introduce the \textit{proof-of-work} and \textit{proof-of-stake} consensus pr
 
 \noindent \textbf{Part 3: Risk models and blockchain mining}\\
 \noindent Mining blocks on a blockchain equipped with a proof of work consensus protocol is well-known to be resource-consuming. A miner bears the operational cost, mainly
-electricity consumption and IT gear, of mining, and is compensated by a capital gain when a block is discovered. The profitability of mining is studied via stochastic model and tools borrowed from insurance risk theory. We consider the case of solo mining, pool mining and selfish mining.    
+electricity consumption and IT gear, of mining, and is compensated by a capital gain when a block is discovered. The profitability of mining is studied via stochastic models and tools borrowed from insurance risk theory. We consider the case of solo mining, pool mining and selfish mining.    
 \\
 
 \noindent \textbf{Part 4: Decentralized finance and cryptoasset pricing}\\
-\noindent Blockchain creates an environment where multiple parties can interact directly and transparently. It is therefore immediately relevant to banks and financial institutions which incur huge middlemen costs in settlements and other back office operations. Decentralized finance (DeFi) offers a new financial architecture that is non-custodial, permissionless, openly auditable, pseudo-anonymous and with potential new capital efficiencies. An overview of the existing cryptoasset is provided and model to value such assets are discussed. 
+\noindent Blockchain creates an environment where multiple parties can interact directly and transparently. It is therefore immediately relevant to banks and financial institutions which incur huge middlemen costs in settlements and other back office operations. Decentralized finance (DeFi) offers a new financial architecture that is non-custodial, permissionless, openly auditable, pseudo-anonymous and with potential new capital efficiencies. An overview of the existing cryptoassets is given before discussing some pricing models for this new class of financial assets. \\
 
+
+\textsc{Important links:}
+\begin{itemize}  
+\item Course page: \courseWebpage  
+\item Course Github repository: \courseGithubRepo
+\end{itemize}
+\noindent Examples and illustrations will be done using python and Jupyter notebook. My suggestion is to install anaconda \url{https://www.anaconda.com/products/individual} 
 % \cite{GoHoKrTa16,Bu14,Na08,albrecher:hal-02649025,Goffard2019,Schilling2019,pfeffer2017institutional,Bowden2020,Asmussen_2010,Cong2020,Cong2020a,Eyal2014,Fu2020,Gochhayat2020,Kawase2017,OECD,rosenfeld2011analysis,Saleh2020,Rosu2021,Li2018,werner2021sok,Liu2020,Liu2020,bertucci2020mean,Schrijvers2017}
 
 
@@ -59,9 +66,7 @@ electricity consumption and IT gear, of mining, and is compensated by a capital 
 \bibliographystyle{ieeetr}
 % \textsc{Textbook:} \book \\
 
-% \textsc{Important links:}  
-% %Course page: Includes overview of the course like the syllabus, office hours, homework information, etc.\\  \hspace*{.75in}\courseWebpage\\  
-% GauchoSpace:  Includes course announcements, homework, lecture material, the course calendar, and up-to-date information about your grades.\\ \hspace*{.75in}\href{http://gauchospace.ucsb.edu}{gauchospace.ucsb.edu}\\  
+
 
 
 
