@@ -1,7 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.9)  10 JUN 2021 16:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.9)  9 JUL 2021 09:51
 entering extended mode
-**./blockastics_lec_1.tex
-(blockastics_lec_1.tex
+**C:/Users/pierr/Documents/code/BLOCKASTICS/Slides/Lecture1/blockastics_lec_1.t
+ex
+
+(C:/Users/pierr/Documents/code/BLOCKASTICS/Slides/Lecture1/blockastics_lec_1.te
+x
 LaTeX2e <2018-04-01> patch level 5
 ("C:\Users\pierr\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamer.cls"
 Document Class: beamer 2018/09/20 v3.54 A class for typesetting presentations
@@ -1193,7 +1196,11 @@ themeseagull.sty") (beamercolorthemeZMBZFMK.sty
 Package: beamercolorthemeZMBZFMK 2017/11/09 beamercolorthemeZMBZFMK
 ))
 ("C:\Users\pierr\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerfontt
-hemestructurebold.sty") (blockastics_lec_1.aux)
+hemestructurebold.sty") (blockastics_lec_1.aux
+
+LaTeX Warning: Label `Na08' multiply defined.
+
+)
 \openout1 = `blockastics_lec_1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 127.
@@ -1477,22 +1484,22 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 
 {C:/Users/pierr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <../../Figur
 es/bfs_logo.png>]
-Overfull \hbox (21.75987pt too wide) in paragraph at lines 134--134
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 140--140
 [][] 
  []
 
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 13.24796pt on input line 134.
+(Font)              scaled to size 13.24796pt on input line 140.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 134.
+(Font)              scaled to size 9.19998pt on input line 140.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.35999pt on input line 134.
+(Font)              scaled to size 7.35999pt on input line 140.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 13.24796pt on input line 134.
+(Font)              scaled to size 13.24796pt on input line 140.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 134.
+(Font)              scaled to size 9.19998pt on input line 140.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.35999pt on input line 134.
+(Font)              scaled to size 7.35999pt on input line 140.
 
 Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 [][] 
@@ -1500,15 +1507,125 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 
 [2
 
-] (blockastics_lec_1.bbl)
+]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 150--150
+[][] 
+ []
+
+
 Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 [][] 
  []
 
 [3
 
+]
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 6.99199pt on input line 179.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 6.99199pt on input line 179.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 6.25598pt on input line 179.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 6.25598pt on input line 179.
+
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 179--179
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[4
+
+]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 181--181
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[5
+
+]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 201--201
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[6
+
  <C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/tex/latex/beamer/beamericona
 rticle.pdf>]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 203--203
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[7
+
+]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 211--211
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[8
+
+]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 213--213
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[9
+
+]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 215--215
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[10
+
+] (blockastics_lec_1.bblpdfTeX warning (ext4): destination with the same identi
+fier (name{beamerbibNa08}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3 \bibitem{Na08}
+                  )
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[11
+
+]
 \tf@nav=\write6
 \openout6 = `blockastics_lec_1.nav'.
 
@@ -1518,34 +1635,49 @@ rticle.pdf>]
 \tf@snm=\write8
 \openout8 = `blockastics_lec_1.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 222.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 222.
  (blockastics_lec_1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 222.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 222.
 Package rerunfilecheck Info: File `blockastics_lec_1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 20492 strings out of 492970
- 387237 string characters out of 3126594
- 468277 words of memory out of 3000000
- 23850 multiletter control sequences out of 15000+200000
- 26287 words of font info for 60 fonts, out of 3000000 for 9000
+ 20641 strings out of 492970
+ 390469 string characters out of 3126594
+ 471316 words of memory out of 3000000
+ 23964 multiletter control sequences out of 15000+200000
+ 40049 words of font info for 94 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,18n,59p,813b,473s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,18n,59p,869b,473s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm
--super-t1.enc}<C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/cm-super/sfss0800.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/cm-super/sfss1095.pfb><C:/Users/pierr/AppData/Local/Programs/Mi
-KTeX 2.9/fonts/type1/public/cm-super/sfss1440.pfb><C:/Users/pierr/AppData/Local
-/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfsx0600.pfb><C:/Users/pierr/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfsx1440.pfb><C:/U
-sers/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sftt08
-00.pfb>
-Output written on blockastics_lec_1.pdf (3 pages, 101192 bytes).
+-super-t1.enc}{C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips
+/base/8r.enc}<C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmss10.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/pierr/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/pierr/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/pier
+r/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/fourier/fourier-ml.pfb><
+C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/fourier/fou
+rier-ms.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/adobe
+/utopia/putr8a.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/cm-super/sfss0800.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.
+9/fonts/type1/public/cm-super/sfss1000.pfb><C:/Users/pierr/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/public/cm-super/sfss1095.pfb><C:/Users/pierr/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfss1440.pfb><C:/Users/pi
+err/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfsx0600.pfb>
+<C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/s
+fsx0800.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
+c/cm-super/sfsx1440.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts
+/type1/public/cm-super/sftt0800.pfb>
+Output written on blockastics_lec_1.pdf (11 pages, 204689 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
- 8 named destinations out of 1000 (max. 500000)
+ 162 PDF objects out of 1000 (max. 8388607)
+ 24 named destinations out of 1000 (max. 500000)
  48 words of extra memory for PDF output out of 10000 (max. 10000000)
 

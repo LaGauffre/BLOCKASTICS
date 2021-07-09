@@ -129,8 +129,89 @@
   \titlepage
 \end{frame}
 \begin{frame}{Blockchain}
-\cite{Na08}
+A data ledger made of a sequence of blocks maintained by a achieving consensus in a Peer-To-Peer network.
+\begin{itemize}
+  \item Decentralized
+  \item Public/private
+  \item Permissionned/permissionless
+  \item Immutable
+\end{itemize}
+We will focus on public blockchain and their associated consensus protocol.
+\end{frame}
+\begin{frame}{Blocks}
+A block contains
+\begin{itemize}
+  \item block height/ID
+  \item Time stamp
+  \item hash of the block
+  \item hash of the previous block
+  \item Set of transactions (data stored in the blockchain)
+\end{itemize}
+\end{frame}
+\begin{frame}{Cryptographic Hash function}
+\small
+A function that maps data of arbitratry size (message) to a bit array of fixed size (hash value)
+$$
+h:\{0,1\}^\ast\mapsto \{0,1\}^d. 
+$$
+A good hash function is
+\begin{itemize}
+\item deterministic
+\item quick to compute
+\item One way
+\begin{itemize}
+  \scriptsize
+\item[$\hookrightarrow$] For a given hash value $\overline{h}$ it is hard to find a message $m$ such that 
+$$
+h(m) = \overline{h}
+$$
+\end{itemize}
+\item Colision resistant 
+\begin{itemize}
+\item[$\hookrightarrow$] Impossible to find $m_1$ and $m_2$ such that 
+$$
+h(m_1) = h(m_2)
+$$
+\end{itemize}
+\item Chaotic
+$$m_1\approx m_2\Rightarrow  h(m_1) \neq h(m_2)$$
+\end{itemize}
+\end{frame}
+\begin{frame}{SHA-256}
+\end{frame}
+\begin{frame}{Applications of blockchain: Cryptocurrency}
+Bitcoin
+{\scriptsize
+\begin{thebibliography}{1}
+\bibitem{Na08}
+S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
+  \href{https://bitcoin.org/bitcoin.pdf}{https://bitcoin.org/bitcoin.pdf},
+  2008.
+\end{thebibliography}  
+}
+\begin{itemize}
+  \item Transaction anonymity
+  \item Banking and reliable currency in certain regions of the world
+  \item Money Transfer worldwide (at low fare)
+  \item No need for a thrusted third party
+\end{itemize}
 
+
+
+\end{frame}
+\begin{frame}{Decentralized finance}
+\end{frame}
+\begin{frame}{Consensus protocols}
+The three dimension of blockchain systems analysis
+\begin{enumerate}
+  \item Efficiency
+  \item Decentralization
+  \item Security
+\end{enumerate}
+\end{frame}
+\begin{frame}{Proof of Work}
+\end{frame}
+\begin{frame}{Proof of Stake}
 \end{frame}
 
 \begin{frame}
