@@ -11,6 +11,33 @@
 \usepackage{subfig}
 \usepackage{xspace}
 \usepackage{fourier}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fit}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+\usetikzlibrary{mindmap}
+\usetikzlibrary{decorations.text}
+
+
+% tikzmark command, for shading over items
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20,
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20,
+    text width=5em, text centered, rounded corners]
+\tikzstyle{line} = [draw]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+
+\usepackage[most]{tcolorbox}
+
+\setbeamertemplate{blocks}[rounded][shadow=true] % use rounded blocks with standard beamer shadow
+
+
 % Distributions.
 \newcommand*{\UnifDist}{\mathsf{Unif}}
 \newcommand*{\ExpDist}{\mathsf{Exp}}
@@ -88,6 +115,8 @@
 \def \liminf{\underset{n\rightarrow+\infty}{\underline{\lim}}}
 
 
+
+
 % vertical separator macro
 \newcommand{\vsep}{
   \column{0.0\textwidth}
@@ -135,7 +164,13 @@ A data ledger made of a sequence of blocks maintained by a achieving consensus i
   \item Public/private
   \item Permissionned/permissionless
   \item Immutable
+  \item Incentive compatible
+  \begin{itemize}
+    \item The nodes are compensated for their hard work in cryptocurrencies
+  \end{itemize}
 \end{itemize}
+
+\vspace{0.2cm}
 We will focus on public blockchain and their associated consensus protocol.
 \end{frame}
 \begin{frame}{Blocks}
@@ -147,6 +182,9 @@ A block contains
   \item hash of the previous block
   \item Set of transactions (data stored in the blockchain)
 \end{itemize}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{../../Figures/genesis_block.png}
+\end{center}
 \end{frame}
 \begin{frame}{Cryptographic Hash function}
 \small
@@ -176,12 +214,50 @@ $$
 \item Chaotic
 $$m_1\approx m_2\Rightarrow  h(m_1) \neq h(m_2)$$
 \end{itemize}
+
 \end{frame}
-\begin{frame}{SHA-256}
+\begin{frame}{Consensus protocols}
+The mechanism to make all the nodes agree on a common data history.\\
+\vspace{0.3cm}
+The three dimensions of blockchain systems analysis
+\begin{enumerate}
+  \item Efficiency (Queueing theory)
+  \begin{itemize}
+    \item Throughputs
+    \item Transaction confirmation time
+  \end{itemize}
+  \item Decentralization (Entropy)
+  \begin{itemize}
+    \item Fair distribution of the accounting right
+  \end{itemize}
+  \item Security (Insurance Risk Theory)
+  \begin{itemize}
+    \item Resistance to attacks
+  \end{itemize}
+\end{enumerate}
+\footnotesize
+\begin{thebibliography}{1}
+\bibitem{Fu2020}
+X.~Fu, H.~Wang, and P.~Shi, ``A survey of blockchain consensus algorithms:
+  mechanism, design and applications,'' {\em Science China Information
+  Sciences}, vol.~64, nov 2020.
+\end{thebibliography}
+
 \end{frame}
-\begin{frame}{Applications of blockchain: Cryptocurrency}
-Bitcoin
-{\scriptsize
+\begin{frame}{Proof of Work}
+The nodes compete to solve a cryptographic problem by brute force search.
+\begin{tcolorbox}[enhanced,drop shadow, title=PoW]
+\begin{enumerate}
+    \item Draw a random number (nonce)
+    \[
+    X\sim\{1,\ldots, 2^{32}\}.
+    \]
+    \item While $X > L$, where $L$ is the target then try again  
+\end{enumerate}
+\end{tcolorbox}
+\vspace{0.3cm}
+Nodes are chosen according to their computing power
+{\footnotesize
 \begin{thebibliography}{1}
 \bibitem{Na08}
 S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
@@ -189,6 +265,48 @@ S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
   2008.
 \end{thebibliography}  
 }
+\end{frame}
+\begin{frame}{Proof of Stake}
+PoW is slow and ressource consuming. Let $\{1,\ldots, N\}$ be a set of miner and $\{\pi_1,\ldots, \pi_N\}$ be their share of cryptocoins.
+\begin{tcolorbox}[enhanced,drop shadow, title=PoS]
+Node $i\in \{1,\ldots, N\}$ is selected with probability $\pi_i$ to append the next block
+\end{tcolorbox}
+\vspace{0.3cm}
+Nodes are chosen according to what they own.
+\begin{itemize}
+  \item Nothing at stake problem
+  \item Rich gets richer ? (To be discussed later on)
+\end{itemize}
+\footnotesize{
+\begin{thebibliography}{1}
+
+\bibitem{Saleh2020}
+F.~Saleh, ``Blockchain without waste: Proof-of-stake,'' {\em The Review of
+  Financial Studies}, vol.~34, pp.~1156--1190, jul 2020.
+
+\end{thebibliography}}
+
+\end{frame}
+\begin{frame}{Applications of blockchain: Cryptocurrency}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+   
+{\footnotesize
+\begin{thebibliography}{1}
+\bibitem{Na08}
+S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
+  \href{https://bitcoin.org/bitcoin.pdf}{https://bitcoin.org/bitcoin.pdf},
+  2008.
+\end{thebibliography}  
+}
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+    \begin{center}
+     \includegraphics[width=0.5\textwidth]{../../Figures/bitcoin-6284869_1920.png}
+     \end{center}
+\end{column}
+\end{columns}
+
 \begin{itemize}
   \item Transaction anonymity
   \item Banking and reliable currency in certain regions of the world
@@ -199,20 +317,76 @@ S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
 
 
 \end{frame}
+\begin{frame}{Decentralized application}
+The network provide ressources such as
+\begin{itemize}
+  \item storage
+  \item computing power
+\end{itemize}
+through a smart contract on the ethereum blockchain. 
+\vspace{0.3cm}
+\begin{tcolorbox}[enhanced,drop shadow, title=GOLEM \url{https://www.golem.network/}]
+    Build a network of idle computers to do paralell computing. 
+\end{tcolorbox}
+Utility tokens are used to access the service and provision the network ressources.
+\begin{tcolorbox}[enhanced,drop shadow, title=Equation of Exchange]
+    \[MV = PQ\] 
+\end{tcolorbox}
+\end{frame}
 \begin{frame}{Decentralized finance}
+DEFI creates new financial architecture
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item[+] Non custodial
+\item[+] Anonymous
+\item[+] Permisionless
+\item[+] openly auditable
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth} 
+\begin{itemize}
+\item[-] Unregulated
+\item[-] Tax evasion
+\item[-] Fraud
+\item[-] Money laundering
+\end{itemize} 
+\end{column}
+\end{columns}
+\vspace{0.5cm}
+Extends the Bitcoin promises to more complex financial operations
+\begin{itemize}
+  \item Collateralized lending
+  \item Decentralized Exchange Platform
+  \item Tokenized assets
+  \item Fundraising vehicle (ICO, STO, ...)
+\end{itemize}
+\vspace{0.3cm}
+\scriptsize
+\begin{thebibliography}{1}
+
+\bibitem{werner2021sok}
+S.~M. Werner, D.~Perez, L.~Gudgeon, A.~Klages-Mundt, D.~Harz, and W.~J.
+  Knottenbelt, ``Sok: Decentralized finance (defi),'' 2021.
+
+\end{thebibliography}
+
 \end{frame}
-\begin{frame}{Consensus protocols}
-The three dimension of blockchain systems analysis
-\begin{enumerate}
-  \item Efficiency
-  \item Decentralization
-  \item Security
-\end{enumerate}
+\begin{frame}{Decentralized insurance}
+\begin{tcolorbox}[enhanced,drop shadow, title=Parametric insurance]
+    Compensation if a measurable quantity reaches a threshold 
+\end{tcolorbox}
+\begin{itemize}
+  \item Example: Flight delay insurance
+  \begin{itemize}
+    \item \url{https://etherscan.io/address/0xdc3d8fc2c41781b0259175bdc19516f7da11cba7}
+  \end{itemize}
+  \item Use smart contract and off-chain data through oracles
+  \item Transparent and automatic
+\end{itemize}
+Another example is P2P insurance.
 \end{frame}
-\begin{frame}{Proof of Work}
-\end{frame}
-\begin{frame}{Proof of Stake}
-\end{frame}
+
 
 \begin{frame}
 \bibliography{../../blockastics}
