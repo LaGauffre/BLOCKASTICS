@@ -313,10 +313,39 @@ S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
   \item Money Transfer worldwide (at low fare)
   \item No need for a thrusted third party
 \end{itemize}
-
-
-
 \end{frame}
+
+\begin{frame}[plain]
+\begin{figure}
+\captionsetup[subfigure]{labelformat=empty}
+  \begin{center}
+   \subfloat[]{
+
+      \includegraphics[width=0.42\textwidth]{../../Figures/btc_price}
+      \label{sub:QQplot_gamma}
+       
+                         }
+                         \hskip1em
+    \subfloat[]{
+      \includegraphics[width=0.42\textwidth]{../../Figures/btc_hahsrate}
+      \label{sub:QQplot_weib}
+                         }
+                         \hskip1em
+    \subfloat[]{
+      \includegraphics[width=0.42\textwidth]{../../Figures/btc_n_transaction}
+      \label{sub:QQplot_lnorm}
+                         }
+    \subfloat[]{
+      \includegraphics[width=0.42\textwidth]{../../Figures/btc_elec_conso}
+      \label{sub:QQplot_pareto}
+                         }
+    % \caption{Quantile-quantile plots associated to the gamma, Weibull, lognormal and Pareto models fitted to the danish fire insurance loss data using maximum likelihood estimation.}
+    % \label{fig:qqplot_weib_lnorm}
+  \end{center}
+\end{figure}
+\blfootnote{\tiny Sources: \url{https://www.blockchain.com/} $\&$ \url{https://cbeci.org/}}
+\end{frame}
+
 \begin{frame}{Decentralized application}
 The network provide ressources such as
 \begin{itemize}
@@ -325,11 +354,11 @@ The network provide ressources such as
 \end{itemize}
 through a smart contract on the ethereum blockchain. 
 \vspace{0.3cm}
-\begin{tcolorbox}[enhanced,drop shadow, title=GOLEM \url{https://www.golem.network/}]
+\begin{tcolorbox}[enhanced,drop shadow, title=GOLEM (\url{https://www.golem.network/})]
     Build a network of idle computers to do paralell computing. 
 \end{tcolorbox}
 Utility tokens are used to access the service and provision the network ressources.
-\begin{tcolorbox}[enhanced,drop shadow, title=Equation of Exchange]
+\begin{tcolorbox}[enhanced,drop shadow, title=Equation of Exchange (Fisher 1911)]
     \[MV = PQ\] 
 \end{tcolorbox}
 \end{frame}
@@ -388,9 +417,9 @@ Another example is P2P insurance.
 \end{frame}
 
 
-\begin{frame}
-\bibliography{../../blockastics}
-\bibliographystyle{ieeetr}
-\end{frame}
+% \begin{frame}
+% \bibliography{../../blockastics}
+% \bibliographystyle{ieeetr}
+% \end{frame}
 
 \end{document}
