@@ -1,0 +1,594 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% \usepackage{amscd, amsfonts, amsmath, amssymb, amstext, amsthm, caption, epsfig, fancyhdr, float, graphicx, latexsym, mathtools, multicol, multirow, algorithm, chngcntr}
+\usepackage[english, french]{babel}
+\usepackage{booktabs}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subfig}
+\usepackage{xspace}
+\usepackage{fourier}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{tkz-graph}
+\usetikzlibrary{automata,arrows,positioning,calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fit}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+\usetikzlibrary{mindmap}
+\usetikzlibrary{decorations.text}
+
+
+
+% tikzmark command, for shading over items
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20,
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20,
+    text width=5em, text centered, rounded corners]
+\tikzstyle{line} = [draw]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+
+\usepackage[most]{tcolorbox}
+
+\setbeamertemplate{blocks}[rounded][shadow=true] % use rounded blocks with standard beamer shadow
+
+\newcommand*{\warning}{\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax}
+
+% Distributions.
+\newcommand*{\UnifDist}{\mathsf{Unif}}
+\newcommand*{\ExpDist}{\mathsf{Exp}}
+\newcommand*{\DepExpDist}{\mathsf{DepExp}}
+\newcommand*{\GammaDist}{\mathsf{Gamma}}
+\newcommand*{\LognormalDist}{\mathsf{LogNorm}}
+\newcommand*{\WeibullDist}{\mathsf{Weib}}
+\newcommand*{\ParetoDist}{\mathsf{Par}}
+\newcommand*{\NormalDist}{\mathsf{Norm}}
+
+\newcommand*{\GeometricDist}{\mathsf{Geom}}
+\newcommand*{\NegBinomialDist}{\mathsf{NegBin}}
+\newcommand*{\PoissonDist}{\mathsf{Poisson}}
+\newcommand*{\BivariatePoissonDist}{\mathsf{BPoisson}}
+\newcommand*{\CyclicalPoissonDist}{\mathsf{CPoisson}}
+
+\newcommand*{\iid}{\textbf{iid}\@\xspace}
+\newcommand*{\pdf}{\textbf{pdf}\@\xspace}
+\newcommand*{\cdf}{\textbf{cdf}\@\xspace}
+\newcommand*{\pmf}{\textbf{pmf}\@\xspace}
+\newcommand*{\abc}{{\textbf{abc}}\@\xspace}
+\newcommand*{\smc}{\textbf{smc}\@\xspace}
+\newcommand*{\mcmc}{\textbf{mcmc}\@\xspace}
+\newcommand*{\ess}{\textbf{ess}\@\xspace}
+\newcommand*{\mle}{\textbf{mle}\@\xspace}
+\newcommand*{\bic}{\textbf{bic}\@\xspace}
+\newcommand*{\kde}{\textbf{kde}\@\xspace}
+\newcommand*{\glm}{\textbf{glm}\@\xspace}
+\newcommand*{\xol}{\textbf{xol}\@\xspace}
+\newcommand*{\cpu}{\textbf{cpu}\@\xspace}
+\newcommand*{\gpu}{\textbf{gpu}\@\xspace}
+\newcommand*{\arm}{\textbf{arm}\@\xspace}
+
+\def \si {\sigma}
+\def \la {\lambda}
+\def \al {\alpha}
+% \def\e*{\end{eqnarray*}}
+\def \di{\displaystyle}
+
+\def \E{\mathbb E}
+\def \N{\mathbb N}
+\def \Z{\mathbb Z}
+\def \NZ{\mathbb{N}_0}
+\def \I{\mathbb I}
+\def \w{\widehat}
+\def \P {\mathbb P}
+\def \V{\mathbb V}
+
+
+\newcommand{\CL}{\mathbb{C}}
+\newcommand{\RL}{\mathbb{R}}
+\newcommand{\nat}{{\mathbb N}}
+\newcommand{\Laplace}{\mathscr{L}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\ve}{\bm{\mathrm{e}}} % vector e
+
+\renewcommand{\L}{\mathcal{L}} % e.g. L^2 loss.
+
+\newcommand{\ih}{\mathrm{i}}
+\newcommand{\oh}{{\mathrm{o}}}
+\newcommand{\Oh}{{\mathcal{O}}}
+\newcommand{\Exp}{\mathbb{E}}
+
+\newcommand{\Norm}{\mathcal{N}}
+\newcommand{\LN}{\mathcal{LN}}
+\newcommand{\SLN}{\mathcal{SLN}}
+
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Ind}{\mathbb I}
+\newcommand\bfsigma{\bm{\sigma}}
+\newcommand\bfSigma{\bm{\Sigma}}
+\newcommand\bfLambda{\bm{\Lambda}}
+\newcommand{\stimes}{{\times}}
+\def \limsup{\underset{n\rightarrow+\infty}{\overline{\lim}}}
+\def \liminf{\underset{n\rightarrow+\infty}{\underline{\lim}}}
+
+
+
+
+% vertical separator macro
+\newcommand{\vsep}{
+  \column{0.0\textwidth}
+    \begin{tikzpicture}
+      \draw[very thick,black!10] (0,0) -- (0,7.3);
+    \end{tikzpicture}
+}
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+% More space between lines in align
+% \setlength{\mathindent}{0pt}
+
+% Beamer theme
+\usetheme{ZMBZFMK}
+\usefonttheme[onlysmall]{structurebold}
+\mode<presentation>
+\setbeamercovered{transparent=10}
+
+% align spacing
+\setlength{\jot}{0pt}
+
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
+
+\title[BLOCKASTICS II]{Stochastic Models for blockchain analysis}
+\subtitle{Simple models for blockchain performance analysis}
+\author{Pierre-O. Goffard}
+\institute[ISFA]{Institut de Science Financières et d'Assurances\\
+ \texttt{pierre-olivier.goffard@univ-lyon1.fr}}
+\date{\today}
+\titlegraphic{\includegraphics[width=2.5cm]{../../Figures/bfs_logo.png}} 
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+\begin{frame}{The three dimensions of blockchain analysis}
+\tableofcontents
+% \begin{enumerate}
+%   \item Security of PoW blockchain
+%   \item Decentralization in PoS blockchain
+%   \item Blockhain efficiency
+% \end{enumerate}
+\end{frame}
+\section{Security of PoW blockchain}
+\begin{frame}{Double spending attack}
+\begin{enumerate}
+\item Mary transfers 10 BTCs to John
+\item The honest transaction is recorded in the honest chain and John ships the good.
+\item Mary transfers to herself the exact same BTCs
+\item The malicious transaction is recorded into a hidden, dark, secret chain
+\begin{itemize}
+\item Mary has friends among the miners to help her out
+\item The two chains are copycat up to the one transaction
+\end{itemize}
+\end{enumerate}
+\begin{fact}[Bitcoin has only one rule]
+The longest chain is to be trusted
+\end{fact}
+\end{frame}
+\begin{frame}{Double spending in practice}
+Vendor are advised to wait for $\alpha\in\mathbb{N}$ of confirmations so that the honest chain is ahead of the dishonest one.
+\begin{center}
+\begin{tikzpicture}[-, >=stealth', auto, semithick, node distance=1cm]
+% \tikzstyle{block} = [rectangle, draw, fill=blue!20,
+%     text width=5em, text centered, rounded corners]
+\tikzstyle{block}=[rectangle, fill=black,draw=black,thick,text=black,scale=0.6]
+\tikzstyle{block}=[rectangle, fill=white,draw=black,thick,text=black,scale=0.8]
+\tikzstyle{confirmed block}=[rectangle, fill=white,draw=blue,thick,text=black,scale=0.8]
+\tikzstyle{bad block}=[rectangle, fill=white,draw=red,thick,text=black,scale=0.8]
+\node[block]    (1)                     {\tiny $\text{M}\rightarrow \text{J}$};
+\node[block]    (2)[right of=1]                     {};
+\node[block]    (3)[right of=2]                     {};
+\node[block]    (4)[right of=3]                     {};
+\node[confirmed block]    (5)[right of=4]                     {};
+
+\node[bad block]    (6)[below of=1]         {\tiny $\text{M}\rightarrow \text{M}$};
+\node[block]    (7)[right of=6]         {};
+\node[block]    (8)[right of=7]         {};
+\path
+(1) edge[ left]     node{}     (2)
+(2) edge[ left]     node{}     (3)
+(3) edge[ left]     node{}     (4)
+(4) edge[ left]     node{}     (5)
+(6) edge[ left]     node{}     (7)
+(7) edge[ left]     node{}     (8);
+
+\end{tikzpicture}
+\end{center}
+In the example, vendor awaits $\alpha = 4$ confirmations, the honest chain is ahead of the dishonest one by $z = 2$ blocks.
+\begin{fact}[PoW is resistant to double spending]
+\begin{itemize}
+\item Attacker does not own the majority of computing power 
+\item Suitable $\alpha$ 
+\end{itemize}
+Double spending is unlikely to succeed.
+\end{fact}
+\tiny
+\begin{thebibliography}{1}
+\bibitem{Na08}
+S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
+  \href{https://bitcoin.org/bitcoin.pdf}{https://bitcoin.org/bitcoin.pdf},
+  2008.
+  
+\end{thebibliography}
+
+\end{frame}
+\begin{frame}{Mathematical set up}
+Assume that
+\begin{itemize}
+\item $R_0=z\geq1$ (the honest chain is z blocks ahead)
+\item at each time unit a block is created
+\begin{itemize}
+\item[$\hookrightarrow$] in the honest chain with probability $p$
+\item[$\hookrightarrow$] in the dishonest chain with probability $q=1-p$
+\end{itemize}
+\end{itemize}
+The process $(R_n)_{n\geq0}$ is a random walk on $\mathbb{Z}$ with
+$$R_n=z+Y_1+\ldots+Y_n,$$
+where $Y_1,\ldots,Y_n$ are the \textbf{i.i.d.} steps of the random walk.\\
+\end{frame}
+\begin{frame}{Double spending rate of success}
+Double spending occurs at time
+$$
+\tau_z=\inf\{n\in \mathbb{N}\text{ ; }R_n=0\}.
+$$
+
+\begin{theorem}[Double spending theorem]
+If $p>q$ then the double-spending probability is given by
+$$
+\phi(z) = \mathbb{P}(\tau_z<\infty)=\left(\frac{q}{p}\right)^{z}.
+$$
+\end{theorem}
+\end{frame}
+{ % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+    \begin{figure}
+    \centering
+    
+\begin{tikzpicture}
+  %Origin and axis
+  \coordinate (O) at (0,0);
+  \draw[->] (-1,0) -- (9,0) coordinate[label = {below:$n$}] (xmax);
+  \draw[->] (0,-0.5) -- (0,5.5) coordinate[label = {left:$Z_n$}] (ymax);
+  %Lower linear boundary
+
+ 
+  %Stochastic process trajectory
+  
+  \draw (0,0) node[tublue,left] {} node{};
+  \draw[very thick,tublue,-] (0,2) -- (1,2) node[pos=0.5, above] {} ;
+  \draw[very thick,dashed,tublue] (1,2) -- (1,3) node[pos=0.5, right] {};
+  \draw[very thick,tublue,-] (1,3) -- (2,3) node[pos=0.5, above] {};
+  \draw[very thick,dashed,tublue] (2,3) -- (2,4) node[pos=0.5, right] {};
+  \draw[very thick,tublue,-] (2,4) -- (3,4) node[pos=0.5, above] {};
+  \draw[very thick,dashed,tublue] (3,4) -- (3,3) node[pos=0.5, right] {};
+  \draw[very thick,tublue,-] (3,3) -- (4,3)node[pos=0.5, above] {};
+  \draw[very thick,dashed,tublue] (4,3) -- (4,2) node[pos=0.5, right] {};  
+  \draw[very thick,tublue,-] (4,2) -- (5,2) node[pos=0.5, above] {};
+  \draw[very thick,dashed,tublue] (5,2) -- (5,1) node[pos=0.5, right] {};  
+  \draw[very thick,tublue,-] (5,1) -- (6,1) node[pos=0.5, above] {};
+  \draw[very thick,dashed,tublue,-] (6,1) -- (6,2) node[pos=0.5, above] {};
+   \draw[very thick,tublue,-] (6,2) -- (7,2) node[pos=0.5, above] {};
+    \draw[very thick,dashed,tublue,-] (7,2) -- (7,1) node[pos=0.5, above] {};
+     \draw[very thick,tublue,-] (7,1) -- (8,1) node[pos=0.5, above] {};
+     \draw[very thick,dashed,tublue,-] (8,1) -- (8,0) node[pos=0.5, above] {};
+  %Jump Times
+  \draw (1,0) node[black,below] {$1$} node{ \color{black}$\bullet$};
+  \draw (2,0) node[black,below] {$2$} node{ \color{black}$\bullet$};
+  \draw (3,0) node[black,below] {$3$} node{ \color{black}$\bullet$};
+  \draw (4,0) node[black,below] {$4$} node{ \color{black}$\bullet$};
+  \draw (5,0) node[black,below] {$5$} node{ \color{black}$\bullet$};
+  \draw (6,0) node[black,below] {$6$} node{ \color{black}$\bullet$};
+  \draw (7,0) node[black,below] {$7$} node{ \color{black}$\bullet$};
+  \draw (8,0) node[black,below] {$8$} node{ \color{black}$\bullet$};
+  %Level of the counting process
+   \draw (0,0) node[black,below left] {$0$} node{ \color{black}$\bullet$};
+   \draw (0,1) node[black,left] {$1$} node{ \color{black}$\bullet$};
+   \draw (0,2) node[black,left] {$z=2$} node{ \color{black}$\bullet$};
+   \draw (0,3) node[black,left] {$3$} node{ \color{black}$\bullet$};
+   \draw (0,4) node[black,left] {$4$} node{ \color{black}$\bullet$};
+   \draw (0,5) node[black,left] {$5$} node{ \color{black}$\bullet$};
+
+  % %Aggregated Capital gains
+%  \draw (0,1.5) node[blue,below right] {$\mu_1$} node{ \color{blue}$-$};
+%  \draw (0,2.25) node[blue,left] {$\mu_2$} node{ \color{blue}$-$};
+%  \draw (0,3.75) node[blue,left] {$\mu_3$} node{ \color{blue}$-$};
+  %Ruin time = First-crossing time time
+%  \draw (5,0) node[black,above right] {$\tau_u$} node{ \color{black}$\times$};
+%  \draw[dotted,black] (0,3.28) -- (5,3.28);
+%  \draw[dotted,black] (5,0) -- (5,3.28);
+\end{tikzpicture}
+\caption{A trajectory of the process $(Z_n)_{n\geq0}$. Gambler's ruin problem}
+\label{Fig:RuinTimeInsuranceRiskModel}
+\end{figure}
+\end{frame}
+\begin{frame}[allowframebreaks]{Proof of the double spending theorem }
+\scriptsize Analogy with the gambler's ruin problem. Using a first step analysis, we have 
+\begin{equation}\label{eq:difference_equation}
+\phi(z) = p\phi(z+1)+(1-p)p\phi(z-1),\text{ }z\geq1.
+\end{equation}
+We also have the boundary conditions
+\begin{equation}\label{eq:boundary_conditions_double_spending}
+\phi(0) = 1\text{ and }\underset{z\rightarrow +\infty}{\lim}\phi(z) = 0
+\end{equation}
+Equation \eqref{eq:difference_equation} is a linear difference equation of order $2$ associated to the following characteristic equation
+$$
+px^2 - x + 1-p = 0
+$$
+which has two roots on the real line with 
+$$
+r_1 = 1, \text{ and }r_2 = \frac{1-p}{p}.
+$$
+The solution of \eqref{eq:difference_equation} is given by 
+$$
+\phi(z)=A+B\left(\frac{1-p}{p}\right)^z,
+$$
+where $A$ and $B$ are constant. Using the boudary conditions \eqref{eq:boundary_conditions_double_spending}, we deduce that
+$$
+\phi(z) = \left(\frac{1-p}{p}\right)^z
+$$
+as announced.
+\end{frame}
+\begin{frame}{Refinements of the double spending problem}
+\small
+The number of blocks $M$ found by the attacker until the honest miners find $\alpha$ blocks is a negative binomial random variable with \pmf
+$$
+\mathbb{P}(M = m) = \binom{\alpha+m-1}{m}p^\alpha q^m,\text{ }m\geq0.
+$$
+The number of block that the honest chain is ahead of the dishonest one is given by 
+$$
+Z= (\alpha-M)_+.
+$$
+Applying the law of total probability yields the probability of successful double spending with
+$$
+\mathbb{P}(\text{Double Spending}) = \mathbb{P}(M\geq \alpha) + \sum_{m = 0}^{\alpha - 1}\binom{\alpha+m-1}{m}q^\alpha p^m.
+$$ 
+\tiny
+\begin{thebibliography}{1}
+  \bibitem{rosenfeld2014analysis}
+M.~Rosenfeld, ``Analysis of hashrate-based double spending,'' {\em arXiv
+  preprint arXiv:1402.2009}, 2014.
+\end{thebibliography}
+
+\end{frame}
+\begin{frame}{Refinements of the double spending problem}
+\small
+Let the length of honest and dishonest chain be driven by counting processes
+\begin{itemize}
+\item Honest chain $\Rightarrow$ $z+N_t\text{ , }t\geq0$, where $z\geq1$.
+\item Malicious chain $\Rightarrow$ $M_t\text{ , }t\geq0$
+\item Study the distribution of the first-\textit{rendez-vous} time
+$$
+\tau_z=\inf\{t\geq0\text{ , } M(t)=z+N(t)\}.
+$$
+\end{itemize}
+If $N_t\sim\text{Pois}(\lambda t)$ and $M_t\sim\text{Pois}(\mu t)$ such that $\lambda>\mu$ then 
+$$
+\phi(z) = \left(\frac{\mu}{\lambda}\right),\text{ }z\geq 0.
+$$
+\tiny
+\begin{thebibliography}{1}
+
+\bibitem{Goffard2019}
+P.-O. Goffard, ``Fraud risk assessment within blockchain transactions,'' {\em
+  Advances in Applied Probability}, vol.~51, pp.~443--467, jun 2019.
+\newblock \url{https://hal.archives-ouvertes.fr/hal-01716687v2}.
+
+\bibitem{Bowden2020}
+R.~Bowden, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor, ``Modeling and
+  analysis of block arrival times in the bitcoin blockchain,'' {\em Stochastic
+  Models}, vol.~36, pp.~602--637, jul 2020.
+\end{thebibliography}
+
+\end{frame}
+\section{Decentralization in PoS blockchain}
+\begin{frame}{Proof of Stake protocol}
+PoS is the most popular alternative to PoW.
+\begin{itemize}
+  \item A block validator is selected according to the number of native coins she owns
+  \item Update the blockchain and receive a reward or do nothing  
+\end{itemize}
+Two problems 
+\begin{itemize}
+  \item[\warning] Nothing at stake $\Rightarrow$ Consensus postponed
+  \item[\warning] Rich gets richer $\Rightarrow$ Risk of centralization
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Nothing-at-Stake}
+If given the opportunity a node will always append a new block
+\begin{itemize}
+  \item Everlasting fork if any
+\end{itemize}
+Perpetuating disagreement prevent users to exchange which lower the coin value.
+\begin{theorem}[Saleh 2020]
+To get consensus faster and almost surely 
+\begin{itemize}
+  \item Set a minimum stake to outweight the benefit of the reward
+  \item Set up a modest reward schedule $\sum_{t = 1}^\infty \text{Reward}_t<\infty$
+\end{itemize}
+\end{theorem}
+\tiny
+\begin{thebibliography}{1}
+
+\bibitem{Saleh2020}
+F.~Saleh, ``Blockchain without waste: Proof-of-stake,'' {\em The Review of
+  Financial Studies}, vol.~34, pp.~1156--1190, jul 2020.
+\end{thebibliography}
+\end{frame}
+\begin{frame}{Risk of centralization ?}
+
+\end{frame}
+\section{Blockchain eficiency}
+\begin{frame}{Efficiency}
+Efficiency is characterized by 
+\begin{itemize}
+  \item Throughputs: Number of transaction being processed per time unit
+  \item Latency: Average transaction confirmation time
+\end{itemize}
+We focus on a PoW equipped blockchain and and study the above quantities using a queueing model.
+\end{frame}
+\begin{frame}{Queueing model settings}
+\begin{itemize}
+\item Poisson arrival with rate $\lambda>0$ for the transactions
+\item Poisson arrival with rate $\mu>0$ for the blocks 
+\item Block size $b\in\mathbb{N}^\ast$
+Batch service
+\end{itemize}
+This is a $M/M^b/1$ queue \cite{Bailey1954} \cite{Cox1955}
+\tiny
+\begin{thebibliography}{1}
+\bibitem{Kawase2017}
+Y.~Kawase and S.~Kasahara, ``Transaction-confirmation time for bitcoin:
+  A~queueing analytical approach to~blockchain~mechanism,'' in {\em Queueing
+  Theory and Network Applications}, pp.~75--88, Springer International
+  Publishing, 2017.
+\bibitem{Bailey1954}
+N.~T.~J. Bailey, ``On queueing processes with bulk service,'' {\em Journal of
+  the Royal Statistical Society: Series B (Methodological)}, vol.~16,
+  pp.~80--87, jan 1954.
+
+\bibitem{Cox1955}
+D.~R. Cox, ``The analysis of non-markovian stochastic processes by the
+  inclusion of supplementary variables,'' {\em Mathematical Proceedings of the
+  Cambridge Philosophical Society}, vol.~51, pp.~433--441, jul 1955.
+
+\end{thebibliography}
+\end{frame}
+\begin{frame}{Queue length distribution}
+The queueuing process eventually reaches stationarity if 
+\begin{equation}\label{eq:stationarity_cond}
+\mu\cdot b > \lambda.
+\end{equation}
+We denote by $N$ the length of the queue upon stationarity. 
+\begin{theorem}[The blockchain efficiency theorem]
+Assume that \eqref{eq:stationarity_cond} holds then $N$ is geometrically distributed 
+$$
+\mathbb{P}(N = n) = (1-p)\cdot p^n,
+$$
+where $p = 1/z^\ast$ and $z^\ast$ is the only root of 
+$$
+-\frac{\lambda}{\mu}z^{b+1}+z^b\left(\frac{\lambda}{\mu}+1\right) - 1,
+$$
+such that $|z^\ast$|>1.  
+\end{theorem}
+\end{frame}
+\begin{frame}[allowframebreaks]{Proof of the efficiency theorem}
+\scriptsize
+Let $N^q_t$ be the number of transactions in the queue at time $t\geq0$ and $X_t$ the time elapsed since the last block was found. Further define
+\[
+P_{n}(x,t)\text{d}x  =\mathbb{P}[N_t^q = n, X_t \in(x, x + \text{dx})] 
+\]
+If $\lambda < \mu\cdot b$ holds then the process admits a limiting distribution given by 
+\[
+\underset{t\rightarrow\infty}{\lim}P_{n}(x,t) = P_{n}(x).
+\]
+We aim at finding the distribution of the queue length upon stationarity
+\begin{equation}\label{eq:alpha_n}
+\mathbb{P}(N^q=n):=\alpha_n =\int_{0}^\infty P_{n}(x)\text{d}x.
+\end{equation}
+Consider the possible transitions over a small time lapse \text{h} during which no block is being generated. Over this time interval, either 
+\begin{itemize}
+  \item no transactions arrives
+  \item one transaction arrives
+\end{itemize}
+We have for $n\geq1$
+\[
+P_{n}(x+h) = e^{-\mu h}\left[e^{-\lambda h}P_{n}(x)+\lambda h e^{-\lambda h}P_{n-1}(x)\right]
+\]
+Differentiating with respect to $h$ and letting $h\rightarrow0$ leads to 
+\begin{equation}\label{eq:diff_eq_n_geq_1}
+P_{n}'(x) = -(\lambda+\mu)P_{n}(x)+\lambda P_{n-1}(x),\text{ }n \geq1.
+\end{equation}
+Similarly for $n = 0$, we have 
+\begin{equation}\label{eq:diff_eq_n_eq_0}
+P_{0}'(x) = -(\lambda+\mu)P_{0}(x).
+\end{equation}
+We denote by $\xi(x) = \mu$ the hazard function of the block arrival time (constant as it is exponentially distributed). The system of differential equations \eqref{eq:diff_eq_n_geq_1}, \eqref{eq:diff_eq_n_eq_0} admits boundary conditions at $x = 0$ with 
+\begin{equation}\label{eq:boundary_cond_1}
+\begin{cases}
+P_{n}(0) = \int_0^{+\infty} P_{n+b}(x)\xi(x)\text{d}x = \mu\sum_{m=0}^{b}\alpha_{n+b},&n \geq1,\\
+P_{0}(0) = \mu\sum_{n=0}^{b}\alpha_n,&n = 0,\ldots,b\\
+\end{cases}
+\end{equation}
+Define the probability generating function of $N$ at some elapsed service time $x\geq 0$ as 
+$$
+G(z;x) = \sum_{n=0}^\infty P_{n}(x)z^n.
+$$
+By differentiating with respect to $x$, we get (using \eqref{eq:diff_eq_n_geq_1} and \eqref{eq:diff_eq_n_eq_0})
+$$
+\frac{\partial}{\partial x}G(z;x) = -\left[\lambda(1-z)+\mu\right]G(z;x)
+$$
+and therefore
+$$
+G(z;x) = G(z;0)\exp\left\{-\left[\lambda(1-z)+\mu\right]x\right\}
+$$
+We get the probability generating function of $N$ by integrating over $x$ as 
+\begin{equation}\label{eq:G_z_solve_ODE}
+G(z) = \frac{G(z;0)}{\lambda(1-z)+\mu}
+\end{equation}
+Using the boundary conditions \eqref{eq:boundary_cond_1}, we write 
+\begin{eqnarray}
+G(z;0) &= &\mu \sum_{n = 0}^\infty P_{n}(0)z^n \nonumber\\
+&= &P_{0}(0)+\sum_{n=1}^{+\infty}P_{n}(0)z^n\nonumber\\
+&=& \mu\sum_{n = 0}^{b}\alpha_n  + \mu\sum_{n=1}^{+\infty}\alpha_{n+b} z^n\nonumber\\
+&=& \mu\sum_{n = 0}^{b}\alpha_n + \mu z^{-b}\left[G(z)-\sum_{n = 0}^{b}\alpha_n z^n\right]\label{eq:G_z_0}
+\end{eqnarray}
+Replacing the left hand side of \eqref{eq:G_z_0} by \eqref{eq:G_z_solve_ODE}, multiplying on both side by $z^b$ and rearranging yields 
+\begin{equation}\label{eq:G_z_as_rational_function}
+\frac{G(z)}{M(z)}[z^b - M(z)] =\sum_{n=0}^{b-1}\alpha_n(z^b - z^n), 
+\end{equation}
+where $M(z) = \mu/(\lambda(1-z)+\mu)$. Using Rouche's theorem, we find that both side of the equation shares $b$ zeros inside the circle $\mathcal{C} = \{z\in\mathbb{C}\text{ ; }|z| <1+\epsilon\}$ for some epsilon. One of them is $1$, and we denote by $z_k$, $k = 1,\ldots, b-1$ the remaining $b-1$ zeros. Given the polynomial form of the right hand side of \eqref{eq:G_z_as_rational_function}, the fundamental theorem of algebra indicates that the number of zeros is $b$. The left hand side can be rewritten as
+$$
+G(z)\left[-\frac{\lambda}{\mu}z^{b+1} + \left(1 + \frac{\lambda}{\mu}\right)z^b -1\right],
+$$
+we deduce that there is one zeros outside $\mathcal{C}$, we can further show that it is a real number $z^\ast$. Multiplying both side of \eqref{eq:G_z_as_rational_function} by $(z-1)\prod_{k =1}^{b-1}(z-z_k)$, and using $G(1)=1$ yields
+$$
+G(z) = \frac{1-z^\ast}{z-z^{\ast}}.
+$$
+$N$ is then a geometric random variable with parameter $p = \frac{1}{z^\ast}.$
+\end{frame}
+\begin{frame}{Latency and throughputs}
+\begin{itemize}
+  \item Latency is the confirmation time of a transaction 
+  \begin{itemize}
+    \item From Little's law it follows that the mean confirmation time is given by 
+    $$
+    \text{Latency} = \frac{p}{(1-p)\lambda} + \frac{1}{\mu}
+    $$
+  \end{itemize}
+  \item Throughput is the number of transaction confirmed per time unit
+  $$
+    \text{Throughput} = \mathbb{E}(N\mathbb{I}_{N\leq b}+b\mathbb{I}_{N> b}) = \sum_{n = 0}^bn(1-p)p^n + bp^{b+1}.
+  $$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\bibliography{../../blockastics}
+\bibliographystyle{ieeetr}
+\end{frame}
+
+\end{document}
