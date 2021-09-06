@@ -24,6 +24,9 @@
 \usetikzlibrary{mindmap}
 \usetikzlibrary{decorations.text}
 
+% \theoremstyle{definition} % insert bellow all blocks you want in normal text
+% \newtheorem{definition}{Definition}
+
 
 
 % tikzmark command, for shading over items
@@ -385,7 +388,7 @@ $$
 \end{itemize}
 If $N_t\sim\text{Pois}(\lambda t)$ and $M_t\sim\text{Pois}(\mu t)$ such that $\lambda>\mu$ then 
 $$
-\phi(z) = \left(\frac{\mu}{\lambda}\right),\text{ }z\geq 0.
+\phi(z) = \left(\frac{\mu}{\lambda}\right)^z,\text{ }z\geq 0.
 $$
 \tiny
 \begin{thebibliography}{1}
@@ -426,7 +429,7 @@ Perpetuating disagreement prevent users to exchange which lower the coin value.
 To get consensus faster and almost surely 
 \begin{itemize}
   \item Set a minimum stake to outweight the benefit of the reward
-  \item Set up a modest reward schedule $\sum_{t = 1}^\infty \text{Reward}_t<\infty$
+  \item Set up a modest reward schedule $\sum_{t = 1}^\infty \text{R}_t<\infty$
 \end{itemize}
 \end{theorem}
 \tiny
@@ -438,6 +441,138 @@ F.~Saleh, ``Blockchain without waste: Proof-of-stake,'' {\em The Review of
 \end{thebibliography}
 \end{frame}
 \begin{frame}{Risk of centralization ?}
+Block appending process
+\begin{itemize}
+  \item Draw a coin at random
+  \item The owner of the coin append a block and collect the reward
+  \item The block appender is more likely to get sleected during the next round
+\end{itemize}
+Similar to Polya's urn
+\begin{itemize}
+  \item[$\hookrightarrow$] Coins = Coloured balls
+\end{itemize}
+\end{frame}
+\begin{frame}{Risk of centralization ?}
+Consider an urn of $N$ balls of color in $E=\{1,\ldots, p\}$
+\begin{itemize}
+  \item Draw a ball of color $x\in E$
+  \item Replace the ball together with $r$ ball of color $x$ 
+\end{itemize}
+$p$ is the number of peers and $r$ is the size of the block reward. 
+\begin{theorem}
+The proportion of coins owned by each peer is stable on average over the long run
+\end{theorem}
+The result holds for buy and hold type investors, note that a trading irrelevant result 
+\scriptsize
+\begin{thebibliography}{1}
+
+\bibitem{Rosu2021}
+I.~Ro{\c{s}}u and F.~Saleh, ``Evolution of shares in a proof-of-stake
+  cryptocurrency,'' {\em Management Science}, vol.~67, pp.~661--672, feb 2021.
+  \end{thebibliography}
+\end{frame}
+\begin{frame}{Proof}
+\scriptsize
+Consider the balls of some color $x\in E$, and denote by 
+\begin{itemize}
+\item $N_x$ the number of balls of color $x$ initially in the urn
+\item $Y_n$ the number of balls of color $x$ in the urn initially after $n$ draws
+\item $Z_n$ the corresponding proportion balls of color $x$.
+\end{itemize}   
+We show that $(Z_n)_{n\geq0}$ is a $\mathcal{F}_n-$Martingale where $\mathcal{F}_n=\sigma(Y_1,\ldots, Y_n)$. We have 
+\begin{eqnarray*}
+\mathbb{E}(Z_{n+1}|\mathcal{F}_n) = Z_n\frac{Y_n+r}{N+r+n} +(1-Z_n)\frac{Y_n}{N+r+n} = Z_n
+\end{eqnarray*}
+It follows that 
+$$
+\mathbb{E}(Z_n) = \mathbb{E}(Z_0) = \frac{N_x}{N}, \text{ for }n\geq0.
+$$
+hence the stability. Furthermore, because $|Z_n|<1$, then $\underset{n\rightarrow\infty}{\lim} Z_n = Z_\infty$ exists and it holds that $\mathbb{E}(Z_\infty) = \mathbb{E}(Z_0)$.\\
+\end{frame}
+\begin{frame}{What is the limiting distributions of the shares?}
+\scriptsize
+ \begin{definition}[Dirichlet distribution]
+A random vector $(Z_1,\ldots, Z_p)$ has a Dirichlet distribution $\text{Dir}(\alpha_1,\ldots, \alpha_p)$ with \pdf
+$$
+f(z_1,\ldots, z_p;\alpha_1,\ldots, \alpha_p) = \frac{1}{B(\alpha)}\prod_{i=1}^p z_i^{\alpha_i-1}, 
+$$
+for $\alpha_1,\ldots, \alpha_p)>0$, $0< z_1,\ldots, z_p <1$ and $\sum_{i=1}^pz_i=1$, where 
+$$
+B(\alpha) = \frac{\prod_{i = 1}^p \Gamma(\alpha_i)}{\Gamma(\sum_{i=1}^p \alpha_i)}.
+$$
+\end{definition}
+\begin{theorem}[Convergence toward a Dirichlet distribution]
+Suppose that $r=1$ and let $X_n$ be the color of the ball drawn at the $n^{th}$ round then 
+$$
+X_\infty\sim \text{Dir}(\{N_x\text{, }x\in E\}).
+$$
+\end{theorem}
+\end{frame}
+\begin{frame}[allowframebreaks]{Proof}
+\scriptsize
+We have that 
+\begin{equation}\label{eq:polya_sequence_1}
+\mathbb{P}(X_1=x) = \frac{N_x}{N}
+\end{equation}
+and 
+\begin{equation}\label{eq:polya_sequence_2}
+\mathbb{P}(X_{n+1}=x) = \frac{N_x + \sum_{i=1}^n\delta_{X_i}(x)}{N+n} = m_n(x)
+\end{equation}
+where $\delta_{X_i}$ denotes the Dirac measure at $X_i$.\\
+A sequence that satisfies \eqref{eq:polya_sequence_1} and \eqref{eq:polya_sequence_2} is said to be a Polya sequence with parameter $N_x\text{, }x\in E$.
+
+\begin{lemma}
+There is an equivalence between the two following statements
+\begin{itemize}
+\item[(i)] $X_1,X_2,\ldots,$ is a Polya sequence
+\item[(ii)] $\mu^{\ast}\sim \text{Dir}(N_x,x\in E)$ and $X_1,X_2,\ldots$ given $\mu^\ast$ are \iid as $\mu^\ast$
+\end{itemize}
+\end{lemma}
+Consider the event $A = \{X_1 = x_1,\ldots, X_n = x_n\}$. Induction on $n$ allows us to show that (i) is equivalent to 
+\begin{equation}\label{eq:P_A_polya_i}
+\mathbb{P}(A) = \prod_{x\in E} \frac{N_x^{[n(x)]}}{N^{[n]}},
+\end{equation}
+where $n(x)$ is the number of $i$'s for which $x_i = x$ and $a^{[k]} = a(a+1)\ldots(a+k-1)$. \eqref{eq:P_A_polya_i} is easily shown by induction on $n\in\mathbb{N}$. Now assume that $(ii)$ holds true, then 
+$$
+\mathbb{P}(A|\mu^\ast) = \prod_{x\in E}\mu^\ast(x)^{n(x)},
+$$
+recall that $\mu^\ast$ is a random vector, indexed on $E$, We denote by $\mu^\ast(x)$ the component associated with $x\in E$. The law of total probability then yields
+\begin{equation}\label{eq:P_A_polya_ii}
+\mathbb{P}(A) = \E\left[\prod_{x\in E}\mu^\ast(x)^{n(x)}\right],
+\end{equation}
+which is the same as \eqref{eq:P_A_polya_i}. Applying the lemma together with the law of large number yield 
+$$
+n^{-1}\sum_{i=1}^n\delta_{X_i}(x) \rightarrow \mu^{\ast}(x)\text{ as } n\rightarrow\infty.
+$$
+and then $m_n(x)\rightarrow\mu^{\ast}(x)$.
+\begin{thebibliography}{1}
+\bibitem{Blackwell1973}
+D.~Blackwell and J.~B. MacQueen, ``Ferguson distributions via polya urn
+  schemes,'' {\em The Annals of Statistics}, vol.~1, mar 1973.
+  \end{thebibliography}
+\end{frame}
+\begin{frame}{Measuring decentrality}
+The most desirable situation corresponds to all the peers being equally likely to be selected. Decentrality maybe measure by Shannon's entropy
+$$
+H(\mu^\ast) = -\mathbb{E}\left\{\sum_x \mu^\ast(x)\ln[\mu^\ast(x)]\right\} = -\sum_x\frac{N}{N_x}\left[\psi(N_x+1)-\psi(N+1)\right],
+$$
+where $\psi(x) = \frac{\text{d}}{\text{d}x}\ln[\Gamma(x)]$ is the digamma function, to be compared to $\ln(p)$
+\scriptsize
+\begin{thebibliography}{1}
+
+\bibitem{Gochhayat2020}
+S.~P. Gochhayat, S.~Shetty, R.~Mukkamala, P.~Foytik, G.~A. Kamhoua, and
+  L.~Njilla, ``Measuring decentrality in blockchain based systems,'' {\em
+  {IEEE} Access}, vol.~8, pp.~178372--178390, 2020.
+
+\end{thebibliography}
+
+\end{frame}
+\begin{frame}{Extensions and perspectives}
+\begin{itemize}
+  \item How to include more peers along the way?
+  \item What if the peers are not simply buy and hold investors?
+\end{itemize}
 
 \end{frame}
 \section{Blockchain eficiency}
@@ -476,6 +611,7 @@ D.~R. Cox, ``The analysis of non-markovian stochastic processes by the
 
 \end{thebibliography}
 \end{frame}
+
 \begin{frame}{Queue length distribution}
 The queueuing process eventually reaches stationarity if 
 \begin{equation}\label{eq:stationarity_cond}
@@ -584,11 +720,20 @@ $N$ is then a geometric random variable with parameter $p = \frac{1}{z^\ast}.$
   $$
 \end{itemize}
 \end{frame}
+\begin{frame}{A fourth dimension to analyse}
+The energy consumption dimension
+\begin{center}
+     \includegraphics[width=\textwidth]{../../Figures/BTC_energy_consumption.png}
+     \end{center}
 
+\url{https://cbeci.org/}
 
-\begin{frame}
-\bibliography{../../blockastics}
-\bibliographystyle{ieeetr}
 \end{frame}
+
+
+% \begin{frame}
+% \bibliography{../../blockastics}
+% \bibliographystyle{ieeetr}
+% \end{frame}
 
 \end{document}

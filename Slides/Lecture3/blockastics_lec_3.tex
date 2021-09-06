@@ -1,0 +1,386 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% \usepackage{amscd, amsfonts, amsmath, amssymb, amstext, amsthm, caption, epsfig, fancyhdr, float, graphicx, latexsym, mathtools, multicol, multirow, algorithm, chngcntr}
+\usepackage[english, french]{babel}
+\usepackage{booktabs}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subfig}
+\usepackage{xspace}
+\usepackage{fourier}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{tkz-graph}
+\usetikzlibrary{automata,arrows,positioning,calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fit}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+\usetikzlibrary{mindmap}
+\usetikzlibrary{decorations.text}
+
+% \theoremstyle{definition} % insert bellow all blocks you want in normal text
+% \newtheorem{definition}{Definition}
+
+
+
+% tikzmark command, for shading over items
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20,
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20,
+    text width=5em, text centered, rounded corners]
+\tikzstyle{line} = [draw]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+
+\usepackage[most]{tcolorbox}
+
+\setbeamertemplate{blocks}[rounded][shadow=true] % use rounded blocks with standard beamer shadow
+
+\newcommand*{\warning}{\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax}
+
+% Distributions.
+\newcommand*{\UnifDist}{\mathsf{Unif}}
+\newcommand*{\ExpDist}{\mathsf{Exp}}
+\newcommand*{\DepExpDist}{\mathsf{DepExp}}
+\newcommand*{\GammaDist}{\mathsf{Gamma}}
+\newcommand*{\LognormalDist}{\mathsf{LogNorm}}
+\newcommand*{\WeibullDist}{\mathsf{Weib}}
+\newcommand*{\ParetoDist}{\mathsf{Par}}
+\newcommand*{\NormalDist}{\mathsf{Norm}}
+
+\newcommand*{\GeometricDist}{\mathsf{Geom}}
+\newcommand*{\NegBinomialDist}{\mathsf{NegBin}}
+\newcommand*{\PoissonDist}{\mathsf{Poisson}}
+\newcommand*{\BivariatePoissonDist}{\mathsf{BPoisson}}
+\newcommand*{\CyclicalPoissonDist}{\mathsf{CPoisson}}
+
+\newcommand*{\iid}{\textbf{iid}\@\xspace}
+\newcommand*{\pdf}{\textbf{pdf}\@\xspace}
+\newcommand*{\cdf}{\textbf{cdf}\@\xspace}
+\newcommand*{\pmf}{\textbf{pmf}\@\xspace}
+\newcommand*{\abc}{{\textbf{abc}}\@\xspace}
+\newcommand*{\smc}{\textbf{smc}\@\xspace}
+\newcommand*{\mcmc}{\textbf{mcmc}\@\xspace}
+\newcommand*{\ess}{\textbf{ess}\@\xspace}
+\newcommand*{\mle}{\textbf{mle}\@\xspace}
+\newcommand*{\bic}{\textbf{bic}\@\xspace}
+\newcommand*{\kde}{\textbf{kde}\@\xspace}
+\newcommand*{\glm}{\textbf{glm}\@\xspace}
+\newcommand*{\xol}{\textbf{xol}\@\xspace}
+\newcommand*{\cpu}{\textbf{cpu}\@\xspace}
+\newcommand*{\gpu}{\textbf{gpu}\@\xspace}
+\newcommand*{\arm}{\textbf{arm}\@\xspace}
+
+\def \si {\sigma}
+\def \la {\lambda}
+\def \al {\alpha}
+% \def\e*{\end{eqnarray*}}
+\def \di{\displaystyle}
+
+\def \E{\mathbb E}
+\def \N{\mathbb N}
+\def \Z{\mathbb Z}
+\def \NZ{\mathbb{N}_0}
+\def \I{\mathbb I}
+\def \w{\widehat}
+\def \P {\mathbb P}
+\def \V{\mathbb V}
+
+
+\newcommand{\CL}{\mathbb{C}}
+\newcommand{\RL}{\mathbb{R}}
+\newcommand{\nat}{{\mathbb N}}
+\newcommand{\Laplace}{\mathscr{L}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\ve}{\bm{\mathrm{e}}} % vector e
+
+\renewcommand{\L}{\mathcal{L}} % e.g. L^2 loss.
+
+\newcommand{\ih}{\mathrm{i}}
+\newcommand{\oh}{{\mathrm{o}}}
+\newcommand{\Oh}{{\mathcal{O}}}
+\newcommand{\Exp}{\mathbb{E}}
+
+\newcommand{\Norm}{\mathcal{N}}
+\newcommand{\LN}{\mathcal{LN}}
+\newcommand{\SLN}{\mathcal{SLN}}
+
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Ind}{\mathbb I}
+\newcommand\bfsigma{\bm{\sigma}}
+\newcommand\bfSigma{\bm{\Sigma}}
+\newcommand\bfLambda{\bm{\Lambda}}
+\newcommand{\stimes}{{\times}}
+\def \limsup{\underset{n\rightarrow+\infty}{\overline{\lim}}}
+\def \liminf{\underset{n\rightarrow+\infty}{\underline{\lim}}}
+
+
+
+
+% vertical separator macro
+\newcommand{\vsep}{
+  \column{0.0\textwidth}
+    \begin{tikzpicture}
+      \draw[very thick,black!10] (0,0) -- (0,7.3);
+    \end{tikzpicture}
+}
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+% More space between lines in align
+% \setlength{\mathindent}{0pt}
+
+% Beamer theme
+\usetheme{ZMBZFMK}
+\usefonttheme[onlysmall]{structurebold}
+\mode<presentation>
+\setbeamercovered{transparent=10}
+
+% align spacing
+\setlength{\jot}{0pt}
+
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
+
+\title[BLOCKASTICS III]{Stochastic Models for blockchain analysis}
+\subtitle{Blockchain risk analysis}
+\author{Pierre-O. Goffard}
+\institute[ISFA]{Institut de Science Financières et d'Assurances\\
+ \texttt{pierre-olivier.goffard@univ-lyon1.fr}}
+\date{\today}
+\titlegraphic{\includegraphics[width=2.5cm]{../../Figures/bfs_logo.png}} 
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+\begin{frame}{Blockchain risk analysis}
+\tableofcontents
+% \begin{enumerate}
+%   \item Security of PoW blockchain
+%   \item Decentralization in PoS blockchain
+%   \item Blockhain efficiency
+% \end{enumerate}
+\end{frame}
+\section{Insurance risk theory}
+\begin{frame}{Cramer-Lunberg model}
+The financial reserves of an insurance company over time have the following dynamic
+\begin{equation*}
+R_t = u +ct - \sum_{i = 1}^{N_t}U_i\text{, }t\geq0,
+\end{equation*}
+where 
+\begin{itemize}
+  \item $u>0$ denotes the initial reserves
+  \item $c$ is the premium rate
+  \item $(N_t)_{t\geq0}$ is a counting process that models the claim arrival 
+  \begin{itemize}
+    \item[$\hookrightarrow$] Poisson process with intensity $\lambda$
+  \end{itemize}
+  \item The $U_i$'s are the randomly sized compensations
+  \begin{itemize}
+    \item[$\hookrightarrow$] non-negative, \textbf{i.i.d.}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}{Ruin probabilities}
+Define the ruin time as 
+$$
+\tau_u = \inf\{t\geq0\text{ ; }R_t <0\}
+$$
+and the ruin probabilities as 
+$$
+\psi(u,t) = \mathbb{P}(\tau_u \leq t)\text{ and }\psi(u) = \mathbb{P}(\tau_u \leq \infty)
+$$
+We look for $u$ such that 
+$$
+\mathbb{P}(\text{Ruin}) = \alpha\text{ (0.05)},
+$$
+given that 
+$$
+c=(1+\eta)\lambda\mathbb{E}(U),
+$$
+with $\eta>0$.
+
+\scriptsize
+\begin{thebibliography}{1}
+
+\bibitem{Asmussen_2010}
+S.~Asmussen and H.~Albrecher, {\em Ruin Probabilities}.
+\newblock {WORLD} {SCIENTIFIC}, sep 2010.
+
+\end{thebibliography}
+
+\end{frame}
+
+\begin{frame}{Wald's Martingale}
+Let 
+$$
+S_t = z - R_t,\text{ }t\geq0
+$$
+\begin{theorem}[Wald exponential Martingale]
+If $\{S_t\text{ , }t\geq0\}$ is a L\'evy process or a random walk then
+$$
+\{\exp\left[\theta S_t-t\kappa(\theta)\right]\text{ , }t\geq0\},\text{ is a martingale,}
+$$
+where $\kappa(\theta)=\log\mathbb{E}\left(e^{\theta S_1}\right)$.
+\end{theorem}
+\end{frame}
+\begin{frame}[allowframebreaks]{Proof}
+\end{frame}
+\begin{frame}{Ruin probability computation}
+\begin{theorem}[Representation of the ruin probability]
+If
+\begin{itemize}
+\item $S_t\overset{\textbf{a.s.}}{\rightarrow} -\infty$,
+\item There exists $\gamma>0$ such that $\{e^{\gamma S_t}\text{ , }t\geq0\}$ is a martingale
+\end{itemize}
+then
+$$
+\mathbb{P}(\tau_z<\infty)=\frac{e^{-\gamma z}}{\mathbb{E}\left[e^{\gamma \xi(z)}|\tau_z<\infty\right]},
+$$
+where
+$$
+\xi(z)=S_{\tau_z}-z\text{ denotes the deficit at ruin.}
+$$
+\end{theorem}
+\end{frame}
+\begin{frame}[allowframebreaks]{Proof}
+\end{frame}
+\section{Link to double spending}
+\begin{frame}{Double spending in Satoshi's framework}
+\begin{itemize}
+\item The risk reserve process is $R_t=z+Y_1+\ldots+Y_t.$
+\item The claim surplus process is $S_t=-(Y_1+\ldots+Y_t).$
+\item $\kappa(\theta)=0$ is equivalent to
+$$pe^{-\theta}+qe^{\theta}=1.$$
+\begin{itemize}
+\item[$\hookrightarrow$] $\gamma=\log(p/q).$
+\end{itemize}
+\item If $p>q$ then $S(t)\rightarrow - \infty$.
+\item  $\xi(z)=S_{\tau_z}-z=0$ \textbf{a.s}.
+\end{itemize}
+Thus,
+$$\mathbb{P}(\tau_z<\infty)=\left(\frac{q}{p}\right)^{z}.$$
+\end{frame}
+
+\begin{frame}{Double spending with Poisson processes}
+
+\begin{itemize}
+\item Suppose that
+$$
+N_t\sim\text{Pois}(\lambda t)\text{ and }M_t\sim\text{Pois}(\mu t)
+$$
+such that $\lambda>\mu$.
+\item The risk reserve process is $R_t=z+N_t-M_t.$
+\item The claim surplus process is $S_t=M_t-N_t.$
+\end{itemize}
+\begin{tcolorbox}[enhanced,drop shadow, title=Fact]
+The difference of two Poisson processes is not a Poisson process, However it is L\'evy!
+\end{tcolorbox}
+\end{frame}
+\begin{frame}{Double spending with Poisson processes}
+\begin{itemize}
+\item $\kappa(\theta)=0$ is equivalent to
+$$
+\mu e^{\theta}+\lambda e^{-\theta}-(\lambda+\mu)=0.
+$$
+
+\begin{itemize}
+\item[$\hookrightarrow$] $\gamma=\log(\lambda/\mu).$
+\end{itemize}
+\item If $\lambda>\mu$ then $S(t)\rightarrow - \infty$.
+\item $\xi(z)=S_{\tau_z}-z=0$ \textbf{a.s}.
+\end{itemize}
+Thus
+$$\mathbb{P}(\tau_z<\infty)=\left(\frac{\mu}{\lambda}\right)^{z}.$$
+\end{frame}
+
+\begin{frame}{Double spending cost}
+Mining cryptocurrency in PoW equipped blockchain is energy consuming
+\begin{itemize}
+\item[$\hookrightarrow$] Operational cost for miners
+\end{itemize}
+Per time unit a miner pays
+$$
+c = \pi_W\cdot W\cdot p
+$$
+where 
+\begin{itemize}
+  \item $\pi_W$ is the electricty price per kWh
+  \item $W$ is the consumption of the network \url{https://cbeci.org/}
+  \item  $p$ is the miner's hashpower 
+\end{itemize}
+The cost of double spending is $c\cdot \tau_z$
+\end{frame}
+\begin{frame}{Finite horizon double spending}
+\begin{theorem}[\textbf{p.d.f.} of the double spending time]
+If $\{N_t\text{ , }t\geq0\}$ is a Poisson process then the \textbf{p.d.f.} of $\tau_z$ is given by
+\begin{equation*}
+f_{\tau_z}(t)=\mathbb{E}\left[\frac{z}{z+N(t)}f_{\Delta^{S}}^{\ast[N(t)+z]}(t)\right],\text{ for }t\geq0.
+\end{equation*}
+\end{theorem}
+\end{frame}
+\begin{frame}[allowframebreaks]{Proof}
+\end{frame}
+\section{Link to blockhain mining}
+\begin{frame}{Dual risk model}
+A blockchain miner with hashpower share $p\in(0,1)$ that
+\begin{itemize}
+  \item owns $u\geq0$ at the beginning 
+  \item spend $c = \pi_W\cdot W\cdot p$ per time unit
+  \item finds block at a rate $p \lambda$, where $\lambda$ is the arrival rate of blocks
+\end{itemize}
+The miner's surplus is given by 
+$$
+R_t = u - c\cdot t + N_t\cdot b,\text{ (Dual risk model)}
+$$
+where 
+\begin{itemize}
+  \item $(N_t)_{t\geq0}$ is a Poisson process with intensity $p\cdot\lambda$
+  \item $b$ is the block finding reward (6.25 BTC) \url{bitcoinhalf.com}
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Expected profit given not ruin}
+\begin{tcolorbox}[enhanced,drop shadow, title=Fact]
+The steady operational cost compensated by infrequent capital gains makes mining a risky business.
+\end{tcolorbox}
+Define the ruin time 
+$$
+\tau_u  = \inf\{t\geq0\text{ ; }R_t <0\}
+$$
+\begin{itemize}
+  \item Risk measure 
+  $$
+  \psi(u,t) = \mathbb{P(\tau_u \geq t)}
+  $$
+  \item Profitability measure
+  $$
+  V(u,t) = \mathbb{E}(R_t\mathbb{I}_{\tau_u > t})
+  $$
+\end{itemize} 
+\end{frame}
+\begin{frame}{Miner's dilemna} 
+\begin{itemize}
+  \item Joining a mining pool
+  \item Deviating from the protocol (selfish mining)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\bibliography{../../blockastics}
+\bibliographystyle{ieeetr}
+\end{frame}
+
+\end{document}
