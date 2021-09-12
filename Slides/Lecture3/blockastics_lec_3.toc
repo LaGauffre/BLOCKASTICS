@@ -1,4 +1,4 @@
 \babel@toc {french}{}
 \beamer@sectionintoc {1}{Insurance risk theory}{3}{0}{1}
-\beamer@sectionintoc {2}{Link to double spending}{9}{0}{2}
-\beamer@sectionintoc {3}{Link to blockhain mining}{15}{0}{3}
+\beamer@sectionintoc {2}{Link to double spending}{7}{0}{2}
+\beamer@sectionintoc {3}{Link to blockchain mining}{12}{0}{3}

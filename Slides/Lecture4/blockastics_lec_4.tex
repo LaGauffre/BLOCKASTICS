@@ -398,7 +398,7 @@ and the customers that interacts over three time period
     \begin{itemize}
     \item \tiny The token price $\tau$
     \item \tiny The total number of token $m$
-    \item \tiny The number of tyoken issued to the investors during the ICO $n\leq m$.
+    \item \tiny The number of token issued to the investors during the ICO $n\leq m$.
   \end{itemize}
     \item \tiny $s$ among $z>>m$ investors buy token
   \end{itemize}
@@ -469,14 +469,14 @@ and the customers that interacts over three time period
     node[anchor=south,midway,above=4pt] {\tiny Customers buy tokens};
 \draw[decorate,decoration={brace,amplitude=5pt}] (4.5,-0.75) -- (2,-0.75)
     node[anchor=north,midway,below=4pt] {\tiny ICO period};
-    \draw[decorate,decoration={brace,amplitude=5pt}] (7,-0.75) -- (4.5,-0.75)
+    \draw[decorate,decoration={brace,amplitude=5pt}] (7,-0.75) -- (4.6,-0.75)
     node[anchor=north,midway,below=4pt] {\tiny Production period};
-    \draw[decorate,decoration={brace,amplitude=5pt}] (8.5,-0.75) -- (7,-0.75)
+    \draw[decorate,decoration={brace,amplitude=5pt}] (8.5,-0.75) -- (7.1,-0.75)
     node[anchor=north,midway,below=4pt] {\tiny Production period};
 \end{tikzpicture}
 
 \end{frame}
-\begin{frame}{Searching for an equilibrium}
+\begin{frame}{The firm and customer side}
 Let 
 \begin{itemize}
 \item $c$ be the production cost of one unit of good ($\$$ per unit)
@@ -488,16 +488,224 @@ We have
 $$
 \tau_{eq} = \frac{\min(Q,D)\cdot v}{m}
 $$
-Because the firm is a monopoly then $p = \tau_{eq}\cdot v$, and therefore
-$$
-p = \frac{m}{\min(Q,D)}.
-$$
+% Because the firm is a monopoly then $p = \tau_{eq}\cdot v$, and therefore
+% $$
+% p = \frac{m}{\min(Q,D)}.
+% $$
 
 \end{frame}
-\begin{frame}
+\begin{frame}{The speculator side}
+Denote by $s$ the number of token bought during the ICO (one token = one investor).
+\begin{itemize}
+  \item The participation condition reads as 
+  $$
+  \Delta =\mathbb{E}(\tau_{eq})-\tau > 0
+  $$
+  \item The number of token sold is derived endogeneously in equilibrium.
+\end{itemize} 
+Speculators and the firm then compete to sell the tokens to customers.
+\end{frame}
+\begin{frame}{Firm's optimization problem}
+The firm aims at solving 
+$$
+\underset{\tau, n}{\max} \left\{s\cdot \tau + \underset{Q}{\max}\left\{ [m-s]\mathbb{E}[\tau_{eq}(Q)]-c\cdot Q\right\}\right\}
+$$
+subject to
+\begin{itemize}
+  \item $s\cdot \tau\geq c\cdot Q$ (ICO funds cover the production cost)
+  \item $\Delta\geq0$ (speculators participation constraint)
+  \item $\tau_{eq} = \frac{v}{m}\min(D,Q)$ (market clearing condition)
+\end{itemize}
+Equilibrium $\Rightarrow$ Backward induction
+\begin{tcolorbox}[enhanced,drop shadow, title=Moral Hazard ]
+  $Q = 0$ is a feasible strategy due to the absence of regulation.
+\end{tcolorbox}
+\end{frame}
+\begin{frame}{Optimal production quantity $Q^\ast$}
+\scriptsize
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{tcolorbox}[enhanced,drop shadow, title=Proposition ]
+Given $\tau , n $ and $s$, 
+\begin{itemize}
+  \item[(i)] if $0<s < m\left(1-\frac{c}{v}\right)$ then 
+  $$
+  Q^{\ast} = \min\left\{F^{-1}\left(1-\frac{m}{m-s}\frac{c}{v}\right), \frac{\tau \cdot s}{c}\right\}
+  $$ 
+  \item[(ii)] If $s = 0$ or $s\geq m\left(1-\frac{c}{v}\right)$, then $Q^\ast = 0$
+\end{itemize}
+\end{tcolorbox}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{tcolorbox}[enhanced,drop shadow, title=Interpretation ]
+\begin{itemize}
+  \item[(i)]  $F^{-1}\left(1-\frac{m}{m-s}\frac{c}{v}\right)$ is the unconstrained optimal production quantity and $\frac{\tau \cdot s}{c}$ is the firm budget constraint 
+
+  \item[(ii)] $1-\frac{c}{v}$ is the "misconduct" fraction if $s\geq m\left(1-\frac{c}{v}\right)$  
+  the start ups "divert" the funds to its own pocket (moral hazard).
+\end{itemize}
+\end{tcolorbox}
+\end{column}
+\end{columns}
+\end{frame}
+% \begin{frame}[allowframebreaks]{Proof}
+% \scriptsize
+% Using the market clearing condition $\tau_{eq} = \frac{v}{m}\min(D,Q)$ , define 
+% $$
+% \Pi(Q) = s\tau + (m-s)\mathbb{E}\left[\frac{v}{m}\min(D,Q)\right]-cQ.
+% $$
+% Note that 
+% $$
+% \mathbb{E}\left[\min(D,Q)\right] = Q[1-F(Q)] + \int_{0}^QxF'(x)\text{d}x,
+% $$
+% and therefore
+% $$
+% \Pi'(Q) = \frac{(m-s)v}{m}[1-F(Q)]-c = \left[\frac{(m-s)v}{m}-c\right] - \frac{(m-s)v}{m}F(Q).
+% $$
+% Observe that $\Pi'(Q)<0$ if $s\geq m\left(1-\frac{c}{v}\right)$. Otherwise
+% $$
+% \Pi'(Q) =0\Leftrightarrow  Q^\ast = F^{-1}\left[1-\frac{cm}{(m-s)v}\right], 
+% $$
+% which is indeed a maximum because $\Pi''(Q) < 0$, we simply mind for the budget constraint $Q \leq \frac{ \tau s}{c}$ to complete the proof. 
+% \end{frame}
+\begin{frame}{On the number of investors}
+\scriptsize
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{tcolorbox}[enhanced,drop shadow, title=Proposition]
+Given $\tau$ and $n$, 
+\begin{itemize}
+  \item[(i)] $s^\ast(\tau,n)\in[0,m\left(1-\frac{c}{v}\right)]$
+  \item[(ii)] $s^\ast(\tau,n) = n\cdot\mathbb{I}_{\Delta\geq 0}$
+\end{itemize}
+\end{tcolorbox}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{tcolorbox}[enhanced,drop shadow, title=Interpretation ]
+\begin{itemize}
+  \item[(i)] The number of token sold must be positive without exceeding the misconduct threshold
+  \item[(ii)] If there is an expected profit to be made then all the ICO token are sold
+\end{itemize}
+\end{tcolorbox}
+\end{column}
+\end{columns}
+\end{frame}
+% \begin{frame}[allowframebreaks]{Proof}
+% \scriptsize
+% (i) and (ii) are straightforward, let us focus on (iii). $u(s)$ and $\Delta(s)$ have the same sign. We study the behavior of $\Delta(s)$ as a function of $s$. Recall that 
+% \begin{eqnarray*}
+% \Delta(s) &=& \mathbb{E}(\tau_{eq})-(\tau)\\
+%  &=& \mathbb{E}\left\{\frac{v}{c}\min[D, Q^{\ast}(s)]\right\}-\tau\\
+%  &=& \frac{v}{c}\left(Q^\ast(s)\{1-F[Q^\ast(s)]\}+\int_0^{Q^\ast(s)}xF'(x)\text{d}x\right)-\tau
+% \end{eqnarray*}
+% Assuming that $s<m(1-\frac{v}{c})$, then 
+% \begin{equation}\label{eq:diff_delta}
+% \Delta'(s) = \begin{cases}
+% -\frac{mc}{v(m-s)^2F'[Q^\ast(s)]},&\text{ if } F^{-1}\left(1-\frac{cm}{(m-s)v}\right)\leq \frac{\tau \cdot s}{c}
+% \\
+% \frac{\tau}{c},&\text{ }otherwise.
+% \end{cases}
+% \end{equation}
+% Note that $s\mapsto F^{-1}\left(1-\frac{cm}{(m-s)v}\right)$ is decreasing in $s$ while $s\mapsto \frac{\tau s}{c}$ is linearly increasing in $s$. 
+% Because 
+% $$
+% F^{-1}\left(1-\frac{cm}{(m-s)v}\right)\Big\rvert_{s = 0} = F^{-1}\left(1-\frac{c}{v}\right) > 0 = \frac{\tau s}{c}\Big\rvert_{s = 0}
+% $$
+% and 
+% $$
+% F^{-1}\left(1-\frac{cm}{(m-s)v}\right)\Big\rvert_{s = m\left(1-\frac{c}{v}\right)} = 0 <  \frac{\tau s}{c}\Big\rvert_{s = m\left(1-\frac{c}{v}\right)}
+% $$
+% there exists a unique $\widehat{s}(\tau)$ such that
+% $$
+% F^{-1}\left(1-\frac{cm}{(m-\widehat{s}(\tau))v}\right) = \frac{\tau \widehat{s}(\tau)}{c}.
+% $$
+% \begin{itemize}
+
+% \item For $s\in[0,\widehat{s}(\tau)]$, $Q^\ast(s)$ increases in $s$ and decreases for $s\in[\widehat{s}(\tau), m(1-\frac{c}{v})]$, it is thus maximized at $\widehat{s}(\tau)$. 
+% \item We deduce that $\Delta'(s)$ in \eqref{eq:diff_delta} is positive for $s\in[0,\widehat{s}(\tau)]$ and negative for $s\in[\widehat{s}(\tau), m(1-\frac{c}{v})]$. Thus $\widehat{s}(\tau)$ maximises $\delta(s)$. 
+% \end{itemize}
+% Further note that  $\delta(0)=-\tau$ and $\delta[m(1-\frac{c}{v})]=- \tau$
+% If $s_0 = \max\{s\geq0 \text{ }\Delta(s) = 0 \}$ exists then it lies in $s\in[\widehat{s}(\tau), m(1-\frac{c}{v})]$.
+
+% \end{frame}
+
+\begin{frame}{Conditions for ICO success}
+\scriptsize
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{tcolorbox}[enhanced,drop shadow, title=Proposition (Condition for ICO success) ]
+The ICO succeed if and only if 
+\begin{itemize}
+  \item[(i)] $s\geq mc/v$ 
+  \item[(ii)] Customers have a high willingness to pay
+  $$
+  v>2c\text{ (price-cost ratio requirement)}
+  $$
+\end{itemize}
+\end{tcolorbox}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{tcolorbox}[enhanced,drop shadow, title=Interpretation ]
+\begin{itemize}
+  \item[(i)] A critical mass of token must be sold to finance production
+  \item[(ii)] Combines $n>mc/v$ and $n<m(1-c/v)$
+\end{itemize}
+\end{tcolorbox}
+\end{column}
+\end{columns}
+\end{frame}
+\begin{frame}{Equilibrium results}
+\scriptsize
+
+\begin{tcolorbox}[enhanced,drop shadow, title=Proposition ]
+
+\begin{itemize}
+  \item[(i)] If $v\leq 2c$, then the ICO fails
+  \item[(ii)] If $v>2c$ then unique equilibrium  
+  \begin{itemize}
+    \scriptsize
+    \item[(a)] $n^\ast\in(\frac{mc}{v},\frac{m}{2})$ and satisfies
+    $$
+    \frac{n^\ast\tau^\ast}{c} = Q^\ast
+    $$
+    \item[(b)] $\tau^\ast = \frac{v}{m}\mathbb{E}\left[\min(D,Q^\ast)\right]$ 
+    \item[(c)] $Q^\ast = F^{-1}\left(1-\frac{m}{m-n^\ast}\frac{c}{v}\right)$ 
+    \item[(d)] $s^\ast = n^\ast$
+    \item[(e)] $\tau_{eq} = \frac{v}{m}\min(D,Q^\ast)$
+  \end{itemize}
+
+\end{itemize}
+\end{tcolorbox}
+
+\end{frame}
+\begin{frame}{Intuitions}
+\scriptsize
+\begin{tcolorbox}[enhanced,drop shadow, title=Optimal number of tokens sold $n^\ast$ ]
+
+The more token the firm sells during the ICO
+\begin{itemize}
+  \item The more money top invest in production
+  \item The less tokens it has to sell in the secondary market
+  \item The less "skin in the game"
+  \item The less it wants to invest in production ex post
+\end{itemize}
+$n^\ast$ resolves the trade off between money now and money later while controlling moral hazard.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,drop shadow, title=Optimal number of tokens sold $\tau^\ast$ ]
+
+
+\begin{itemize}
+  \item Price too low: Not enough funds raised
+  \item Price too high: not enough upside for investors
+\end{itemize} 
+\end{tcolorbox}
+Gerry Tsoukalas talk at \\
+\url{https://www.youtube.com/watch?v=E_NT4t4ws8U}
+\end{frame}
+
 \bibliography{../../blockastics}
 \bibliographystyle{ieeetr}
 
-\end{frame}
+
 
 \end{document}

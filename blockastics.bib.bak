@@ -29,12 +29,13 @@
   url           = {https://bitcoin.org/bitcoin.pdf},
 }
 
-@Unpublished{albrecher:hal-02649025,
+@Article{albrecher:hal-02649025,
   author      = {Albrecher, Hansj{\"o}rg and Goffard, Pierre-Olivier},
+  journal     = {To appear in Operations Research},
   title       = {{On the profitability of selfish blockchain mining under consideration of ruin}},
-  note        = {working paper or preprint, \url{https://hal.archives-ouvertes.fr/hal-02649025}},
+  year        = {2021},
   month       = May,
-  year        = {2020},
+  note        = {\url{https://arxiv.org/abs/2010.12577}},
   file        = {Albrecher_Goffard_Selfish_Mine.pdf:https\://hal.archives-ouvertes.fr/hal-02649025/file/Albrecher_Goffard_Selfish_Mine.pdf:PDF},
   hal_id      = {hal-02649025},
   hal_version = {v1},
@@ -238,14 +239,6 @@
   doi       = {10.1016/j.econmod.2019.09.035},
   publisher = {Elsevier {BV}},
 }
-@misc{bertucci2020mean,
-      title={Mean Field Game Approach to Bitcoin Mining}, 
-      author={Charles Bertucci and Louis Bertucci and Jean-Michel Lasry and Pierre-Louis Lions},
-      year={2020},
-      eprint={2004.08167},
-      archivePrefix={arXiv},
-      primaryClass={econ.TH}
-}
 
 @InCollection{Schrijvers2017,
   author    = {Okke Schrijvers and Joseph Bonneau and Dan Boneh and Tim Roughgarden},
@@ -351,4 +344,122 @@
   publisher = {Oxford University Press ({OUP})},
 }
 
+@Article{Gan2021,
+  author    = {Jingxing (Rowena) Gan and Gerry Tsoukalas and Serguei Netessine},
+  journal   = {Management Science},
+  title     = {Initial Coin Offerings, Speculation, and Asset Tokenization},
+  year      = {2021},
+  month     = {feb},
+  number    = {2},
+  pages     = {914--931},
+  volume    = {67},
+  doi       = {10.1287/mnsc.2020.3796},
+  publisher = {Institute for Operations Research and the Management Sciences ({INFORMS})},
+}
+
+@Misc{albrecher2021blockchain,
+  author        = {Hansjoerg Albrecher and Dina Finger and Pierre-Olivier Goffard},
+  note          = {\url{https://arxiv.org/abs/2109.03085}},
+  title         = {Blockchain mining in pools: Analyzing the trade-off between profitability and ruin},
+  year          = {2021},
+  archiveprefix = {arXiv},
+  eprint        = {2109.03085},
+  primaryclass  = {cs.CR},
+}
+
+@Article{slush,
+  author = {slush pool},
+  title  = {Reward system specifications},
+  year   = {2021},
+  url    = {https://help.slushpool.com/en/support/solutions/articles/77000426280-reward-system-specification},
+}
+@misc{bertucci2020mean,
+      title={Mean Field Game Approach to Bitcoin Mining}, 
+      author={Charles Bertucci and Louis Bertucci and Jean-Michel Lasry and Pierre-Louis Lions},
+      year={2020},
+      eprint={2004.08167},
+      archivePrefix={arXiv},
+      primaryClass={econ.TH}
+}
+@Article{Alsabah2018,
+  author    = {Humoud Alsabah and Agostino Capponi},
+  journal   = {{SSRN} Electronic Journal},
+  title     = {Bitcoin Mining Arms Race: R{\&}D with Spillovers},
+  year      = {2018},
+  doi       = {10.2139/ssrn.3273982},
+  publisher = {Elsevier {BV}},
+}
+@misc{li2019mean,
+      title={A Mean Field Games Model for Cryptocurrency Mining}, 
+      author={Zongxi Li and A. Max Reppen and Ronnie Sircar},
+      year={2019},
+      eprint={1912.01952},
+      archivePrefix={arXiv},
+      primaryClass={math.OC}
+}
+@InCollection{Sapirshtein2017,
+  author    = {Ayelet Sapirshtein and Yonatan Sompolinsky and Aviv Zohar},
+  booktitle = {Financial Cryptography and Data Security},
+  publisher = {Springer Berlin Heidelberg},
+  title     = {Optimal Selfish Mining Strategies in Bitcoin},
+  year      = {2017},
+  pages     = {515--532},
+  doi       = {10.1007/978-3-662-54970-4_30},
+}
+
+@Article{Grunspan2021,
+  author    = {Cyril Grunspan and Ricardo P{\'{e}}rez-Marco},
+  journal   = {Probability in the Engineering and Informational Sciences},
+  title     = {{ON} {PROFITABILITY} {OF} {NAKAMOTO} {DOUBLE} {SPEND}},
+  year      = {2021},
+  month     = {feb},
+  pages     = {1--15},
+  doi       = {10.1017/s026996482100005x},
+  publisher = {Cambridge University Press ({CUP})},
+}
+
+@Article{Jang2020,
+  author    = {Jehyuk Jang and Heung-No Lee},
+  journal   = {Applied Sciences},
+  title     = {Profitable Double-Spending Attacks},
+  year      = {2020},
+  month     = {nov},
+  number    = {23},
+  pages     = {8477},
+  volume    = {10},
+  doi       = {10.3390/app10238477},
+  publisher = {{MDPI} {AG}},
+}
+
+@Article{Brown2020,
+  author    = {Mark Brown and Erol Peköz and Sheldon Ross},
+  journal   = {Probability in the Engineering and Informational Sciences},
+  title     = {{BLOCKCHAIN} {DOUBLE}-{SPEND} {ATTACK} {DURATION}},
+  year      = {2020},
+  month     = {may},
+  pages     = {1--9},
+  doi       = {10.1017/s0269964820000212},
+  publisher = {Cambridge University Press ({CUP})},
+}
+
+@Article{GRUNSPAN2018,
+  author    = {CYRIL GRUNSPAN and RICARDO P{\'{E}}REZ-MARCO},
+  journal   = {International Journal of Theoretical and Applied Finance},
+  title     = {{DOUBLE} {SPEND} {RACES}},
+  year      = {2018},
+  month     = {dec},
+  number    = {08},
+  pages     = {1850053},
+  volume    = {21},
+  doi       = {10.1142/s021902491850053x},
+  publisher = {World Scientific Pub Co Pte Lt},
+}
+@misc{grunspan2019profitability,
+      title={On profitability of selfish mining}, 
+      author={Cyril Grunspan and Ricardo Pérez-Marco},
+      year={2019},
+      eprint={1805.08281},
+      archivePrefix={arXiv},
+      primaryClass={cs.GT}
+}
 @Comment{jabref-meta: databaseType:bibtex;}

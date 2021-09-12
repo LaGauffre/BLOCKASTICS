@@ -1,7 +1,8 @@
 \begin{thebibliography}{1}
 
-\bibitem{Asmussen_2010}
-S.~Asmussen and H.~Albrecher, {\em Ruin Probabilities}.
-\newblock {WORLD} {SCIENTIFIC}, sep 2010.
+\bibitem{Sapirshtein2017}
+A.~Sapirshtein, Y.~Sompolinsky, and A.~Zohar, ``Optimal selfish mining
+  strategies in bitcoin,'' in {\em Financial Cryptography and Data Security},
+  pp.~515--532, Springer Berlin Heidelberg, 2017.
 
 \end{thebibliography}
