@@ -175,21 +175,24 @@
 \end{frame}
 \section{Security of PoW blockchain}
 \begin{frame}{Double spending attack}
+\scriptsize
 \begin{enumerate}
 \item Mary transfers 10 BTCs to John
 \item The honest transaction is recorded in the honest chain and John ships the good.
 \item Mary transfers to herself the exact same BTCs
 \item The malicious transaction is recorded into a hidden, dark, secret chain
 \begin{itemize}
+  \scriptsize
 \item Mary has friends among the miners to help her out
 \item The two chains are copycat up to the one transaction
 \end{itemize}
 \end{enumerate}
-\begin{fact}[Bitcoin has only one rule]
+\begin{tcolorbox}[enhanced,drop shadow, title=Fact (Bitcoin has only one rule)]
 The longest chain is to be trusted
-\end{fact}
+\end{tcolorbox}
 \end{frame}
 \begin{frame}{Double spending in practice}
+\scriptsize
 Vendor are advised to wait for $\alpha\in\mathbb{N}$ of confirmations so that the honest chain is ahead of the dishonest one.
 \begin{center}
 \begin{tikzpicture}[-, >=stealth', auto, semithick, node distance=1cm]
@@ -219,13 +222,13 @@ Vendor are advised to wait for $\alpha\in\mathbb{N}$ of confirmations so that th
 \end{tikzpicture}
 \end{center}
 In the example, vendor awaits $\alpha = 4$ confirmations, the honest chain is ahead of the dishonest one by $z = 2$ blocks.
-\begin{fact}[PoW is resistant to double spending]
+\begin{tcolorbox}[enhanced,drop shadow, title=Fact (PoW is resistant to double spending)]
 \begin{itemize}
 \item Attacker does not own the majority of computing power 
 \item Suitable $\alpha$ 
 \end{itemize}
 Double spending is unlikely to succeed.
-\end{fact}
+\end{tcolorbox}
 \tiny
 \begin{thebibliography}{1}
 \bibitem{Na08}
@@ -237,65 +240,55 @@ S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
 
 \end{frame}
 \begin{frame}{Mathematical set up}
+\scriptsize
 Assume that
 \begin{itemize}
 \item $R_0=z\geq1$ (the honest chain is z blocks ahead)
 \item at each time unit a block is created
 \begin{itemize}
+  \scriptsize
 \item[$\hookrightarrow$] in the honest chain with probability $p$
 \item[$\hookrightarrow$] in the dishonest chain with probability $q=1-p$
 \end{itemize}
 \end{itemize}
 The process $(R_n)_{n\geq0}$ is a random walk on $\mathbb{Z}$ with
 $$R_n=z+Y_1+\ldots+Y_n,$$
-where $Y_1,\ldots,Y_n$ are the \textbf{i.i.d.} steps of the random walk.\\
+where $Y_1,\ldots,Y_n$ are the \textbf{i.i.d.} steps of the random walk. 
+
 \end{frame}
 \begin{frame}{Double spending rate of success}
+\scriptsize
 Double spending occurs at time
 $$
 \tau_z=\inf\{n\in \mathbb{N}\text{ ; }R_n=0\}.
 $$
-
-\begin{theorem}[Double spending theorem]
-If $p>q$ then the double-spending probability is given by
-$$
-\phi(z) = \mathbb{P}(\tau_z<\infty)=\left(\frac{q}{p}\right)^{z}.
-$$
-\end{theorem}
-\end{frame}
-{ % all template changes are local to this group.
-    \setbeamertemplate{navigation symbols}{}
-    \begin{frame}[plain]
-    \begin{figure}
-    \centering
-    
 \begin{tikzpicture}
   %Origin and axis
   \coordinate (O) at (0,0);
   \draw[->] (-1,0) -- (9,0) coordinate[label = {below:$n$}] (xmax);
-  \draw[->] (0,-0.5) -- (0,5.5) coordinate[label = {left:$Z_n$}] (ymax);
+  \draw[->] (0,-0.5) -- (0,3) coordinate[label = {left:$Z_n$}] (ymax);
   %Lower linear boundary
 
  
   %Stochastic process trajectory
   
   \draw (0,0) node[tublue,left] {} node{};
-  \draw[very thick,tublue,-] (0,2) -- (1,2) node[pos=0.5, above] {} ;
-  \draw[very thick,dashed,tublue] (1,2) -- (1,3) node[pos=0.5, right] {};
-  \draw[very thick,tublue,-] (1,3) -- (2,3) node[pos=0.5, above] {};
-  \draw[very thick,dashed,tublue] (2,3) -- (2,4) node[pos=0.5, right] {};
-  \draw[very thick,tublue,-] (2,4) -- (3,4) node[pos=0.5, above] {};
-  \draw[very thick,dashed,tublue] (3,4) -- (3,3) node[pos=0.5, right] {};
-  \draw[very thick,tublue,-] (3,3) -- (4,3)node[pos=0.5, above] {};
-  \draw[very thick,dashed,tublue] (4,3) -- (4,2) node[pos=0.5, right] {};  
-  \draw[very thick,tublue,-] (4,2) -- (5,2) node[pos=0.5, above] {};
-  \draw[very thick,dashed,tublue] (5,2) -- (5,1) node[pos=0.5, right] {};  
-  \draw[very thick,tublue,-] (5,1) -- (6,1) node[pos=0.5, above] {};
-  \draw[very thick,dashed,tublue,-] (6,1) -- (6,2) node[pos=0.5, above] {};
-   \draw[very thick,tublue,-] (6,2) -- (7,2) node[pos=0.5, above] {};
-    \draw[very thick,dashed,tublue,-] (7,2) -- (7,1) node[pos=0.5, above] {};
-     \draw[very thick,tublue,-] (7,1) -- (8,1) node[pos=0.5, above] {};
-     \draw[very thick,dashed,tublue,-] (8,1) -- (8,0) node[pos=0.5, above] {};
+  \draw[very thick,tublue,-] (0,1) -- (1,1) node[pos=0.5, above] {} ;
+  \draw[very thick,dashed,tublue] (1,1) -- (1,1.5) node[pos=0.5, right] {};
+  \draw[very thick,tublue,-] (1,1.5) -- (2,1.5) node[pos=0.5, above] {};
+  \draw[very thick,dashed,tublue] (2,1.5) -- (2,2) node[pos=0.5, right] {};
+  \draw[very thick,tublue,-] (2,2) -- (3,2) node[pos=0.5, above] {};
+  \draw[very thick,dashed,tublue] (3,2) -- (3,1.5) node[pos=0.5, right] {};
+  \draw[very thick,tublue,-] (3,1.5) -- (4,1.5)node[pos=0.5, above] {};
+  \draw[very thick,dashed,tublue] (4,1.5) -- (4,1) node[pos=0.5, right] {};  
+  \draw[very thick,tublue,-] (4,1) -- (5,1) node[pos=0.5, above] {};
+  \draw[very thick,dashed,tublue] (5,1) -- (5,0.5) node[pos=0.5, right] {};  
+  \draw[very thick,tublue,-] (5,0.5) -- (6,0.5) node[pos=0.5, above] {};
+  \draw[very thick,dashed,tublue,-] (6,0.5) -- (6,1) node[pos=0.5, above] {};
+   \draw[very thick,tublue,-] (6,1) -- (7,1) node[pos=0.5, above] {};
+    \draw[very thick,dashed,tublue,-] (7,1) -- (7,0.5) node[pos=0.5, above] {};
+     \draw[very thick,tublue,-] (7,0.5) -- (8,0.5) node[pos=0.5, above] {};
+     \draw[very thick,dashed,tublue,-] (8,0.5) -- (8,0) node[pos=0.5, above] {};
   %Jump Times
   \draw (1,0) node[black,below] {$1$} node{ \color{black}$\bullet$};
   \draw (2,0) node[black,below] {$2$} node{ \color{black}$\bullet$};
@@ -307,11 +300,11 @@ $$
   \draw (8,0) node[black,below] {$8$} node{ \color{black}$\bullet$};
   %Level of the counting process
    \draw (0,0) node[black,below left] {$0$} node{ \color{black}$\bullet$};
-   \draw (0,1) node[black,left] {$1$} node{ \color{black}$\bullet$};
-   \draw (0,2) node[black,left] {$z=2$} node{ \color{black}$\bullet$};
-   \draw (0,3) node[black,left] {$3$} node{ \color{black}$\bullet$};
-   \draw (0,4) node[black,left] {$4$} node{ \color{black}$\bullet$};
-   \draw (0,5) node[black,left] {$5$} node{ \color{black}$\bullet$};
+   \draw (0,0.5) node[black,left] {$1$} node{ \color{black}$\bullet$};
+   \draw (0,1) node[black,left] {$z=2$} node{ \color{black}$\bullet$};
+   \draw (0,1.5) node[black,left] {$3$} node{ \color{black}$\bullet$};
+   \draw (0,2) node[black,left] {$4$} node{ \color{black}$\bullet$};
+   \draw (0,2.5) node[black,left] {$5$} node{ \color{black}$\bullet$};
 
   % %Aggregated Capital gains
 %  \draw (0,1.5) node[blue,below right] {$\mu_1$} node{ \color{blue}$-$};
@@ -322,14 +315,19 @@ $$
 %  \draw[dotted,black] (0,3.28) -- (5,3.28);
 %  \draw[dotted,black] (5,0) -- (5,3.28);
 \end{tikzpicture}
-\caption{A trajectory of the process $(Z_n)_{n\geq0}$. Gambler's ruin problem}
-\label{Fig:RuinTimeInsuranceRiskModel}
-\end{figure}
+\begin{tcolorbox}[enhanced,drop shadow, title=Double spending theorem]
+If $p>q$ then the double-spending probability is given by
+$$
+\phi(z) = \mathbb{P}(\tau_z<\infty)=\left(\frac{q}{p}\right)^{z}.
+$$
+\end{tcolorbox}
+
 \end{frame}
+
 \begin{frame}[allowframebreaks]{Proof of the double spending theorem }
 \scriptsize Analogy with the gambler's ruin problem. Using a first step analysis, we have 
 \begin{equation}\label{eq:difference_equation}
-\phi(z) = p\phi(z+1)+(1-p)p\phi(z-1),\text{ }z\geq1.
+\phi(z) = p\phi(z+1)+(1-p)\phi(z-1),\text{ }z\geq1.
 \end{equation}
 We also have the boundary conditions
 \begin{equation}\label{eq:boundary_conditions_double_spending}
@@ -354,7 +352,7 @@ $$
 as announced.
 \end{frame}
 \begin{frame}{Refinements of the double spending problem}
-\small
+\scriptsize
 The number of blocks $M$ found by the attacker until the honest miners find $\alpha$ blocks is a negative binomial random variable with \pmf
 $$
 \mathbb{P}(M = m) = \binom{\alpha+m-1}{m}p^\alpha q^m,\text{ }m\geq0.
@@ -368,15 +366,21 @@ $$
 \mathbb{P}(\text{Double Spending}) = \mathbb{P}(M\geq \alpha) + \sum_{m = 0}^{\alpha - 1}\binom{\alpha+m-1}{m}q^\alpha p^m.
 $$ 
 \tiny
+
+
 \begin{thebibliography}{1}
   \bibitem{rosenfeld2014analysis}
 M.~Rosenfeld, ``Analysis of hashrate-based double spending,'' {\em arXiv
   preprint arXiv:1402.2009}, 2014.
+  \bibitem{GRUNSPAN2018}
+C.~Grunspan and R.~Perez-Marco, ``Double spend race,'' {\em
+  International Journal of Theoretical and Applied Finance}, vol.~21,
+  p.~1850053, dec 2018.
 \end{thebibliography}
 
 \end{frame}
 \begin{frame}{Refinements of the double spending problem}
-\small
+\scriptsize
 Let the length of honest and dishonest chain be driven by counting processes
 \begin{itemize}
 \item Honest chain $\Rightarrow$ $z+N_t\text{ , }t\geq0$, where $z\geq1$.
@@ -405,8 +409,19 @@ R.~Bowden, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor, ``Modeling and
 \end{thebibliography}
 
 \end{frame}
+\begin{frame}{Perspectives}
+\begin{itemize}
+\item Distribution of $\tau_z$? (To be discussed later)
+\item Distribution of $Z$
+\begin{itemize}
+  \item[$\hookrightarrow$] Negative binomial when the length of the blockchain are driven by Poisson processes
+  \item [$\hookrightarrow$] if not?
+\end{itemize}
+\end{itemize}
+\end{frame}
 \section{Decentralization in PoS blockchain}
 \begin{frame}{Proof of Stake protocol}
+\scriptsize
 PoS is the most popular alternative to PoW.
 \begin{itemize}
   \item A block validator is selected according to the number of native coins she owns
@@ -420,18 +435,19 @@ Two problems
 
 \end{frame}
 \begin{frame}{Nothing-at-Stake}
+\scriptsize
 If given the opportunity a node will always append a new block
 \begin{itemize}
   \item Everlasting fork if any
 \end{itemize}
 Perpetuating disagreement prevent users to exchange which lower the coin value.
-\begin{theorem}[Saleh 2020]
+\begin{tcolorbox}[enhanced,drop shadow, title=Theorem]
 To get consensus faster and almost surely 
 \begin{itemize}
   \item Set a minimum stake to outweight the benefit of the reward
-  \item Set up a modest reward schedule $\sum_{t = 1}^\infty \text{R}_t<\infty$
+  \item Set up a modest reward schedule $\sum_{t = 1}^\infty \text{r}_t<\infty$
 \end{itemize}
-\end{theorem}
+\end{tcolorbox}
 \tiny
 \begin{thebibliography}{1}
 
@@ -441,29 +457,31 @@ F.~Saleh, ``Blockchain without waste: Proof-of-stake,'' {\em The Review of
 \end{thebibliography}
 \end{frame}
 \begin{frame}{Risk of centralization ?}
+\scriptsize
+\begin{columns}
+\begin{column}{0.5\textwidth}
 Block appending process
 \begin{itemize}
   \item Draw a coin at random
   \item The owner of the coin append a block and collect the reward
   \item The block appender is more likely to get sleected during the next round
 \end{itemize}
-Similar to Polya's urn
+\end{column}
+\begin{column}{0.5\textwidth}
+Similar to Polya's urn \includegraphics[scale=0.1]{../../Figures/poly_urn.png}
 \begin{itemize}
-  \item[$\hookrightarrow$] Coins = Coloured balls
-\end{itemize}
-\end{frame}
-\begin{frame}{Risk of centralization ?}
-Consider an urn of $N$ balls of color in $E=\{1,\ldots, p\}$
-\begin{itemize}
+  \item Consider an urn of $N$ balls of color in $E=\{1,\ldots, p\}$
   \item Draw a ball of color $x\in E$
-  \item Replace the ball together with $r$ ball of color $x$ 
+  \item Replace the ball together with $r$ balls of color $x$ 
 \end{itemize}
 $p$ is the number of peers and $r$ is the size of the block reward. 
-\begin{theorem}
+\end{column}
+\end{columns}
+\begin{tcolorbox}[enhanced,drop shadow, title=Theorem]
 The proportion of coins owned by each peer is stable on average over the long run
-\end{theorem}
-The result holds for buy and hold type investors, note that a trading irrelevant result 
-\scriptsize
+\end{tcolorbox}
+
+\tiny
 \begin{thebibliography}{1}
 
 \bibitem{Rosu2021}
@@ -481,7 +499,7 @@ Consider the balls of some color $x\in E$, and denote by
 \end{itemize}   
 We show that $(Z_n)_{n\geq0}$ is a $\mathcal{F}_n-$Martingale where $\mathcal{F}_n=\sigma(Y_1,\ldots, Y_n)$. We have 
 \begin{eqnarray*}
-\mathbb{E}(Z_{n+1}|\mathcal{F}_n) = Z_n\frac{Y_n+r}{N+r+n} +(1-Z_n)\frac{Y_n}{N+r+n} = Z_n
+\mathbb{E}(Z_{n+1}|\mathcal{F}_n) = Z_n\frac{Y_n+r}{N+r(n+1)} +(1-Z_n)\frac{Y_n}{N+r(n+1)} = Z_n
 \end{eqnarray*}
 It follows that 
 $$
@@ -491,7 +509,7 @@ hence the stability. Furthermore, because $|Z_n|<1$, then $\underset{n\rightarro
 \end{frame}
 \begin{frame}{What is the limiting distributions of the shares?}
 \scriptsize
- \begin{definition}[Dirichlet distribution]
+\begin{tcolorbox}[enhanced,drop shadow, title=Dirichlet distribution]
 A random vector $(Z_1,\ldots, Z_p)$ has a Dirichlet distribution $\text{Dir}(\alpha_1,\ldots, \alpha_p)$ with \pdf
 $$
 f(z_1,\ldots, z_p;\alpha_1,\ldots, \alpha_p) = \frac{1}{B(\alpha)}\prod_{i=1}^p z_i^{\alpha_i-1}, 
@@ -500,13 +518,13 @@ for $\alpha_1,\ldots, \alpha_p)>0$, $0< z_1,\ldots, z_p <1$ and $\sum_{i=1}^pz_i
 $$
 B(\alpha) = \frac{\prod_{i = 1}^p \Gamma(\alpha_i)}{\Gamma(\sum_{i=1}^p \alpha_i)}.
 $$
-\end{definition}
-\begin{theorem}[Convergence toward a Dirichlet distribution]
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,drop shadow, title=Theorem (Convergence toward a Dirichlet distribution)]
 Suppose that $r=1$ and let $X_n$ be the color of the ball drawn at the $n^{th}$ round then 
 $$
 X_\infty\sim \text{Dir}(\{N_x\text{, }x\in E\}).
 $$
-\end{theorem}
+\end{tcolorbox}
 \end{frame}
 \begin{frame}[allowframebreaks]{Proof}
 \scriptsize
@@ -545,6 +563,7 @@ $$
 n^{-1}\sum_{i=1}^n\delta_{X_i}(x) \rightarrow \mu^{\ast}(x)\text{ as } n\rightarrow\infty.
 $$
 and then $m_n(x)\rightarrow\mu^{\ast}(x)$.
+\tiny
 \begin{thebibliography}{1}
 \bibitem{Blackwell1973}
 D.~Blackwell and J.~B. MacQueen, ``Ferguson distributions via polya urn
@@ -552,12 +571,16 @@ D.~Blackwell and J.~B. MacQueen, ``Ferguson distributions via polya urn
   \end{thebibliography}
 \end{frame}
 \begin{frame}{Measuring decentrality}
-The most desirable situation corresponds to all the peers being equally likely to be selected. Decentrality maybe measure by Shannon's entropy
+\scriptsize
+\begin{tcolorbox}[enhanced,drop shadow, title=Fact]
+The most desirable situation corresponds to all the peers being equally likely to be selected. 
+\end{tcolorbox}
+Decentrality maybe measure by Shannon's entropy
 $$
 H(\mu^\ast) = -\mathbb{E}\left\{\sum_x \mu^\ast(x)\ln[\mu^\ast(x)]\right\} = -\sum_x\frac{N}{N_x}\left[\psi(N_x+1)-\psi(N+1)\right],
 $$
 where $\psi(x) = \frac{\text{d}}{\text{d}x}\ln[\Gamma(x)]$ is the digamma function, to be compared to $\ln(p)$
-\scriptsize
+\tiny
 \begin{thebibliography}{1}
 
 \bibitem{Gochhayat2020}
@@ -573,6 +596,13 @@ S.~P. Gochhayat, S.~Shetty, R.~Mukkamala, P.~Foytik, G.~A. Kamhoua, and
   \item How to include more peers along the way?
   \item What if the peers are not simply buy and hold investors?
 \end{itemize}
+\tiny
+\begin{thebibliography}{1}
+
+\bibitem{Rosu2021}
+I.~Ro{\c{s}}u and F.~Saleh, ``Evolution of shares in a proof-of-stake
+  cryptocurrency,'' {\em Management Science}, vol.~67, pp.~661--672, feb 2021.
+  \end{thebibliography} 
 
 \end{frame}
 \section{Blockchain eficiency}
@@ -613,12 +643,13 @@ D.~R. Cox, ``The analysis of non-markovian stochastic processes by the
 \end{frame}
 
 \begin{frame}{Queue length distribution}
+\scriptsize
 The queueuing process eventually reaches stationarity if 
 \begin{equation}\label{eq:stationarity_cond}
 \mu\cdot b > \lambda.
 \end{equation}
 We denote by $N$ the length of the queue upon stationarity. 
-\begin{theorem}[The blockchain efficiency theorem]
+\begin{tcolorbox}[enhanced,drop shadow, title=The blockchain efficiency theorem]
 Assume that \eqref{eq:stationarity_cond} holds then $N$ is geometrically distributed 
 $$
 \mathbb{P}(N = n) = (1-p)\cdot p^n,
@@ -628,7 +659,7 @@ $$
 -\frac{\lambda}{\mu}z^{b+1}+z^b\left(\frac{\lambda}{\mu}+1\right) - 1,
 $$
 such that $|z^\ast$|>1.  
-\end{theorem}
+\end{tcolorbox}
 \end{frame}
 \begin{frame}[allowframebreaks]{Proof of the efficiency theorem}
 \scriptsize
@@ -706,19 +737,68 @@ $$
 $N$ is then a geometric random variable with parameter $p = \frac{1}{z^\ast}.$
 \end{frame}
 \begin{frame}{Latency and throughputs}
+\scriptsize
+\begin{tcolorbox}[enhanced,drop shadow, title=Little's law]
+Consider a stationary queueing system and denote by 
+\begin{itemize}
+  \item $1/\lambda$ the mean of the unit inter-arrival times
+  \item $L$ be the mean number of units in the system
+  \item $W$ be the mean time spent by units in the system
+\end{itemize}
+We have
+$$
+L = \lambda \cdot W
+$$
+\end{tcolorbox}
+\tiny
+\begin{thebibliography}{1}
+
+\bibitem{Little1961}
+J.~D.~C. Little, ``A proof for the queuing formula:{L}= $\lambda${W},'' {\em
+  Operations Research}, vol.~9, pp.~383--387, jun 1961.
+
+\end{thebibliography}
+\scriptsize
 \begin{itemize}
   \item Latency is the confirmation time of a transaction 
-  \begin{itemize}
-    \item From Little's law it follows that the mean confirmation time is given by 
     $$
     \text{Latency} = \frac{p}{(1-p)\lambda} + \frac{1}{\mu}
     $$
-  \end{itemize}
   \item Throughput is the number of transaction confirmed per time unit
   $$
     \text{Throughput} = \mathbb{E}(N\mathbb{I}_{N\leq b}+b\mathbb{I}_{N> b}) = \sum_{n = 0}^bn(1-p)p^n + bp^{b+1}.
   $$
 \end{itemize}
+\end{frame}
+\begin{frame}{Perspective}
+\begin{enumerate}
+  \item  Include some priority consideration to account for the transaction fees 
+  \tiny 
+  \begin{thebibliography}{1}
+
+\bibitem{Kawase2020}
+Y.~Kawase, , and S.~Kasahara, ``Priority queueing analysis of
+  transaction-confirmation time for bitcoin,'' {\em Journal of Industrial {\&}
+  Management Optimization}, vol.~16, no.~3, pp.~1077--1098, 2020.
+
+\end{thebibliography}
+
+  \item \normalsize Go beyond the Poisson process framework
+  \tiny
+  \begin{thebibliography}{1}
+
+\bibitem{Li2018}
+Q.-L. Li, J.-Y. Ma, and Y.-X. Chang, ``Blockchain queue theory,'' in {\em
+  Computational Data and Social Networks}, pp.~25--40, Springer International
+  Publishing, 2018.
+
+\bibitem{Li2019}
+Q.-L. Li, J.-Y. Ma, Y.-X. Chang, F.-Q. Ma, and H.-B. Yu, ``Markov processes in
+  blockchain systems,'' {\em Computational Social Networks}, vol.~6, jul 2019.
+
+\end{thebibliography}
+\end{enumerate}
+
 \end{frame}
 \begin{frame}{A fourth dimension to analyse}
 The energy consumption dimension

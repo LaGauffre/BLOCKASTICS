@@ -1,8 +1,8 @@
 \begin{thebibliography}{1}
 
-\bibitem{Sapirshtein2017}
-A.~Sapirshtein, Y.~Sompolinsky, and A.~Zohar, ``Optimal selfish mining
-  strategies in bitcoin,'' in {\em Financial Cryptography and Data Security},
-  pp.~515--532, Springer Berlin Heidelberg, 2017.
+\bibitem{GoHoKrTa16}
+J.~G{\"o}bel, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor, ``Bitcoin
+  blockchain dynamics: The selfish-mine strategy in the presence of propagation
+  delay,'' {\em Performance Evaluation}, vol.~104, pp.~23--41, 2016.
 
 \end{thebibliography}

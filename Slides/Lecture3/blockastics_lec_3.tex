@@ -189,10 +189,12 @@ where
   \item $c$ is the premium rate
   \item $(N_t)_{t\geq0}$ is a counting process that models the claim arrival 
   \begin{itemize}
-    \item[$\hookrightarrow$] Poisson process with intensity $\lambda$
+    \scriptsize
+    \item[$\hookrightarrow$]  Poisson process with intensity $\lambda$
   \end{itemize}
   \item The $U_i$'s are the randomly sized compensations
   \begin{itemize}
+    \scriptsize
     \item[$\hookrightarrow$] non-negative, \textbf{i.i.d.}
   \end{itemize}
 \end{itemize}
@@ -262,21 +264,21 @@ Let
 $$
 S_t = z - R_t,\text{ }t\geq0
 $$
-\begin{theorem}[Wald exponential Martingale]
+\begin{tcolorbox}[enhanced,drop shadow, title=Theorem (Wald exponential martingale)]
 If $(S_t)_{t\geq0}$ is a L\'evy process or a random walk then
 $$
 \{\exp\left[\theta S_t-t\kappa(\theta)\right]\text{ , }t\geq0\},\text{ is a martingale,}
 $$
 where $\kappa(\theta)=\log\mathbb{E}\left(e^{\theta S_1}\right)$.
-\end{theorem}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,drop shadow, title=Theorem (Representation of the ruin probability)]
 
-\begin{theorem}[Representation of the ruin probability]
 If $S_t\overset{\textbf{a.s.}}{\rightarrow} -\infty$, and there exists $\gamma>0$ such that $\{e^{\gamma S_t}\text{ , }t\geq0\}$ is a martingale then
 $$
 \mathbb{P}(\tau_z<\infty)=\frac{e^{-\gamma z}}{\mathbb{E}\left[e^{\gamma \xi(z)}|\tau_z<\infty\right]},
 $$
 where $\xi(z)=S_{\tau_z}-z\text{ denotes the deficit at ruin.}$
-\end{theorem}
+\end{tcolorbox}
 \end{frame}
 \begin{frame}{Sketch of Proof}
 \scriptsize
@@ -292,13 +294,14 @@ $$
 \end{frame}
 \section{Link to double spending}
 \begin{frame}{Double spending in Satoshi's framework}
+\scriptsize
 \begin{itemize}
 \item The risk reserve process is $R_t=z+Y_1+\ldots+Y_t.$
 \item The claim surplus process is $S_t=-(Y_1+\ldots+Y_t).$
 \item $\kappa(\theta)=0$ is equivalent to
 $$pe^{-\theta}+qe^{\theta}=1.$$
 \begin{itemize}
-\item[$\hookrightarrow$] $\gamma=\log(p/q).$
+\item[$\hookrightarrow$]\scriptsize $\gamma=\log(p/q).$
 \end{itemize}
 \item If $p>q$ then $S(t)\rightarrow - \infty$.
 \item  $\xi(z)=S_{\tau_z}-z=0$ \textbf{a.s}.
@@ -364,7 +367,7 @@ The difference of two Poisson processes is not a Poisson process, However it is 
 \end{columns}
 \end{frame}
 \begin{frame}{Double spending with Poisson processes}
-
+\scriptsize
 \begin{itemize}
 \item $\kappa(\theta)=0$ is equivalent to
 $$
@@ -425,12 +428,26 @@ f_{\tau_z|N_t = n}(t) &=& \mathbb{P}(U_{1:n}\leq S_z/t,\ldots,U_{1:n}\leq S_{z+n
 \end{eqnarray*}
 Thanks to the properties of the Abel-Gontcharov polynomials.
 \end{itemize}
+\tiny
 \begin{thebibliography}{1}
 
 \bibitem{Goffard2019}
 P.-O. Goffard, ``Fraud risk assessment within blockchain transactions,'' {\em
   Advances in Applied Probability}, vol.~51, pp.~443--467, jun 2019.
 \newblock \url{https://hal.archives-ouvertes.fr/hal-01716687v2}.
+\bibitem{Grunspan2021}
+C.~Grunspan and R.~P{\'{e}}rez-Marco, ``{ON} {PROFITABILITY} {OF} {NAKAMOTO}
+  {DOUBLE} {SPEND},'' {\em Probability in the Engineering and Informational
+  Sciences}, pp.~1--15, feb 2021.
+
+\bibitem{Brown2020}
+M.~Brown, E.~Peköz, and S.~Ross, ``{BLOCKCHAIN} {DOUBLE}-{SPEND} {ATTACK}
+  {DURATION},'' {\em Probability in the Engineering and Informational
+  Sciences}, pp.~1--9, may 2020.
+
+\bibitem{Jang2020}
+J.~Jang and H.-N. Lee, ``Profitable double-spending attacks,'' {\em Applied
+  Sciences}, vol.~10, p.~8477, nov 2020.
 
 \end{thebibliography}
 \end{frame}
@@ -480,6 +497,8 @@ where
 \end{columns}
 \end{frame}
 \begin{frame}{Expected profit given not ruin}
+\scriptsize
+
 \begin{tcolorbox}[enhanced,drop shadow, title=Fact]
 The steady operational cost compensated by infrequent capital gains makes mining a risky business.
 \end{tcolorbox}
@@ -499,6 +518,7 @@ $$
 \end{itemize} 
 \end{frame}
 \begin{frame}{Miner's dilemna} 
+\scriptsize
 Use $\psi$ and $V$ to compare solo mining to
 \begin{itemize}
   \item Joining a mining pool
@@ -514,7 +534,7 @@ H.~Albrecher, D.~Finger, and P.-O. Goffard, ``Blockchain mining in pools:
 
 
 \end{thebibliography}
-  \item \normalsize Deviating from the protocol (selfish mining)
+  \item \scriptsize Deviating from the protocol (selfish mining)
 
   \tiny
   \begin{thebibliography}{1}
@@ -1105,14 +1125,22 @@ H.~Albrecher and P.-O. Goffard, ``{On the profitability of selfish blockchain
   mining under consideration of ruin},'' {\em To appear in Operations
   Research}, May 2021.
 \newblock \url{https://arxiv.org/abs/2010.12577}.
+
+\bibitem{grunspan2019profitability}
+C.~Grunspan and R.~Pérez-Marco, ``On profitability of selfish mining,'' 2019.
 \end{thebibliography}
 \end{frame}
-\begin{frame}{Perspectives}
+\begin{frame}{Conclusion and perspectives}
 \begin{itemize}
+  \item Selfish mining entails a waste of resources for everybody
+  \item Including a difficulty adjustment can make it strategic
+  \item Possible extensions
+  \begin{enumerate}
   \item Consider stochastic jumps
   \item Consider the actual selfish mining strategy
   \item Consider generalization of the selfish mining strategy
-  \tiny \begin{thebibliography}{1}
+  \tiny 
+  \begin{thebibliography}{1}
 
 \bibitem{Sapirshtein2017}
 A.~Sapirshtein, Y.~Sompolinsky, and A.~Zohar, ``Optimal selfish mining
@@ -1123,6 +1151,20 @@ A.~Sapirshtein, Y.~Sompolinsky, and A.~Zohar, ``Optimal selfish mining
 \begin{itemize}
   \item[$\hookrightarrow$] Stochastic control problem!
 \end{itemize}
+\item \small Better understanding of the connectivity parameter $q$
+\tiny 
+\begin{thebibliography}{1}
+
+\bibitem{GoHoKrTa16}
+J.~G{\"o}bel, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor, ``Bitcoin
+  blockchain dynamics: The selfish-mine strategy in the presence of propagation
+  delay,'' {\em Performance Evaluation}, vol.~104, pp.~23--41, 2016.
+
+\end{thebibliography}
+\begin{itemize}
+  \item[$\hookrightarrow$] Graph theory!
+\end{itemize}
+\end{enumerate}
 \end{itemize}
 \end{frame}
 \begin{frame}

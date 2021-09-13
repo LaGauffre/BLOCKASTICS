@@ -462,4 +462,42 @@
       archivePrefix={arXiv},
       primaryClass={cs.GT}
 }
+
+@Article{Goebel2016,
+  author    = {J. Göbel and H.P. Keeler and A.E. Krzesinski and P.G. Taylor},
+  journal   = {Performance Evaluation},
+  title     = {Bitcoin blockchain~dynamics: The selfish-mine strategy in the presence of propagation delay},
+  year      = {2016},
+  month     = {oct},
+  pages     = {23--41},
+  volume    = {104},
+  doi       = {10.1016/j.peva.2016.07.001},
+  publisher = {Elsevier {BV}},
+}
+
+@Article{Little1961,
+  author    = {John D. C. Little},
+  journal   = {Operations Research},
+  title     = {A Proof for the Queuing Formula:{L}= $ \lambda${W}},
+  year      = {1961},
+  month     = {jun},
+  number    = {3},
+  pages     = {383--387},
+  volume    = {9},
+  doi       = {10.1287/opre.9.3.383},
+  publisher = {Institute for Operations Research and the Management Sciences ({INFORMS})},
+}
+
+@Article{Li2019,
+  author    = {Quan-Lin Li and Jing-Yu Ma and Yan-Xia Chang and Fan-Qi Ma and Hai-Bo Yu},
+  journal   = {Computational Social Networks},
+  title     = {Markov processes in blockchain systems},
+  year      = {2019},
+  month     = {jul},
+  number    = {1},
+  volume    = {6},
+  doi       = {10.1186/s40649-019-0066-1},
+  publisher = {Springer Science and Business Media {LLC}},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
