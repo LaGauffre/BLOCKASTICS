@@ -780,8 +780,7 @@ and the expected profit is given by
 \end{equation*}
 where $R$ is the (unique) solution with positive real part of 
 \begin{equation*} \label{VLunde}
-  \quad 
-  \lambda  \,\frac{\beta}{\beta+ r}+\mu^\ast\,  \frac{\alpha}{\alpha -r} -(\lambda+\mu^\ast+1/t)=0.
+    -(t^{-1}+\lambda+\mu^\ast)+\lambda(1+b^\ast r)^{-1}+\mu^\ast(1-wr)^{-1}=0.
 \end{equation*}
 \end{tcolorbox}
 \tiny
@@ -812,7 +811,10 @@ We condition upon what happen during the time interval $(0,h)$. Three possibilit
   \begin{equation} \label{inteq}
     \lambda\int_0^\infty\w{V}(u+x,t)\,dF_{B}(x)-(\lambda+\mu^\ast+{1}/{t})\w{V}(u,t)+\mu^\ast\int_0^u \w{V}(u-y,t) \,dF_W(y)+{u}/{t}=0,\quad u\ge 0,
   \end{equation}
-  with boundary conditions $\w{V}(u,t)=0$ for all $u<0$ and $0\leq\w{V}(u,t)\leq u+(\lambda b^\ast - \mu^\ast w)$. 
+  with boundary conditions $\w{V}(u,t)=0$ for all $u<0$ and $0\leq\w{V}(u,t)\leq u+(\lambda b^\ast - \mu^\ast w)$. Let us plug in the ansatz
+  $$
+  Ce^{-ru}+d_1u+d_0
+  $$
   \begin{itemize}
     \item Comparing the terms in $e^{-r u}$ gives and equation for $r$
     $$
@@ -1167,9 +1169,9 @@ J.~G{\"o}bel, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor, ``Bitcoin
 \end{enumerate}
 \end{itemize}
 \end{frame}
-\begin{frame}
-\bibliography{../../blockastics}
-\bibliographystyle{ieeetr}
-\end{frame}
+% \begin{frame}
+% \bibliography{../../blockastics}
+% \bibliographystyle{ieeetr}
+% \end{frame}
 
 \end{document}
