@@ -6,7 +6,7 @@ A blockchain is a distributed data ledger maintained by achieving consensus amon
 * Slides: [Lecture 1](/Slides/Lecture1/blockastics_lec_1.pdf)     
 * Python notebooks: 
 	- [Build a blockchain](/Python/lecture1_build_blockchain.ipynb)
-	- [Blockchain data](/Python/lecture1_blockchain_data.ipynb)
+	- [Blockchain data](/Python/Lecture1_blockchain_data.ipynb)
 
 
 ## Part 2: Simple models for blockchain performance analysis
@@ -24,9 +24,9 @@ electricity consumption and IT gear, of mining, and is compensated by a capital 
 
 * Slides: [Lecture 3](/Slides/Lecture3/blockastics_lec_3.pdf)     
 * Python notebook: 
-	- [Solo mining](/Python/lecture3_solo_mining.ipynb)
-	- [Pool mining](/Python/lecture3_mining_pool.ipynb)
-	- [Selfish mining](/Python/lecture3_selfish_mining.ipynb)  
+	- [Solo mining](/Python/Lecture3_solo_mining.ipynb)
+	- [Pool mining](/Python/Lecture3_mining_pool.ipynb)
+	- [Selfish mining](/Python/Lecture3_selfish_mining.ipynb)  
 
 
 ## Part 4: Decentralized finance and cryptoasset pricing
