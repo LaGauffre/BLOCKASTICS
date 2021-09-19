@@ -13,7 +13,7 @@ A blockchain is a distributed data ledger maintained by achieving consensus amon
 A review of the mathematical models and tools used so far to assess the performance of blockchain systems is provided. They consist of standard models from the applied probability literature like random walks, Markov chains, urns and queues.
 
 * Slides: [Lecture 2](/Slides/Lecture2/blockastics_lec_2.pdf)     
-* Python notebook: 
+* Python notebooks: 
 	- [Proof of stake and decentralization](/Python/lecture_2_POS_Decentralization.ipynb)
 	- [Queueing model and efficiency](/Python/lecture_2_Efficiency.ipynb)
 
@@ -23,7 +23,7 @@ Mining blocks on a blockchain equipped with a proof of work consensus protocol i
 electricity consumption and IT gear, of mining, and is compensated by a capital gain when a block is discovered. The profitability of mining is studied via stochastic models and tools borrowed from insurance risk theory. We consider the case of solo mining, pool mining and selfish mining.  
 
 * Slides: [Lecture 3](/Slides/Lecture3/blockastics_lec_3.pdf)     
-* Python notebook: 
+* Python notebooks: 
 	- [Solo mining](/Python/Lecture3_solo_mining.ipynb)
 	- [Pool mining](/Python/Lecture3_mining_pool.ipynb)
 	- [Selfish mining](/Python/Lecture3_selfish_mining.ipynb)  
