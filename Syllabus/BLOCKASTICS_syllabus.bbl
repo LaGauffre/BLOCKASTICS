@@ -17,8 +17,9 @@ S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
 
 \bibitem{albrecher:hal-02649025}
 H.~Albrecher and P.-O. Goffard, ``{On the profitability of selfish blockchain
-  mining under consideration of ruin}.'' working paper or preprint,
-  \url{https://hal.archives-ouvertes.fr/hal-02649025}, May 2020.
+  mining under consideration of ruin},'' {\em To appear in Operations
+  Research}, May 2021.
+\newblock \url{https://arxiv.org/abs/2010.12577}.
 
 \bibitem{Goffard2019}
 P.-O. Goffard, ``Fraud risk assessment within blockchain transactions,'' {\em
@@ -100,14 +101,117 @@ W.~Liu, X.~Liang, and G.~Cui, ``Common risk factors in the returns on
   cryptocurrencies,'' {\em Economic Modelling}, vol.~86, pp.~299--305, mar
   2020.
 
-\bibitem{bertucci2020mean}
-C.~Bertucci, L.~Bertucci, J.-M. Lasry, and P.-L. Lions, ``Mean field game
-  approach to bitcoin mining,'' 2020.
-
 \bibitem{Schrijvers2017}
 O.~Schrijvers, J.~Bonneau, D.~Boneh, and T.~Roughgarden, ``Incentive
   compatibility of bitcoin mining pool reward functions,'' in {\em Financial
   Cryptography and Data Security}, pp.~477--498, Springer Berlin Heidelberg,
   2017.
+
+\bibitem{Chaudhry1981}
+M.~Chaudhry and J.~Templeton, ``The queuing system m/{GB}/l and its
+  ramifications,'' {\em European Journal of Operational Research}, vol.~6,
+  pp.~56--60, jan 1981.
+
+\bibitem{Bailey1954}
+N.~T.~J. Bailey, ``On queueing processes with bulk service,'' {\em Journal of
+  the Royal Statistical Society: Series B (Methodological)}, vol.~16,
+  pp.~80--87, jan 1954.
+
+\bibitem{Cox1955}
+D.~R. Cox, ``The analysis of non-markovian stochastic processes by the
+  inclusion of supplementary variables,'' {\em Mathematical Proceedings of the
+  Cambridge Philosophical Society}, vol.~51, pp.~433--441, jul 1955.
+
+\bibitem{rosenfeld2014analysis}
+M.~Rosenfeld, ``Analysis of hashrate-based double spending,'' {\em arXiv
+  preprint arXiv:1402.2009}, 2014.
+
+\bibitem{Blackwell1973}
+D.~Blackwell and J.~B. MacQueen, ``Ferguson distributions via polya urn
+  schemes,'' {\em The Annals of Statistics}, vol.~1, mar 1973.
+
+\bibitem{Lansky2018}
+J.~Lansky, ``Possible state approaches to cryptocurrencies,'' {\em Journal of
+  Systems Integration}, vol.~9, pp.~19--31, jan 2018.
+
+\bibitem{Hargrave2019}
+J.~Hargrave, N.~Sahdev, and O.~Feldmeier, ``How value is created in tokenized
+  assets,'' in {\em Blockchain Economics: Implications of Distributed Ledgers},
+  pp.~125--143, {WORLD} {SCIENTIFIC} ({EUROPE}), jan 2019.
+
+\bibitem{Baumol1952}
+W.~J. Baumol, ``The transactions demand for cash: An inventory theoretic
+  approach,'' {\em The Quarterly Journal of Economics}, vol.~66, p.~545, nov
+  1952.
+
+\bibitem{Gan2021}
+J.~R. Gan, G.~Tsoukalas, and S.~Netessine, ``Initial coin offerings,
+  speculation, and asset tokenization,'' {\em Management Science}, vol.~67,
+  pp.~914--931, feb 2021.
+
+\bibitem{albrecher2021blockchain}
+H.~Albrecher, D.~Finger, and P.-O. Goffard, ``Blockchain mining in pools:
+  Analyzing the trade-off between profitability and ruin,'' 2021.
+\newblock \url{https://arxiv.org/abs/2109.03085}.
+
+\bibitem{slush}
+slush pool, ``Reward system specifications,'' 2021.
+
+\bibitem{bertucci2020mean}
+C.~Bertucci, L.~Bertucci, J.-M. Lasry, and P.-L. Lions, ``Mean field game
+  approach to bitcoin mining,'' 2020.
+
+\bibitem{Alsabah2018}
+H.~Alsabah and A.~Capponi, ``Bitcoin mining arms race: R{\&}d with
+  spillovers,'' {\em {SSRN} Electronic Journal}, 2018.
+
+\bibitem{li2019mean}
+Z.~Li, A.~M. Reppen, and R.~Sircar, ``A mean field games model for
+  cryptocurrency mining,'' 2019.
+
+\bibitem{Sapirshtein2017}
+A.~Sapirshtein, Y.~Sompolinsky, and A.~Zohar, ``Optimal selfish mining
+  strategies in bitcoin,'' in {\em Financial Cryptography and Data Security},
+  pp.~515--532, Springer Berlin Heidelberg, 2017.
+
+\bibitem{Grunspan2021}
+C.~Grunspan and R.~P{\'{e}}rez-Marco, ``{ON} {PROFITABILITY} {OF} {NAKAMOTO}
+  {DOUBLE} {SPEND},'' {\em Probability in the Engineering and Informational
+  Sciences}, pp.~1--15, feb 2021.
+
+\bibitem{Jang2020}
+J.~Jang and H.-N. Lee, ``Profitable double-spending attacks,'' {\em Applied
+  Sciences}, vol.~10, p.~8477, nov 2020.
+
+\bibitem{Brown2020}
+M.~Brown, E.~Peköz, and S.~Ross, ``{BLOCKCHAIN} {DOUBLE}-{SPEND} {ATTACK}
+  {DURATION},'' {\em Probability in the Engineering and Informational
+  Sciences}, pp.~1--9, may 2020.
+
+\bibitem{GRUNSPAN2018}
+C.~GRUNSPAN and R.~P{\'{E}}REZ-MARCO, ``{DOUBLE} {SPEND} {RACES},'' {\em
+  International Journal of Theoretical and Applied Finance}, vol.~21,
+  p.~1850053, dec 2018.
+
+\bibitem{grunspan2019profitability}
+C.~Grunspan and R.~Pérez-Marco, ``On profitability of selfish mining,'' 2019.
+
+\bibitem{Goebel2016}
+J.~Göbel, H.~Keeler, A.~Krzesinski, and P.~Taylor, ``Bitcoin
+  blockchain~dynamics: The selfish-mine strategy in the presence of propagation
+  delay,'' {\em Performance Evaluation}, vol.~104, pp.~23--41, oct 2016.
+
+\bibitem{Little1961}
+J.~D.~C. Little, ``A proof for the queuing formula:{L}= $ \lambda${W},'' {\em
+  Operations Research}, vol.~9, pp.~383--387, jun 1961.
+
+\bibitem{Li2019}
+Q.-L. Li, J.-Y. Ma, Y.-X. Chang, F.-Q. Ma, and H.-B. Yu, ``Markov processes in
+  blockchain systems,'' {\em Computational Social Networks}, vol.~6, jul 2019.
+
+\bibitem{Kawase2020}
+Y.~Kawase, , and S.~Kasahara, ``Priority queueing analysis of
+  transaction-confirmation time for bitcoin,'' {\em Journal of Industrial {\&}
+  Management Optimization}, vol.~16, no.~3, pp.~1077--1098, 2020.
 
 \end{thebibliography}
