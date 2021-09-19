@@ -13,6 +13,9 @@
 \usepackage{fourier}
 
 \usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{tkz-graph}
+\usetikzlibrary{automata,arrows,positioning,calc}
 \usetikzlibrary{positioning}
 \usetikzlibrary{fit}
 \usetikzlibrary{backgrounds}
@@ -20,6 +23,11 @@
 \usetikzlibrary{shapes}
 \usetikzlibrary{mindmap}
 \usetikzlibrary{decorations.text}
+\usetikzlibrary{snakes}
+
+% \theoremstyle{definition} % insert bellow all blocks you want in normal text
+% \newtheorem{definition}{Definition}
+
 
 
 % tikzmark command, for shading over items
@@ -159,16 +167,65 @@
 \end{frame}
 \begin{frame}{Blockchain}
 A data ledger made of a sequence of blocks maintained by a achieving consensus in a Peer-To-Peer network.
+\begin{columns}
+\begin{column}{0.5\textwidth}
+% \small
+
 \begin{itemize}
   \item Decentralized
   \item Public/private
   \item Permissionned/permissionless
   \item Immutable
   \item Incentive compatible
-  \begin{itemize}
-    \item The nodes are compensated for their hard work in cryptocurrencies
-  \end{itemize}
+  % \begin{itemize}
+  %   \item The nodes are compensated for their hard work in cryptocurrencies
+  % \end{itemize}
 \end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{center}
+\begin{tikzpicture}[-, >=stealth', auto, semithick, node distance=01cm]
+\tikzstyle{every edge}=[snake=expanding waves,segment length=1mm,segment angle=10, draw]
+
+\tikzstyle{full node}=[circle, fill=tublue,draw=tublue,thick,text=black,scale=0.8]
+\tikzstyle{light node}=[circle, fill=white,draw=tublue,thick,text=black,scale=0.8]
+\node[full node]    (1)                     {};
+\node[full node]    (2)[above right of=1]         {};
+\node[full node]    (3)[above left of=1]         {};
+\node[full node]    (4)[below of=1]         {};
+\node[full node]    (5)[right of=4]         {};
+\node[full node]    (6)[below of=4]         {};
+\node[light node]    (7)[left of=1]         {};
+\node[light node]    (8)[right of=2]         {};
+\node[light node]    (9)[left of=4]         {};
+\node[light node]    (10)[above right of=5]         {};
+\node[light node]    (11)[ right of=5]         {};
+\node[light node]    (12)[ below right of=5]         {};
+% \node[light node]    (4)[above of=2]         {};
+\path
+
+(1) edge node{} (2)
+    edge node{} (3)
+    edge node{} (7)
+    ;
+\path
+(5) edge node{} (10)
+    edge node{} (11)
+    edge node{} (12)
+    ;
+    \path
+(4) edge node{} (5)
+    edge node{} (1)
+    edge node{} (9)
+    edge node{} (6)
+    ;
+    \path
+(2) edge node{} (8)   
+    ;
+\end{tikzpicture}
+\end{center}
+\end{column}
+\end{columns}
 
 \vspace{0.2cm}
 We will focus on public blockchain and their associated consensus protocol.

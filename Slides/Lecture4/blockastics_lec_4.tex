@@ -162,7 +162,7 @@
 \setbeamertemplate{navigation symbols}{}%remove navigation symbols
 
 \title[BLOCKASTICS IV]{Stochastic Models for blockchain analysis}
-\subtitle{Decentralized and cryptopricing}
+\subtitle{Decentralized finance and cryptopricing}
 \author{Pierre-O. Goffard}
 \institute[ISFA]{Institut de Science Financières et d'Assurances\\
  \texttt{pierre-olivier.goffard@univ-lyon1.fr}}
@@ -179,7 +179,7 @@
 \end{frame}
 \section{Decentralized finance}
 \begin{frame}{Types of Crypto Assets}
-\cite{Kawase2020}
+ 
 \begin{itemize}
   \item Cryptocurrencies
   \item Utility Token
@@ -549,26 +549,7 @@ Given $\tau , n $ and $s$,
 \end{column}
 \end{columns}
 \end{frame}
-% \begin{frame}[allowframebreaks]{Proof}
-% \scriptsize
-% Using the market clearing condition $\tau_{eq} = \frac{v}{m}\min(D,Q)$ , define 
-% $$
-% \Pi(Q) = s\tau + (m-s)\mathbb{E}\left[\frac{v}{m}\min(D,Q)\right]-cQ.
-% $$
-% Note that 
-% $$
-% \mathbb{E}\left[\min(D,Q)\right] = Q[1-F(Q)] + \int_{0}^QxF'(x)\text{d}x,
-% $$
-% and therefore
-% $$
-% \Pi'(Q) = \frac{(m-s)v}{m}[1-F(Q)]-c = \left[\frac{(m-s)v}{m}-c\right] - \frac{(m-s)v}{m}F(Q).
-% $$
-% Observe that $\Pi'(Q)<0$ if $s\geq m\left(1-\frac{c}{v}\right)$. Otherwise
-% $$
-% \Pi'(Q) =0\Leftrightarrow  Q^\ast = F^{-1}\left[1-\frac{cm}{(m-s)v}\right], 
-% $$
-% which is indeed a maximum because $\Pi''(Q) < 0$, we simply mind for the budget constraint $Q \leq \frac{ \tau s}{c}$ to complete the proof. 
-% \end{frame}
+
 \begin{frame}{On the number of investors}
 \scriptsize
 \begin{columns}
@@ -591,44 +572,7 @@ Given $\tau$ and $n$,
 \end{column}
 \end{columns}
 \end{frame}
-% \begin{frame}[allowframebreaks]{Proof}
-% \scriptsize
-% (i) and (ii) are straightforward, let us focus on (iii). $u(s)$ and $\Delta(s)$ have the same sign. We study the behavior of $\Delta(s)$ as a function of $s$. Recall that 
-% \begin{eqnarray*}
-% \Delta(s) &=& \mathbb{E}(\tau_{eq})-(\tau)\\
-%  &=& \mathbb{E}\left\{\frac{v}{c}\min[D, Q^{\ast}(s)]\right\}-\tau\\
-%  &=& \frac{v}{c}\left(Q^\ast(s)\{1-F[Q^\ast(s)]\}+\int_0^{Q^\ast(s)}xF'(x)\text{d}x\right)-\tau
-% \end{eqnarray*}
-% Assuming that $s<m(1-\frac{v}{c})$, then 
-% \begin{equation}\label{eq:diff_delta}
-% \Delta'(s) = \begin{cases}
-% -\frac{mc}{v(m-s)^2F'[Q^\ast(s)]},&\text{ if } F^{-1}\left(1-\frac{cm}{(m-s)v}\right)\leq \frac{\tau \cdot s}{c}
-% \\
-% \frac{\tau}{c},&\text{ }otherwise.
-% \end{cases}
-% \end{equation}
-% Note that $s\mapsto F^{-1}\left(1-\frac{cm}{(m-s)v}\right)$ is decreasing in $s$ while $s\mapsto \frac{\tau s}{c}$ is linearly increasing in $s$. 
-% Because 
-% $$
-% F^{-1}\left(1-\frac{cm}{(m-s)v}\right)\Big\rvert_{s = 0} = F^{-1}\left(1-\frac{c}{v}\right) > 0 = \frac{\tau s}{c}\Big\rvert_{s = 0}
-% $$
-% and 
-% $$
-% F^{-1}\left(1-\frac{cm}{(m-s)v}\right)\Big\rvert_{s = m\left(1-\frac{c}{v}\right)} = 0 <  \frac{\tau s}{c}\Big\rvert_{s = m\left(1-\frac{c}{v}\right)}
-% $$
-% there exists a unique $\widehat{s}(\tau)$ such that
-% $$
-% F^{-1}\left(1-\frac{cm}{(m-\widehat{s}(\tau))v}\right) = \frac{\tau \widehat{s}(\tau)}{c}.
-% $$
-% \begin{itemize}
 
-% \item For $s\in[0,\widehat{s}(\tau)]$, $Q^\ast(s)$ increases in $s$ and decreases for $s\in[\widehat{s}(\tau), m(1-\frac{c}{v})]$, it is thus maximized at $\widehat{s}(\tau)$. 
-% \item We deduce that $\Delta'(s)$ in \eqref{eq:diff_delta} is positive for $s\in[0,\widehat{s}(\tau)]$ and negative for $s\in[\widehat{s}(\tau), m(1-\frac{c}{v})]$. Thus $\widehat{s}(\tau)$ maximises $\delta(s)$. 
-% \end{itemize}
-% Further note that  $\delta(0)=-\tau$ and $\delta[m(1-\frac{c}{v})]=- \tau$
-% If $s_0 = \max\{s\geq0 \text{ }\Delta(s) = 0 \}$ exists then it lies in $s\in[\widehat{s}(\tau), m(1-\frac{c}{v})]$.
-
-% \end{frame}
 
 \begin{frame}{Conditions for ICO success}
 \scriptsize
@@ -685,7 +629,7 @@ The ICO succeed if and only if
 
 The more token the firm sells during the ICO
 \begin{itemize}
-  \item The more money top invest in production
+  \item The more money to invest in production
   \item The less tokens it has to sell in the secondary market
   \item The less "skin in the game"
   \item The less it wants to invest in production ex post
@@ -704,9 +648,83 @@ Gerry Tsoukalas talk at \\
 \url{https://www.youtube.com/watch?v=E_NT4t4ws8U}
 \end{frame}
 
-\bibliography{../../blockastics}
-\bibliographystyle{ieeetr}
+\begin{frame}{Dynamic valuation model}
+\scriptsize
 
+Model the transactional demand of platform users through the adoption of the application. \\
+
+A platform user $i$ derives a utility flow given by 
+$$
+\text{d}v_{i,t} = (x_{i,t})^{1-\alpha}\left(N_tA_te^{u_i}\right)^\alpha\text{d}t - \phi\text{d}t - x_{i,t}r\text{d}t,
+$$
+where
+\begin{itemize}
+  \item $x_{i,t}$ is the token holding of user $i$
+  \item $\alpha$ is a parameter of the utility function
+  \item $N_t$ is the number of platform user (the more the merrier)
+  \item $A_t$ is the platform productivity
+  \item $u_i$ user $i$ individual preference 
+  \item $\phi$ cost of platform participation
+  \item $r$ is the risk free rate
+\end{itemize}
+\tiny
+\begin{thebibliography}{1}
+
+\bibitem{Cong2020a}
+L.~W. Cong, Y.~Li, and N.~Wang, ``Tokenomics: Dynamic adoption and valuation,''
+  {\em The Review of Financial Studies}, vol.~34, pp.~1105--1155, aug 2020.
+
+\end{thebibliography}
+
+\end{frame}
+\begin{frame}{Tokenized economy}
+\scriptsize
+\begin{tcolorbox}[enhanced,drop shadow, title=Fact]
+User $i$ looks for the best token holding $x_{i,t}$ to maximize its utility flow $\text{d}v_{i,t}$.
+
+\end{tcolorbox}
+Denote by $P_t$ the token value, the user $i$'s token holding is worth
+$$
+x_{i,t} = P_t k_{i,t},
+$$
+with $K =  \sum_i k_{i,t}$ being the total number of token in circulation. \\
+\begin{tcolorbox}[enhanced,drop shadow, title=Theorem]
+
+The price appreciation of the token (due to platform adoption and a limited number of tokens)
+\begin{itemize}
+\item  offsets the cost of holding a medium of exchange 
+$$
+\text{d}v_{i,t} + x_{i,t}\frac{\text{d}P_t}{P_t}
+$$
+\item speeds up platform adoptions (S-curve)
+\end{itemize}
+
+\end{tcolorbox}
+\end{frame}
+\begin{frame}{Proof}
+\scriptsize
+The mathematical derivation relies on 
+\begin{itemize}
+  \item A platform productivity as a geometric brownian motion
+  \begin{itemize}
+    \item[$\hookrightarrow$] \tiny Ito's lemma and Girsanov theorem
+  \end{itemize}
+  \item The introduction of a stochastic discount factor and a risk neutral probability measure
+  \item Markov equilibrium
+\end{itemize}
+
+\begin{thebibliography}{1}
+
+\bibitem{Cong2020a}
+L.~W. Cong, Y.~Li, and N.~Wang, ``Tokenomics: Dynamic adoption and valuation,''
+  {\em The Review of Financial Studies}, vol.~34, pp.~1105--1155, aug 2020.
+
+\end{thebibliography}
+
+\end{frame}
+\begin{frame}{Conclusion and perspectives}
+A lot of interesting research work for mathematical finance experts!
+\end{frame}
 
 
 \end{document}

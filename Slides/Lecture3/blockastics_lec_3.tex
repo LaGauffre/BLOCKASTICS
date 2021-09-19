@@ -181,11 +181,11 @@
 \scriptsize
 The financial reserves of an insurance company over time have the following dynamic
 \begin{equation*}
-R_t = u +ct - \sum_{i = 1}^{N_t}U_i\text{, }t\geq0,
+R_t = z +ct - \sum_{i = 1}^{N_t}U_i\text{, }t\geq0,
 \end{equation*}
 where 
 \begin{itemize}
-  \item $u>0$ denotes the initial reserves
+  \item $z>0$ denotes the initial reserves
   \item $c$ is the premium rate
   \item $(N_t)_{t\geq0}$ is a counting process that models the claim arrival 
   \begin{itemize}
@@ -206,7 +206,7 @@ where
   \draw[->] (-0.5,0) -- (5.5,0) coordinate[label = {below:\scriptsize$t$}] (xmax);
   \draw[->] (0,-0.5) -- (0,4) coordinate[label = {right:\scriptsize$R_t$}] (ymax);
    %Initial reserves
-  \draw (0,2) node[black,left] {\scriptsize$u$} node{};
+  \draw (0,2) node[black,left] {\scriptsize$z$} node{};
  % % %Length of the honest chain
   \draw[thick, tublue,-] (0,2) -- (2,3) node[pos=0.5, above] {};
   \draw[thick, dashed, tublue] (2,3) -- (2,1) node[pos=0.5, left] {\scriptsize\color{black}$U_1$};
@@ -218,7 +218,7 @@ where
   %Block finding Times 
   \draw (2,0) node[black,below] {\scriptsize$T_1$} node{ \color{black}$\bullet$};
   \draw (3,0) node[black,below] {\scriptsize$T_2$} node{ \color{black}$\bullet$};
-  \draw (5,0) node[black,below left] {\scriptsize$\tau_u$} node{ \color{black}$\bullet$};
+  \draw (5,0) node[black,below left] {\scriptsize$\tau_z$} node{ \color{black}$\bullet$};
 \end{tikzpicture}
 \end{column}
 \end{columns}
@@ -228,13 +228,13 @@ where
 \scriptsize
 Define the ruin time as 
 $$
-\tau_u = \inf\{t\geq0\text{ ; }R_t <0\}
+\tau_z = \inf\{t\geq0\text{ ; }R_t <0\}
 $$
 and the ruin probabilities as 
 $$
-\psi(u,t) = \mathbb{P}(\tau_u \leq t)\text{ and }\psi(u) = \mathbb{P}(\tau_u \leq \infty)
+\psi(z,t) = \mathbb{P}(\tau_z < t)\text{ and }\psi(u) = \mathbb{P}(\tau_z < \infty)
 $$
-We look for $u$ such that 
+We look for $z$ such that 
 $$
 \mathbb{P}(\text{Ruin}) = \alpha\text{ (0.05)},
 $$
@@ -245,7 +245,7 @@ $$
 with 
 $$\eta>0\text{ (net profit condition)}$$  
 otherwise 
-$$\psi(u)=1.$$
+$$\psi(z)=1.$$
 
 \tiny
 \begin{thebibliography}{1}
@@ -288,7 +288,7 @@ where $\xi(z)=S_{\tau_z}-z\text{ denotes the deficit at ruin.}$
 $$
 \kappa(\theta) = 0\text{ (Cramer-Lundberg equation)}.
 $$
-\item  $(e^{\gamma S_t})_{t\geq0}$ is a Martingale then apply the Optional stopping theorem at $\tau_u$.
+\item  $(e^{\gamma S_t})_{t\geq0}$ is a Martingale then apply the Optional stopping theorem at $\tau_z$.
 
 \end{itemize}
 \end{frame}
@@ -377,7 +377,7 @@ $$
 \begin{itemize}
 \item[$\hookrightarrow$] $\gamma=\log(\lambda/\mu).$
 \end{itemize}
-\item If $\lambda>\mu$ then $S(t)\rightarrow - \infty$.
+\item If $\lambda>\mu$ then $S_t\rightarrow - \infty$.
 \item $\xi(z)=S_{\tau_z}-z=0$ \textbf{a.s}.
 \end{itemize}
 Thus
@@ -407,7 +407,7 @@ The cost of double spending is $c\cdot \tau_z$.
 \begin{tcolorbox}[enhanced,drop shadow, title=Theorem (\textbf{P.d.f.} of the double spending time)]
 If $\{N_t\text{ , }t\geq0\}$ is a Poisson process then the \textbf{p.d.f.} of $\tau_z$ is given by
 \begin{equation*}
-f_{\tau_z}(t)=\mathbb{E}\left[\frac{z}{z+N(t)}f_{S_{N(t)+z}}(t)\right],\text{ for }t\geq0.
+f_{\tau_z}(t)=\mathbb{E}\left[\frac{z}{z+N_t}f_{S_{N_t+z}}(t)\right],\text{ for }t\geq0.
 \end{equation*}
 \end{tcolorbox}
 \end{frame}
@@ -423,7 +423,7 @@ Let's condition upon the values of $N_t$,
   $$
 We have 
 \begin{eqnarray*}
-f_{\tau_z|N_t = n}(t) &=& \mathbb{P}(U_{1:n}\leq S_z/t,\ldots,U_{1:n}\leq S_{z+n-1}/t\Big\rvert S_{n+z}=t)f_{S_{n+z}}(t)\\
+f_{\tau_z|N_t = n}(t) &=& \mathbb{P}(U_{1:n}\leq S_z/t,\ldots,U_{n:n}\leq S_{z+n-1}/t\Big\rvert S_{n+z}=t)f_{S_{n+z}}(t)\\
 &=&\frac{z}{z+n}f_{S_{n+z}}(t).
 \end{eqnarray*}
 Thanks to the properties of the Abel-Gontcharov polynomials.
@@ -504,7 +504,7 @@ The steady operational cost compensated by infrequent capital gains makes mining
 \end{tcolorbox}
 Define the ruin time 
 $$
-\tau_u  = \inf\{t\geq0\text{ ; }R_t <0\}
+\tau_u  = \inf\{t\geq0\text{ ; }R_t \leq0\}
 $$
 \begin{itemize}
   \item Risk measure 
@@ -631,7 +631,7 @@ with initial condition $\widehat{\psi}(0,t)=1$ and boundary condition $\lim_{u\t
 \end{frame}
 \begin{frame}{How does a mining pool works?}
 \scriptsize
-A set of miner $I\subset\{1,\ldots, n\}$ join forces and gather a share 
+A set of miners $I\subset\{1,\ldots, n\}$ join forces and gather a share 
 $$
 p_I = \sum_{i\in I }p_i,
 $$
@@ -646,7 +646,7 @@ A \textit{share} is a partial solution to the cryptopuzzle
 The pool manager sets
 \begin{itemize} 
   \item the redistribution system
-  \item the relative difficulty $q\in(0,1)$ of finding compared to finding a block
+  \item the relative difficulty $q\in(0,1)$ of finding a \textit{share} compared to finding a block
   \item the pool participation fee $f$
   \end{itemize} 
 \end{frame}
@@ -654,7 +654,7 @@ The pool manager sets
 \scriptsize
 Miners should be retributed in proportion to their contribution to the mining effort. 
 \begin{tcolorbox}[enhanced,drop shadow, title=Proportional reward system]
-A \textit{round} is the time elapsed between two block discovery
+A \textit{round} is the time elapsed between two block discoveries
 \begin{itemize} 
   \item $s_i$ the number of shares submitted by miner $i\in I$ during the \textit{round}
   \item Each miner receives at the end of the \textit{round}
@@ -741,8 +741,8 @@ R_t^I = u_I - M_t^I w+N_t^I b,\text{ }t\geq0.
 $$
 where 
 \begin{itemize}
-   \item $(M_t^I)_{t\geq0}$ is a Poisson process with intensity $p^I\mu =p^I\lambda / q$
-   \item $(N_t^I)_{t\geq0}$ is a Poisson process with intensity $p^I\lambda$
+   \item $(M_t^I)_{t\geq0}$ is a Poisson process with intensity $p_I\mu =p_I\lambda / q$
+   \item $(N_t^I)_{t\geq0}$ is a Poisson process with intensity $p_I\lambda$
 \end{itemize}
 \end{column}
 \end{columns}
@@ -807,7 +807,7 @@ We condition upon what happen during the time interval $(0,h)$. Three possibilit
       & +& \lambda\int_0^he^{-\lambda s} e^{-({1}/{t}+\mu^\ast) s} \int_0^\infty\w{V}(u+x,t)\,dF_{B}(x)\,ds\\
       &  +&\mu^\ast \int_0^he^{-\mu^\ast s} e^{-({1}/{t}+\lambda) s}\int_0^u \w{V}(u-y,t) \,dF_W(y)\,ds.
   \end{eqnarray*}
-  Differentiating with respect to $h$ and letting $h\rightarrow +\infty$ yields the following integral equation
+  Differentiating with respect to $h$ and letting $h\rightarrow 0$ yields the following integral equation
   \begin{equation} \label{inteq}
     \lambda\int_0^\infty\w{V}(u+x,t)\,dF_{B}(x)-(\lambda+\mu^\ast+{1}/{t})\w{V}(u,t)+\mu^\ast\int_0^u \w{V}(u-y,t) \,dF_W(y)+{u}/{t}=0,\quad u\ge 0,
   \end{equation}
@@ -871,11 +871,11 @@ Z.~Li, A.~M. Reppen, and R.~Sircar, ``A mean field games model for
 
 % \tikzstyle{block} = [rectangle, draw, fill=blue!20,
 %     text width=5em, text centered, rounded corners]
-\tikzstyle{unconfirmed block}=[rectangle, fill=white,draw=black,dashed, thick,text=black,scale=1]
+\tikzstyle{unconfirmed block}=[rectangle, fill=white, draw=black,dashed, thick,text=black,scale=1]
 \tikzstyle{phantom block}=[rectangle, fill=white,draw=white,thick,text=black,scale=1]
 \tikzstyle{confirmed block}=[rectangle, fill=black,draw=black,thick,text=black,scale=1]
-\tikzstyle{bad block unconfirmed}=[rectangle, fill=white,draw=tublue,thick, text=black,scale=1]
-\tikzstyle{bad block confirmed}=[rectangle, fill=tublue,draw=tublue,thick, text=black,scale=1]
+\tikzstyle{bad block unconfirmed}=[rectangle, fill=white,draw=tublue,very thick, text=black,scale=1]
+\tikzstyle{bad block confirmed}=[rectangle, fill=tublue, text=black,scale=1]
 \node[confirmed block]    (1){};
 \node[phantom block]    (2)[right of=1] {};
 % \node[phantom block]    (3)[below of=1] {};
@@ -930,7 +930,7 @@ Why?
   \end{itemize}
 \end{itemize}
 \begin{tcolorbox}[enhanced,drop shadow, title=Difficulty adjustments]
-The cryptopuzzle difficulty is adjusted every $2,016$ blocks to ensure $1$ block evry ten minutes on average.
+The cryptopuzzle difficulty is adjusted every $2,016$ blocks to ensure $1$ block every ten minutes on average.
 \end{tcolorbox}
 \tiny
 \begin{thebibliography}{1}
@@ -949,8 +949,8 @@ I.~Eyal and E.~G. Sirer, ``Majority is not enough: Bitcoin mining is
 \tikzstyle{unconfirmed block}=[rectangle, fill=white,draw=black, thick,text=black,scale=1]
 \tikzstyle{phantom block}=[rectangle, fill=white,draw=white,thick,text=black,scale=1]
 \tikzstyle{confirmed block}=[rectangle, fill=black,draw=black,thick,text=black,scale=1]
-\tikzstyle{bad block unconfirmed}=[rectangle, fill=white,draw=tublue,thick, text=black,scale=1]
-\tikzstyle{bad block confirmed}=[rectangle, fill=tublue,draw=tublue,thick, text=black,scale=1]
+\tikzstyle{bad block unconfirmed}=[rectangle, fill=white,draw=tublue,very thick, text=black,scale=1]
+\tikzstyle{bad block confirmed}=[rectangle, fill=tublue, text=black,scale=1]
 \node[confirmed block]    (1){};
 \node[phantom block]    (2)[right of=1] {};
 % \node[phantom block]    (3)[below of=1] {};
@@ -1084,7 +1084,7 @@ The wealth process of a selfish miner is given by
 $$
 R_t = u - c\cdot t +b\cdot\sum_{n=1}^{N_t} f(Z_k,\xi_n,\zeta_n ).
 $$
-where $N_t$ is a Poisson process with inetnsity $\lambda$ that corresponds to the arrival of blocks in the blockchain.
+where $N_t$ is a Poisson process with intensity $\lambda$ that corresponds to the arrival of blocks in the blockchain.
 \begin{itemize}
   \item The net profit condition reads as 
   $$

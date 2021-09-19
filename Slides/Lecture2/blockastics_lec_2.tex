@@ -178,9 +178,9 @@
 \scriptsize
 \begin{enumerate}
 \item Mary transfers 10 BTCs to John
-\item The honest transaction is recorded in the honest chain and John ships the good.
+\item The transaction is recorded in the public branch blockchain and John ships the good.
 \item Mary transfers to herself the exact same BTCs
-\item The malicious transaction is recorded into a hidden, dark, secret chain
+\item The malicious transaction is recorded into a private branch of the blockchain
 \begin{itemize}
   \scriptsize
 \item Mary has friends among the miners to help her out
@@ -363,7 +363,7 @@ Z= (\alpha-M)_+.
 $$
 Applying the law of total probability yields the probability of successful double spending with
 $$
-\mathbb{P}(\text{Double Spending}) = \mathbb{P}(M\geq \alpha) + \sum_{m = 0}^{\alpha - 1}\binom{\alpha+m-1}{m}q^\alpha p^m.
+\mathbb{P}(\text{Double Spending}) = \mathbb{P}(M\geq \alpha) + \sum_{m = 0}^{\alpha - 1}\binom{\alpha+m-1}{m}q^{2\alpha} p^{2m}.
 $$ 
 \tiny
 
@@ -387,7 +387,7 @@ Let the length of honest and dishonest chain be driven by counting processes
 \item Malicious chain $\Rightarrow$ $M_t\text{ , }t\geq0$
 \item Study the distribution of the first-\textit{rendez-vous} time
 $$
-\tau_z=\inf\{t\geq0\text{ , } M(t)=z+N(t)\}.
+\tau_z=\inf\{t\geq0\text{ , } M_t=z+N_t\}.
 $$
 \end{itemize}
 If $N_t\sim\text{Pois}(\lambda t)$ and $M_t\sim\text{Pois}(\mu t)$ such that $\lambda>\mu$ then 
@@ -464,7 +464,7 @@ Block appending process
 \begin{itemize}
   \item Draw a coin at random
   \item The owner of the coin append a block and collect the reward
-  \item The block appender is more likely to get sleected during the next round
+  \item The block appender is more likely to get selected during the next round
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -514,7 +514,7 @@ A random vector $(Z_1,\ldots, Z_p)$ has a Dirichlet distribution $\text{Dir}(\al
 $$
 f(z_1,\ldots, z_p;\alpha_1,\ldots, \alpha_p) = \frac{1}{B(\alpha)}\prod_{i=1}^p z_i^{\alpha_i-1}, 
 $$
-for $\alpha_1,\ldots, \alpha_p)>0$, $0< z_1,\ldots, z_p <1$ and $\sum_{i=1}^pz_i=1$, where 
+for $\alpha_1,\ldots, \alpha_p>0$, $0< z_1,\ldots, z_p <1$ and $\sum_{i=1}^pz_i=1$, where 
 $$
 B(\alpha) = \frac{\prod_{i = 1}^p \Gamma(\alpha_i)}{\Gamma(\sum_{i=1}^p \alpha_i)}.
 $$
@@ -595,6 +595,7 @@ S.~P. Gochhayat, S.~Shetty, R.~Mukkamala, P.~Foytik, G.~A. Kamhoua, and
 \begin{itemize}
   \item How to include more peers along the way?
   \item What if the peers are not simply buy and hold investors?
+  \item Find ways to monitor decentralization and take action if necessary
 \end{itemize}
 \tiny
 \begin{thebibliography}{1}
@@ -605,7 +606,7 @@ I.~Ro{\c{s}}u and F.~Saleh, ``Evolution of shares in a proof-of-stake
   \end{thebibliography} 
 
 \end{frame}
-\section{Blockchain eficiency}
+\section{Blockchain efficiency}
 \begin{frame}{Efficiency}
 Efficiency is characterized by 
 \begin{itemize}
@@ -695,7 +696,7 @@ P_{0}'(x) = -(\lambda+\mu)P_{0}(x).
 We denote by $\xi(x) = \mu$ the hazard function of the block arrival time (constant as it is exponentially distributed). The system of differential equations \eqref{eq:diff_eq_n_geq_1}, \eqref{eq:diff_eq_n_eq_0} admits boundary conditions at $x = 0$ with 
 \begin{equation}\label{eq:boundary_cond_1}
 \begin{cases}
-P_{n}(0) = \int_0^{+\infty} P_{n+b}(x)\xi(x)\text{d}x = \mu\sum_{m=0}^{b}\alpha_{n+b},&n \geq1,\\
+P_{n}(0) = \int_0^{+\infty} P_{n+b}(x)\xi(x)\text{d}x = \mu\alpha_{n+b},&n \geq1,\\
 P_{0}(0) = \mu\sum_{n=0}^{b}\alpha_n,&n = 0,\ldots,b\\
 \end{cases}
 \end{equation}
