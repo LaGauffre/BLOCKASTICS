@@ -178,7 +178,7 @@
 \scriptsize
 \begin{enumerate}
 \item Mary transfers 10 BTCs to John
-\item The transaction is recorded in the public branch blockchain and John ships the good.
+\item The transaction is recorded in the public branch of the blockchain and John ships the good.
 \item Mary transfers to herself the exact same BTCs
 \item The malicious transaction is recorded into a private branch of the blockchain
 \begin{itemize}
@@ -494,8 +494,8 @@ I.~Ro{\c{s}}u and F.~Saleh, ``Evolution of shares in a proof-of-stake
 Consider the balls of some color $x\in E$, and denote by 
 \begin{itemize}
 \item $N_x$ the number of balls of color $x$ initially in the urn
-\item $Y_n$ the number of balls of color $x$ in the urn initially after $n$ draws
-\item $Z_n$ the corresponding proportion balls of color $x$.
+\item $Y_n$ the number of balls of color $x$ in the urn after $n$ draws
+\item $Z_n$ the corresponding proportion of balls of color $x$.
 \end{itemize}   
 We show that $(Z_n)_{n\geq0}$ is a $\mathcal{F}_n-$Martingale where $\mathcal{F}_n=\sigma(Y_1,\ldots, Y_n)$. We have 
 \begin{eqnarray*}
@@ -613,7 +613,7 @@ Efficiency is characterized by
   \item Throughputs: Number of transaction being processed per time unit
   \item Latency: Average transaction confirmation time
 \end{itemize}
-We focus on a PoW equipped blockchain and and study the above quantities using a queueing model.
+We focus on a PoW equipped blockchain and study the above quantities using a queueing model.
 \end{frame}
 \begin{frame}{Queueing model settings}
 \begin{itemize}
@@ -622,7 +622,7 @@ We focus on a PoW equipped blockchain and and study the above quantities using a
 \item Block size $b\in\mathbb{N}^\ast$
 Batch service
 \end{itemize}
-This is a $M/M^b/1$ queue \cite{Bailey1954} \cite{Cox1955}
+This is a $M/M^b/1$ queue.
 \tiny
 \begin{thebibliography}{1}
 \bibitem{Kawase2017}
@@ -649,11 +649,11 @@ The queueuing process eventually reaches stationarity if
 \begin{equation}\label{eq:stationarity_cond}
 \mu\cdot b > \lambda.
 \end{equation}
-We denote by $N$ the length of the queue upon stationarity. 
+We denote by $N^q$ the length of the queue upon stationarity. 
 \begin{tcolorbox}[enhanced,drop shadow, title=The blockchain efficiency theorem]
 Assume that \eqref{eq:stationarity_cond} holds then $N$ is geometrically distributed 
 $$
-\mathbb{P}(N = n) = (1-p)\cdot p^n,
+\mathbb{P}(N^q = n) = (1-p)\cdot p^n,
 $$
 where $p = 1/z^\ast$ and $z^\ast$ is the only root of 
 $$
@@ -767,7 +767,7 @@ J.~D.~C. Little, ``A proof for the queuing formula:{L}= $\lambda${W},'' {\em
     $$
   \item Throughput is the number of transaction confirmed per time unit
   $$
-    \text{Throughput} = \mathbb{E}(N\mathbb{I}_{N\leq b}+b\mathbb{I}_{N> b}) = \sum_{n = 0}^bn(1-p)p^n + bp^{b+1}.
+    \text{Throughput} = \mathbb{E}(N^q\mathbb{I}_{N^q\leq b}+b\mathbb{I}_{N^q> b}) = \sum_{n = 0}^bn(1-p)p^n + bp^{b+1}.
   $$
 \end{itemize}
 \end{frame}
