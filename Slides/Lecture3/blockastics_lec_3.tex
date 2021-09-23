@@ -232,7 +232,7 @@ $$
 $$
 and the ruin probabilities as 
 $$
-\psi(z,t) = \mathbb{P}(\tau_z < t)\text{ and }\psi(u) = \mathbb{P}(\tau_z < \infty)
+\psi(z,t) = \mathbb{P}(\tau_z < t)\text{ and }\psi(z) = \mathbb{P}(\tau_z < \infty)
 $$
 We look for $z$ such that 
 $$
@@ -393,13 +393,13 @@ Mining cryptocurrency in PoW equipped blockchain is energy consuming
 \end{itemize}
 Per time unit a miner pays
 $$
-c = \pi_W\cdot W\cdot p,
+c = \pi_W\cdot W\cdot q,
 $$
 where 
 \begin{itemize}
   \item $\pi_W$ is the electricty price per kWh
   \item $W$ is the consumption of the network \url{https://cbeci.org/}
-  \item  $p$ is the miner's hashpower 
+  \item  $q$ is the attacker's hashpower 
 \end{itemize}
 \begin{tcolorbox}[enhanced,drop shadow, title=Fact]
 The cost of double spending is $c\cdot \tau_z$.
@@ -602,7 +602,7 @@ Now we take the derivative with respect to $h$ and set $h=0$ to obtain
 c\widehat{V}'(u,t) + \left(\frac{1}{t} +  p\lambda\right)\widehat{V}(u,t) - p\lambda \widehat{V}(u+b,t) - \frac{u}{t} =0,
 \end{equation}
 with boundary condition 
-$$\widehat{V}(0,t) = 0 \text{ and such that } 0\leq \widehat{V}(u,t)\leq u-ct+p\lambda t \text{ for }u>0.
+$$\widehat{V}(0,t) = 0 \text{ and such that } 0\leq \widehat{V}(u,t)\leq u-ct+p\lambda b t \text{ for }u>0.
 $$  
 Equation \eqref{eq:ODE} is an advanced functional differential equation, consider solutions of the form 
 \begin{equation}\label{eq:potential_solution}
@@ -795,12 +795,12 @@ H.~Albrecher, D.~Finger, and P.-O. Goffard, ``Blockchain mining in pools:
 \end{frame}
 \begin{frame}[allowframebreaks]{Sketch of the Proof}
 \scriptsize
-We condition upon what happen during the time interval $(0,h)$. Three possibilities
+We condition upon what happen during the time interval $(0,h)$. Four possibilities
 \begin{itemize}
   \item[(i)] $T>h$ and no jump during $(0,h)$
   \item[(ii)] $T<h$ and no jump over $(0,T)$
-  \item[(iv)] An upward jump in the interval $(0,h)$
-  \item[(iii)] A downward jump in the interval $(0,h)$
+  \item[(iii)] An upward jump in the interval $(0,h)$
+  \item[(iv)] A downward jump in the interval $(0,h)$
 \end{itemize}
   \begin{eqnarray*}\label{neu0}
       \w{V}(u,t)&=& e^{-(\frac{1}{t}+\lambda+\mu^\ast)h}\w{V}(u,t) + \frac{1}{t}\int_0^h e^{-{s}/{t}}e^{-(\lambda +\mu^\ast) s} u\,ds\\
@@ -811,7 +811,7 @@ We condition upon what happen during the time interval $(0,h)$. Three possibilit
   \begin{equation} \label{inteq}
     \lambda\int_0^\infty\w{V}(u+x,t)\,dF_{B}(x)-(\lambda+\mu^\ast+{1}/{t})\w{V}(u,t)+\mu^\ast\int_0^u \w{V}(u-y,t) \,dF_W(y)+{u}/{t}=0,\quad u\ge 0,
   \end{equation}
-  with boundary conditions $\w{V}(u,t)=0$ for all $u<0$ and $0\leq\w{V}(u,t)\leq u+(\lambda b^\ast - \mu^\ast w)$. Let us plug in the ansatz
+  with boundary conditions $\w{V}(u,t)=0$ for all $u<0$ and $0\leq\w{V}(u,t)\leq u+(\lambda b^\ast - \mu^\ast w)t$. Let us plug in the ansatz
   $$
   Ce^{-ru}+d_1u+d_0
   $$
@@ -1075,7 +1075,7 @@ f\left[Z_{n-1}, \xi_n,\zeta_{n}\right] = \begin{cases}
 2,&\text{ if }Z_{n-1} = 0^\ast \text{ }\&\text{ }\xi_{n} = 1.\\
 \end{cases}
 \end{equation*}
-where $\xi_n\sim\text{Ber}(p)$ and $\xi_n\sim\text{Ber}(q)$
+where $\xi_n\sim\text{Ber}(p)$ and $\zeta_n\sim\text{Ber}(q)$
 \end{itemize}
 \end{frame}
 \begin{frame}{Wealth of a selfish miner}

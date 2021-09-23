@@ -615,14 +615,66 @@ Efficiency is characterized by
 \end{itemize}
 We focus on a PoW equipped blockchain and study the above quantities using a queueing model.
 \end{frame}
-\begin{frame}{Queueing model settings}
+\begin{frame}{Queue settings}
+\begin{center}
+\begin{tikzpicture}[-, >=stealth', auto, semithick, node distance=1cm]
+
+\tikzstyle{phantom block}=[rectangle, fill=white,draw=white, thick,text=black,scale=2]
+\tikzstyle{block}=[rectangle, fill=white,draw=black,thick,text=black,scale=4]
+\tikzstyle{Intensity}=[circle, fill=white,draw=tublue,very thick, text=black,scale=1.2]
+\tikzstyle{transaction pending}=[circle, fill=white,draw=tublue,very thick, text=black,scale=1]
+\tikzstyle{transaction considered}=[circle, fill=tublue, text=black, scale=1]
+\node[Intensity]    (1){$\lambda$};
+\node[phantom block]  (2)[right of=1] {};
+\node[transaction pending] (3)[right of=2] {};
+\node[transaction pending] (4)[above of=3] {};
+\node[transaction pending] (5)[above of=4] {};
+\node[transaction pending] (6)[above of=5] {};
+\node[transaction pending] (7)[below of=3] {};
+\node[transaction pending] (8)[below of=7] {};
+\path
+(1) edge[->,bend left]     node{} (4)
+    edge[->, bend right]     node{}          (7);
+\pause
+\node[Intensity]  (14)[above of=6]{$\mu$};
+% \path
+% (1) edge[->,bend left]     node{$\text{Exp}(\lambda)$}        (4)
+%     edge[->, bend right]     node{}          (7);
+\pause
+\node[transaction considered] (3)[right of=2] {};
+\node[transaction considered] (4)[above of=3] {};
+\node[transaction considered] (5)[above of=4] {};
+\node[transaction considered] (6)[above of=5] {};
+
+\pause
+\node[phantom block]  (10)[right of=3] {};
+\node[block]  (11)[right of=10] {};
+\path
+(6) edge[->]   node{} (11)
+(5) edge[->]   node{} (11)
+(4) edge[->]   node{} (11)
+(3) edge[->]   node{} (11)
+;
+\node[Intensity]  (12)[above of=11] {$\mu$};
+\node[phantom block]  (13)[above of=12] {};
+
+\path
+(11) edge[-]     node{}        (12);
+\path
+(12) edge[->]     node{}        (13);
+
+\end{tikzpicture}
+\end{center}
+\end{frame}
+\begin{frame}{Queueing setting}
 \begin{itemize}
 \item Poisson arrival with rate $\lambda>0$ for the transactions
 \item Poisson arrival with rate $\mu>0$ for the blocks 
 \item Block size $b\in\mathbb{N}^\ast$
-Batch service
+$\Rightarrow $Batch service
+\item[\warning] The server is always busy
 \end{itemize}
-This is a $M/M^b/1$ queue.
+This is somekind of $M/M^b/1$ queue.
 \tiny
 \begin{thebibliography}{1}
 \bibitem{Kawase2017}
@@ -651,7 +703,7 @@ The queueuing process eventually reaches stationarity if
 \end{equation}
 We denote by $N^q$ the length of the queue upon stationarity. 
 \begin{tcolorbox}[enhanced,drop shadow, title=The blockchain efficiency theorem]
-Assume that \eqref{eq:stationarity_cond} holds then $N$ is geometrically distributed 
+Assume that \eqref{eq:stationarity_cond} holds then $N^q$ is geometrically distributed 
 $$
 \mathbb{P}(N^q = n) = (1-p)\cdot p^n,
 $$
@@ -700,7 +752,7 @@ P_{n}(0) = \int_0^{+\infty} P_{n+b}(x)\xi(x)\text{d}x = \mu\alpha_{n+b},&n \geq1
 P_{0}(0) = \mu\sum_{n=0}^{b}\alpha_n,&n = 0,\ldots,b\\
 \end{cases}
 \end{equation}
-Define the probability generating function of $N$ at some elapsed service time $x\geq 0$ as 
+Define the probability generating function of $N^q$ at some elapsed service time $x\geq 0$ as 
 $$
 G(z;x) = \sum_{n=0}^\infty P_{n}(x)z^n.
 $$
@@ -712,7 +764,7 @@ and therefore
 $$
 G(z;x) = G(z;0)\exp\left\{-\left[\lambda(1-z)+\mu\right]x\right\}
 $$
-We get the probability generating function of $N$ by integrating over $x$ as 
+We get the probability generating function of $N^q$ by integrating over $x$ as 
 \begin{equation}\label{eq:G_z_solve_ODE}
 G(z) = \frac{G(z;0)}{\lambda(1-z)+\mu}
 \end{equation}
@@ -735,7 +787,7 @@ we deduce that there is one zeros outside $\mathcal{C}$, we can further show tha
 $$
 G(z) = \frac{1-z^\ast}{z-z^{\ast}}.
 $$
-$N$ is then a geometric random variable with parameter $p = \frac{1}{z^\ast}.$
+$N^q$ is then a geometric random variable with parameter $p = \frac{1}{z^\ast}.$
 \end{frame}
 \begin{frame}{Latency and throughputs}
 \scriptsize
