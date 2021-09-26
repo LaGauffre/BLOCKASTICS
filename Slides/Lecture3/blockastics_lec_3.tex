@@ -597,14 +597,23 @@ For the expected profit $\widehat{V}(u,t)$, we get
   \widehat{V}(u,t)& =&e^{-h(1/t + p\lambda)}\,\widehat{V}(u-ch,t)+\int\limits_0^h\frac1t\, e^{-s(1/t + p\lambda)}\,(u-cs)ds\\
   &+&\int\limits_0^h p\lambda\, e^{-s(1/t + p\lambda)}\,\widehat{V}(u-cs+b,t)ds.
   \end{eqnarray*}
+  \end{frame}
+\begin{frame}{Sketch of the proof}
+\scriptsize
 Now we take the derivative with respect to $h$ and set $h=0$ to obtain
 \begin{equation}\label{eq:ODE}
 c\widehat{V}'(u,t) + \left(\frac{1}{t} +  p\lambda\right)\widehat{V}(u,t) - p\lambda \widehat{V}(u+b,t) - \frac{u}{t} =0,
 \end{equation}
+Equation \eqref{eq:ODE} is an advanced functional differential equation\blfootnote{\tiny 
+ H.~L. Smith, {\em An introduction to delay differential equations with
+  applications to the life sciences}.
+\newblock Springer, New York, 2011.
+}
 with boundary condition 
-$$\widehat{V}(0,t) = 0 \text{ and such that } 0\leq \widehat{V}(u,t)\leq u-ct+p\lambda b t \text{ for }u>0.
+$$
+\widehat{V}(0,t) = 0 \text{ and such that } 0\leq \widehat{V}(u,t)\leq u-ct+p\lambda b t \text{ for }u>0.
 $$  
-Equation \eqref{eq:ODE} is an advanced functional differential equation, consider solutions of the form 
+Consider solutions of the form 
 \begin{equation}\label{eq:potential_solution}
 \widehat{V}(u,t) = Ae^{\rho u }+Bu + C,\text{ }u \ge 0, 
 \end{equation}
@@ -617,6 +626,9 @@ where $A, B,C$ and $\rho$ are constants to be determined. Substituting \eqref{eq
 0&=A+C.
 \end{cases}
 \end{equation*}
+\end{frame}
+\begin{frame}{Sketch of the proof}
+\scriptsize
 We then have $A = -t(p\lambda b - c)$, $B = 1$, $C = t(p\lambda b - c)$ and $\rho$ is solution of 
 $$
 c\rho + \left(1+p\lambda t\right)-p\lambda te^{\rho b} = 0,
@@ -1169,9 +1181,6 @@ J.~G{\"o}bel, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor, ``Bitcoin
 \end{enumerate}
 \end{itemize}
 \end{frame}
-% \begin{frame}
-% \bibliography{../../blockastics}
-% \bibliographystyle{ieeetr}
-% \end{frame}
+
 
 \end{document}

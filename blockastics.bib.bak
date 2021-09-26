@@ -500,4 +500,16 @@
   publisher = {Springer Science and Business Media {LLC}},
 }
 
+@Article{Kawase2020,
+  author    = {Yoshiaki Kawase and and Shoji Kasahara},
+  journal   = {Journal of Industrial {\&} Management Optimization},
+  title     = {Priority queueing analysis of transaction-confirmation time for Bitcoin},
+  year      = {2020},
+  number    = {3},
+  pages     = {1077--1098},
+  volume    = {16},
+  doi       = {10.3934/jimo.2018193},
+  publisher = {American Institute of Mathematical Sciences ({AIMS})},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
