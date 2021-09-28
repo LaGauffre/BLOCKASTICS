@@ -28,9 +28,5 @@ electricity consumption and IT gear, of mining, and is compensated by a capital 
 	- [Pool mining](/Python/Lecture3_mining_pool.ipynb)
 	- [Selfish mining](/Python/Lecture3_selfish_mining.ipynb)  
 
-
-## Part 4: Decentralized finance and cryptoasset pricing
-Blockchain creates an environment where multiple parties can interact directly and transparently. It is therefore immediately relevant to banks and financial institutions which incur huge middlemen costs in settlements and other back office operations. Decentralized finance (DeFi) offers a new financial architecture that is non-custodial, permissionless, openly auditable, pseudo-anonymous and with potential new capital efficiencies. An overview of the existing cryptoassets is given before discussing some pricing models for this new class of financial assets.
-
-* Slides: [Lecture 4](/Slides/Lecture4/blockastics_lec_4.pdf)     
+   
 

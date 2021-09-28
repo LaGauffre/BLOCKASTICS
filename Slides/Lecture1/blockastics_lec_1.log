@@ -1,10 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.9)  19 SEP 2021 18:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.9)  28 SEP 2021 10:43
 entering extended mode
-**C:/Users/pierr/Documents/code/BLOCKASTICS/Slides/Lecture1/blockastics_lec_1.t
-ex
-
-(C:/Users/pierr/Documents/code/BLOCKASTICS/Slides/Lecture1/blockastics_lec_1.te
-x
+**./blockastics_lec_1.tex
+(blockastics_lec_1.tex
 LaTeX2e <2018-04-01> patch level 5
 ("C:\Users\pierr\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamer.cls"
 Document Class: beamer 2018/09/20 v3.54 A class for typesetting presentations
@@ -1796,6 +1793,9 @@ hemestructurebold.sty") (blockastics_lec_1.aux
 
 LaTeX Warning: Label `Na08' multiply defined.
 
+
+LaTeX Warning: Label `Gan2021' multiply defined.
+
 )
 \openout1 = `blockastics_lec_1.aux'.
 
@@ -2068,45 +2068,43 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 168.
 ("C:\Users\pierr\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-<../../Figures/bfs_logo.png, id=49, 184.43906pt x 99.37125pt>
-File: ../../Figures/bfs_logo.png Graphic file (type png)
-<use ../../Figures/bfs_logo.png>
-Package pdftex.def Info: ../../Figures/bfs_logo.png  used on input line 168.
-(pdftex.def)             Requested size: 71.13188pt x 38.324pt.
-
 Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 [][] 
  []
 
 [1
 
-{C:/Users/pierr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <../../Figur
-es/bfs_logo.png>]
+{C:/Users/pierr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 233.
+(Font)              scaled to size 10.07397pt on input line 181.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 233.
+(Font)              scaled to size 7.63599pt on input line 181.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 233.
+(Font)              scaled to size 10.07397pt on input line 181.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 233.
+(Font)              scaled to size 7.63599pt on input line 181.
+<../../Figures/bfs_logo.png, id=64, 184.43906pt x 99.37125pt>
+File: ../../Figures/bfs_logo.png Graphic file (type png)
+<use ../../Figures/bfs_logo.png>
+Package pdftex.def Info: ../../Figures/bfs_logo.png  used on input line 181.
+(pdftex.def)             Requested size: 113.81102pt x 61.3184pt.
 
-Overfull \hbox (21.75987pt too wide) in paragraph at lines 233--233
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 181--181
 [][] 
  []
 
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 13.24796pt on input line 233.
+(Font)              scaled to size 13.24796pt on input line 181.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 233.
+(Font)              scaled to size 9.19998pt on input line 181.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.35999pt on input line 233.
+(Font)              scaled to size 7.35999pt on input line 181.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 13.24796pt on input line 233.
+(Font)              scaled to size 13.24796pt on input line 181.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 233.
+(Font)              scaled to size 9.19998pt on input line 181.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.35999pt on input line 233.
+(Font)              scaled to size 7.35999pt on input line 181.
 
 Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 [][] 
@@ -2114,14 +2112,7 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 
 [2
 
-]
-<../../Figures/genesis_block.png, id=70, 374.90062pt x 69.25874pt>
-File: ../../Figures/genesis_block.png Graphic file (type png)
-<use ../../Figures/genesis_block.png>
-Package pdftex.def Info: ../../Figures/genesis_block.png  used on input line 24
-6.
-(pdftex.def)             Requested size: 308.18968pt x 56.93835pt.
-
+ <../../Figures/bfs_logo.png>]
 Overfull \hbox (21.75987pt too wide) in paragraph at lines 246--246
 [][] 
  []
@@ -2133,17 +2124,15 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 
 [3
 
- <../../Figures/genesis_block.png>]
-LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 6.99199pt on input line 276.
-LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 6.99199pt on input line 276.
-LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 6.25598pt on input line 276.
-LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 6.25598pt on input line 276.
+]
+<../../Figures/genesis_block.png, id=80, 374.90062pt x 69.25874pt>
+File: ../../Figures/genesis_block.png Graphic file (type png)
+<use ../../Figures/genesis_block.png>
+Package pdftex.def Info: ../../Figures/genesis_block.png  used on input line 25
+9.
+(pdftex.def)             Requested size: 308.18968pt x 56.93835pt.
 
-Overfull \hbox (21.75987pt too wide) in paragraph at lines 276--276
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 259--259
 [][] 
  []
 
@@ -2154,8 +2143,17 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 
 [4
 
-]
-Overfull \hbox (21.75987pt too wide) in paragraph at lines 304--304
+ <../../Figures/genesis_block.png>]
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 6.99199pt on input line 289.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 6.99199pt on input line 289.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 6.25598pt on input line 289.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 6.25598pt on input line 289.
+
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 289--289
 [][] 
  []
 
@@ -2166,9 +2164,8 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 
 [5
 
- <C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/tex/latex/beamer/beamericona
-rticle.pdf>]
-Overfull \hbox (21.75987pt too wide) in paragraph at lines 326--326
+]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 317--317
 [][] 
  []
 
@@ -2179,8 +2176,9 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 
 [6
 
-]
-Overfull \hbox (21.75987pt too wide) in paragraph at lines 347--347
+ <C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/tex/latex/beamer/beamericona
+rticle.pdf>]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 339--339
 [][] 
  []
 
@@ -2191,20 +2189,8 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 
 [7
 
-]pdfTeX warning (ext4): destination with the same identifier (name{beamerbibNa0
-8}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.374 \end{frame}
-                 
-<../../Figures/bitcoin-6284869_1920.png, id=126, 1927.2pt x 1837.86626pt>
-File: ../../Figures/bitcoin-6284869_1920.png Graphic file (type png)
-<use ../../Figures/bitcoin-6284869_1920.png>
-Package pdftex.def Info: ../../Figures/bitcoin-6284869_1920.png  used on input 
-line 374.
-(pdftex.def)             Requested size: 85.60883pt x 81.63475pt.
-
-Overfull \hbox (21.75987pt too wide) in paragraph at lines 374--374
+]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 360--360
 [][] 
  []
 
@@ -2215,46 +2201,32 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 
 [8
 
+]pdfTeX warning (ext4): destination with the same identifier (name{beamerbibNa0
+8}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.387 \end{frame}
+                 
+<../../Figures/bitcoin-6284869_1920.png, id=135, 1927.2pt x 1837.86626pt>
+File: ../../Figures/bitcoin-6284869_1920.png Graphic file (type png)
+<use ../../Figures/bitcoin-6284869_1920.png>
+Package pdftex.def Info: ../../Figures/bitcoin-6284869_1920.png  used on input 
+line 387.
+(pdftex.def)             Requested size: 85.60883pt x 81.63475pt.
+
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 387--387
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[9
+
  <../../Figures/bitcoin-6284869_1920.png>]
-<../../Figures/btc_price.pdf, id=135, 433.62pt x 289.08pt>
-File: ../../Figures/btc_price.pdf Graphic file (type pdf)
-<use ../../Figures/btc_price.pdf>
-Package pdftex.def Info: ../../Figures/btc_price.pdf  used on input line 405.
-(pdftex.def)             Requested size: 143.8222pt x 95.8819pt.
-<../../Figures/btc_hahsrate.pdf, id=136, 433.62pt x 289.08pt>
-File: ../../Figures/btc_hahsrate.pdf Graphic file (type pdf)
-<use ../../Figures/btc_hahsrate.pdf>
-Package pdftex.def Info: ../../Figures/btc_hahsrate.pdf  used on input line 405
-.
-(pdftex.def)             Requested size: 143.8222pt x 95.8819pt.
-<../../Figures/btc_n_transaction.pdf, id=137, 433.62pt x 289.08pt>
-File: ../../Figures/btc_n_transaction.pdf Graphic file (type pdf)
-<use ../../Figures/btc_n_transaction.pdf>
-Package pdftex.def Info: ../../Figures/btc_n_transaction.pdf  used on input lin
-e 405.
-(pdftex.def)             Requested size: 143.8222pt x 95.8819pt.
-<../../Figures/btc_elec_conso.pdf, id=138, 433.62pt x 289.08pt>
-File: ../../Figures/btc_elec_conso.pdf Graphic file (type pdf)
-<use ../../Figures/btc_elec_conso.pdf>
-Package pdftex.def Info: ../../Figures/btc_elec_conso.pdf  used on input line 4
-05.
-(pdftex.def)             Requested size: 143.8222pt x 95.8819pt.
- [9
-
- <../../Figures/btc_price.pdf> <../../Figures/btc_hahsrate.pdf
-
-pdfTeX warning: pdflatex (file ../../Figures/btc_hahsrate.pdf): PDF inclusion: 
-multiple pdfs with page group included in a single page
-> <../../Figures/btc_n_transaction.pdf
-
-pdfTeX warning: pdflatex (file ../../Figures/btc_n_transaction.pdf): PDF inclus
-ion: multiple pdfs with page group included in a single page
-> <../../Figures/btc_elec_conso.pdf
-
-pdfTeX warning: pdflatex (file ../../Figures/btc_elec_conso.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
->]
-Overfull \hbox (21.75987pt too wide) in paragraph at lines 422--422
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 409--409
 [][] 
  []
 
@@ -2266,7 +2238,7 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 [10
 
 ]
-Overfull \hbox (21.75987pt too wide) in paragraph at lines 461--461
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 452--452
 [][] 
  []
 
@@ -2278,7 +2250,45 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 [11
 
 ]
-Overfull \hbox (21.75987pt too wide) in paragraph at lines 475--475
+<../../Figures/btc_price.pdf, id=162, 433.62pt x 289.08pt>
+File: ../../Figures/btc_price.pdf Graphic file (type pdf)
+<use ../../Figures/btc_price.pdf>
+Package pdftex.def Info: ../../Figures/btc_price.pdf  used on input line 483.
+(pdftex.def)             Requested size: 143.8222pt x 95.8819pt.
+<../../Figures/btc_hahsrate.pdf, id=163, 433.62pt x 289.08pt>
+File: ../../Figures/btc_hahsrate.pdf Graphic file (type pdf)
+<use ../../Figures/btc_hahsrate.pdf>
+Package pdftex.def Info: ../../Figures/btc_hahsrate.pdf  used on input line 483
+.
+(pdftex.def)             Requested size: 143.8222pt x 95.8819pt.
+<../../Figures/btc_n_transaction.pdf, id=164, 433.62pt x 289.08pt>
+File: ../../Figures/btc_n_transaction.pdf Graphic file (type pdf)
+<use ../../Figures/btc_n_transaction.pdf>
+Package pdftex.def Info: ../../Figures/btc_n_transaction.pdf  used on input lin
+e 483.
+(pdftex.def)             Requested size: 143.8222pt x 95.8819pt.
+<../../Figures/btc_elec_conso.pdf, id=165, 433.62pt x 289.08pt>
+File: ../../Figures/btc_elec_conso.pdf Graphic file (type pdf)
+<use ../../Figures/btc_elec_conso.pdf>
+Package pdftex.def Info: ../../Figures/btc_elec_conso.pdf  used on input line 4
+83.
+(pdftex.def)             Requested size: 143.8222pt x 95.8819pt.
+ [12
+
+ <../../Figures/btc_price.pdf> <../../Figures/btc_hahsrate.pdf
+
+pdfTeX warning: pdflatex.EXE (file ../../Figures/btc_hahsrate.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <../../Figures/btc_n_transaction.pdf
+
+pdfTeX warning: pdflatex.EXE (file ../../Figures/btc_n_transaction.pdf): PDF in
+clusion: multiple pdfs with page group included in a single page
+> <../../Figures/btc_elec_conso.pdf
+
+pdfTeX warning: pdflatex.EXE (file ../../Figures/btc_elec_conso.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+>]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 500--500
 [][] 
  []
 
@@ -2287,7 +2297,84 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 [][] 
  []
 
-[12
+[13
+
+]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 539--539
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[14
+
+]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 568--568
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[15
+
+]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 611--611
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[16
+
+]pdfTeX warning (ext4): destination with the same identifier (name{beamerbibGan
+2021}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.707 \end{frame}
+                 
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 707--707
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[17
+
+]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 731--731
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[18
+
+]
+Overfull \hbox (21.75987pt too wide) in paragraph at lines 744--744
+[][] 
+ []
+
+
+Overfull \hbox (21.75987pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[19
 
 ]
 \tf@nav=\write8
@@ -2299,11 +2386,11 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 \tf@snm=\write10
 \openout10 = `blockastics_lec_1.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 483.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 483.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 752.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 752.
  (blockastics_lec_1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 483.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 483.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 752.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 752.
 Package rerunfilecheck Info: File `blockastics_lec_1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2312,43 +2399,48 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 43371 strings out of 492970
- 924698 string characters out of 3126594
- 1028800 words of memory out of 3000000
- 46394 multiletter control sequences out of 15000+200000
- 580606 words of font info for 131 fonts, out of 3000000 for 9000
+ 43488 strings out of 492970
+ 926692 string characters out of 3126594
+ 1030953 words of memory out of 3000000
+ 46480 multiletter control sequences out of 15000+200000
+ 584818 words of font info for 142 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,18n,103p,869b,1221s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm
--super-t1.enc}{C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips
-/base/8r.enc}<C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmss10.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/pierr/AppData/Local/Programs/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/pierr/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/pier
-r/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/fourier/fourier-ml.pfb><
-C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/fourier/fou
-rier-mlit.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/fourier/fourier-ms.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/adobe/utopia/putr8a.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/cm-super/sfsi0900.pfb><C:/Users/pierr/AppData/Local/Pro
-grams/MiKTeX 2.9/fonts/type1/public/cm-super/sfss0600.pfb><C:/Users/pierr/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfss0800.pfb><C:/Users
-/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfss0900.p
-fb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-supe
-r/sfss1000.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/cm-super/sfss1095.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/public/cm-super/sfss1440.pfb><C:/Users/pierr/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/cm-super/sfsx0600.pfb><C:/Users/pierr/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfsx0800.pfb><C:/Users/pierr/
-AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfsx1440.pfb><C:/
-Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sftt0
-800.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm
--super/sftt1000.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
-e1/public/cm-super/sftt1095.pfb>
-Output written on blockastics_lec_1.pdf (12 pages, 4884602 bytes).
+ 72i,18n,103p,813b,1221s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{Navigation22} has been referenced but does not ex
+ist, replaced by a fixed one
+
+{C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-s
+uper-t1.enc}{C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/b
+ase/8r.enc}<C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmss10.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/pierr/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/pierr/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/pierr/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/fourier/fourier-ml.pfb><C:
+/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/fourier/fouri
+er-mlit.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
+c/fourier/fourier-ms.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/font
+s/type1/adobe/utopia/putr8a.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/cm-super/sfsi0600.pfb><C:/Users/pierr/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/cm-super/sfsi0800.pfb><C:/Users/pierr/AppData
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfsi0900.pfb><C:/Users/p
+ierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfss0600.pfb
+><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/
+sfss0800.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
+ic/cm-super/sfss0900.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/font
+s/type1/public/cm-super/sfss1000.pfb><C:/Users/pierr/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/public/cm-super/sfss1095.pfb><C:/Users/pierr/AppData/Local/
+Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfss1440.pfb><C:/Users/pierr/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfsx0600.pfb><C:/Us
+ers/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfsx080
+0.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-s
+uper/sfsx1440.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/cm-super/sftt0800.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/cm-super/sftt1000.pfb><C:/Users/pierr/AppData/Local/Program
+s/MiKTeX 2.9/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on blockastics_lec_1.pdf (19 pages, 4948714 bytes).
 PDF statistics:
- 388 PDF objects out of 1000 (max. 8388607)
- 33 named destinations out of 1000 (max. 500000)
+ 461 PDF objects out of 1000 (max. 8388607)
+ 55 named destinations out of 1000 (max. 500000)
  222 words of extra memory for PDF output out of 10000 (max. 10000000)
 

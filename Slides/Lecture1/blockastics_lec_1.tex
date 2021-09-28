@@ -160,11 +160,24 @@
  \texttt{pierre-olivier.goffard@univ-lyon1.fr}
 }
 \date{\today}
-\titlegraphic{\includegraphics[width=2.5cm]{../../Figures/bfs_logo.png}} 
+% \titlegraphic{\includegraphics[width=2.5cm]{../../Figures/bfs_logo.png}} 
 
 \begin{document}
 \begin{frame}
   \titlepage
+\end{frame}
+\begin{frame}{BFS summer school}
+Mini course of four lectures on the topic of blockchain at the $1^{st}$ Bachelier Finance Society Summer school.
+
+\begin{itemize}
+  \item Link to the event \url{https://www.bachelierfinance.org/09-2021}
+  \item Link to the course material \url{https://pierre-olivier.goffard.me/BLOCKASTICS/}
+\end{itemize}
+\begin{figure}
+\begin{center}
+\includegraphics[width=4cm]{../../Figures/bfs_logo.png}
+\end{center}
+\end{figure}
 \end{frame}
 \begin{frame}{Blockchain}
 A data ledger made of a sequence of blocks maintained by a achieving consensus in a Peer-To-Peer network.
@@ -373,6 +386,71 @@ S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
 \end{itemize}
 \end{frame}
 
+\begin{frame}{How does it work?}
+\begin{enumerate}
+  \item No central authority (Decentralized network)
+  \item Ledger to record all the transactions and coin ownership (blockchain)
+  \item A coin generation process (block finding reward)
+    \begin{itemize}
+    \item[$\hookrightarrow$] Incentive to the full nodes 
+  \end{itemize}
+  \item Ownership can be proved cryptographically (wallet associated to a public/private key)
+  \item Transactions can be issued by an entity proving ownership of the cryptographic unit (through the private key) 
+  \item The system cannot process more than one transaction associated to the same cryptographic unit (double spending)
+\end{enumerate}
+\tiny
+\begin{thebibliography}{1}
+
+\bibitem{Lansky2018}
+J.~Lansky, ``Possible state approaches to cryptocurrencies,'' {\em Journal of
+  Systems Integration}, vol.~9, pp.~19--31, jan 2018.
+
+\end{thebibliography}
+\end{frame}
+
+
+% \begin{frame}{Risk associated to cryptocurrencies}
+% \begin{itemize}
+%   \item Low market capitalisation: If the number of users is limited and the market cap is low then one user's trade may have disproportionate consequences of the coin value
+%   \item Private key = ownership:  Personal computers or server of wallet management services may be hacked. One solution is to resort to hardware to store the private key. 
+%   \item Transaction irreversibility: If some funds are transfered by misstake, they are not recoverables
+%   \item Account anonymity: Whenever an account issue transactions, it becomes pseudo-anonymous. It is difficult to for the authority to find the identity of a pseudo anonymous account when funds are used for criminal activities (financial theft, tax evasions, extortions or bribery). 
+% \end{itemize}
+% \end{frame}
+\begin{frame}{Cryptocurrency implementation}
+\scriptsize
+Blockchain parameters
+\begin{itemize}
+  \item Consensus protocol (PoW or PoS) 
+  \begin{itemize}
+    \item[$\hookrightarrow$] \tiny Hash function (SHA-256 for Bitcoin and scrypt for LiteCoin) 
+    \item[$\hookrightarrow$] \tiny Hybrid PoW/PoS (PeerCoin)
+  \end{itemize}
+  \item Block generation time \scriptsize
+    \begin{itemize}
+    \item[$\hookrightarrow$] \tiny every 10 minutes for Bitcoin 
+    \item[$\hookrightarrow$] \tiny every 12 sec for Ethereum
+  \end{itemize}
+  \item Block finding reward\scriptsize
+  \begin{itemize}
+    \item[$\hookrightarrow$] \tiny Halved every 210,000 blocks in Bitcoin. It started at 50 BTC, is now 6.25 BTC \url{https://www.bitcoinblockhalf.com/}
+  \end{itemize}
+  \item Total coin supply\scriptsize
+    \begin{itemize}
+    \item[$\hookrightarrow$] \tiny 21,000,000 in total for Bitcoin
+  \end{itemize}
+  \item Transaction fees\scriptsize
+      \begin{itemize}
+    \item[$\hookrightarrow$] \tiny GAS in Ethereum
+  \end{itemize}
+\end{itemize}
+These choices lead to the creation of multiple cryptocurrencies 
+\begin{tcolorbox}[enhanced,drop shadow, title=Examples]
+     Bitcoin and AltCoins (Ethereum, LiteCoin, DogeCoin, Ripple... ), see \url{https://en.wikipedia.org/wiki/List_of_cryptocurrencies}
+\end{tcolorbox}
+
+\end{frame}
+
 \begin{frame}[plain]
 \begin{figure}
 \captionsetup[subfigure]{labelformat=empty}
@@ -459,6 +537,198 @@ S.~M. Werner, D.~Perez, L.~Gudgeon, A.~Klages-Mundt, D.~Harz, and W.~J.
 \end{thebibliography}
 
 \end{frame}
+\begin{frame}{Tokenized real-world assets}
+\scriptsize
+Tokenized version of a real-world, physical asset
+\begin{itemize}
+  \item Increases the liquidity of certain type of assets
+  \item Make certain classes of assets available to the many
+  \item Can be used as store of value or collateral
+\end{itemize}
+These token can be backed by 
+\begin{itemize}
+  \item fiat currency $\Rightarrow$ stablecoin
+  \item commodities like gold \url{https://ekon.gold/}
+  \item stocks (security token) that includes voting right and profit sharing mechanism
+  \item Art
+  \item Digital art (Non Fungible tokens on the Ethereum blockchain)
+\end{itemize}
+\begin{tcolorbox}[enhanced,drop shadow, title=Central authority]
+    This requires a custodian to ensure that the tokens are actually backed by these off-chain assets (except for NFTs).
+\end{tcolorbox}
+
+\scriptsize
+\begin{thebibliography}{1}
+
+\bibitem{OECD}
+OECD, ``The tokenisation of assets and potential implications for financial
+  markets,'' tech. rep., 2020.
+
+\end{thebibliography}
+\end{frame}
+\begin{frame}{Valuation models}
+\begin{itemize}
+\item Cryptocurrencies are medium of exchange and may be priced via transaction cost model (Beaumol-Tobin and such)
+
+\scriptsize
+\begin{thebibliography}{1}
+\bibitem{Baumol1952}
+W.~J. Baumol, ``The transactions demand for cash: An inventory theoretic
+  approach,'' {\em The Quarterly Journal of Economics}, vol.~66, p.~545, nov
+  1952.
+\bibitem{Schilling2019}
+L.~Schilling and H.~Uhlig, ``Some simple bitcoin economics,'' {\em Journal of
+  Monetary Economics}, vol.~106, pp.~16--26, oct 2019.
+\end{thebibliography}
+\normalsize
+\item Tokenized asset depends on the real asset that backs the token
+\scriptsize
+\begin{thebibliography}{1}
+
+\bibitem{Hargrave2019}
+J.~Hargrave, N.~Sahdev, and O.~Feldmeier, ``How value is created in tokenized
+  assets,'' in {\em Blockchain Economics: Implications of Distributed Ledgers},
+  pp.~125--143, {WORLD} {SCIENTIFIC} ({EUROPE}), jan 2019.
+
+\end{thebibliography}
+\normalsize
+\item Utility tokens
+\scriptsize
+\begin{thebibliography}{1}
+
+\bibitem{Gan2021}
+J.~R. Gan, G.~Tsoukalas, and S.~Netessine, ``Initial coin offerings,
+  speculation, and asset tokenization,'' {\em Management Science}, vol.~67,
+  pp.~914--931, feb 2021.
+
+\bibitem{Cong2020a}
+L.~W. Cong, Y.~Li, and N.~Wang, ``Tokenomics: Dynamic adoption and valuation,''
+  {\em The Review of Financial Studies}, vol.~34, pp.~1105--1155, aug 2020.
+
+\end{thebibliography}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ICO tuning and timeline}
+\begin{enumerate}
+  \item ICO period
+  \begin{itemize}
+    \item \tiny The firm publishes a white paper and set 
+    \begin{itemize}
+    \item \tiny The token price $\tau$
+    \item \tiny The total number of token $m$
+    \item \tiny The number of token issued to the investors during the ICO $n\leq m$.
+  \end{itemize}
+    \item \tiny $s$ among $z>>m$ investors buy token
+  \end{itemize}
+  \item Production period
+  \begin{itemize}
+    \item \tiny The firm uses the funds raised $s\tau$ to finance the production of $Q$ units of goods
+  \end{itemize}
+\item Market period
+  \begin{itemize}
+    \item \tiny Customers purchase token to meet their needs $D\sim F(.)$
+  \end{itemize}
+\end{enumerate}
+\vspace{0.2cm}
+\centering
+\begin{tikzpicture}[%
+    every node/.style={
+        font=\scriptsize,
+        % Better alignment, see https://tex.stackexchange.com/questions/315075
+        text height=1ex,
+        text depth=.25ex,
+    },
+]
+% draw horizontal line   
+\draw[->] (0,0) -- (8.5,0);
+
+% draw vertical lines
+% \foreach \x in {0,1,...,8}{
+%     \draw (\x cm,3pt) -- (\x cm,0pt);
+% }
+
+\draw (0 cm,3pt) -- (0 cm,0pt);
+\draw (2 cm,3pt) -- (2 cm,0pt);
+\draw (4.5 cm,3pt) -- (4.5 cm,0pt);
+\draw (7 cm,3pt) -- (7 cm,0pt);
+% place axis labels
+\node[anchor=north] at (0,0) {\tiny White paper};
+\node[anchor=north] at (2,0) {\tiny ICO};
+\node[anchor=north] at (2,-0.25) {\tiny starts};
+\node[anchor=north] at (4.5,0) {\tiny Production};
+\node[anchor=north] at (4.5,-0.25) {\tiny starts};
+\node[anchor=north] at (7,0) {\tiny Product};
+\node[anchor=north] at (7,-0.25) {\tiny launch};
+\node[anchor=south] at (8.5,0) {$t$};
+
+% Draw vertical line
+\draw[->] (0,1) -- (0,0.25);
+\node[anchor=south] at (0,1) {\tiny Company decides $\tau$ and $n$};
+\draw[->] (4.5,1) -- (4.5,0.25);
+\node[anchor=south] at (4.5,1) {\tiny Company decides $Q$};
+
+% draw scale above
+% \fill[myLightGray] (1,0.25) rectangle (2,0.4);
+% \fill[myDarkGray] (2,0.25) rectangle (3,0.4);
+% \fill[myDarkRed] (3,0.25) rectangle (4,0.4);
+% \fill[myRed] (4,0.25) rectangle (5,0.4);
+% \draw[myRed,dashed,thick,-latex] (5.05,0.325) -- (6.05,0.325);
+
+% draw scale below
+% \fill[myLightGray] (3,-0.4) rectangle (4,-0.55);
+% \fill[myGray] (4,-0.4) rectangle (5,-0.55);
+% \fill[myGreen] (5,-0.4) rectangle (6,-0.55);
+% \draw[myGreen,dashed,thick,-latex] (6.05,-0.475) -- (7.05,-0.475);
+
+% draw curly braces and add their labels
+\draw[decorate,decoration={brace,amplitude=5pt}] (2,0.45) -- (4.25,0.45)
+    node[anchor=south,midway,above=4pt] {\tiny Speculators buy tokens};
+\draw[decorate,decoration={brace,amplitude=5pt}] (7,0.45) -- (8.5,0.45)
+    node[anchor=south,midway,above=4pt] {\tiny Customers buy tokens};
+\draw[decorate,decoration={brace,amplitude=5pt}] (4.5,-0.75) -- (2,-0.75)
+    node[anchor=north,midway,below=4pt] {\tiny ICO period};
+    \draw[decorate,decoration={brace,amplitude=5pt}] (7,-0.75) -- (4.6,-0.75)
+    node[anchor=north,midway,below=4pt] {\tiny Production period};
+    \draw[decorate,decoration={brace,amplitude=5pt}] (8.5,-0.75) -- (7.1,-0.75)
+    node[anchor=north,midway,below=4pt] {\tiny Production period};
+\end{tikzpicture}
+\tiny
+\begin{thebibliography}{1}
+
+\bibitem{Gan2021}
+J.~R. Gan, G.~Tsoukalas, and S.~Netessine, ``Initial coin offerings,
+  speculation, and asset tokenization,'' {\em Management Science}, vol.~67,
+  pp.~914--931, feb 2021.
+
+\end{thebibliography}
+
+\end{frame}
+\begin{frame}{Insights}
+\scriptsize
+\begin{tcolorbox}[enhanced,drop shadow, title=Optimal number of tokens sold $n^\ast$ ]
+
+The more token the firm sells during the ICO
+\begin{itemize}
+  \item The more money to invest in production
+  \item The less tokens it has to sell in the secondary market
+  \item The less "skin in the game"
+  \item The less it wants to invest in production ex post
+\end{itemize}
+$n^\ast$ resolves the trade off between money now and money later while controlling moral hazard.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,drop shadow, title=Optimal token price $\tau^\ast$ ]
+
+
+\begin{itemize}
+  \item Price too low: Not enough funds raised
+  \item Price too high: not enough upside for investors
+\end{itemize} 
+\end{tcolorbox}
+Gerry Tsoukalas talk at \\
+\url{https://www.youtube.com/watch?v=E_NT4t4ws8U}
+\end{frame}
 \begin{frame}{Decentralized insurance}
 \begin{tcolorbox}[enhanced,drop shadow, title=Parametric insurance]
     Compensation if a measurable quantity reaches a threshold 
@@ -471,7 +741,6 @@ S.~M. Werner, D.~Perez, L.~Gudgeon, A.~Klages-Mundt, D.~Harz, and W.~J.
   \item Use smart contract and off-chain data through oracles
   \item Transparent and automatic
 \end{itemize}
-Another example is P2P insurance.
 \end{frame}
 
 
