@@ -512,4 +512,11 @@
   publisher = {American Institute of Mathematical Sciences ({AIMS})},
 }
 
+@Book{smith,
+  title     = {An introduction to delay differential equations with applications to the life sciences},
+  publisher = {Springer, New York},
+  year      = {2011},
+  author    = {Smith, H. L.},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

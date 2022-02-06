@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.9)  1 OCT 2021 10:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.9)  5 FEB 2022 10:03
 entering extended mode
 **./blockastics_lec_1.tex
 (blockastics_lec_1.tex
@@ -2083,7 +2083,7 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 10.07397pt on input line 181.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 7.63599pt on input line 181.
-<../../Figures/bfs_logo.png, id=65, 184.43906pt x 99.37125pt>
+<../../Figures/bfs_logo.png, id=64, 184.43906pt x 99.37125pt>
 File: ../../Figures/bfs_logo.png Graphic file (type png)
 <use ../../Figures/bfs_logo.png>
 Package pdftex.def Info: ../../Figures/bfs_logo.png  used on input line 181.
@@ -2125,7 +2125,7 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 [3
 
 ]
-<../../Figures/genesis_block.png, id=81, 374.90062pt x 69.25874pt>
+<../../Figures/genesis_block.png, id=80, 374.90062pt x 69.25874pt>
 File: ../../Figures/genesis_block.png Graphic file (type png)
 <use ../../Figures/genesis_block.png>
 Package pdftex.def Info: ../../Figures/genesis_block.png  used on input line 25
@@ -2207,7 +2207,7 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
                    \relax 
 l.387 \end{frame}
                  
-<../../Figures/bitcoin-6284869_1920.png, id=136, 1927.2pt x 1837.86626pt>
+<../../Figures/bitcoin-6284869_1920.png, id=135, 1927.2pt x 1837.86626pt>
 File: ../../Figures/bitcoin-6284869_1920.png Graphic file (type png)
 <use ../../Figures/bitcoin-6284869_1920.png>
 Package pdftex.def Info: ../../Figures/bitcoin-6284869_1920.png  used on input 
@@ -2250,24 +2250,24 @@ Overfull \hbox (21.75987pt too wide) has occurred while \output is active
 [11
 
 ]
-<../../Figures/btc_price.pdf, id=163, 433.62pt x 289.08pt>
+<../../Figures/btc_price.pdf, id=162, 433.62pt x 289.08pt>
 File: ../../Figures/btc_price.pdf Graphic file (type pdf)
 <use ../../Figures/btc_price.pdf>
 Package pdftex.def Info: ../../Figures/btc_price.pdf  used on input line 483.
 (pdftex.def)             Requested size: 143.8222pt x 95.8819pt.
-<../../Figures/btc_hahsrate.pdf, id=164, 433.62pt x 289.08pt>
+<../../Figures/btc_hahsrate.pdf, id=163, 433.62pt x 289.08pt>
 File: ../../Figures/btc_hahsrate.pdf Graphic file (type pdf)
 <use ../../Figures/btc_hahsrate.pdf>
 Package pdftex.def Info: ../../Figures/btc_hahsrate.pdf  used on input line 483
 .
 (pdftex.def)             Requested size: 143.8222pt x 95.8819pt.
-<../../Figures/btc_n_transaction.pdf, id=165, 433.62pt x 289.08pt>
+<../../Figures/btc_n_transaction.pdf, id=164, 433.62pt x 289.08pt>
 File: ../../Figures/btc_n_transaction.pdf Graphic file (type pdf)
 <use ../../Figures/btc_n_transaction.pdf>
 Package pdftex.def Info: ../../Figures/btc_n_transaction.pdf  used on input lin
 e 483.
 (pdftex.def)             Requested size: 143.8222pt x 95.8819pt.
-<../../Figures/btc_elec_conso.pdf, id=166, 433.62pt x 289.08pt>
+<../../Figures/btc_elec_conso.pdf, id=165, 433.62pt x 289.08pt>
 File: ../../Figures/btc_elec_conso.pdf Graphic file (type pdf)
 <use ../../Figures/btc_elec_conso.pdf>
 Package pdftex.def Info: ../../Figures/btc_elec_conso.pdf  used on input line 4
@@ -2399,10 +2399,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 43483 strings out of 492970
- 926660 string characters out of 3126594
- 1029953 words of memory out of 3000000
- 46475 multiletter control sequences out of 15000+200000
+ 43481 strings out of 492970
+ 926632 string characters out of 3126594
+ 1030953 words of memory out of 3000000
+ 46474 multiletter control sequences out of 15000+200000
  584818 words of font info for 142 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,18n,103p,813b,1221s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2423,22 +2423,21 @@ grams/MiKTeX 2.9/fonts/type1/public/cm-super/sfsi0800.pfb><C:/Users/pierr/AppDa
 ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfsi0900.pfb><C:/Users
 /pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfss0600.p
 fb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-supe
-r/sfss0700.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/cm-super/sfss0800.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/public/cm-super/sfss0900.pfb><C:/Users/pierr/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/cm-super/sfss1000.pfb><C:/Users/pierr/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfss1095.pfb><C:/Users/pierr/
-AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfss1440.pfb><C:/
+r/sfss0800.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
+blic/cm-super/sfss0900.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fo
+nts/type1/public/cm-super/sfss1000.pfb><C:/Users/pierr/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/cm-super/sfss1095.pfb><C:/Users/pierr/AppData/Loca
+l/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfss1440.pfb><C:/Users/pierr/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfsx0600.pfb><C:/
 Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfsx0
-600.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm
--super/sfsx0800.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
-e1/public/cm-super/sfsx1440.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/public/cm-super/sftt0800.pfb><C:/Users/pierr/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/cm-super/sftt1000.pfb><C:/Users/pierr/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on blockastics_lec_1.pdf (19 pages, 4954937 bytes).
+800.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm
+-super/sfsx1440.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/cm-super/sftt0800.pfb><C:/Users/pierr/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/cm-super/sftt1000.pfb><C:/Users/pierr/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on blockastics_lec_1.pdf (19 pages, 4950401 bytes).
 PDF statistics:
- 463 PDF objects out of 1000 (max. 8388607)
+ 459 PDF objects out of 1000 (max. 8388607)
  54 named destinations out of 1000 (max. 500000)
  222 words of extra memory for PDF output out of 10000 (max. 10000000)
 

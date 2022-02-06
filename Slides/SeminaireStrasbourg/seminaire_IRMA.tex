@@ -230,7 +230,7 @@ Un registre sous la forme d'une suite de blocs maintenu par un réseau dont les 
 \end{columns}
 
 \vspace{0.2cm}
-We will focus on public blockchain and their associated consensus protocol.
+On se concentre sur une chaine de blocs publiques équipée du protocole par preuve de travail. 
 \end{frame}
 \begin{frame}{Blocs}
 Un bloc contient
@@ -239,7 +239,7 @@ Un bloc contient
   \item un horodatage
   \item la valeur de hachage du bloc
   \item la valeur de hachage du bloc précédent
-  \item Des transactions (dles données enregistrées dans la chaine de blocs)
+  \item Des transactions (les données enregistrées dans la chaine de blocs)
 \end{itemize}
 \begin{center}
 \includegraphics[width=0.9\textwidth]{../../Figures/genesis_block.png}
@@ -328,7 +328,7 @@ où
 \begin{itemize}
   \item $u>0$ est la réserve initial
   \item $c$ est le taux de prime
-  \item $(N_t)_{t\geq0}$ est un processus de comptage égale au nombre de sinsitres reportés à l'instant $t\geq0$
+  \item $(N_t)_{t\geq0}$ est un processus de comptage égale au nombre de sinistres reportés à l'instant $t\geq0$
   \begin{itemize}
     \scriptsize
     \item[$\hookrightarrow$]  Processus de Poisson d'intensité $\lambda$
@@ -386,7 +386,7 @@ $$
 où 
 $$\eta>0\text{ (Condition de profitabilité)}$$  
 sinon 
-$$\psi(z)=1.$$
+$$\psi(u)=1.$$
 
 \tiny
 \begin{thebibliography}{1}
@@ -445,7 +445,7 @@ où
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}{Expected profit given not ruin}
+\begin{frame}{Profit espéré si solvabilité}
 \scriptsize
 
 \begin{tcolorbox}[enhanced,drop shadow, title=Remarque]
@@ -583,7 +583,7 @@ On obtient $A = -t(p\lambda b - c)$, $B = 1$, $C = t(p\lambda b - c)$ et $\rho$ 
 $$
 c\rho + \left(1+p\lambda t\right)-p\lambda te^{\rho b} = 0,
 $$
-qui admet une solutioon négative et une solution positive. Comme $A<0$, nous devons prendre la solution négative  $\rho^\ast<0$ ipour satisfaire la condition $\widehat{V}(u,t)>0$. La substitution de $A,B,C$ et $\rho^{\ast}$ dans \eqref{eq:potential_solution} renvoie le résultat.\\
+qui admet une solution négative et une solution positive. Comme $A<0$, nous devons prendre la solution négative  $\rho^\ast<0$ pour satisfaire la condition $\widehat{V}(u,t)>0$. La substitution de $A,B,C$ et $\rho^{\ast}$ dans \eqref{eq:potential_solution} renvoie le résultat.\\
 
 De manière analogue, la probabilité de ruine vérifie 
 \begin{equation*}\label{psii}
@@ -612,7 +612,7 @@ Le gestionnaire décide
 \begin{frame}{Système de redistribution}
 \scriptsize
 Les mineurs doivent être rémunéré à hauteur de leur contribution à l'effort de minage. 
-\begin{tcolorbox}[enhanced,drop shadow, title=Proportional reward system]
+\begin{tcolorbox}[enhanced,drop shadow, title=Rémunération proportionnel]
 Un \text{tour} est le temps séparant la découvert de deux blocs 
 \begin{itemize} 
   \item $s_i$ est le nombre de \textit{parts} soumis par le mineur $i\in I$ durant le \textit{tour}
@@ -753,48 +753,48 @@ H.~Albrecher, D.~Finger, and P.-O. Goffard, ``Blockchain mining in pools:
 
 \end{thebibliography}
 \end{frame}
-\begin{frame}[allowframebreaks]{Elements de la preuve}
+\begin{frame}[allowframebreaks]{Elements de preuve}
 \scriptsize
-We condition upon what happen during the time interval $(0,h)$. Four possibilities
+Bilan de probabilité sur l'intervalle $(0,h)$. Quatre possibilités
 \begin{itemize}
-  \item[(i)] $T>h$ and no jump during $(0,h)$
-  \item[(ii)] $T<h$ and no jump over $(0,T)$
-  \item[(iii)] An upward jump in the interval $(0,h)$
-  \item[(iv)] A downward jump in the interval $(0,h)$
+  \item[(i)] $T>h$ et pas de saut sur $(0,h)$
+  \item[(ii)] $T<h$ et pas de saut sur $(0,T)$
+  \item[(iii)] Un saut vers le haut sur $(0,h)$
+  \item[(iv)] Un saut vers le bas sur $(0,h)$
 \end{itemize}
   \begin{eqnarray*}\label{neu0}
       \w{V}(u,t)&=& e^{-(\frac{1}{t}+\lambda+\mu^\ast)h}\w{V}(u,t) + \frac{1}{t}\int_0^h e^{-{s}/{t}}e^{-(\lambda +\mu^\ast) s} u\,ds\\
       & +& \lambda\int_0^he^{-\lambda s} e^{-({1}/{t}+\mu^\ast) s} \int_0^\infty\w{V}(u+x,t)\,dF_{B}(x)\,ds\\
       &  +&\mu^\ast \int_0^he^{-\mu^\ast s} e^{-({1}/{t}+\lambda) s}\int_0^u \w{V}(u-y,t) \,dF_W(y)\,ds.
   \end{eqnarray*}
-  Differentiating with respect to $h$ and letting $h\rightarrow 0$ yields the following integral equation
+  On dérive par rapport à $h$ et on fait tendre $h\rightarrow 0$, ce qui mène à l'équation intégrale
   \begin{equation} \label{inteq}
     \lambda\int_0^\infty\w{V}(u+x,t)\,dF_{B}(x)-(\lambda+\mu^\ast+{1}/{t})\w{V}(u,t)+\mu^\ast\int_0^u \w{V}(u-y,t) \,dF_W(y)+{u}/{t}=0,\quad u\ge 0,
   \end{equation}
-  with boundary conditions $\w{V}(u,t)=0$ for all $u<0$ and $0\leq\w{V}(u,t)\leq u+(\lambda b^\ast - \mu^\ast w)t$. Let us plug in the ansatz
+  munie des conditions initiales $\w{V}(u,t)=0$ pour tout $u<0$ et $0\leq\w{V}(u,t)\leq u+(\lambda b^\ast - \mu^\ast w)t$. On considère des solutions de la forme
   $$
   Ce^{-ru}+d_1u+d_0
   $$
   \begin{itemize}
-    \item Comparing the terms in $e^{-r u}$ gives and equation for $r$
+    \item Par comparaison des termes en $e^{-r u}$ on obtient une équation pour $r$ avec
     $$
     -(t^{-1}+\lambda+\mu^\ast)+\lambda(1+b^\ast r)^{-1}+\mu^\ast(1-wr)^{-1}=0
     $$
-    of which only the positive solution $R>0$ is valid due to the boundary conditions.
-    \item Comparing the terms in $u$ yields $d_1 = 1$
-    \item Comparing the terms in $1$ yields
+    dont l'unique solution positive $R>0$ est valide au vu de la borne $0\leq\w{V}(u,t)\leq u+(\lambda b^\ast - \mu^\ast w)t$
+    \item Par comparaison des termes en $u$, il vient $d_1 = 1$
+    \item Par comparaison des termes en $1$ il vient
     $$
     d_0 = t(\lambda b^\ast-\mu^\ast w)
     $$
-    \item Comparing the terms in $e^{-u/w}$
+    \item Par comparaison des termes en $e^{-u/w}$, on a
     $$
     C = (1 - Rw)[w-t(\lambda b^\ast-\mu^\ast w)]
     $$
   \end{itemize}
 \end{frame}
-\begin{frame}{Problem caused by mining}
+\begin{frame}{Problèmes liés au minage}
 \begin{itemize}
-  \item $R\&D$ arm race, consuming a lot of energy and generating large amounts of e-waste
+  \item Course à l'armement, Consomation électrique importante et génération de e-déchet
 \tiny
 \begin{thebibliography}{1}
 
@@ -809,7 +809,7 @@ H.~Alsabah and A.~Capponi, ``Bitcoin mining arms race: R{\&}d with
 \end{thebibliography}
 \end{itemize}
 \begin{itemize}
-  \item \normalsize A threat on centralization?
+  \item \normalsize Une menace sur la décentralisation?
 \tiny
 \begin{thebibliography}{1}
 

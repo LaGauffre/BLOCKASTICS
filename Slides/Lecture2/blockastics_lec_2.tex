@@ -363,7 +363,7 @@ Z= (\alpha-M)_+.
 $$
 Applying the law of total probability yields the probability of successful double spending with
 $$
-\mathbb{P}(\text{Double Spending}) = \mathbb{P}(M\geq \alpha) + \sum_{m = 0}^{\alpha - 1}\binom{\alpha+m-1}{m}q^{2\alpha} p^{2m}.
+\mathbb{P}(\text{Double Spending}) = \mathbb{P}(M\geq \alpha) + \sum_{m = 0}^{\alpha - 1}\binom{\alpha+m-1}{m}q^{\alpha} p^{m}.
 $$ 
 \tiny
 
@@ -522,7 +522,7 @@ $$
 \begin{tcolorbox}[enhanced,drop shadow, title=Theorem (Convergence toward a Dirichlet distribution)]
 Suppose that $r=1$ and let $X_n$ be the color of the ball drawn at the $n^{th}$ round then 
 $$
-X_\infty\sim \text{Dir}(\{N_x\text{, }x\in E\}).
+\{\mathbb{P}(X_\infty = x), x\in E\} \sim \text{Dir}(\{N_x\text{, }x\in E\}).
 $$
 \end{tcolorbox}
 \end{frame}
@@ -534,7 +534,7 @@ We have that
 \end{equation}
 and 
 \begin{equation}\label{eq:polya_sequence_2}
-\mathbb{P}(X_{n+1}=x) = \frac{N_x + \sum_{i=1}^n\delta_{X_i}(x)}{N+n} = m_n(x)
+\mathbb{P}(X_{n+1}=x) = \frac{N_x + \sum_{i=1}^n\delta_{X_i}(x)}{N+n} = \frac{N_x + \lambda_n(x)}{N+n} = m_n(x)
 \end{equation}
 where $\delta_{X_i}$ denotes the Dirac measure at $X_i$.\\
 A sequence that satisfies \eqref{eq:polya_sequence_1} and \eqref{eq:polya_sequence_2} is said to be a Polya sequence with parameter $N_x\text{, }x\in E$.
@@ -546,19 +546,19 @@ There is an equivalence between the two following statements
 \item[(ii)] $\mu^{\ast}\sim \text{Dir}(N_x,x\in E)$ and $X_1,X_2,\ldots$ given $\mu^\ast$ are \iid as $\mu^\ast$
 \end{itemize}
 \end{lemma}
-Consider the event $A = \{X_1 = x_1,\ldots, X_n = x_n\}$. Induction on $n$ allows us to show that (i) is equivalent to 
+Consider the event $A_n = \{X_1 = x_1,\ldots, X_n = x_n\}$. Induction on $n$ allows us to show that (i) is equivalent to 
 \begin{equation}\label{eq:P_A_polya_i}
-\mathbb{P}(A) = \prod_{x\in E} \frac{N_x^{[n(x)]}}{N^{[n]}},
+\mathbb{P}(A_n) = \frac{\prod_{x\in E} N_x^{[\lambda_n(x)]}}{N^{[n]}},
 \end{equation}
-where $n(x)$ is the number of $i$'s for which $x_i = x$ and $a^{[k]} = a(a+1)\ldots(a+k-1)$. \eqref{eq:P_A_polya_i} is easily shown by induction on $n\in\mathbb{N}$. Now assume that $(ii)$ holds true, then 
+where $\lambda_n(x)$ is the number of $i$'s in $1,\ldots, n$ for which $x_i = x$ and $a^{[k]} = a(a+1)\ldots(a+k-1)$.  Now assume that $(ii)$ holds true, then 
 $$
-\mathbb{P}(A|\mu^\ast) = \prod_{x\in E}\mu^\ast(x)^{n(x)},
+\mathbb{P}(A_n|\mu^\ast) = \prod_{x\in E}\mu^\ast(x)^{\lambda_n(x)},
 $$
 recall that $\mu^\ast$ is a random vector, indexed on $E$, We denote by $\mu^\ast(x)$ the component associated with $x\in E$. The law of total probability then yields
 \begin{equation}\label{eq:P_A_polya_ii}
-\mathbb{P}(A) = \E\left[\prod_{x\in E}\mu^\ast(x)^{n(x)}\right],
+\mathbb{P}(A_n) = \E\left[\prod_{x\in E}\mu^\ast(x)^{\lambda_n(x)}\right],
 \end{equation}
-which is the same as \eqref{eq:P_A_polya_i}. Applying the lemma together with the law of large number yield 
+which is the same as \eqref{eq:P_A_polya_i}. Applying the lemma together with the law of large number yields 
 $$
 n^{-1}\sum_{i=1}^n\delta_{X_i}(x) \rightarrow \mu^{\ast}(x)\text{ as } n\rightarrow\infty.
 $$
@@ -745,7 +745,11 @@ Similarly for $n = 0$, we have
 \begin{equation}\label{eq:diff_eq_n_eq_0}
 P_{0}'(x) = -(\lambda+\mu)P_{0}(x).
 \end{equation}
-We denote by $\xi(x) = \mu$ the hazard function of the block arrival time (constant as it is exponentially distributed). The system of differential equations \eqref{eq:diff_eq_n_geq_1}, \eqref{eq:diff_eq_n_eq_0} admits boundary conditions at $x = 0$ with 
+We denote by 
+$$
+\xi(x)\text{d}x =\mathbb{P}(x\leq X< x+\text{d}x|X\geq x)= \mu\text{d}x
+$$
+the hazard function of the block arrival time (constant as it is exponentially distributed). The system of differential equations \eqref{eq:diff_eq_n_geq_1}, \eqref{eq:diff_eq_n_eq_0} admits boundary conditions at $x = 0$ with 
 \begin{equation}\label{eq:boundary_cond_1}
 \begin{cases}
 P_{n}(0) = \int_0^{+\infty} P_{n+b}(x)\xi(x)\text{d}x = \mu\alpha_{n+b},&n \geq1,\\
@@ -770,7 +774,7 @@ G(z) = \frac{G(z;0)}{\lambda(1-z)+\mu}
 \end{equation}
 Using the boundary conditions \eqref{eq:boundary_cond_1}, we write 
 \begin{eqnarray}
-G(z;0) &= &\mu \sum_{n = 0}^\infty P_{n}(0)z^n \nonumber\\
+G(z;0) &= &\sum_{n = 0}^\infty P_{n}(0)z^n \nonumber\\
 &= &P_{0}(0)+\sum_{n=1}^{+\infty}P_{n}(0)z^n\nonumber\\
 &=& \mu\sum_{n = 0}^{b}\alpha_n  + \mu\sum_{n=1}^{+\infty}\alpha_{n+b} z^n\nonumber\\
 &=& \mu\sum_{n = 0}^{b}\alpha_n + \mu z^{-b}\left[G(z)-\sum_{n = 0}^{b}\alpha_n z^n\right]\label{eq:G_z_0}
@@ -779,9 +783,38 @@ Replacing the left hand side of \eqref{eq:G_z_0} by \eqref{eq:G_z_solve_ODE}, mu
 \begin{equation}\label{eq:G_z_as_rational_function}
 \frac{G(z)}{M(z)}[z^b - M(z)] =\sum_{n=0}^{b-1}\alpha_n(z^b - z^n), 
 \end{equation}
-where $M(z) = \mu/(\lambda(1-z)+\mu)$. Using Rouche's theorem, we find that both side of the equation shares $b$ zeros inside the circle $\mathcal{C} = \{z\in\mathbb{C}\text{ ; }|z| <1+\epsilon\}$ for some epsilon. One of them is $1$, and we denote by $z_k$, $k = 1,\ldots, b-1$ the remaining $b-1$ zeros. Given the polynomial form of the right hand side of \eqref{eq:G_z_as_rational_function}, the fundamental theorem of algebra indicates that the number of zeros is $b$. The left hand side can be rewritten as
+where $M(z) = \mu/(\lambda(1-z)+\mu)$. Using Rouche's theorem, we find that both side of the equation shares $b$ zeros inside the circle $\mathcal{C} = \{z\in\mathbb{C}\text{ ; }|z| <1+\epsilon\}$ for some epsilon. 
+\begin{tcolorbox}[enhanced,drop shadow, title=Rouche's theorem]
+Let $\mathcal{C}\in \mathbb{C}$ and $f$ and $g$ two holomorphic functions on $\mathcal{C}$. Let $\partial\mathcal{C}$ be the contour of $\partial\mathcal{C}$. If 
 $$
-G(z)\left[-\frac{\lambda}{\mu}z^{b+1} + \left(1 + \frac{\lambda}{\mu}\right)z^b -1\right],
+|f(z)-g(z)|<|g(z)|\text{, }\forall z\in\partial\mathcal{C}
+$$ 
+then $Z_f-P_f = Z_g-P_g$, where $Z_f$, $P_f$, $Z_g$, and $P_g$ are the number of zeros and poles of $f$ and $g$ respectively.
+
+\end{tcolorbox}
+We have $\partial\mathcal{C} =\{z\in\mathbb{C}\text{ ; }|z| =1+\epsilon\}$. The left hand side can be rewritten as
+$$
+G(z)\left[-\frac{\lambda}{\mu}z^{b+1} + \left(1 + \frac{\lambda}{\mu}\right)z^b -1\right].
+$$
+Define $f(z) = -\frac{\lambda}{\mu}z^{b+1} + \left(1 + \frac{\lambda}{\mu}\right)z^b -1$ and $g(z)=\left(1 + \frac{\lambda}{\mu}\right)z^b$. We have 
+$$
+|f(z) - g(z)| = |-\frac{\lambda}{\mu}z^{b+1}-1|< \frac{\lambda}{\mu}(1+\epsilon)^{b+1}+1\rightarrow \frac{\lambda}{\mu}+1,\text{ as }\epsilon \rightarrow 0. 
+$$
+and 
+$$
+|g(z)| = \left(1 + \frac{\lambda}{\mu}\right)(1+\epsilon)^b\rightarrow \frac{\lambda}{\mu}+1,\text{ as }\epsilon \rightarrow 0. 
+$$
+Regarding the right hand side, define $f(z) = \sum_{n=0}^{b-1}\alpha_n(z^b - z^n)$ and $g(z) =\sum_{n=0}^{b-1}\alpha_nz^b $. We have 
+$$
+|f(z) - g(z)| < |\sum_{n=0}^{b-1}\alpha_n z^n| < \sum_{n=0}^{b-1}\alpha_n (1+\epsilon)^n\rightarrow  \sum_{n=0}^{b-1}\alpha_n,\text{ as }\epsilon \rightarrow 0.
+$$
+and 
+$$
+|g(z)| = (1+\epsilon)^b\sum_{n=0}^{b-1}\alpha_n\rightarrow \sum_{n=0}^{b-1}\alpha_n,\text{ as }\epsilon \rightarrow 0.
+$$
+One of them is $1$, and we denote by $z_k$, $k = 1,\ldots, b-1$ the remaining $b-1$ zeros. Given the polynomial form of the right hand side of \eqref{eq:G_z_as_rational_function}, the fundamental theorem of algebra indicates that the number of zero is $b$. Given the left hand side 
+$$
+G(z)\left[-\frac{\lambda}{\mu}z^{b+1} + \left(1 + \frac{\lambda}{\mu}\right)z^b -1\right].
 $$
 we deduce that there is one zeros outside $\mathcal{C}$, we can further show that it is a real number $z^\ast$. Multiplying both side of \eqref{eq:G_z_as_rational_function} by $(z-1)\prod_{k =1}^{b-1}(z-z_k)$, and using $G(1)=1$ yields
 $$
