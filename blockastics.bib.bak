@@ -1,5 +1,3 @@
-% Encoding: UTF-8
-
 @article{GoHoKrTa16,
 	Author = {G{\"o}bel, J. and Keeler, H. P. and Krzesinski, A. E. and Taylor, P. G.},
 	Date-Added = {2018-09-22 09:28:12 +0000},
@@ -97,6 +95,7 @@
   month     = {sep},
   doi       = {10.1142/7431},
 }
+
 @Article{Cong2020,
   author    = {Lin William Cong and Zhiguo He and Jiasun Li},
   journal   = {The Review of Financial Studies},
@@ -220,6 +219,7 @@
   pages     = {25--40},
   doi       = {10.1007/978-3-030-04648-4_3},
 }
+
 @misc{werner2021sok,
       title={SoK: Decentralized Finance (DeFi)}, 
       author={Sam M. Werner and Daniel Perez and Lewis Gudgeon and Ariah Klages-Mundt and Dominik Harz and William J. Knottenbelt},
@@ -228,6 +228,7 @@
       archivePrefix={arXiv},
       primaryClass={cs.CR}
 }
+
 @Article{Liu2020,
   author    = {Weiyi Liu and Xuan Liang and Guowei Cui},
   journal   = {Economic Modelling},
@@ -288,6 +289,7 @@
   doi       = {10.1017/s0305004100030437},
   publisher = {Cambridge University Press ({CUP})},
 }
+
 @article{rosenfeld2014analysis,
   title={Analysis of hashrate-based double spending},
   author={Rosenfeld, Meni},
@@ -373,6 +375,7 @@
   year   = {2021},
   url    = {https://help.slushpool.com/en/support/solutions/articles/77000426280-reward-system-specification},
 }
+
 @misc{bertucci2020mean,
       title={Mean Field Game Approach to Bitcoin Mining}, 
       author={Charles Bertucci and Louis Bertucci and Jean-Michel Lasry and Pierre-Louis Lions},
@@ -381,6 +384,7 @@
       archivePrefix={arXiv},
       primaryClass={econ.TH}
 }
+
 @Article{Alsabah2018,
   author    = {Humoud Alsabah and Agostino Capponi},
   journal   = {{SSRN} Electronic Journal},
@@ -389,6 +393,7 @@
   doi       = {10.2139/ssrn.3273982},
   publisher = {Elsevier {BV}},
 }
+
 @misc{li2019mean,
       title={A Mean Field Games Model for Cryptocurrency Mining}, 
       author={Zongxi Li and A. Max Reppen and Ronnie Sircar},
@@ -397,6 +402,7 @@
       archivePrefix={arXiv},
       primaryClass={math.OC}
 }
+
 @InCollection{Sapirshtein2017,
   author    = {Ayelet Sapirshtein and Yonatan Sompolinsky and Aviv Zohar},
   booktitle = {Financial Cryptography and Data Security},
@@ -454,6 +460,7 @@
   doi       = {10.1142/s021902491850053x},
   publisher = {World Scientific Pub Co Pte Lt},
 }
+
 @misc{grunspan2019profitability,
       title={On profitability of selfish mining}, 
       author={Cyril Grunspan and Ricardo Pérez-Marco},
@@ -517,6 +524,54 @@
   publisher = {Springer, New York},
   year      = {2011},
   author    = {Smith, H. L.},
+}
+
+@article{lamport1982the,
+author = {Lamport, Leslie and Shostak, Robert and Pease, Marshall},
+title = {The Byzantine Generals Problem},
+year = {1982},
+month = {July},
+abstract = {I have long felt that, because it was posed as a cute problem about philosophers seated around a table, Dijkstra's dining philosopher's problem received much more attention than it deserves. (For example, it has probably received more attention in the theory community than the readers/writers problem, which illustrates the same principles and has much more practical importance.) I believed that the problem introduced in [41] was very important and deserved the attention of computer scientists. The popularity of the dining philosophers problem taught me that the best way to attract attention to a problem is to present it in terms of a story.
+
+There is a problem in distributed computing that is sometimes called the Chinese Generals Problem, in which two generals have to come to a common agreement on whether to attack or retreat, but can communicate only by sending messengers who might never arrive. I stole the idea of the generals and posed the problem in terms of a group of generals, some of whom may be traitors, who have to reach a common decision. I wanted to assign the generals a nationality that would not offend any readers. At the time, Albania was a completely closed society, and I felt it unlikely that there would be any Albanians around to object, so the original title of this paper was The Albanian Generals Problem. Jack Goldberg was smart enough to realize that there were Albanians in the world outside Albania, and Albania might not always be a black hole, so he suggested that I find another name. The obviously more appropriate Byzantine generals then occurred to me.
+
+The main reason for writing this paper was to assign the new name to the problem. But a new paper needed new results as well. I came up with a simpler way to describe the general 3n+1-processor algorithm. (Shostak's 4-processor algorithm was subtle but easy to understand; Pease's generalization was a remarkable tour de force.) We also added a generalization to networks that were not completely connected. (I don't remember whose work that was.) I also added some discussion of practical implementation details.},
+url = {https://www.microsoft.com/en-us/research/publication/byzantine-generals-problem/},
+pages = {382-401},
+journal = {ACM Transactions on Programming Languages and Systems},
+}
+
+@InCollection{Abegg2021,
+  author    = {Jean-Philippe Abegg and Quentin Bramas and Thomas Noël},
+  booktitle = {Networked Systems},
+  publisher = {Springer International Publishing},
+  title     = {Blockchain Using Proof-of-Interaction},
+  year      = {2021},
+  pages     = {129--143},
+  doi       = {10.1007/978-3-030-91014-3_9},
+}
+
+@InProceedings{Anceaume_2018,
+  author    = {Emmanuelle Anceaume and Antoine Guellier and Romaric Ludinard and Bruno Sericola},
+  booktitle = {2018 {IEEE} 17th International Symposium on Network Computing and Applications ({NCA})},
+  title     = {Sycomore: A Permissionless Distributed Ledger that Self-Adapts to Transactions Demand},
+  year      = {2018},
+  month     = {nov},
+  publisher = {{IEEE}},
+  doi       = {10.1109/nca.2018.8548053},
+}
+
+@Article{Biais2019,
+  author    = {Bruno Biais and Christophe Bisi{\`{e}}re and Matthieu Bouvard and Catherine Casamatta},
+  journal   = {The Review of Financial Studies},
+  title     = {The Blockchain Folk Theorem},
+  year      = {2019},
+  month     = {apr},
+  number    = {5},
+  pages     = {1662--1715},
+  volume    = {32},
+  doi       = {10.1093/rfs/hhy095},
+  publisher = {Oxford University Press ({OUP})},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
