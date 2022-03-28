@@ -43,6 +43,9 @@
 \pgfplotsset{compat=1.14}
 \usepackage{tikzducks}
 \usetikzlibrary{snakes}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{automata,arrows,positioning,calc}
 % \usepackage{cmbright}
 
 \makeatletter
@@ -80,7 +83,7 @@
 \lhead{\tfm}                    % Set the header right-side contents
 \rhead{\name}                   % Set the header left-side contents
 % \cfoot{\thepage}                % Set the footer page number
-
+\usepackage{amsthm}
 \usepackage[capitalise,nameinlink,noabbrev]{cleveref}
 \crefname{equation}{}{}
 \crefname{enumi}{}{}
@@ -118,6 +121,11 @@
 \newcommand*{\cond}{\mid}
 \newcommand*{\given}{\,;\,}
 
+%Protocol
+\newcommand*{\PoW}{PoW\@\xspace}
+\newcommand*{\PoS}{PoS\@\xspace}
+\newcommand*{\PoSp}{PoSp\@\xspace}
+\newcommand*{\PoI}{PoI\@\xspace}
 % Regarding spacing and abbreviations.
 \usepackage{xspace}
 

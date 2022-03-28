@@ -84,7 +84,7 @@ Because consensus protocols involve random components, stochastic modelling is r
 \end{figure}
 As it is hard to improve one dimension without negatively impacting the other two, trade-offs must be made. We will see how to use classical models of applied probability, including urn, epidemic, graph, queue and risk models, to provide numerically tractable indicators to quantify the efficiency, decentralization and security of blockchain systems. These indicators will then allow us to carry out sensitivity analysis with respect to the model parameters to optimize and improve blockchain implementations.\\
 
-\noindent The main application of blockchain systems today is undoubtedly cryptocurrencies, the most well known of which being the bitcoin introduced by \citet{Na08}. Public and permissionless blockchain, like the bitcoin one, must be associated to a cryptocurrency. Indeed, to add a block to the bitcoin blockchains the full nodes compete to solve a cryptrographic puzzle using brute force search algorithm. The first node (referred to is miner) who finds a solution, appends the next block and collects a reward expressed in cryptocurrency. Assuming this reward is worth something, it offsets the operational cost, essentially the electricity consumed to run the computers 24/7. A cryptocurrency must be equipped with following features
+\noindent The main application of blockchain systems today is undoubtedly cryptocurrencies, the most well known of which being the bitcoin introduced by \citet{Na08}. Public and permissionless blockchain, like the bitcoin one, must be associated to a cryptocurrency. Indeed, to add a block to the bitcoin blockchains the full nodes compete to solve a cryptrographic puzzle using brute force search algorithm. The first node (referred to as a miner) who finds a solution, appends the next block and collects a reward expressed in cryptocurrency. Assuming this reward is worth something, it offsets the operational cost which is essentially the electricity consumed to run the computers 24/7. A cryptocurrency must be equipped with following features
 \begin{enumerate}
   \item No central authority (Decentralized network)
   \item Ledger to record all the transactions and coin ownership (the blockchain)
@@ -104,22 +104,14 @@ Cryptocurrencies draw their fundamental value from the fact that they
   \item permit money transfer worldwide at low fare
   \item do not require a thrusted third party
 \end{itemize} 
-Decentralized finance aims at extending the promises of bitcoin to An
-important implication of this architecture is disintermediation, it creates an environment where
+An important implication of this architecture is disintermediation, it creates an environment where
 multiple parties can interact directly and transparently. Blockchain is therefore immediately relevant
-to banks and financial institutions which incur huge middlemen costs in settlements and other back
-office operations. Decentralized finance (DeFi) offers a new financial architecture that is non-custodial,
-permissionless, openly auditable, pseudo-anonymous and with potential new capital efficiencies. It
-extends the promise of the original bitcoin whitepaper (Nakamoto, 2008) of non-custodial transaction
-to more complex financial operations.
+to banks and financial institutions which incur huge middlemen costs in settlements and other back office operations. Decentralized finance (DeFi) offers a new financial architecture that is non-custodial, permissionless, openly auditable, pseudo-anonymous and with potential new capital efficiencies. It extends the promise of the original bitcoin whitepaper \citet{Na08} of non-custodial transaction
+to more complex financial operations, see the SoK of \citet{werner2021sok}.\\
 
+\noindent Blockchain is a research topic of interest to many communities. Computing science distributed ledger technologies (synonymous with blockchains) rely on distributed algorithms and enable cooperation within a peer-to-peer network. Linking blocks and checking the authenticity of data uses cryptographic functions which is another field of computer science. The establishment of an incentive system within a network of individuals adopting a strategic behavior naturally leads to problems of game theory similar to those solved by economists. The discussion on the nature of new financial assets such as crypto-currencies, utility tokens and non-fungible tokens, is also at the center of the concerns of researchers in finance and monetary economics. \\
 
-
-Blockchain is a research topic of interest to many communities outside of the applied mathematics one
-
-The design of consensus protocol is      
-
-These notes are organized as follows. \cref{chap:consensus} presents the various consensus algorithms. \cref{chap:security} focuses on the security aspects. In \cref{chap:security}, we take a look at decentralization in \cref{chap:decentralization}. We close on efficiency with \cref{chap:efficiency}.
+\noindent We focus here on the use of mathematics to optimize blockchain systems which makes our problems very close to those encountered in operations research. These notes are organized as follows. \cref{chap:consensus} presents the various consensus algorithms. \cref{chap:security} focuses on the security aspects. In \cref{chap:security}, we take a look at decentralization in \cref{chap:decentralization}. We close on efficiency with \cref{chap:efficiency}.
 
 
 

@@ -1,9 +1,218 @@
 % !TEX root = ../main_lecture_notes.tex
 \chapter{Consensus protocol}\label{chap:consensus}
+Transactions flow through the network of full nodes. After reviewing them, the full nodes must agree on the transaction that will be recorded in the next block. to do this, an algorithm must be designed so that consensus is reached.
+A consensus protocol must be based on one of the scarce resources available to the network peers which include
+\begin{itemize}
+	\item bandwidth
+	\item computational power
+	\item storage 
+\end{itemize}
+The first solution that comes to mind for reaching consensus is a majority vote based on a message exchange system. This solution has been proposed by \citet{lamport1982the} within the famous "Byzantine general problem". A voting system inside a large network involves a colossal number of messages exchanged leading to the consumption of all the bandwidth, the failure of some nodes by denial of service and delays in the synchronization of the network. Practical solution like the celebrated Practical Byzantine Fault Tolerance (PBFT) presented in \citet{GoHoKrTa16} have been implemented in some blockchain systems. Despite these advances, a change in methods was needed to accommodate a network that could grow indefinitely.\\
 
-The problem of reaching consensus within a Peer-to-peer network is a very old problem in computer science. An obvious solution is to rely on a majority vote. This is the solution proposed by SHostak and his co-author who, in passing, make a famous analogy with Byzantine generals trying to agree on a common battle plan. Here the battle plan corresponds to adding a new block with a set of transactions deemed valid and therefore agreeing on a common data history. A voting system inside a large network involves a colossal number of messages exchanged leading to the consumption of all the bandwidth, the failure of certain nodes by denial of service and delays in the synchronization of the network. Castro and Liskov's Practical Byzantine Fault Tolerance (PBFT) algorithm is the gold standard for practical implementation of a voting system within a peer-to-peer network. Despite these recent advances, such a system is not suitable for a network that can grow indefinitely. Bitcoin solved this scaling problem by proposing a system based on the election of a leader making unilateral decisions. The Proof of Work protocol appoints a leader based on its computing resources. Each node competes to solve a puzzle with a brute force search algorithm. The first node who is able to propose a solution append the next block. The search for a solution, referred to as mining, is associated with an operational cost borne by the nodes which is compensated by a reward expressed in the native blockchain cryptocurrency. The surge in cryptocurrency prices has led to a rush in block mining, leading to a major spike in the electricity consumption and electronic waste generation of blockchain networks. The blockchain network consumes as much electricity as countries the size of Thailand at the time of the writing. The need for a more restricted consensus protocol therefore becomes crucial. These remain based on the election of a leader but rely on other network resources. The Proof-of-Stake protocol sample the nodes with
-The proof of storage (no arm race, no electronic waste and useful like the file coin project)
-\section{Voting system}\label{sec:voting}
+\noindent \citet{Na08} solved this scaling problem by proposing a system based on the election of a leader. The Proof-of-Work (\PoW) protocol appoints a leader based on its computing resources. Each node competes to solve a puzzle with a brute force search algorithm. The first node who is able to propose a solution append the next block. The search for a solution, referred to as mining, is associated with an operational cost borne by the nodes which is compensated by a reward expressed in the native blockchain cryptocurrency. The surge in cryptocurrency prices has led to a rush in block mining, leading to a major spike in the electricity consumption and electronic waste generation of blockchain networks. The blockchain network consumes as much electricity as countries the size of Thailand at the time of the writing. The need for a more environmentally friendly consensus protocol therefore becomes pivotal. The use of data storage has been implemented within the Filecoin project of Protocol \citet{protocol2017filecoin} via the Proof-of-Space (\PoSp) and its variant like the Proof-of-Spacetime protocol. A leader is chosen depending on how much data she currently stored or for how long some data has been stored. Proof-of-Space (\PoSp) is seen as a fairer and greener alternative by blockchain enthusiasts due to the general purpose nature of storage and the lower energy cost required by storage. The fact that most storage resources are owned by companies offering cloud storage solution poses a threat to the decentralized nature of the distributed ledger. The Proof-of-Interaction (\PoI) protocol, proposed by \citet{Abegg2021}, takes as leader the first node that is able to contact and obtain a response from a random sequence of nodes. This is a bandwidth-based alternative that is more scalable than majority voting. Along with bandwidth, computing power, and storage, a new resource has emerged with the advent of cryptocurrencies as a medium of exchange. The Proof-of-Stake protocol, described by \citet{Saleh2020}, selects a node with a probability proportional to the number of cryptocoins it holds. \\
+
+\noindent This chapter is organized as follows. \cref{sec:voting} gives a brief description of the voting based ways to get consensus by reviewing the "generals" problem. \cref{sec:leader} goes through the leader based consensus protocols, including \PoW in \cref{ssec:pow}, \PoSp in \cref{ssec:posp}, \PoI in \cref{ssec:poi}, and \PoS in \cref{ssec:pos}. 
+
+\section{Voting system}\label{sec:voting} 
+The problem of reaching consensus in a peer-to-peer network via a majority vote has been abstractedly compared to generals who must agree on a common battle plan. We start from the simple two general case before moving on the the situation of interest with several ones.
+\subsection{Two generals problem}
+Two generals wish to attack a city but they must agree on a timing to attack a city. They communicate via a messenger who must cross enemy territory at the risk of being intercepted. The first general $G_1$ sends a message to the second one $G_2$ saying 
+$$
+\texttt{"I will attack tomorrow at dawn"}
+$$
+For the attack to succeed, both generals must attack at the same time. Because their communication medium is unreliable, then $G_1$ must await confirmation from $G_2$ in order to attack. If $G_1$ does not receive confirmation then she will not attack. $G_2$ is aware of that and respond 
+$$
+\texttt{"I will follow your lead"}
+$$
+$G_2$ does not know whether the message went through and must wait for confirmation. This creates an infinite loop of messages and response, as on \cref{fig:message_loop}.
+\begin{figure}[ht!]
+ \begin{center}
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=3cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)                     {$G_1$};
+\node[state]    (2)[right of=1]   {$G_2$};
+\path
+(1) edge[bend left]     node{Attack}     (2)
+(2) edge[bend left]     node{Confirmation}      (1);
+\end{tikzpicture}
+\end{center}
+\caption{Message and confirmation loop}
+\label{fig:message_loop}
+\end{figure}
+The two general problem is deemed unsolvable from a theoretical point of view and corresponds to a situation where two nodes communicate through an unreliable link. A practical solution for generals is to send many messengers hoping that at least one of them will succeed. This is only a thought experiment leading to the several general problem. 
+\subsection{Byzantine General problem}
+The blockchain network contains more than two nodes, these nodes must agree on the transactions to confirm. In a permissionless blockchain the nodes do not trust each other. The problem of the previous section generalizes to more than two generals, assuming that some generals are traitors which corresponds to faulty nodes in the network. This problem is referred to as The "Byzantine general problem" and was coined by \citet{lamport1982the}. Assume that $n>2$ generals must agree on a common battle plan for instance "Attack" (A) or "Retreat" (R) and that they can only communicate by two party messages. Denote by $m(i,j)$ the message sent by general $i$ to general $j$. Each general $j$ receives $n-1$ messages and applies a function $f$ to determine the course of action, for instance
+$$
+f(\{m(i,j);\text{ }i = 1,\ldots,n\}) = \begin{cases}
+A,& \text{if }\sum_{i = 1}^n\mathbb{I}_{m(i,j) =A} >n/2,\\
+R, &\text{else}.
+\end{cases}
+$$
+If there are no traitors, each general is communicating the same value to all the peers and consensus is reached as in \cref{fig:no_traitor}. If one general is traitor, then he might not communicate the same value to all the generals and no consensus can be reached. It is the case for $G_4$ in \cref{fig:_one_traitor}.
+\begin{figure}[ht!]
+ \begin{center}
+ \subfloat[No traitor]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=2cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)                     {$G_1$};
+\node[state]    (2)[below of=1]   {$G_2$};
+\node[state]    (3)[below of=2]   {$G_3$};
+\node[state]    (4)[below of=3]   {$G_4$};
+\node[state]    (5)[below of=4]   {$G_5$};
+\node[draw] (6) [right of=1]   {$f({A,R,R,A,A}) = A$};
+\node[draw] (7) [right of=2]   {$f({A,R,R,A,A}) = A$};
+\node[draw] (8) [right of=3]   {$f({A,R,R,A,A}) = A$};
+\node[draw] (9) [right of=
+4]   {$f({A,R,R,A,A}) = A$};
+\node[draw] (10) [right of=5]   {$f({A,R,R,A,A}) = A$};
+\path
+(1) edge[bend left]     node{A}     (2)
+(2) edge[bend left]     node{R}      (1)
+(2) edge[bend left]     node{R}      (3)
+(3) edge[bend left]     node{R}      (2)
+(3) edge[bend left]     node{R}      (4)
+(4) edge[bend left]     node{A}      (3)
+(4) edge[bend left]     node{A}      (5)
+(5) edge[bend left]     node{A}      (4)
+;
+\path
+(1) edge     (6)
+(2) edge     (7)
+(3) edge     (8)
+(4) edge     (9)
+(5) edge     (10)
+;
+\end{tikzpicture}
+\label{fig:no_traitor}}
+\hskip2em
+ \subfloat[One traitor]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=2cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)                     {$G_1$};
+\node[state]    (2)[below of=1]   {$G_2$};
+\node[state]    (3)[below of=2]   {$G_3$};
+\node[state]    (4)[below of=3]   {\color{red}$G_4$};
+\node[state]    (5)[below of=4]   {$G_5$};
+\node[draw] (6) [right of=1]   {$f({A,R,R,R,A}) = R$};
+\node[draw] (7) [right of=2]   {$f({A,R,R,R,A}) = R$};
+\node[draw] (8) [right of=3]   {$f({A,R,R,R,A}) = R$};
+\node[draw] (9) [right of=
+4]   {$f({A,R,R,?,A}) = ?$};
+\node[draw] (10) [right of=5]   {$f({A,R,R,A,A}) = A$};
+\path
+(1) edge[bend left]     node{A}     (2)
+(2) edge[bend left]     node{R}      (1)
+(2) edge[bend left]     node{R}      (3)
+(3) edge[bend left]     node{R}      (2)
+(3) edge[bend left]     node{R}      (4)
+(4) edge[bend left]     node{\color{red}R}      (3)
+(4) edge[bend left]     node{\color{red}A}      (5)
+(5) edge[bend left]     node{A}      (4)
+;
+\path
+(1) edge     (6)
+(2) edge     (7)
+(3) edge     (8)
+(4) edge     (9)
+(5) edge     (10)
+;
+\end{tikzpicture}
+\label{fig:_one_traitor}}
+\end{center}
+\caption{Majority vote with or without a traitor}
+\label{fig:majority_vote}
+\end{figure}
+To handle such a situation, roles are given to the general. One of them become the leader and the other are the lieutenants. We aim at finding an algorithm such that
+\begin{itemize}
+	\item[C1] All the loyal lieutenants obey the same order
+	\item[C2] If the commanding general is loyal, then  every loyal lieutenants obey the order he sends
+\end{itemize}
+
+A first result from \citet{lamport1982the} is the following
+\begin{theo}
+There are no solution to the Byzantine General problem for $n<3m+1$ generals where $m$ is the number of traitors.
+\end{theo}
+\begin{proof}
+Consider the situation where $n = 3$ and $m = 1$. The traitor is either the commander or one of the lieutenants as shown in 
+\begin{figure}[ht!]
+ \begin{center}
+ \subfloat[Commander is loyal]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=4cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)               {C};
+\node[state]    (2)[below left of=1]   {L1};
+\node[state]    (3)[below right of=1]   {\begin{color}{red}L2 \end{color}};
+\path
+(1) edge[bend left]     node{A}     (3)
+(1) edge[bend right]     node{A}      (2)
+(2) edge[bend left]     node{A}      (3)
+(3) edge[bend left]     node{R}      (2)
+% (3) edge[bend left]     node{R}      (4)
+% (4) edge[bend left]     node{A}      (3)
+% (4) edge[bend left]     node{A}      (5)
+% (5) edge[bend left]     node{A}      (4)
+;
+\end{tikzpicture}
+\label{fig:commander_loyal}}
+\hskip2em
+ \subfloat[Commander is a traitor]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=4cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)               {\begin{color}{red}C \end{color}};
+\node[state]    (2)[below left of=1]   {L1};
+\node[state]    (3)[below right of=1]   {L2};
+\path
+(1) edge[bend left]     node{A}     (3)
+(1) edge[bend right]     node{R}      (2)
+(2) edge[bend left]     node{R}      (3)
+(3) edge[bend left]     node{A}      (2)
+% (3) edge[bend left]     node{R}      (4)
+% (4) edge[bend left]     node{A}      (3)
+% (4) edge[bend left]     node{A}      (5)
+% (5) edge[bend left]     node{A}      (4)
+;
+\end{tikzpicture}
+\label{fig:commander_traitor}}
+\end{center}
+\caption{Majority vote with or without a traitor}
+\label{fig:majority_vote}
+\end{figure}
+Unfortunately for Lieutenant 2, there is no way for her to tell apart the situation pictured in \cref{fig:commander_loyal} and \cref{fig:commander_traitor} and therefore no way to ensure both C1 and C2. We prove the result for $n>3$ by contradiction. Assume that there is a way to verify both C1 and C2 with $3<n<3m+1$. We then construct a solution with generals by having one general simulate the commander plus at most $m-1$ generals, and the other two simulating at most $m$ generals. One of the generals gather all the traitors and is therefore a traitor. The other two are loyal generals as they only simulate loyals general. We have built a solution with three generals that we know is impossible. 
+\end{proof}
+Now we need an algorithm that allows $n>3m+1$ generals to deal with $m$ traitors. We denote it by $OM(m)$, where OM stands for "Oral Messages".
+\begin{algorithm}[!ht]
+\caption{OM(m) }\label{alg:om}
+\begin{algorithmic}[1]
+\State Initialize $m=0$;
+\For{$i =1 \to n-1$} 
+\State Commander sends $v_i = v$ to lieutenant $i$ 
+\State Lieutenant $i$ set their value to $v$
+\EndFor
+\State Let $m>0$;
+\While{$\pi_s(\theta) \neq \pi(\theta|\bx)$}
+\State Search for $\pi_{s+1}$ such that
+\[
+\frac{1}{\sum_{i=1}^{N}(W_i^{s+1})^2}\geq \rho N,\text{ with }W_i^{s+1}\propto w_i^{s+1} = \pi_{s+1}(\theta^{s}_i)/\pi_{s}(\theta^{s}_i) ,\text{ }i = 1,\ldots, K
+\]
+\State Compute $\widehat{\Sigma} = \text{Cov}\left(\{ (W_i^{s+1}, \theta_i^{s}),\text{ }i = 1,\ldots, K\}\right)$
+\For{$i =1 \to K$}
+\State Sample $\tilde{\theta}_i\sim\{\theta^{(s)}_1,\ldots, \theta^{(s)}_K\}$ with probabilities $W_j^{s+1},\text{ for }1\leq j\leq K$
+\EndFor 
+\For{$i =1 \to K$}
+\State $\tilde{\theta}^\ast_i\leftarrow K_H(\tilde{\theta}_i,\cdot)$ where $K_H(\tilde{\theta}_i,\cdot)$ where $H = \frac{2.38}{\sqrt{d}}\cdot \widehat{\Sigma}$ 
+\EndFor 
+\State Compute $p_a = N^{-1}\sum_{i = 1}^K\mathbb{I}_{\tilde{\theta}^\ast_i=\tilde{\theta}_i}$ ; $k = \max\left\{k_{\text{max}},\, \min\left[k_{\text{min}},\,\frac{\log(1-c)}{\log(1-p_a)}\right]\right\}$
+\For{$i =1 \to K$}
+\State $\theta^{s+1}_i\leftarrow K_H^{\ast (k-1)}(\tilde{\theta}^\ast_i,\cdot)$ where $K_H^{\ast (k-1)}(\tilde{\theta}^\ast_i,\cdot)$ corresponds to $k-1$ Metropolis-Hasting-Gibbs moves
+\State $W_i^{s+1}\leftarrow 1/K$
+\EndFor
+\EndWhile
+\State Return $(W^{t}_1,\theta^{t}_1),\ldots, (W^{t}_K,\theta^{t}_N)$
+\end{algorithmic}
+\end{algorithm}
+
+
+
 \section{Leader system}\label{sec:leader}
 \begin{itemize}
 \item Public blockchain, 
@@ -19,5 +228,7 @@ The proof of storage (no arm race, no electronic waste and useful like the file 
 \end{itemize}
 \end{itemize}
 \subsection{Proof-of-Work}\label{ssec:pow}
+\subsection{Proof-of-SpaceTime}\label{ssec:posp}
+\subsection{Proof-of-Interaction}\label{ssec:poi}
 \subsection{Proof-of-Stake}\label{ssec:pos}
 

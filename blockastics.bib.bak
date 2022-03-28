@@ -574,4 +574,22 @@ journal = {ACM Transactions on Programming Languages and Systems},
   publisher = {Oxford University Press ({OUP})},
 }
 
+@misc{werner2021sok,
+      title={SoK: Decentralized Finance (DeFi)}, 
+      author={Sam M. Werner and Daniel Perez and Lewis Gudgeon and Ariah Klages-Mundt and Dominik Harz and William J. Knottenbelt},
+      year={2021},
+      eprint={2101.08778},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR}
+}
+
+@misc{xu2021sok,
+      title={SoK: Decentralized Exchanges (DEX) with Automated Market Maker (AMM) protocols}, 
+      author={Jiahua Xu and Nazariy Vavryk and Krzysztof Paruch and Simon Cousaert},
+      year={2021},
+      eprint={2103.12732},
+      archivePrefix={arXiv},
+      primaryClass={q-fin.TR}
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
