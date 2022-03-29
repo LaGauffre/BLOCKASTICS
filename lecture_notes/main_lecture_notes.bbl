@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{12}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -11,6 +11,39 @@ Jean-Philippe Abegg, Quentin Bramas, and Thomas Noël.
 \newblock In \emph{Networked Systems}, pages 129--143. Springer International
   Publishing, 2021.
 \newblock \doi{10.1007/978-3-030-91014-3_9}.
+
+\bibitem[Al-Kuwari et~al.(2011)Al-Kuwari, Davenport, and
+  Bradford]{cryptoeprint:2011:565}
+Saif Al-Kuwari, James~H. Davenport, and Russell~J. Bradford.
+\newblock Cryptographic hash functions: Recent design trends and security
+  notions.
+\newblock Cryptology ePrint Archive, Report 2011/565, 2011.
+\newblock \url{https://ia.cr/2011/565}.
+
+\bibitem[Antonopoulos(2017)]{Antonopoulos2017}
+Andreas Antonopoulos.
+\newblock \emph{Mastering Bitcoin}.
+\newblock O'Reilly UK Ltd., July 2017.
+\newblock ISBN 1491954388.
+\newblock URL
+  \url{https://www.ebook.de/de/product/26463992/andreas_antonopoulos_mastering_bitcoin.html}.
+
+\bibitem[Bowden et~al.(2020)Bowden, Keeler, Krzesinski, and Taylor]{Bowden2020}
+R.~Bowden, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor.
+\newblock Modeling and analysis of block arrival times in the bitcoin
+  blockchain.
+\newblock \emph{Stochastic Models}, 36\penalty0 (4):\penalty0 602--637, jul
+  2020.
+\newblock \doi{10.1080/15326349.2020.1786404}.
+
+\bibitem[Castro and Liskov(1999)]{10.5555/296806.296824}
+Miguel Castro and Barbara Liskov.
+\newblock Practical byzantine fault tolerance.
+\newblock In \emph{Proceedings of the Third Symposium on Operating Systems
+  Design and Implementation}, OSDI '99, page 173–186, USA, 1999. USENIX
+  Association.
+\newblock ISBN 1880446391.
+\newblock URL \url{https://dl.acm.org/doi/10.5555/296806.296824}.
 
 \bibitem[G{\"o}bel et~al.(2016)G{\"o}bel, Keeler, Krzesinski, and
   Taylor]{GoHoKrTa16}

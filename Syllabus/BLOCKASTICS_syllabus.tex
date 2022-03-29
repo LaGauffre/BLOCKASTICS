@@ -32,33 +32,34 @@
 \vspace*{2em}}
 
 %-----Body-----%
-In 2008, Blockchain was introduced to the world as the underlying technology of the Bitcoin electronic cash system. After more than a decade of development, various blockchain systems have been proposed with application going beyond the creation of a cryptocurrency. This course is organized around four 45-minute lectures on the theme of stochastic models in relation to the analysis of blockchain systems. 
+In 2008, Blockchain was introduced to the world as the underlying technology of the Bitcoin electronic cash system. After more than a decade of development, various blockchain systems have been proposed with application going beyond the creation of a cryptocurrency. This course is organized around four chapters on the theme of stochastic models in relation to the analysis of blockchain systems. 
 \\
 
-\noindent \textbf{Part 1: Blockchain concepts}\\
-\noindent A blockchain is a distributed data ledger maintained by achieving consensus among a number of nodes in Peer-to-peer network. After providing some preliminary definitions, we introduce the \textit{proof-of-work} and \textit{proof-of-stake} consensus protocols which are at the core of public and permissionless blochchains (like the bitcoin and ethereum ones). We further define three dimensions according to which a blockchain system may be evaluated including (1) efficiency, (2) decentralization and (3) security.    
+\noindent \textbf{Part 1: Blockchain concepts and consensus protocols}\\
+\noindent A blockchain is a distributed data ledger maintained by achieving consensus among a number of nodes in peer-to-peer network. After providing some preliminary definitions and discussing some real world applications of blockchain, we introduce the various consensus protocols at the core of blockchain systems. We further define three dimensions according to which a blockchain system must be evaluated including (1) security, (2) decentralization and (3) efficiency.    
 \\
 
-\noindent \textbf{Part 2: Simple models for blockchain performance analysis}\\
-\noindent A review of the mathematical models and tools used so far to assess the performance of blockchain systems is provided. They consist of standard models from the applied probability literature like random walks, Markov chains, urns and queues.
+\noindent \textbf{Part 2: Security of blockchain systems}\\
+\noindent A review of the mathematical models and tools used so far to assess the security of blockchains systems. We address here security issues linnked to the \textit{proof-of-work} protocol, including double spending and selfish mining.
+the performance of blockchain systems is provided. They consist of standard models from the applied probability literature like random walks, Markov chains, urns and queues.
 \\
 
-\noindent \textbf{Part 3: Risk models and blockchain mining}\\
-\noindent Mining blocks on a blockchain equipped with a proof of work consensus protocol is well-known to be resource-consuming. A miner bears the operational cost, mainly
-electricity consumption and IT gear, of mining, and is compensated by a capital gain when a block is discovered. The profitability of mining is studied via stochastic models and tools borrowed from insurance risk theory. We consider the case of solo mining, pool mining and selfish mining.    
+\noindent \textbf{Part 3: Decentralization of blockchain systems}\\
+\noindent Decentralization measures the fairness of the decision power distribution among the blockchain network peers. We are going to study the decentralization of \textit{proof-of-stake} based blockchain via stochastic processes with reinforcement and of \textit{proof-of-work} based blockchain with the formation of mining pool.       
 \\
 
-% \noindent \textbf{Part 4: Decentralized finance and cryptoasset pricing}\\
-% \noindent Blockchain creates an environment where multiple parties can interact directly and transparently. It is therefore immediately relevant to banks and financial institutions which incur huge middlemen costs in settlements and other back office operations. Decentralized finance (DeFi) offers a new financial architecture that is non-custodial, permissionless, openly auditable, pseudo-anonymous and with potential new capital efficiencies. An overview of the existing cryptoassets is given before discussing some pricing models for this new class of financial assets. \\
+\noindent \textbf{Part 4: Efficiency of blockchain systems}\\
+\noindent Efficiency is the amount of data that a blockchain systems can processed per time unit. A general queueing model is introduced to provide numerical indicators of throughputs (the number of transactions being processsed per time unit) and latency (the time it takes for a transaction to go from the state pending to confirmed).       
+\\
 
-
-\textsc{Important links:}
+\textsc{Prerequisites:}
 \begin{itemize}  
-\item Course page: \courseWebpage  
-\item Course Github repository: \courseGithubRepo
+\item Basic knowledge on stochastic processses such as random walk, Poisson processes and Markov chains (Some reminders will be provided during the lectures)  
+\item The proofs will use standard combinatorial analysis, Martingale techniques and first step analysis. (Once again some reminders will be provided during the lessons)  
+\item Basic knowledge of coding in python. We will use Python to do Monte Carlo Simulations using native python methods and bit of numpy and scipy. Examples and illustrations will be done using python and Jupyter notebooks. My suggestion is to install \href{https://www.anaconda.com/products/individual}{Anaconda} but one can also simply uses \href{https://colab.research.google.com/}{Google collab}. Please bring your laptops!
 \end{itemize}
-\noindent Examples and illustrations will be done using python and Jupyter notebook. My suggestion is to install anaconda \url{https://www.anaconda.com/products/individual} 
-% \cite{GoHoKrTa16,Bu14,Na08,albrecher:hal-02649025,Goffard2019,Schilling2019,pfeffer2017institutional,Bowden2020,Asmussen_2010,Cong2020,Cong2020a,Eyal2014,Fu2020,Gochhayat2020,Kawase2017,OECD,rosenfeld2011analysis,Saleh2020,Rosu2021,Li2018,werner2021sok,Liu2020,Liu2020,bertucci2020mean,Schrijvers2017}
+\textsc{Evaluations:}\\
+You will be gathered in groups of 2-3 and you will have to give a presentation (during the very last lecture) on a research paper in relation to the topic of blockchain mathematics. I will give you some papers to choose from. You may also find your own paper and I will let you know whether it is adequate. The grade will be based on the quality of the oral presentation and the presentation support (the slides). 
 
 \nocite{*}
 

@@ -592,4 +592,37 @@ journal = {ACM Transactions on Programming Languages and Systems},
       primaryClass={q-fin.TR}
 }
 
+@Article{protocol2017filecoin,
+  author  = {Protocol Labs},
+  journal = {White paper},
+  title   = {Filecoin: A Decentralized Storage Network},
+  year    = {2017},
+  note    = {\url{https://filecoin.io/filecoin.pdf}},
+}
+
+@InProceedings{10.5555/296806.296824,
+  author    = {Castro, Miguel and Liskov, Barbara},
+  booktitle = {Proceedings of the Third Symposium on Operating Systems Design and Implementation},
+  title     = {Practical Byzantine Fault Tolerance},
+  year      = {1999},
+  address   = {USA},
+  pages     = {173–186},
+  publisher = {USENIX Association},
+  series    = {OSDI '99},
+  isbn      = {1880446391},
+  location  = {New Orleans, Louisiana, USA},
+  numpages  = {14},
+  url       = {https://dl.acm.org/doi/10.5555/296806.296824},
+}
+
+@misc{cryptoeprint:2011:565,
+    author       = {Saif Al-Kuwari and
+        James H. Davenport and
+        Russell J. Bradford},
+    title        = {Cryptographic Hash Functions: Recent Design Trends and Security Notions},
+    howpublished = {Cryptology ePrint Archive, Report 2011/565},
+    year         = {2011},
+    note         = {\url{https://ia.cr/2011/565}},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
