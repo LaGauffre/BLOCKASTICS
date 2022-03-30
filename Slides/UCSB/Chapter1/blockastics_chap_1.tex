@@ -243,36 +243,36 @@ A block contains
 \end{center}
 \url{https://www.blockchain.com/}
 \end{frame}
-\begin{frame}{Cryptographic Hash function}
-\small
-A function that maps data of arbitratry size (message) to a bit array of fixed size (hash value)
-$$
-h:\{0,1\}^\ast\mapsto \{0,1\}^d. 
-$$
-A good hash function is
-\begin{itemize}
-\item deterministic
-\item quick to compute
-\item One way
-\begin{itemize}
-  \scriptsize
-\item[$\hookrightarrow$] For a given hash value $\overline{h}$ it is hard to find a message $m$ such that 
-$$
-h(m) = \overline{h}
-$$
-\end{itemize}
-\item Colision resistant 
-\begin{itemize}
-\item[$\hookrightarrow$] Impossible to find $m_1$ and $m_2$ such that 
-$$
-h(m_1) = h(m_2)
-$$
-\end{itemize}
-\item Chaotic
-$$m_1\approx m_2\Rightarrow  h(m_1) \neq h(m_2)$$
-\end{itemize}
+% \begin{frame}{Cryptographic Hash function}
+% \small
+% A function that maps data of arbitratry size (message) to a bit array of fixed size (hash value)
+% $$
+% h:\{0,1\}^\ast\mapsto \{0,1\}^d. 
+% $$
+% A good hash function is
+% \begin{itemize}
+% \item deterministic
+% \item quick to compute
+% \item One way
+% \begin{itemize}
+%   \scriptsize
+% \item[$\hookrightarrow$] For a given hash value $\overline{h}$ it is hard to find a message $m$ such that 
+% $$
+% h(m) = \overline{h}
+% $$
+% \end{itemize}
+% \item Colision resistant 
+% \begin{itemize}
+% \item[$\hookrightarrow$] Impossible to find $m_1$ and $m_2$ such that 
+% $$
+% h(m_1) = h(m_2)
+% $$
+% \end{itemize}
+% \item Chaotic
+% $$m_1\approx m_2\Rightarrow  h(m_1) \neq h(m_2)$$
+% \end{itemize}
 
-\end{frame}
+% \end{frame}
 \begin{frame}{Consensus protocols}
 The mechanism to make all the nodes agree on a common data history.\\
 \vspace{0.3cm}
@@ -725,6 +725,35 @@ Gerry Tsoukalas talk at \\
   \end{itemize}
   \item Use smart contract and off-chain data through oracles
   \item Transparent and automatic
+\end{itemize}
+\end{frame}
+\begin{frame}{Blockchain as a research topic}
+\begin{itemize}
+  \item Computer science
+  \begin{itemize}
+  \item Peer-to-peer networks and consensus algorithm
+  \item Cryptography and security
+  \end{itemize}
+  \item Economics  
+  \begin{itemize}
+  \item Game theory to study the incentive mechanism at play
+  \item Nature of the cryptoassets
+  \end{itemize}
+  \item Operations research  
+  \begin{itemize}
+  \item Optimization of complex system
+  \end{itemize}
+  \item Financial math  
+  \begin{itemize}
+  \item Valuation models for cryptoassets
+  \end{itemize}
+  \item Machine learning and statistics  
+  \begin{itemize}
+  \item Open data
+  \item Interaction between blockchain users
+  \item (Social) network analysis
+  \item Clustering of public keys and addresses in the bitcoin blockchain.
+  \end{itemize}
 \end{itemize}
 \end{frame}
 
