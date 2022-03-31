@@ -625,4 +625,22 @@ journal = {ACM Transactions on Programming Languages and Systems},
     note         = {\url{https://ia.cr/2011/565}},
 }
 
+@Book{Antonopoulos2017,
+  author    = {Antonopoulos, Andreas},
+  publisher = {O'Reilly UK Ltd.},
+  title     = {Mastering Bitcoin},
+  year      = {2017},
+  isbn      = {1491954388},
+  month     = jul,
+  ean       = {9781491954386},
+  url       = {https://www.ebook.de/de/product/26463992/andreas_antonopoulos_mastering_bitcoin.html},
+}
+
+@Article{ppcoin,
+  author  = {Sunny King and Scott Nadal},
+  journal = {whitepaper},
+  title   = {PPCoin: Peer-to-Peer Crypto-Currency with Proof-of-Stake�},
+  year    = {2012},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

@@ -1,4 +1,4 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{11}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -45,18 +45,10 @@ Miguel Castro and Barbara Liskov.
 \newblock ISBN 1880446391.
 \newblock URL \url{https://dl.acm.org/doi/10.5555/296806.296824}.
 
-\bibitem[G{\"o}bel et~al.(2016)G{\"o}bel, Keeler, Krzesinski, and
-  Taylor]{GoHoKrTa16}
-J.~G{\"o}bel, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor.
-\newblock Bitcoin blockchain dynamics: The selfish-mine strategy in the
-  presence of propagation delay.
-\newblock \emph{Performance Evaluation}, 104:\penalty0 23--41, 2016.
-
-\bibitem[Labs(2017)]{protocol2017filecoin}
-Protocol Labs.
-\newblock Filecoin: A decentralized storage network.
-\newblock \emph{White paper}, 2017.
-\newblock \url{https://filecoin.io/filecoin.pdf}.
+\bibitem[King and Nadal(2012)]{ppcoin}
+Sunny King and Scott Nadal.
+\newblock Ppcoin: Peer-to-peer crypto-currency with proof-of-stake.
+\newblock \emph{whitepaper}, 2012.
 
 \bibitem[Lamport et~al.(1982)Lamport, Shostak, and Pease]{lamport1982the}
 Leslie Lamport, Robert Shostak, and Marshall Pease.
