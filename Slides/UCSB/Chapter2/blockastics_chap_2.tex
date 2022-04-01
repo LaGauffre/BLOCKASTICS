@@ -725,16 +725,41 @@ Nodes are chosen according to what they own.
 \begin{itemize}
   \item Nothing at stake problem
   \item Rich gets richer ? 
+  \item \url{https://www.peercoin.net/}
 \end{itemize}
 \footnotesize{
 \begin{thebibliography}{1}
-
 \bibitem{Saleh2020}
 F.~Saleh, ``Blockchain without waste: Proof-of-stake,'' {\em The Review of
   Financial Studies}, vol.~34, pp.~1156--1190, jul 2020.
-
 \end{thebibliography}}
+\end{frame}
+\begin{frame}{Using storage}
+\begin{itemize}
+  \item Proof-Of-Capacity: 
+  \begin{enumerate}
+    \item Store solution to the PoW cryptopuzzle in a large file
+    \item Read through the cache for an acceptable solution
+  \end{enumerate}
+  \item Proof-of-Spacetime
+    \begin{enumerate}
+    \item Deliver proof of storing some data during some time
+    \item Probability of being selected proportional to the amount of data stored times duration of the storage
+    \item \url{https://filecoin.io/}
+  \end{enumerate}
+\end{itemize}
 
+\end{frame}
+\begin{frame}{Using bandwidth}
+Proof-of-Interaction
+\begin{itemize}
+  \item The node receives a list of node they must get in touch with 
+  \item The first one who is able to complete the task gets a reward and share it with the responding nodes
+\end{itemize}
+For an up-to-date list of consensus protocol\\
+\begin{center}
+\url{https://tokens-economy.gitbook.io/consensus/}
+\end{center}
 \end{frame}
 
 
