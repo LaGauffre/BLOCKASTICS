@@ -56,7 +56,7 @@ $$
 $$ 
 $(R_n)_{n\geq0}$ is therefore a random walk on $\mathbb{Z}$. We assume that $p>q$ so that the attacker does not hold more than half of the total hashpower. Define the double spending time as 
 $$
-\tau = \inf\{n>0\text{ ; }R_n = 0\}.
+{\tau_0} = \inf\{n>0\text{ ; }R_n = 0\}.
 $$
 Our goal is to study the distribution of this stopping time with respect to the filtration 
 $$
@@ -114,7 +114,7 @@ An illustration of this first-hitting time problem is provided in \cref{fig:doub
 %  \draw (0,2.25) node[blue,left] {$\mu_2$} node{ \color{blue}$-$};
 %  \draw (0,3.75) node[blue,left] {$\mu_3$} node{ \color{blue}$-$};
   %Ruin time = First-crossing time time
-%  \draw (5,0) node[black,above right] {$\tau_u$} node{ \color{black}$\times$};
+%  \draw (5,0) node[black,above right] {${\tau_0}_u$} node{ \color{black}$\times$};
 %  \draw[dotted,black] (0,3.28) -- (5,3.28);
 %  \draw[dotted,black] (5,0) -- (5,3.28);
 \end{tikzpicture}
@@ -122,19 +122,15 @@ An illustration of this first-hitting time problem is provided in \cref{fig:doub
 \caption{Illustration of the first-hitting time problem of a double spending attack.}
 \label{fig:double_spending_time}
 \end{figure}
-\subsubsection{Double spending probability}\label{sssec:double_spending_rw_dsp}
-
-\subsubsection{Double spending time}\label{sssec:double_spending_rw_dst}
-\subsection{Counting process model}\label{sec:counting_process}
 Let us denote by 
 $$
 \mathbb{P}_z(\cdot) = \mathbb{P}(\cdot|R_0 = z)\text{ and }\mathbb{E}_z(\cdot) = \mathbb{E}(\cdot|R_0 = z) 
 $$
-We are interested for now in the cvonditional distribution of $\tau$ provided that $R_0 = z$.
-\subsubsection{Double spending probability}\label{sssec:double_spending_counting_process_dsp}
+We are interested for now in the cvonditional distribution of ${\tau_0}$ provided that $R_0 = z$.
+\subsubsection{Double spending probability}\label{sssec:double_spending_rw_dsp}
 The double spending probability is defined as 
 $$
-\phi(z)=\mathbb{P}_z(\tau <\infty),
+\phi(z)=\mathbb{P}_z({\tau_0} <\infty),
 $$
 and given in the following result
 \begin{theo}
@@ -175,9 +171,9 @@ For the second proof we need the notion of martingale
 \begin{definition}
 A stochastic process $(X_n)_{n\geq0}$, is called a martingale with respect to a filtration $\mathcal{F}_n$, if
 \begin{itemize}
-	\item[(i)] $X_n$ is $\mathcal{F}_n$-adapted
-	\item[(ii)] $\mathbb{E}(X_n)<\infty\text{ for }n\geq\geq0$ 
-	\item[(iii)] $\mathbb{E}(X_n|\mathcal{F}_{n-1}) = X_{n-1}$
+  \item[(i)] $X_n$ is $\mathcal{F}_n$-adapted
+  \item[(ii)] $\mathbb{E}(X_n)<\infty\text{ for }n\geq\geq0$ 
+  \item[(iii)] $\mathbb{E}(X_n|\mathcal{F}_{n-1}) = X_{n-1}$
 \end{itemize} 
 \end{definition}
 \noindent and the optional stopping theorem.
@@ -186,12 +182,21 @@ Let $T$ be a stopping time for the Martingale $(X_n)_{n\geq0}$ then it holds tha
 $$
 \mathbb{E}(X_T) = \mathbb{E}(X_0) 
 $$
-if there exists $c>0$ such that $|X_{T\land n}|<c$ for every $n>0$.
+in each of the following situations
+\begin{itemize}
+\item[(i)] $T$ is bounded almost surely 
+\item[(ii)] There exists $c>0$ such that $|X_{T\land n}|<c$ for every $n>0$.
+\item[(iii)] $\mathbb{E}(T)<\infty$, and, for some $K>0$ we have that 
+$$
+|X_n(\omega) - X_{n-1}(\omega)|\leq K,\text{ }\forall (n,\omega).
+$$
+\end{itemize}
+
 \end{theo}
 \underline{\textit Proof 2:}\\
 Define the process 
 $$
-X_n = \exp\left[s(R_n -z)- n\kappa_Y(s)\right],
+X_n = \exp\left[sR_n- n\kappa_Y(s)\right],
 $$
 where $s>0$, and 
 $$
@@ -204,9 +209,9 @@ $(X_n)_{n\geq0}$ is a $\mathcal{F}_n$-martingale.
 \begin{proof}
 Denote by $M_Y(s) = \mathbb{E}(e^{sY})$ the moment generating function of $Y$, we have that 
 \begin{eqnarray*}
-\mathbb{E}(X_n|\mathcal{F}_n)&=&\mathbb{E}\left\{\exp\left[s(R_n -z)- n\kappa_Y(s)\right]|\mathcal{F}_n\right\}\\
-&=&\exp\left[s(R_{n-1} -z)- n\kappa_Y(s)\right]\mathbb{E}\left[\exp\left(sY_{n}\right)|\mathcal{F}_n\right]\\
-&=&\exp\left[s(R_{n-1} -z)\right]M_Y(s)^{-n} M_Y(s)\\
+\mathbb{E}(X_n|\mathcal{F}_n)&=&\mathbb{E}\left\{\exp\left[sR_n - n\kappa_Y(s)\right]|\mathcal{F}_n\right\}\\
+&=&\exp\left[sR_{n-1} - n\kappa_Y(s)\right]\mathbb{E}\left[\exp\left(sY_{n}\right)|\mathcal{F}_n\right]\\
+&=&\exp\left[sR_{n-1} \right]M_Y(s)^{-n} M_Y(s)\\
 &=& X_{n-1}.
 \end{eqnarray*}
 \end{proof} 
@@ -214,13 +219,65 @@ The equation $\kappa_Y(s) = 0$ is equivalent to
 $$
 pe^s+qe^{-s} = 1
 $$
-which admits $\gamma =\log(q/p)$ as only nonnegative solution. The process $(e^{\gamma R_n})_{n\geq0}$ is a $\mathcal{F}_n$-Martingale. Then applying the optional stopping theorem leads to 
+which admits $\gamma =\log(q/p)$ as only nonnegative solution. The process $(\e^{\gamma R_n})_{n\geq0}$ is a $\mathcal{F}_n$-Martingale. Define $\tau_a = \inf\{n\geq 0\text{ ; }R_n = a\}$, for $a>z$. Consider the stopping time $\tau = \tau_0\land\tau_a$, we have that for any $n>0$, 
 $$
-\mathbb{E}(X_\tau) = z\Leftrightarrow 
+\mathbb{P}( \tau=\infty) \leq \mathbb{P}( \tau > n) < \mathbb{P}( |R_n| \leq a) = 0;
 $$
+We can therefore apply the optional stopping time theorem at $\tau$ to get
+\begin{eqnarray*}
+ \mathbb{E}(X_{\tau}) = \mathbb{E}(X_{0})&\Leftrightarrow& \mathbb{P}(\tau = \tau_0) + [1- \mathbb{P}(\tau = \tau_0)]\e^{a z}= \e^{\gamma z}\\
+ &\Leftrightarrow& \mathbb{P}(\tau = \tau_0)] = \frac{\e^{\gamma z}-\e^{a z}}{1-\e^{az}}.
+\end{eqnarray*}
+We then let $a\rightarrow\infty$ in the above equation to conclude that 
+$$
+\mathbb{P}(\tau = \tau_0) =\left(\frac{q}{p}\right)^z.
+$$
+\begin{exercise}
+What happens if
+\begin{itemize}
+\item $p = q = 1/2$? 
+\item $q>p$?
+\end{itemize}
+\end{exercise}
+In practice the number of blocks $z$ is actually random variable 
+$$
+Z = (\alpha -M)_+,
+$$ 
+where $M$ corresponds to the number of blocks the attacker managed to mine while the vendor waits for $\alpha$ confirmations. If we assume that a block mined by the honest miners is a success while a block mined by the attacker is a failure then $M$ actually counts the number of failure before $\alpha$ successes. We have that $M\sim \text{Neg-Bin}(\alpha, p)$ where $M$ has a probability mass function (\pmf) given by 
+$$
+\mathbb{P}(M = m) = \binom{\alpha+m-1}{m}p^\alpha q^m.
+$$
+Whenever $Z = 0$ then double spending occur right away as $\phi(0) =1$. To derive the double spending probability, we condition upon the values of $Z$ via the law of total probability 
+$$
+\mathbb{P}( \text{Double Spending}) = \mathbb{P}(M\geq \alpha)+\sum_{m = 0}^{\alpha-1}\binom{\alpha+m-1}{m}q^\alpha p^m.
+$$
+\subsubsection{Double spending time}\label{sssec:double_spending_rw_dst}
+In the block mining world time is money. Every hour spent in computing hashes is costly in terms of energy. It is then very interesting to know whether a double spending attack is meant to last long or not. Intuitively, we can think that if it must occur the it should at a earlier stage because as $p>1/2$ our random walk $(R_n)_{n\geq0}$ will eventually drift toward $+\infty$. The following result provides the probability distribution of $\tau_0$ when $R_0 = z$.
+\begin{theo}
+If $z = 0$ then $\tau_0=0$ almost surely. If $z>0$ then $\tau_0$ admits a \pmf given by 
+$$
+\mathbb{P}(\tau_0 = n)=
+\frac{z}{n}\binom{n-z}{(n-z) / 2}p^{(n-z) / 2}q^{(n
++z) / 2}\text{ if }n>z\text{ and }n-z\text{ is even},
+$$
+and $0$ otherwise.
+\end{theo}
+\begin{proof}
+We start by showing the following lemma, sometimes referred to as the Markov hitting time theorem.
+\begin{lemma}\label{lem:markov_hitting_time}
 
+$$
+\mathbb{P}(\tau_0 = n) = \frac{z}{n}\mathbb{P}(R_n = 0)
+$$
+\end{lemma}
+\begin{proof}
 
+\end{proof}
+\end{proof}
 
+\subsection{Counting process model}\label{sec:counting_process}
+
+\subsubsection{Double spending probability}\label{sssec:double_spending_counting_process_dsp}
 
 \subsubsection{Double spending time}\label{sssec:double_spending_counting_process_dst}
 
