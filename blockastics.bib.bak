@@ -639,8 +639,34 @@ journal = {ACM Transactions on Programming Languages and Systems},
 @Article{ppcoin,
   author  = {Sunny King and Scott Nadal},
   journal = {whitepaper},
-  title   = {PPCoin: Peer-to-Peer Crypto-Currency with Proof-of-Stake�},
+  title   = {PPCoin: Peer-to-Peer Crypto-Currency with Proof-of-Stake},
   year    = {2012},
+}
+
+@Article{Hofstad2008,
+  author    = {Remco van der Hofstad and Michael Keane},
+  journal   = {The American Mathematical Monthly},
+  title     = {An Elementary Proof of the Hitting Time Theorem},
+  year      = {2008},
+  month     = {oct},
+  number    = {8},
+  pages     = {753--756},
+  volume    = {115},
+  doi       = {10.1080/00029890.2008.11920588},
+  publisher = {Informa {UK} Limited},
+}
+
+@Article{Renault2007,
+  author    = {Marc Renault},
+  journal   = {Mathematics Magazine},
+  title     = {Four Proofs of the Ballot Theorem},
+  year      = {2007},
+  month     = {dec},
+  number    = {5},
+  pages     = {345--352},
+  volume    = {80},
+  doi       = {10.1080/0025570x.2007.11953509},
+  publisher = {Informa {UK} Limited},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
