@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{16}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -45,6 +45,13 @@ Miguel Castro and Barbara Liskov.
 \newblock ISBN 1880446391.
 \newblock URL \url{https://dl.acm.org/doi/10.5555/296806.296824}.
 
+\bibitem[GRUNSPAN and P{\'{E}}REZ-MARCO(2018)]{GRUNSPAN2018}
+CYRIL GRUNSPAN and RICARDO P{\'{E}}REZ-MARCO.
+\newblock {DOUBLE} {SPEND} {RACES}.
+\newblock \emph{International Journal of Theoretical and Applied Finance},
+  21\penalty0 (08):\penalty0 1850053, dec 2018.
+\newblock \doi{10.1142/s021902491850053x}.
+
 \bibitem[King and Nadal(2012)]{ppcoin}
 Sunny King and Scott Nadal.
 \newblock Ppcoin: Peer-to-peer crypto-currency with proof-of-stake.
@@ -73,12 +80,39 @@ S.~Nakamoto.
   2008.
 \newblock URL \url{https://bitcoin.org/bitcoin.pdf}.
 
+\bibitem[Renault(2007)]{Renault2007}
+Marc Renault.
+\newblock Four proofs of the ballot theorem.
+\newblock \emph{Mathematics Magazine}, 80\penalty0 (5):\penalty0 345--352, dec
+  2007.
+\newblock \doi{10.1080/0025570x.2007.11953509}.
+
+\bibitem[Rosenfeld(2014)]{rosenfeld2014analysis}
+Meni Rosenfeld.
+\newblock Analysis of hashrate-based double spending.
+\newblock \emph{arXiv preprint arXiv:1402.2009}, 2014.
+
 \bibitem[Saleh(2020)]{Saleh2020}
 Fahad Saleh.
 \newblock Blockchain without waste: Proof-of-stake.
 \newblock \emph{The Review of Financial Studies}, 34\penalty0 (3):\penalty0
   1156--1190, jul 2020.
 \newblock \doi{10.1093/rfs/hhaa075}.
+
+\bibitem[Tak{\'{a}}cs(1962)]{Takacs1962}
+Lajos Tak{\'{a}}cs.
+\newblock A generalization of the ballot problem and its application in the
+  theory of queues.
+\newblock \emph{Journal of the American Statistical Association}, 57\penalty0
+  (298):\penalty0 327--337, jun 1962.
+\newblock \doi{10.1080/01621459.1962.10480662}.
+
+\bibitem[van~der Hofstad and Keane(2008)]{Hofstad2008}
+Remco van~der Hofstad and Michael Keane.
+\newblock An elementary proof of the hitting time theorem.
+\newblock \emph{The American Mathematical Monthly}, 115\penalty0 (8):\penalty0
+  753--756, oct 2008.
+\newblock \doi{10.1080/00029890.2008.11920588}.
 
 \bibitem[Werner et~al.(2021)Werner, Perez, Gudgeon, Klages-Mundt, Harz, and
   Knottenbelt]{werner2021sok}
