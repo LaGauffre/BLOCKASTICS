@@ -442,7 +442,109 @@ as it corresponds to a trajectory of $(R_n)_{n \geq0}$ starting at $R_0 = z$ end
 Just like in the previous section, the actual double spending time depends on the value of the random variable $Z = (\alpha -M)_+$.
 
 \subsection{Counting process model}\label{sec:counting_process}
+Our aim is to go from the discrete time framework of the previous section to a continuous time. To do so, we will model the length of the blockchain as counting processes. We will consider renewal processes and more specifically Poisson processes. We start by giving some reminders on the exponential distribution and counting processes before studying the double spending time distribution.
 
+\subsubsection{Poisson process, Exponential distributions and friends}\label{sssec:exp_distribution}
+\begin{definition}\label{def:counting_process}
+A counting process $(N_t)_{t\geq0}$ is a continuous time stochastic process that counts the occurence of an event over time such that
+\begin{equation*}
+N_0=0\text{ and }N_t=\sum_{k=1}^{+\infty}\mathbb{I}_{T_k\leq t}.
+\end{equation*}
+where $T_1,T_2,T_3,\ldots$ denote the arrival times, with the convention that $T_0=0$. Let $\Delta^T_0,\Delta^T_1,\Delta^T_2,\ldots$ be the sequence of inter-arrival times defined as
+$$
+\Delta^T_k=T_{k+1}-T_{k}\text{, }k=0,1,2\ldots.
+$$
+\end{definition}
+A trajectory of a counting process is given in 
+\begin{figure}[!h]
+\begin{center}
+\begin{tikzpicture}[scale=1]
+  %Origin and axis
+  \coordinate (O) at (0,0);
+  \draw[->] (-1,0) -- (8,0) coordinate[label = {below:$t$}] (xmax);
+  \draw[->] (0,-0.5) -- (0,5.5) coordinate[label = {left:$N_t$}] (ymax);
+  %Lower linear boundary
+
+
+  %Stochastic process trajectory
+
+  \draw (0,0) node[blue,left] {} node{};
+  \draw[very thick,blue,-] (0,0) -- (1,0) node[pos=0.5, above] {$\Delta^T_0$} ;
+  \draw[very thick,dashed,blue] (1,0) -- (1,1) node[pos=0.5, right] {};
+  \draw[very thick,blue,-] (1,1) -- (1.75,1) node[pos=0.5, above] {$\Delta^T_1$};
+  \draw[very thick,dashed,blue] (1.75,1) -- (1.75,2) node[pos=0.5, right] {};
+  \draw[very thick,blue,-] (1.75,2) -- (2.75,2) node[pos=0.5, above] {$\Delta^T_2$};
+  \draw[very thick,dashed,blue] (2.75,2) -- (2.75,3) node[pos=0.5, right] {};
+  \draw[very thick,blue,-] (2.75,3) -- (5,3)node[pos=0.5, above] {$\Delta^T_3$};
+  \draw[very thick,dashed,blue] (5,3) -- (5,4) node[pos=0.5, right] {};
+  \draw[very thick,blue,-] (5,4) -- (6,4) node[pos=0.5, above] {$\Delta^T_4$};
+  \draw[very thick,dashed,blue] (6,4) -- (6,5) node[pos=0.5, right] {};
+  \draw[very thick,blue,-] (6,5) -- (8,5) node[pos=0.5, above] {$\Delta^T_5$};
+  %Jump Times
+  \draw (1,0) node[blue,below] {$T_1$} node{ \color{blue}$\bullet$};
+  \draw (1.75,0) node[blue,below] {$T_2$} node{ \color{blue}$\bullet$};
+  \draw (2.75,0) node[blue,below] {$T_3$} node{ \color{blue}$\bullet$};
+  \draw (5,0) node[blue,below] {$T_4$} node{ \color{blue}$\bullet$};
+  \draw (6,0) node[blue,below] {$T_5$} node{ \color{blue}$\bullet$};
+  %Level of the counting process
+   \draw (0,0) node[black,left] {$0$} node{ \color{black}$\bullet$};
+   \draw (0,1) node[black,left] {$1$} node{ \color{black}$\bullet$};
+   \draw (0,2) node[black,left] {$2$} node{ \color{black}$\bullet$};
+   \draw (0,3) node[black,left] {$3$} node{ \color{black}$\bullet$};
+   \draw (0,4) node[black,left] {$4$} node{ \color{black}$\bullet$};
+   \draw (0,5) node[black,left] {$5$} node{ \color{black}$\bullet$};
+\end{tikzpicture}
+\end{center}
+\caption{Trajectory of the counting process $(N_t)_{t\geq0}$.}
+\label{fig:trajectory_counting_process}
+\end{figure}
+\begin{definition}\label{def_poisson_process}
+A Poisson process $(N_t)_{t\geq0}$ is a conting process whose inter-arrival times are \iid exponential random variables.
+\end{definition}
+\begin{definition}\label{def:exp_dist}
+A random variable $X$ is exponentially distributed $X\sim\ExpDist(\lambda)$ if it has \pdf
+$$
+f_X(x) =\begin{cases} 
+\lambda\e^{-\lambda x},&\text{ if }x>0,\\
+0,&\text{ otherwise}.
+\end{cases}
+$$
+\end{definition}
+For some reasons, we need to introduce the joint distribution of the order statistics of a uniform random sample.
+\begin{prop}\label{def:uniform_OS_dist}
+Let $U_1,\ldots, U_n$ be a sample of \iid uniform random variables on $(a,b)$. Denote by 
+$$
+U_{(1)}\leq U_{(2)}\leq\ldots\leq U_{(n)}
+$$
+the order statistics of such a sample. The joint distribution of $(U_{(1)},\ldots,  U_{(n)})$ is given by 
+$$
+f_{(U_{(1)},\ldots, U_{(n)})}(u_1,\ldots, u_n)=\frac{n!}{(b-a)^n}\mathbb{I}_{a<u_1<\ldots< u_n<b}(u_1,\ldots, u_n).
+$$
+and we denote $(U_{(1)},\ldots,  U_{(n)})\sim \text{OS}_n([a,b])$
+\end{prop}
+\begin{proof}
+Let $g:\mathbb{R}^n\mapsto \mathbb{R}_+$ be measurable and bounded. We have that
+$$
+\mathbb{E}[g(U_{(1)},\ldots,U_{(n)})]=\mathbb{E}\left[\sum_{\sigma\in\mathcal{S}_n}
+g(U_{\sigma(1)},\ldots,U_{\sigma(n)})
+\mathbb{I}_{U_{\sigma(1)} <\ldots< U_{\sigma(n)}}
+\right]
+$$
+where $\mathcal{S}_n$ the set of all the permutation of $\{1,\ldots,n \}$. We note that
+\begin{eqnarray*}
+\mathbb{E}\left[g(U_{\sigma(1)},\ldots,U_{\sigma(n)})
+\mathbb{I}_{U_{\sigma(1)} <\ldots< U_{\sigma(n)}}
+\right]&=& \mathbb{E}\left[g(U_{1},\ldots,U_{n})
+\mathbb{I}_{U_{1} <\ldots< U_{n}}\right]\\
+&=&\int_{\mathbb{R}^{n}}g(u_{1},\ldots,u_{n})
+\mathbb{I}_{u_{1} <\ldots< u_{n}}\frac{1}{(b-a)^n}\text{d}\lambda_{n}(u_1,\ldots, u_n).
+\end{eqnarray*}
+It then follows that
+$$
+\mathbb{E}[g(U_{(1)},\ldots,U_{(n)})]=\int_{\mathbb{R}^{n}}g(u_{1},\ldots,u_{n})
+\mathbb{I}_{u_{1} <\ldots< u_{n}}\frac{n!}{(b-a)^n}\text{d}\lambda_{n}(u_1,\ldots, u_n).
+$$
+\end{proof}
 \subsubsection{Double spending probability}\label{sssec:double_spending_counting_process_dsp}
 
 \subsubsection{Double spending time}\label{sssec:double_spending_counting_process_dst}
