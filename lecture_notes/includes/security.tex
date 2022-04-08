@@ -671,7 +671,111 @@ We have
  &=&\int_{\mathbb{R}^{n}}g(t_1,\ldots, t_n)\frac{n!}{t^n}\mathbb{I}_{0<t_1<\ldots t_n\leq t}(t_1,\ldots,t_{n})\text{d}\lambda(t_1,\ldots,t_{n} ).
 \end{eqnarray*}
 \end{proof}
-\noindent The order statistic property of the Poisson process will be useful to solve the first hitting time problem arising later on. To fully benefit from this nice property, we need to introduce Appell and Abel-Gontcharov polynomials.
+\noindent The order statistic property of the Poisson process will be useful to solve the first hitting time problem arising later on. To fully benefit from this nice property, we need to introduce Appell and Abel-Gontcharov polynomials.\\
+
+\noindent Let $U=\{u_i, \, i\geq 1\}$ be a non-decreasing sequence of real numbers. To $U$ is attached a (unique) family of Appell polynomials of degree $n$ in $x$, $\{A_{n}(x\vert U),\, n\geq 0\}$ defined as follows.
+\begin{definition} 
+Starting with $A_0(x\vert U)=1$, the $A_n(x\vert U)$'s satisfy the differential equations
+\begin{equation}\label{eq:DifferentialEquationAppellPolynomial}
+A_{n}^{(1)}(x|U)=nA_{n-1}(x|U),  
+\end{equation}
+with the border conditions
+\begin{equation}\label{eq:Border AppellPolynomial}
+A_{n}(u_{n}|U)=0, \quad n\geq 1.
+\end{equation}
+So, each $A_n$ has the integral representation
+\begin{equation}\label{eq:IntegralRepresentationAppellPolynomials}
+A_{n}(x|U)=n!\int_{u_{n}}^{x}\left[\int_{u_{n-1}}^{y_{n}}\text{d}y_{n-1} \ldots \int_{u_{1}}^{y_{1}}\text{d}y_{1}\right]\text{d}y_{n}, \quad n\geq 1.
+\end{equation}
+\end{definition}
+
+In parallel, to $U$ is attached a (unique) family of Abel-Gontcharov (A-G) polynomials of degree $n$ in $x$, $\{G_{n}(x\vert U),\, n\geq 0\}$.
+\begin{definition} 
+Starting with $G_0(x\vert U)=1$, the $G_n(x\vert U)$'s satisfy the differential equations
+\begin{equation}\label{eq:DifferentialEquationAGPolynomials}
+G_n^{(1)}(x|U)=nG_{n-1}(x|{\cal E}U), 
+\end{equation}
+where ${\cal E}U$ is the shifted family $\{u_{i+1}, \, i\geq 1\}$, and with the border conditions
+\begin{equation}\label{eq:Border AGPolynomial}
+G_{n}(u_{1}|U)=0, \quad  n\geq 1.
+\end{equation}
+So, each $G_n$ has the integral representation
+\begin{equation}\label{eq:IntegralRepresentationAGPolynomials}
+G_{n}(x|U)=n!\int_{u_{1}}^{x}\left[\int_{u_{2}}^{y_{1}}\text{d}y_{2} \ldots \int_{u_{n}}^{y_{n-1}}\text{d}y_{n}\right]\text{d}y_{1}, \quad n\geq 1.
+\end{equation}
+\end{definition}
+\noindent The Appell and A-G polynomials are closely related through the identity
+\begin{equation}\label{eq:DefinitionAGPolynomials}
+G_{n}(x|u_{1},\ldots,u_{n})=A_{n}(x|u_{n},\ldots,u_{1}), \quad n\geq 1.
+\end{equation}
+The two families (i.e. for all $n\geq 0$), however, are distinct and enjoy different properties. From \eqref{eq:IntegralRepresentationAppellPolynomials} and \eqref{eq:IntegralRepresentationAGPolynomials}, it is clear that the polynomials $A_n$ and $G_n$ can be interpreted in terms of the joint distribution of the vector $(U_{1:n},\ldots,U_{n:n})$. 
+\begin{prop}
+For $0\leq u_1 \leq \ldots \leq u_{n} \leq x \leq 1$,
+\begin{equation}\label{eq:ProbabilisticInterpretationAppellPolynomials}
+P[U_{1:n} \geq u_1, \ldots, U_{n:n} \geq u_{n}\, \mbox{ and }\, U_{n:n}\leq x]= 
+A_n(x \vert u_1, \ldots, u_{n}), \quad n\geq1.
+\end{equation}
+For $0\leq x \leq u_1 \leq \ldots \leq u_{n} \leq 1$,
+\begin{equation}\label{eq:ProbabilisticInterpretationAGPolynomials}
+P[U_{1:n} \leq u_1, \ldots, U_{n:n} \leq u_{n}\, \mbox{ and }\, U_{1:n}\geq x]
+= (-1)^n \, G_n(x \vert u_1, \ldots, u_{n}), \quad n\geq 1.
+\end{equation}
+\end{prop}
+The representations \eqref{eq:ProbabilisticInterpretationAppellPolynomials} and \eqref{eq:ProbabilisticInterpretationAGPolynomials} will play a key role for solving first-hitting problem that involve Poisson processes. Numerically, it will be necessary to evaluate some special values of the polynomials. To this end, it is convenient to use the following recusive relations. 
+\begin{prop} 
+The Appell polynomials are computed through the expansion
+\begin{equation}\label{eq:appell_polynomials_recursion_1}
+A_{n}(x|U)=\sum_{k=0}^{n}\binom{n}{k}A_{n-k}(0|U)x^{k}, \quad n\geq 1,
+\end{equation}
+where the $A_{n}(0|U)$'s are obtained recursively from 
+\begin{equation}\label{eq:appell_polynomials_recursion_2}
+A_{n}(0|U)=-\sum_{k=1}^{n} \binom{n}{k} A_{n-k}(0|U)u_{n}^{k}, \quad n\geq1.
+\end{equation}
+The A-G polynomials are computed through the recursion
+\begin{equation}\label{eq:recursion_AG_polynomials}
+G_{n}(x|U)=x^{n}-\sum_{k=0}^{n-1} \binom{n}{k} u_{k+1}^{n-k} G_{k}(x|U), \quad n\geq 1.
+\end{equation}
+\end{prop}
+\begin{proof}
+The Maclaurin expansion of $A_n(x|U)$ gives \eqref{eq:appell_polynomials_recursion_1} as
+$$
+A_n(x|U) = \sum_{k = 0}^n\frac{A_n^{(k)}(x|U)}{k!}x^k = \sum_{k = 0}^n\binom{n}{k}A_{n-k}(x|U)x^k.
+$$
+Evaluation at $x = u_n$ then provides \eqref{eq:appell_polynomials_recursion_2}. Regarding \eqref{eq:recursion_AG_polynomials}, first note that 
+$$
+G_n^{(k)}(u_{k+1}|U) = \begin{cases}
+1,&\text{ if }k = n,\\
+0,&\text{ otherwise.}
+\end{cases}
+$$
+Any polynomials $R(x)$ of degree $n$ can therefore be written as 
+$$
+R(x)=\sum_{k = 0}^n\frac{R^{(k)}(u_{k+1})}{k!}G_k(x|U).
+$$
+By expanding $x^n$ one gets \eqref{eq:recursion_AG_polynomials}.
+\end{proof}
+Hereafter are a couple of useful properties
+\begin{prop}
+\begin{enumerate}
+\item If $U=\{i-1,\, i\geq 1\}$ then we have
+\begin{eqnarray}
+A_{n}(x|U)&=&(x-a-b(n-1))(x-a+b)^{n-1}, \label{eq:ExplicitExpressionAppellPolynomials}\\
+G_{n}(x|U)&=&(x-a)(x-a-bn)^{n-1}, \quad n\geq 1.    \label{eq:ExplicitExpressionAGPolynomials}
+\end{eqnarray}
+\item For any $a,b\in \mathbb{R}$, it holds that
+\begin{equation}
+A_{n}(x|a+bU) = b^n A_n\left((x-a)/b \, |U\right), \quad n\geq 1, \label{eq:LinearTransform}
+\end{equation}
+with the same identity for $G_n$.
+\item Let $\{X_{n}\text{ , }n\geq1\}$ be a sequence of \iid nonnegative random variables, of partial sums $S_{n}=\sum_{k=1}^{n}X_{k}$ with $S_0=0$. Then, for $n\geq 1$,
+\begin{eqnarray}
+&&\mathbb{E} \left[A_{n}(x|S_{1},\ldots,S_{n})\vert S_{n}\right] = x^{n-1}(x-S_{n}), \label{eq:ExplicitExpressionPartialSumsAppellPolynomials}\\
+&&\mathbb{E}\left[G_{n}(x|S_{0},\ldots,S_{n-1})\vert S_{n}\right] = x(x-S_{n})^{n-1}.    \label{eq:ExplicitExpressionPartialSumsAGPolynomials}
+\end{eqnarray}
+\end{enumerate} 
+\end{prop}
+
+Formula \eqref{eq:ExplicitExpressionAppellPolynomials} is proven by induction from \eqref{eq:IntegralRepresentationAppellPolynomials}. Formula  \eqref{eq:ExplicitExpressionAGPolynomials} is then a consequence of \eqref{eq:DefinitionAGPolynomials}. In addition to speeding up the computations, the identities \eqref{eq:ExplicitExpressionAppellPolynomials} and \eqref{eq:ExplicitExpressionAGPolynomials} will allow us to link our results to some classical ones in the literature. 
 
 \subsubsection{A tiny bit of insurance risk theory}\label{sssec:insurance_risk_theory}
 
