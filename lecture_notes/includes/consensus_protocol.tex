@@ -376,7 +376,7 @@ $$
 $$
 Denote by $S_t$ the total number of coins in circulation at time $t$ and by $R_t$ the size of the reward for appending a new block at time $t$. Let $A_i^t$ be the event of node $i$ appending a block at time $t$, the share of coins then evolves as
 $$
-\pi_i^t = \frac{S\cdot \pi_i^t + \sum_{s=1}^{t-1}\mathbb{I}_{A_i^t}R_s}{S+\sum_{s=1}^{t-1}R_s},
+\pi_i^t = \frac{S\cdot \pi_i^0 + \sum_{s=1}^{t-1}\mathbb{I}_{A_i^t}R_s}{S+\sum_{s=1}^{t-1}R_s},
 $$
 where 
 $$
@@ -398,7 +398,7 @@ The "rich get richer" problem will be extensively studied in \cref{chap:decentra
     \item The coin value reaches a maximum if all the nodes follow the longest chain rule
     \item There exists an equilibrium in which the nodes follow the LCR if 
     $$
-    \min \pi_i^0 \cdot S\geq\frac{R}{\delta(1-\delta)^2},
+    \min \pi_i^0 \cdot S\geq\frac{R_0}{\delta(1-\delta)^2},
     $$
     which corresponds to a minimum stake condition.
     \item If $\sum_t R_t < \infty$ then there exist no equilibrium for which 

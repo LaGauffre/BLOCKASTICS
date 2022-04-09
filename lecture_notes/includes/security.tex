@@ -7,7 +7,7 @@ A double spending attack aims at generating a concurrent blockchain to replace t
 \begin{enumerate}
 	\item Marie sends to John BTC$10$
 	\item The transaction from Marie to John is recorded in the blockchain
-	\item John is advised for $\alpha$ confirmation, that is for $k-1$ block to be appended after the block where the Marie to John transaction is recorded
+	\item John is advised for $\alpha$ confirmation, that is for $\alpha-1$ block to be appended after the block where the Marie to John transaction is recorded
 	\item Once $\alpha$ confirmations have been sent, John ships the good
 	\item Meanwhile, Marie has started working on her own blockchain version where the Marie to John transaction is replaced by a Marie to Marie transaction
 	\item At the shipment date the main blockchain is ahead by $z$ blocks 
@@ -42,7 +42,7 @@ The race between the two competing branches of the blockchain is summarized on \
 
 \end{tikzpicture}
 \end{center}
-\caption{Double spending race illustrated}
+\caption{Double spending race illustrated, here we have $\alpha = 4$ and $z = 2$}
 \label{fig:dp_illustration}
 \end{figure}
 \subsection{Random walk model}\label{ssec:double_spending_rw}
@@ -126,7 +126,7 @@ Let us denote by
 $$
 \mathbb{P}_z(\cdot) = \mathbb{P}(\cdot|R_0 = z)\text{ and }\mathbb{E}_z(\cdot) = \mathbb{E}(\cdot|R_0 = z) 
 $$
-We are interested for now in the cvonditional distribution of ${\tau_0}$ provided that $R_0 = z$.
+We are interested for now in the conditional distribution of ${\tau_0}$ provided that $R_0 = z$.
 \subsubsection{Double spending probability}\label{sssec:double_spending_rw_dsp}
 The double spending probability is defined as 
 $$
@@ -196,15 +196,15 @@ $$
 \underline{\textit Proof 2:}\\
 Define the process 
 $$
-X_n = \exp\left[sR_n- n\kappa_Y(s)\right],
+X_n = \exp\left[sR_n- n\kappa_Y(s)\right],\text{ for }n\in\mathbb{N}\text{ and }s\in\mathbb{R}, 
 $$
-where $s>0$, and 
+where
 $$
 \kappa_Y(s) = \log\left[\mathbb{E}\left(e^{sY}\right)\right],
 $$
 is the cumulant generating function of $Y$. 
 \begin{lemma}\label{lem:wald_martingale_RW}
-$(X_n)_{n\geq0}$ is a $\mathcal{F}_n$-martingale.
+Take $s$ so that $\kappa_Y(s)<\infty$ then $(X_n)_{n\geq0}$ is a $\mathcal{F}_n$-martingale.
 \end{lemma}
 \begin{proof}
 Denote by $M_Y(s) = \mathbb{E}(e^{sY})$ the moment generating function of $Y$, we have that 
@@ -219,9 +219,9 @@ The equation $\kappa_Y(s) = 0$ is equivalent to
 $$
 pe^s+qe^{-s} = 1
 $$
-which admits $\gamma =\log(q/p)$ as only nonnegative solution. The process $(\e^{\gamma R_n})_{n\geq0}$ is a $\mathcal{F}_n$-Martingale. Define $\tau_a = \inf\{n\geq 0\text{ ; }R_n = a\}$, for $a>z$. Consider the stopping time $\tau = \tau_0\land\tau_a$, we have that for any $n>0$, 
+which admits $\gamma =\log(q/p)$ as only non-zero solution. The process $(\e^{\gamma R_n})_{n\geq0}$ is a $\mathcal{F}_n$-Martingale. Define $\tau_a = \inf\{n\geq 0\text{ ; }R_n = a\}$, for $a>z$. Consider the stopping time $\tau = \tau_0\land\tau_a$, we have that for any $n>0$, 
 $$
-\mathbb{P}( \tau=\infty) \leq \mathbb{P}( \tau > n) < \mathbb{P}( |R_n| \leq a) = 0;
+\mathbb{P}( \tau=\infty) \leq \mathbb{P}( \tau > n) < \mathbb{P}( |R_n| \leq a) \underset{n\rightarrow \infty}{\longrightarrow} 0;
 $$
 We can therefore apply the optional stopping time theorem at $\tau$ to get
 \begin{eqnarray*}
@@ -233,10 +233,10 @@ $$
 \mathbb{P}(\tau = \tau_0) =\left(\frac{q}{p}\right)^z.
 $$
 \begin{exercise}
-What happens if
+Just for fun
 \begin{itemize}
-\item $p = q = 1/2$? 
-\item $q>p$?
+\item What is $\phi(z)$ when $p \leq q$ ? 
+\item Compute $\mathbb{P}(\tau_0 \leq \tau_a)$ if $p = q = 1/2$
 \end{itemize}
 \end{exercise}
 In practice the number of blocks $z$ is actually random variable 
@@ -258,7 +258,7 @@ In the block mining world time is money. Every hour spent in computing hashes is
 If $z = 0$ then $\tau_0=0$ almost surely. If $z>0$ then $\tau_0$ admits a \pmf given by 
 $$
 \mathbb{P}_z(\tau_0 = n)=
-\frac{z}{n}\binom{n-z}{(n-z) / 2}p^{(n-z) / 2}q^{(n
+\frac{z}{n}\binom{n}{(n-z) / 2}p^{(n-z) / 2}q^{(n
 +z) / 2}\text{ if }n>z\text{ and }n-z\text{ is even},
 $$
 and $0$ otherwise.
@@ -436,7 +436,7 @@ For proof of the ballot theorem, see \citet{Renault2007}. For a general formulat
 \end{remark}
 To complete the proof, we just note that 
 $$
-\mathbb{P}_z(R_n = 0) = \binom{n-z}{(n-z) / 2}p^{(n-z) / 2}q^{(n
+\mathbb{P}_z(R_n = 0) = \binom{n}{(n-z) / 2}p^{(n-z) / 2}q^{(n
 +z) / 2}
 $$
 as it corresponds to a trajectory of $(R_n)_{n \geq0}$ starting at $R_0 = z$ ending at $0$ made of $(n-z)/2$ upward jumps and $(n+z)/2$ downward one.
@@ -705,19 +705,19 @@ G_{n}(x|U)=n!\int_{u_{1}}^{x}\left[\int_{u_{2}}^{y_{1}}\text{d}y_{2} \ldots \int
 \end{equation}
 \end{definition}
 \noindent The Appell and A-G polynomials are closely related through the identity
-\begin{equation}\label{eq:DefinitionAGPolynomials}
+\begin{equation}\label{eq:link_AG_Appell}
 G_{n}(x|u_{1},\ldots,u_{n})=A_{n}(x|u_{n},\ldots,u_{1}), \quad n\geq 1.
 \end{equation}
 The two families (i.e. for all $n\geq 0$), however, are distinct and enjoy different properties. From \eqref{eq:IntegralRepresentationAppellPolynomials} and \eqref{eq:IntegralRepresentationAGPolynomials}, it is clear that the polynomials $A_n$ and $G_n$ can be interpreted in terms of the joint distribution of the vector $(U_{1:n},\ldots,U_{n:n})$. 
 \begin{prop}
 For $0\leq u_1 \leq \ldots \leq u_{n} \leq x \leq 1$,
 \begin{equation}\label{eq:ProbabilisticInterpretationAppellPolynomials}
-P[U_{1:n} \geq u_1, \ldots, U_{n:n} \geq u_{n}\, \mbox{ and }\, U_{n:n}\leq x]= 
+P[U_{(1)} \geq u_1, \ldots, U_{(n)} \geq u_{n}\, \mbox{ and }\, U_{(n)}\leq x]= 
 A_n(x \vert u_1, \ldots, u_{n}), \quad n\geq1.
 \end{equation}
 For $0\leq x \leq u_1 \leq \ldots \leq u_{n} \leq 1$,
 \begin{equation}\label{eq:ProbabilisticInterpretationAGPolynomials}
-P[U_{1:n} \leq u_1, \ldots, U_{n:n} \leq u_{n}\, \mbox{ and }\, U_{1:n}\geq x]
+P[U_{(1)} \leq u_1, \ldots, U_{(n)} \leq u_{n}\, \mbox{ and }\, U_{(1)}\geq x]
 = (-1)^n \, G_n(x \vert u_1, \ldots, u_{n}), \quad n\geq 1.
 \end{equation}
 \end{prop}
@@ -757,11 +757,6 @@ By expanding $x^n$ one gets \eqref{eq:recursion_AG_polynomials}.
 Hereafter are a couple of useful properties
 \begin{prop}
 \begin{enumerate}
-\item If $U=\{i-1,\, i\geq 1\}$ then we have
-\begin{eqnarray}
-A_{n}(x|U)&=&(x-a-b(n-1))(x-a+b)^{n-1}, \label{eq:ExplicitExpressionAppellPolynomials}\\
-G_{n}(x|U)&=&(x-a)(x-a-bn)^{n-1}, \quad n\geq 1.    \label{eq:ExplicitExpressionAGPolynomials}
-\end{eqnarray}
 \item For any $a,b\in \mathbb{R}$, it holds that
 \begin{equation}
 A_{n}(x|a+bU) = b^n A_n\left((x-a)/b \, |U\right), \quad n\geq 1, \label{eq:LinearTransform}
@@ -774,8 +769,33 @@ with the same identity for $G_n$.
 \end{eqnarray}
 \end{enumerate} 
 \end{prop}
-
-Formula \eqref{eq:ExplicitExpressionAppellPolynomials} is proven by induction from \eqref{eq:IntegralRepresentationAppellPolynomials}. Formula  \eqref{eq:ExplicitExpressionAGPolynomials} is then a consequence of \eqref{eq:DefinitionAGPolynomials}. In addition to speeding up the computations, the identities \eqref{eq:ExplicitExpressionAppellPolynomials} and \eqref{eq:ExplicitExpressionAGPolynomials} will allow us to link our results to some classical ones in the literature. 
+\begin{proof}
+\begin{enumerate}
+  \item Let us use induction on $n\geq1$. Take $n = 1$, we have
+  $$
+  A_1(x|a + bu_1) = \int_{a+bu_1}^{x} A_1'(y|a+bu_1)\text{d}y = x - a - bu_1 
+  $$
+  and 
+   $$
+  A_1(x|u_1) = x-u_1.
+  $$
+  The property holds for $n = 1$. Assume that it holds true for some $n$ and consider $n+1$. We have
+  \begin{eqnarray*}
+  A_{n+1}(x|a+bU) &=& \int^{x}_{a+b u_{n+1}}A_{n+1}'(y|a+bU)\text{d}y\\
+  &=& \int^{x}_{a+b u_{n+1}}nA_{n}(y|a+bU)\text{d}y\\
+  &=&b^n\int^{x}_{a+b u_{n+1}}nA_{n}\left(\frac{y-a}{b}\Big|U\right)\text{d}y\\
+  &=&b^{n+1}n\int^{\frac{x-a}{b}}_{u_{n+1}}A_{n}\left(z\Big|U\right)\text{d}y\\
+  &=&b^{n+1}\int^{\frac{x-a}{b}}_{u_{n+1}}A_{n+1}'\left(z\Big|U\right)\text{d}y\\
+  &=&b^{n+1}A_{n+1}\left(\frac{x-a}{b}\Big|U\right),
+  \end{eqnarray*}
+  so the property holds for $n+1$. No need to do the job for the $G_n(.|U)$'s thanks to \eqref{eq:link_AG_Appell}.
+\item Again induction on $n\geq1$. Take $n = 1$, we have
+$$
+\mathbb{E}[A_1(x|S_1)|S_1] = x-S_1
+$$
+Assume that the result holds true for some $n$ and consider $n+1$.   
+\end{enumerate}
+\end{proof}
 
 \subsubsection{A tiny bit of insurance risk theory}\label{sssec:insurance_risk_theory}
 

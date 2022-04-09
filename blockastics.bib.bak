@@ -669,4 +669,42 @@ journal = {ACM Transactions on Programming Languages and Systems},
   publisher = {Informa {UK} Limited},
 }
 
+@Article{Takacs1962,
+  author    = {Lajos Tak{\'{a}}cs},
+  journal   = {Journal of the American Statistical Association},
+  title     = {A Generalization of the Ballot Problem and its Application in the Theory of Queues},
+  year      = {1962},
+  month     = {jun},
+  number    = {298},
+  pages     = {327--337},
+  volume    = {57},
+  doi       = {10.1080/01621459.1962.10480662},
+  publisher = {Informa {UK} Limited},
+}
+
+@Article{Lefevre2011,
+  author    = {Claude Lef{\`{e}}vre and Philippe Picard},
+  journal   = {Insurance: Mathematics and Economics},
+  title     = {A new look at the homogeneous risk model},
+  year      = {2011},
+  month     = {nov},
+  number    = {3},
+  pages     = {512--519},
+  volume    = {49},
+  doi       = {10.1016/j.insmatheco.2011.08.005},
+  publisher = {Elsevier {BV}},
+}
+
+@Article{Ta2015,
+  author    = {Bao Quoc Ta},
+  journal   = {Expositiones Mathematicae},
+  title     = {Probabilistic approach to Appell polynomials},
+  year      = {2015},
+  number    = {3},
+  pages     = {269--294},
+  volume    = {33},
+  doi       = {10.1016/j.exmath.2014.07.003},
+  publisher = {Elsevier {BV}},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
