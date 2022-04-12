@@ -793,7 +793,25 @@ with the same identity for $G_n$.
 $$
 \mathbb{E}[A_1(x|S_1)|S_1] = x-S_1
 $$
-Assume that the result holds true for some $n$ and consider $n+1$.   
+Assume that the result holds true for some $n$ and consider $n+1$. We have 
+\begin{eqnarray*}
+\mathbb{E}\left[A_{n+1}(x|S_1,\ldots, S_n,S_{n+1})|S_{n+1}\right]&=&\mathbb{E}\left[\int_{S_{n+1}}^x A_{n+1}'(y|S_1,\ldots, S_n,S_{n+1})\text{d}y|S_{n+1}\right]\\
+&=&\int_{S_{n+1}}^x\mathbb{E}\left[ A_{n+1}'(y|S_1,\ldots, S_n,S_{n+1})|S_{n+1}\right]\text{d}y\\
+&=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left[A_{n}(y|S_1,\ldots, S_n)|S_{n+1}\right]\text{d}y\\
+&=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left\{\mathbb{E}\left[A_{n}(y|S_1,\ldots, S_n)|S_n,S_{n+1}\right]S_{n+1}\right\}\text{d}y\\
+&=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left\{\mathbb{E}\left[A_{n}(y|S_1,\ldots, S_n)|S_n\right]|S_{n+1}\right\}\text{d}y\\
+&=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left[y^{n-1}(y-S_n)|S_{n+1}\right]\text{d}y\\
+&=&(n+1)\int_{S_{n+1}}^xy^n-\frac{n}{n+1}S_{n+1}y^{n-1} \text{d}y\\
+&=&x^n(x-S_{n+1})\\
+\end{eqnarray*}
+For identity \eqref{eq:ExplicitExpressionPartialSumsAGPolynomials}, write 
+\begin{eqnarray*}
+\mathbb{E}\left[G_{n}(x|S_0,\ldots, S_{n-1})|S_{n}\right]&=&\mathbb{E}\left[G_{n}(x-S_n|S_0 - S_n,\ldots, S_{n-1}-S_n)|S_{n}\right]\\
+&=&(-1)^n\mathbb{E}\left[G_{n}(S_n-x|S_n,\ldots, S_{n}-S_{n-1})|S_{n}\right]\\
+&=&(-1)^n\mathbb{E}\left[A_{n}(S_n-x|S_{n}-S_{n-1},\ldots, S_n)|S_{n}\right]\\
+&=&(-1)^n(S_n-x -S_n)(S_n-x)^{n-1}\\
+&=&x(x-S_n)^{n-1}.\\
+\end{eqnarray*}
 \end{enumerate}
 \end{proof}
 
