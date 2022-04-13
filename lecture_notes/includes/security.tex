@@ -501,8 +501,11 @@ A trajectory of a counting process is given in
 \label{fig:trajectory_counting_process}
 \end{figure}
 \begin{definition}\label{def_poisson_process}
-A Poisson process $(N_t)_{t\geq0}$ is a conting process whose inter-arrival times are \iid exponential random variables.
+A Poisson process $(N_t)_{t\geq0}$ is a counting process whose inter-arrival times are \iid exponential random variables.
 \end{definition}
+\begin{remark}\label{def_renewal_process}
+A Poisson process belongs to the family renewal processes which are counting process with \iid inter-arrival times.
+\end{remark}
 \begin{definition}\label{def:exp_dist}
 A random variable $X$ is exponentially distributed $X\sim\ExpDist(\lambda)$ if it has \pdf
 $$
@@ -901,9 +904,150 @@ Letting $T\rightarrow\infty$ yields\footnote{Thanks to $S_t\rightarrow -\infty$,
 &=&\e^{\gamma u}\mathbb{E}\left(\e^{\gamma \xi(u))}|\tau_0<\infty\right)\psi(u).
 \end{eqnarray*} 
 \end{proof}
+We will use \cref{prop:ruin_proba_levy} to derive the doubble spending probability within a continuous time framework in the next sections.
 \subsubsection{Double spending probability}\label{sssec:double_spending_counting_process_dsp}
+The \textit{Proof-of-Work} protocol implies a steady block arrival, every $10$ minnutes for the bitcoin blockchain. Each trial (of the network) for mining a block is independent of the others and leads to a success with very small probability, the overall number of successes is binomially distributed, very well approximated by a
+Poisson random variable. This justifies the Poisson process assumption made in the sequel to model the block arrival.\\
 
+\noindent Denote by $(z+ N_t)_{t\geq 0}$ and $(M_t)_{t\geq 0}$ the number of blocks found by the honest miners and the attackers respectively. Double spending occurs at time 
+$$
+\tau_z = \inf\{t\geq0\text{ ; }z+N_t = M_t\}.
+$$
+Assume that $(N_t)_{t\geq 0}$ and $(M_t)_{t\geq 0}$ are Poisson processes with intensity $\lambda$ and $\mu$ such that $\lambda>\mu$. Let $(T_i)_{i\geq0}$ and $(S_i)_{i\geq0}$ be the arrival times of $(N_t)_{t\geq 0}$ and $(M_t)_{t\geq 0}$
+The first-hitting problem along with its notation is illustrated in \cref{fig:ds_poisson_process_illustrated}.
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}
+  %Origin and axis
+  \coordinate (O) at (0,0);
+  \draw[->] (-0.5,0) -- (5.5,0) coordinate[label = {above:$t$}] (xmax);
+  \draw[->] (0,-0.5) -- (0,5) coordinate[label = {right:$n$}] (ymax);
+ %Length of the honest chain
+  \draw[thick,blue,-] (0,3) -- (2,3) node[pos=0.5, above] {} ;
+  \draw[thick,blue] (2,3) -- (2,4) node[pos=0.5, above] {};
+  \draw[thick,blue] (2,4) -- (5.5,4) node[pos=0.5, right] {};
+  % %Length of the Malicious chain
+  \draw[very thick,dashed,red,-] (0,0) -- (0.75,0) node[pos=0.5, above] {} ;
+  \draw[very thick,dashed,red] (0.75,0) -- (0.75,1) node[pos=0.5, right] {};
+  \draw[very thick,dashed,red] (0.75,1) -- (1.25,1) node[pos=0.5, above] {};
+  \draw[very thick,dashed,red] (1.25,1) -- (1.25,2) node[pos=0.5, right] {};
+  \draw[very thick,dashed,red] (1.25,2) -- (2.5,2) node[pos=0.5, above] {};
+  \draw[very thick,dashed,red] (2.5,2) -- (2.5,3) node[pos=0.5, right] {};
+  \draw[very thick,dashed,red] (2.5,3) -- (5,3) node[pos=0.5, right] {};
+  \draw[very thick,dashed,red] (5,3) -- (5,4) node[pos=0.5, above] {};
+  \draw[very thick,dashed,red] (5,4) -- (5.5,4) node[pos=0.5, above] {};
+  %Jump Times of the malicious chain
+  \draw (0.75,0) node[red,below] {$S_1$} node{ \color{red}$\bullet$};
+  \draw (1.25,0) node[red,below] {$S_2$} node{ \color{red}$\bullet$};
+  \draw (2.5,0) node[red,below] {$S_3$} node{ \color{red}$\bullet$};
+  \draw (5,0) node[black,below] {$S_4=\tau_z$} node{ \color{black}$\bullet$};
+  % %Jump Times of the honest chain
+  \draw (2,0) node[blue,below] {$T_1$} node{ \color{blue}$\bullet$};
+  % %Aggregated Capital gains
+  \draw (0,1) node[black,left] {$1$} node{ \color{black}$-$};
+  \draw (0,2) node[black,left] {$2$} node{ \color{black}$-$};
+  \draw (0,3) node[black,left] {$z$} node{};
+  \draw (0,4) node[black,left] {$4$} node{ \color{black}$-$};
+  % %Ruin time = First-meeting time
+  % \draw (7,0) node[black,below] {$\tau_z$} node{ \color{black}$\times$};
+  % \draw[dotted,black] (7,3) -- (7,0);
+\end{tikzpicture}
+\end{center}
+\caption{Illustration of the double spending problem within a continuous time framework.}
+\label{fig:ds_poisson_process_illustrated}
+\end{figure}
+The double spending probability is given by the following result
+\begin{theo}\label{theo:ds_probability_Poisson_process}
+The double spending probability is given by 
+$$
+\mathbb{P}(\tau_z < \infty) = \left(\frac{\mu}{\lambda}\right)^z
+$$
+\end{theo}
+\begin{proof}
+We make an analogy with \cref{sssec:insurance_risk_theory}, where $z$ is the inital reserves, $N_t$ is the premium income and $M_t$ is the liability of an insurance company. Define the claim surplus process as 
+$$
+S_t = M_t - N_t,\text{ }t\geq0.
+$$
+Note that $(S_t)_{t\geq0}$ is a L\'evy process such that $S_t\rightarrow + \infty$ beacuse $\lambda >\mu$. The equation 
+$$
+\kappa(s) =\log\mathbb{E}\left(e^{s S_1}\right) = 0
+$$
+is equivalent to 
+$$
+\mu \e^s + \lambda \e^{-s}- (\mu+\lambda) =0,
+$$
+which has a unique non negative solution given by 
+$$
+\gamma = \log\left(\frac{\lambda}{\mu}\right).
+$$
+It follows from \cref{prop:wald_martingale_levy} that $(\e^{\gamma S_t})_{t\geq 0}$ is a martingale, and applying \cref{prop:ruin_proba_levy} yields the double spending probability 
+$$
+\mathbb{P}(\tau_z<\infty) = \left(\frac{\mu}{\lambda}\right)^z,
+$$
+since $\xi(z)=0$ as ruin occurs exactly.
+\end{proof}
 \subsubsection{Double spending time}\label{sssec:double_spending_counting_process_dst}
+Just like in \cref{sssec:double_spending_rw_dst}, we are interested in the time required to complete a double spending attack. Accounting for the cost of electricity, we can approximate the operational cost per time unit by 
+$$
+c = \pi_W\cdot W\cdot q,
+$$
+where 
+\begin{itemize}
+  \item $\pi_W$ is the electricity cost
+  \item $W$ is the electricity consumed by the network
+  \item  $q$ is the attacker's hashpower
+\end{itemize}
+The double spending cost reduces to $\tau_z\cdot c$. the following result provides a formula for the \pdf of $\tau_z$.
+\begin{theo}
+If $\{N_t\text{ , }t\geq0\}$ is a Poisson process then the \textbf{p.d.f.} of $\tau_z$ is given by
+\begin{equation*}
+f_{\tau_z}(t)=\mathbb{E}\left[\frac{z}{z+N_t}f_{S_{N_t+z}}(t)\right],\text{ for }t\geq0.
+\end{equation*}
+\end{theo}
+\begin{proof}
+The event $\{\tau_z\in(t,t+\text{d}t)\}$, for $t\geq0$, corresponds to the exact time at which the double-spending attack is successful as the malicious chain takes over the honest one. At time $t=0$, the honest chain is ahead by $z\geq 1$ blocks. Assuming that later, at time $t>0$, the honest miners manage to add $N(t)=n\in\mathbb{N}$ blocks to the chain then the malicious chain must be of length $M(t^{-})=n+z-1$ at some time $t^{-}<t$ and jumps to the level $n+z$ exactly at $t$. Conditioning over the values of $\{N(t)\text{ , }t\geq0\}$ yields
+\begin{equation}\label{eq:Tauz}
+\{\tau_z\in(t,t+\text{d}t)\}=\bigcup_{n=0}^{+\infty}\{\tau_z\in(t,t+\text{d}t)\}\cap\{N(t)=n\}.
+\end{equation}
+In the case where $N(t)=0$, the only requirement is that the $z^{\text{th}}$ jump of $\{M(t)\text{ , }t\geq0\}$ occurs at time $t$. It then follows that
+\begin{equation}\label{eq:TauzNt0}
+\{\tau_z\in(t,t+\text{d}t)\}\cap\{N(t)=0\}=\{S_{z}\in(t,t+\text{d}t)\}\cap\{N(t)=0\},
+\end{equation}
+and consequently
+\begin{equation}\label{eq:PDFTauzNt0}
+f_{\tau_z|N(t)=0}(t)=f^{\ast z}_{\Delta^{S}}(t),\text{ }t\geq0,
+\end{equation}
+% where $f_{\tau_z|N(t)=0}(t)$ denotes the conditional \pdf of $\tau_z$ given that $N(t)=0$. On the set $\{N(t)\geq1\}$, one needs to make sure that $\{M(t)\text{ , }t\geq0\}$ behaves properly by constraining its jump times so that it does not reach $N(s)+z$ at any time $s<t$ and performs the $(n+z)^{\text{th}}$ jump at $t$. Hence, it holds that
+% \begin{equation*}
+% \{\tau_z\in(t,t+\text{d}t)\}\cap\{N(t)\geq1\}=\bigcup_{n=1}^{+\infty}\bigcap_{k=1}^{n}\{T_k\leq S_{z+k-1}\}\cap\{S_{z+n}\in(t,t+\text{d}t)\}\cap\{N(t)=n\}.
+% \end{equation*}
+% Applying the law of total probability yields
+% \begin{eqnarray}
+% &&\mathbb{P}\left(\{\tau_z\in(t,t+\text{d}t)\}\cap\{N(t)\geq1\}\right)\nonumber\\
+% &=&\sum_{n=1}^{+\infty}\mathbb{P}\left[\bigcap_{k=1}^{n}\{T_k\leq S_{z+k-1}\}\cap\{S_{z+n}\in(t,t+\text{d}t)\}\Big\rvert N(t)=n\right]\mathbb{P}[N(t)=n].\label{eq:LawOfTotalProbabilityTh1}
+% \end{eqnarray}
+% In virtue of the order statistic property, the successive jump times $(T_1,\ldots,T_n)$ are distributed as the order statistics $(V_{1:n},\ldots,V_{n:n})$ of a sample of $n$ \iid random variables with \cdf $F_t(s)  =s/t,\text{ }0\leq s\leq t$. The conditional probability in \eqref{eq:LawOfTotalProbabilityTh1} may be rewritten as
+% \begin{eqnarray}
+% &&\mathbb{P}\left[\bigcap_{k=1}^{n}\{V_{k:n}\leq S_{z+k-1}\}\cap\{S_{z+n}\in(t,t+\text{d}t)\}\right]\nonumber\\
+% &=&\mathbb{P}\left[\bigcap_{k=1}^{n}\{U_{k:n}\leq F_{t}(S_{z+k-1})\}\cap\{S_{z+n}\in(t,t+\text{d}t)\}\right]\nonumber\\
+% &=&\mathbb{P}\left[\bigcap_{k=1}^{n}\{U_{k:n}\leq F_{t}(S_{z+k-1})\}\big\rvert S_{z+n}\in(t,t+\text{d}t)\right]\mathbb{P}[S_{z+n}\in(t,t+\text{d}t)]\nonumber\\
+% &=&\mathbb{E}\left\{(-1)^{n}G_{n}[0\big\rvert F_{t}(S_{z}),\ldots,F_{t}(S_{z+n-1})] \big\rvert S_{z+n}\in(t,t+\text{d}t)\right\}\mathbb{P}[S_{z+n}\in(t,t+\text{d}t)],\nonumber\\
+% &&\label{eq:AGPolynomialsProof}
+% \end{eqnarray}
+% where $U_{1:n},\ldots,U_{n:n}$ denote the order statistics of a sample of $n$ \iid uniform random variables on $[0,1]$, and $G_n(.|.)$ correspond to the sequence of \AG polynomials as defined in the Appendix \ref{sec:appendix}. Inserting \eqref{eq:AGPolynomialsProof} into \eqref{eq:LawOfTotalProbabilityTh1} and letting $\text{d}t$ be small enough yields
+% \begin{eqnarray*}
+% f_{\tau_z|N(t)\geq1}(t)&=&\sum_{n=1}^{+\infty}\mathbb{E}\left\{(-1)^{n}G_{n}[0\big\rvert F_{t}(S_{z}),\ldots,F_{t}(S_{z+n-1})] \big\rvert S_{z+n}=t\right\}\nonumber\\
+% &\times&f_{S_{z+n}}(t)\mathbb{P}[N(t)=n].
+% \end{eqnarray*}
+% The final step consists in noting that $G_0(x)=1$ for every $x\in\mathbb{R}$, and writing
+% \begin{equation}\label{eq:PDFDoubleSpendingTimeInfiniteSerie}
+% f_{\tau_z}(t)=\sum_{n=0}^{+\infty}\mathbb{E}\left\{(-1)^{n}G_{n}[0\big\rvert F_{t}(S_{z}),\ldots,F_{t}(S_{z+n-1})] \big\rvert S_{z+n}=t\right\}f_{\Delta^{S}}^{\ast (z+n)}(t)\mathbb{P}[N(t)=n],
+% \end{equation}
+% which is equivalent to the announced result \eqref{eq:PDFDoubleSpendingTime}.  
+
+
+\end{proof}
+
 
 \section{Blockwitholding in PoW}\label{sec:blockwithholding}
 \subsection{The selfish mining strategy}\label{ssec:selfish_mining}
