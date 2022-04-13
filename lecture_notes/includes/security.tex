@@ -816,7 +816,91 @@ For identity \eqref{eq:ExplicitExpressionPartialSumsAGPolynomials}, write
 \end{proof}
 
 \subsubsection{A tiny bit of insurance risk theory}\label{sssec:insurance_risk_theory}
+In what follows we will use classical result from insurance risk theory and so we have to provide some context. The financial reserve of a nonlife insurance company can be modelled by a continuous time stochastic process $(R_t)_{t\geq0}$ defined as 
+\begin{equation}\label{eq:risk_process}
+R_t = u + P_t - L_t,\text{ }t\geq0
+\end{equation}
+where 
+\begin{itemize}
+  \item $R_0 = u>0$ are the initial reserves,
+  \item $(P_t)_{t\geq0}$ is the premium income process,
+  \item $(L_t)_{t\geq0}$ is the liability of the insurance company, that is the sum of all the compensations paid to to the policyholders.
+\end{itemize}
+The classical assumes that the premium are collected linearly in times at some rate $c$ per time unit. Namely, we have 
+$$
+P_t = c\times t.
+$$
+The number of claims is governed by a counting process $(N_t)_{t\geq0}$, usually a standard Poisson process with intensity $\lambda$. To each claim is associated a randomly sized compensation distributed as $U$. The claim sizes $U_1,U_2,\ldots$ form a sequence of \iid random variables independent from $N_t$. We therefore have 
+$$
+L_t = \sum_{k = 1}^{N_t}U_k.
+$$
+The name of the game is to compute the ruin probabilities 
+\begin{equation}\label{eq:ruin_probabilities}
+\psi(u,T) = \mathbb{P}(\tau_0 \leq T),\text{ and }\psi(u) = \mathbb{P}(\tau_0 < \infty),
+\end{equation} 
+where $\tau_0 = \inf\{t\geq0\text{ ; }R_t \leq 0\}$ is the ruin time. This first hitting time problem is illustrated on \cref{fig:ruin_time_CL}
+\begin{figure} 
+\begin{center}
+\begin{tikzpicture}
+  %Origin and axis
+  \coordinate (O) at (0,0);
+  \draw[->] (-0.5,0) -- (5.5,0) coordinate[label = {below:$t$}] (xmax);
+  \draw[->] (0,-0.5) -- (0,4) coordinate[label = {right:$R_t$}] (ymax);
+   %Initial reserves
+  \draw (0,2) node[black,left] {$z$} node{};
+ % % %Length of the honest chain
+  \draw[thick, blue,-] (0,2) -- (2,3) node[pos=0.5, above] {};
+  \draw[thick, dashed, blue] (2,3) -- (2,1) node[pos=0.5, left] {\color{black}$U_1$};
+  \draw[thick, blue] (2,1) -- (3,1.5) node[pos=0.5, above] {};
+  \draw[thick, dashed, blue] (3,1.5) -- (3, 0.5) node[pos=0.5, left] {\color{black}$U_2$};
+  \draw[thick, blue] (3,0.5) -- (5, 1.5) node[pos=0.5, above] {};
+   \draw[thick, dashed, blue] (5,1.5) -- (5, -0.5) node[pos=0.5,above left] {\color{black}$U_3$};
 
+  %Block finding Times 
+  \draw (2,0) node[black,below] {$T_1$} node{ \color{black}$\bullet$};
+  \draw (3,0) node[black,below] {$T_2$} node{ \color{black}$\bullet$};
+  \draw (5,0) node[black,below left] {$\tau_0$} node{ \color{black}$\bullet$};
+\end{tikzpicture}
+\end{center}
+\label{fig:ruin_time_CL}
+\caption{Illustration of the classical insurance ruin problem}
+\end{figure}
+This enables to select an initial reserves level $u$ so that the ruin probability is low enough. The premium rate is usually set to compensate the losses due to claims with 
+$$
+\mathbb{E}(P_t) = (1+\eta)\mathbb{E}(L_t)\text{ or  equivalently } c = (1+\eta)\lambda\mathbb{E}(U).
+$$
+Define the claim surplus process as
+$$
+S_t = u - R_t = L_t-P_t,\text{ }t\geq 0.
+$$
+The following result is the counterpart of \cref{lem:wald_martingale_RW} for Lévy processes.
+\begin{prop}\label{prop:wald_martingale_levy}
+If $(S_t)_{t\geq0}$ is a L\'evy process then
+$$
+M_t = \exp\left[s S_t-t\kappa(s)\right]\text{, }t\geq0,
+$$
+where $\kappa(s)=\log\mathbb{E}\left(e^{s S_1}\right)$, is a Martingale.
+\end{prop}
+The infinite time horizon ruin probability may be evaluated using the following result.
+\begin{prop}\label{prop:ruin_proba_levy}
+If $S_t\overset{\textbf{a.s.}}{\rightarrow} -\infty$, and there exists $\gamma>0$ such that $\left(e^{\gamma S_t}\right)_{t\geq0}$ is a martingale then
+$$
+\mathbb{P}(\tau_0<\infty)=\frac{e^{-\gamma u}}{\mathbb{E}\left[e^{\gamma \xi(u)}|\tau_0<\infty\right]},
+$$
+where $\xi(u)=S_{\tau_0}-u$ denotes the deficit at ruin.
+\end{prop}
+\begin{proof}
+We apply the optionnal stopping theorem on $(e^{\gamma S_t})_{t\geq0}$ at time $T\land \tau_0$ for some $T>0$ to get 
+\begin{eqnarray*}
+1 = \mathbb{E}\left(\e^{\gamma S_0}\right)&=& \mathbb{E}\left(\e^{\gamma S_{T\land \tau_0}}\right)\\  
+&=& \mathbb{E}\left(\e^{\gamma S_{\tau_0}}\mathbb{I}_{\tau_0\leq T} + \e^{\gamma S_{T}}\mathbb{I}_{\tau_0> T}\right).\\
+\end{eqnarray*} 
+Letting $T\rightarrow\infty$ yields\footnote{Thanks to $S_t\rightarrow -\infty$, monotone and dominated convergence.}
+\begin{eqnarray*}
+1 &=&\mathbb{E}\left(\e^{\gamma S_{\tau_0}}\mathbb{I}_{\tau_0<\infty}\right)\\
+&=&\e^{\gamma u}\mathbb{E}\left(\e^{\gamma \xi(u))}|\tau_0<\infty\right)\psi(u).
+\end{eqnarray*} 
+\end{proof}
 \subsubsection{Double spending probability}\label{sssec:double_spending_counting_process_dsp}
 
 \subsubsection{Double spending time}\label{sssec:double_spending_counting_process_dst}
