@@ -1,4 +1,4 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{16}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -44,6 +44,13 @@ Miguel Castro and Barbara Liskov.
   Association.
 \newblock ISBN 1880446391.
 \newblock URL \url{https://dl.acm.org/doi/10.5555/296806.296824}.
+
+\bibitem[Eyal and Sirer(2014)]{Eyal2014}
+Ittay Eyal and Emin~Gün Sirer.
+\newblock Majority is not enough: Bitcoin mining is vulnerable.
+\newblock In \emph{Financial Cryptography and Data Security}, pages 436--454.
+  Springer Berlin Heidelberg, 2014.
+\newblock \doi{10.1007/978-3-662-45472-5_28}.
 
 \bibitem[King and Nadal(2012)]{ppcoin}
 Sunny King and Scott Nadal.

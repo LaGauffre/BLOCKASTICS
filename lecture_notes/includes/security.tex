@@ -758,7 +758,7 @@ $$
 By expanding $x^n$ one gets \eqref{eq:recursion_AG_polynomials}.
 \end{proof}
 Hereafter are a couple of useful properties
-\begin{prop}
+\begin{prop}\label{prop:Appell_AG_polynomials_properties}
 \begin{enumerate}
 \item For any $a,b\in \mathbb{R}$, it holds that
 \begin{equation}
@@ -904,7 +904,7 @@ Letting $T\rightarrow\infty$ yields\footnote{Thanks to $S_t\rightarrow -\infty$,
 &=&\e^{\gamma u}\mathbb{E}\left(\e^{\gamma \xi(u))}|\tau_0<\infty\right)\psi(u).
 \end{eqnarray*} 
 \end{proof}
-We will use \cref{prop:ruin_proba_levy} to derive the doubble spending probability within a continuous time framework in the next sections.
+We will use \cref{prop:ruin_proba_levy} to derive the double spending probability within a continuous time framework in the next sections.
 \subsubsection{Double spending probability}\label{sssec:double_spending_counting_process_dsp}
 The \textit{Proof-of-Work} protocol implies a steady block arrival, every $10$ minnutes for the bitcoin blockchain. Each trial (of the network) for mining a block is independent of the others and leads to a success with very small probability, the overall number of successes is binomially distributed, very well approximated by a
 Poisson random variable. This justifies the Poisson process assumption made in the sequel to model the block arrival.\\
@@ -960,7 +960,7 @@ The double spending probability is given by the following result
 \begin{theo}\label{theo:ds_probability_Poisson_process}
 The double spending probability is given by 
 $$
-\mathbb{P}(\tau_z < \infty) = \left(\frac{\mu}{\lambda}\right)^z
+\mathbb{P}(\tau_z < \infty) = \left(\frac{\mu}{\lambda}\right)^z.
 $$
 \end{theo}
 \begin{proof}
@@ -999,57 +999,81 @@ where
 \end{itemize}
 The double spending cost reduces to $\tau_z\cdot c$. the following result provides a formula for the \pdf of $\tau_z$.
 \begin{theo}
-If $\{N_t\text{ , }t\geq0\}$ is a Poisson process then the \textbf{p.d.f.} of $\tau_z$ is given by
-\begin{equation*}
+If $(N_t)_{t\geq0}$ is a Poisson process and $(M_t)_{t\geq0}$ is a renewal process then the \textbf{p.d.f.} of $\tau_z$ is given by
+\begin{equation}\label{eq:DS_time_pdf}
 f_{\tau_z}(t)=\mathbb{E}\left[\frac{z}{z+N_t}f_{S_{N_t+z}}(t)\right],\text{ for }t\geq0.
-\end{equation*}
+\end{equation}
 \end{theo}
 \begin{proof}
-The event $\{\tau_z\in(t,t+\text{d}t)\}$, for $t\geq0$, corresponds to the exact time at which the double-spending attack is successful as the malicious chain takes over the honest one. At time $t=0$, the honest chain is ahead by $z\geq 1$ blocks. Assuming that later, at time $t>0$, the honest miners manage to add $N(t)=n\in\mathbb{N}$ blocks to the chain then the malicious chain must be of length $M(t^{-})=n+z-1$ at some time $t^{-}<t$ and jumps to the level $n+z$ exactly at $t$. Conditioning over the values of $\{N(t)\text{ , }t\geq0\}$ yields
+The event $\{\tau_z\in(t,t+\text{d}t)\}$, for $t\geq0$, corresponds to the exact time at which the double-spending attack is successful as the malicious chain takes over the honest one. At time $t=0$, the honest chain is ahead by $z\geq 1$ blocks. Assuming that later, at time $t>0$, the honest miners manage to add $N_t=n\in\mathbb{N}$ blocks to the chain then the malicious chain must be of length $M(t^{-})=n+z-1$ at some time $t^{-}<t$ and jumps to the level $n+z$ exactly at $t$. Conditioning over the values of $\{N_t\text{ , }t\geq0\}$ yields
 \begin{equation}\label{eq:Tauz}
-\{\tau_z\in(t,t+\text{d}t)\}=\bigcup_{n=0}^{+\infty}\{\tau_z\in(t,t+\text{d}t)\}\cap\{N(t)=n\}.
+\{\tau_z\in(t,t+\text{d}t)\}=\bigcup_{n=0}^{+\infty}\{\tau_z\in(t,t+\text{d}t)\}\cap\{N_t=n\}.
 \end{equation}
-In the case where $N(t)=0$, the only requirement is that the $z^{\text{th}}$ jump of $\{M(t)\text{ , }t\geq0\}$ occurs at time $t$. It then follows that
+In the case where $N_t=0$, the only requirement is that the $z^{\text{th}}$ jump of $(M_t)_{t\geq0}$ occurs at time $t$. It then follows that
 \begin{equation}\label{eq:TauzNt0}
-\{\tau_z\in(t,t+\text{d}t)\}\cap\{N(t)=0\}=\{S_{z}\in(t,t+\text{d}t)\}\cap\{N(t)=0\},
+\{\tau_z\in(t,t+\text{d}t)\}\cap\{N_t=0\}=\{S_{z}\in(t,t+\text{d}t)\}\cap\{N_t=0\},
 \end{equation}
 and consequently
 \begin{equation}\label{eq:PDFTauzNt0}
-f_{\tau_z|N(t)=0}(t)=f^{\ast z}_{\Delta^{S}}(t),\text{ }t\geq0,
+f_{\tau_z|N_t}(t|0)=f_{S_z}(t),\text{ }t\geq0,
 \end{equation}
-% where $f_{\tau_z|N(t)=0}(t)$ denotes the conditional \pdf of $\tau_z$ given that $N(t)=0$. On the set $\{N(t)\geq1\}$, one needs to make sure that $\{M(t)\text{ , }t\geq0\}$ behaves properly by constraining its jump times so that it does not reach $N(s)+z$ at any time $s<t$ and performs the $(n+z)^{\text{th}}$ jump at $t$. Hence, it holds that
-% \begin{equation*}
-% \{\tau_z\in(t,t+\text{d}t)\}\cap\{N(t)\geq1\}=\bigcup_{n=1}^{+\infty}\bigcap_{k=1}^{n}\{T_k\leq S_{z+k-1}\}\cap\{S_{z+n}\in(t,t+\text{d}t)\}\cap\{N(t)=n\}.
-% \end{equation*}
-% Applying the law of total probability yields
-% \begin{eqnarray}
-% &&\mathbb{P}\left(\{\tau_z\in(t,t+\text{d}t)\}\cap\{N(t)\geq1\}\right)\nonumber\\
-% &=&\sum_{n=1}^{+\infty}\mathbb{P}\left[\bigcap_{k=1}^{n}\{T_k\leq S_{z+k-1}\}\cap\{S_{z+n}\in(t,t+\text{d}t)\}\Big\rvert N(t)=n\right]\mathbb{P}[N(t)=n].\label{eq:LawOfTotalProbabilityTh1}
-% \end{eqnarray}
-% In virtue of the order statistic property, the successive jump times $(T_1,\ldots,T_n)$ are distributed as the order statistics $(V_{1:n},\ldots,V_{n:n})$ of a sample of $n$ \iid random variables with \cdf $F_t(s)  =s/t,\text{ }0\leq s\leq t$. The conditional probability in \eqref{eq:LawOfTotalProbabilityTh1} may be rewritten as
-% \begin{eqnarray}
-% &&\mathbb{P}\left[\bigcap_{k=1}^{n}\{V_{k:n}\leq S_{z+k-1}\}\cap\{S_{z+n}\in(t,t+\text{d}t)\}\right]\nonumber\\
-% &=&\mathbb{P}\left[\bigcap_{k=1}^{n}\{U_{k:n}\leq F_{t}(S_{z+k-1})\}\cap\{S_{z+n}\in(t,t+\text{d}t)\}\right]\nonumber\\
-% &=&\mathbb{P}\left[\bigcap_{k=1}^{n}\{U_{k:n}\leq F_{t}(S_{z+k-1})\}\big\rvert S_{z+n}\in(t,t+\text{d}t)\right]\mathbb{P}[S_{z+n}\in(t,t+\text{d}t)]\nonumber\\
-% &=&\mathbb{E}\left\{(-1)^{n}G_{n}[0\big\rvert F_{t}(S_{z}),\ldots,F_{t}(S_{z+n-1})] \big\rvert S_{z+n}\in(t,t+\text{d}t)\right\}\mathbb{P}[S_{z+n}\in(t,t+\text{d}t)],\nonumber\\
-% &&\label{eq:AGPolynomialsProof}
-% \end{eqnarray}
-% where $U_{1:n},\ldots,U_{n:n}$ denote the order statistics of a sample of $n$ \iid uniform random variables on $[0,1]$, and $G_n(.|.)$ correspond to the sequence of \AG polynomials as defined in the Appendix \ref{sec:appendix}. Inserting \eqref{eq:AGPolynomialsProof} into \eqref{eq:LawOfTotalProbabilityTh1} and letting $\text{d}t$ be small enough yields
-% \begin{eqnarray*}
-% f_{\tau_z|N(t)\geq1}(t)&=&\sum_{n=1}^{+\infty}\mathbb{E}\left\{(-1)^{n}G_{n}[0\big\rvert F_{t}(S_{z}),\ldots,F_{t}(S_{z+n-1})] \big\rvert S_{z+n}=t\right\}\nonumber\\
-% &\times&f_{S_{z+n}}(t)\mathbb{P}[N(t)=n].
-% \end{eqnarray*}
-% The final step consists in noting that $G_0(x)=1$ for every $x\in\mathbb{R}$, and writing
-% \begin{equation}\label{eq:PDFDoubleSpendingTimeInfiniteSerie}
-% f_{\tau_z}(t)=\sum_{n=0}^{+\infty}\mathbb{E}\left\{(-1)^{n}G_{n}[0\big\rvert F_{t}(S_{z}),\ldots,F_{t}(S_{z+n-1})] \big\rvert S_{z+n}=t\right\}f_{\Delta^{S}}^{\ast (z+n)}(t)\mathbb{P}[N(t)=n],
-% \end{equation}
-% which is equivalent to the announced result \eqref{eq:PDFDoubleSpendingTime}.  
-
-
+where $f_{\tau_z|N_t}(t|0)$ denotes the conditional \pdf of $\tau_z$ given that $N_t=0$. On the set $\{N_t\geq1\}$, one needs to make sure that $\{M_t\text{ , }t\geq0\}$ behaves properly by constraining its jump times so that it does not reach $N_s+z$ at any time $s<t$ and performs the $(n+z)^{\text{th}}$ jump at $t$. Hence, it holds that
+\begin{equation*}
+\{\tau_z\in(t,t+\text{d}t)\}\cap\{N_t\geq1\}=\bigcup_{n=1}^{+\infty}\bigcap_{k=1}^{n}\{T_k\leq S_{z+k-1}\}\cap\{S_{z+n}\in(t,t+\text{d}t)\}\cap\{N_t=n\}.
+\end{equation*}
+Applying the law of total probability yields
+\begin{eqnarray}
+&&\mathbb{P}\left(\{\tau_z\in(t,t+\text{d}t)\}\cap\{N(t)\geq1\}\right)\nonumber\\
+&=&\sum_{n=1}^{+\infty}\mathbb{P}\left[\bigcap_{k=1}^{n}\{T_k\leq S_{z+k-1}\}\cap\{S_{z+n}\in(t,t+\text{d}t)\}\Big\rvert N(t)=n\right]\mathbb{P}[N(t)=n].\label{eq:LawOfTotalProbabilityTh1}
+\end{eqnarray}
+In virtue of the order statistic property, the successive jump times $(T_1,\ldots,T_n)$ are distributed as the order statistics $(V_{1:n},\ldots,V_{n:n})$ of a sample of $n$ \iid random variables uniformly distributed on $(0,t)$. The conditional probability in \eqref{eq:LawOfTotalProbabilityTh1} may be rewritten as
+\begin{eqnarray}
+&&\mathbb{P}\left[\bigcap_{k=1}^{n}\{V_{k:n}\leq S_{z+k-1}\}\cap\{S_{z+n}\in(t,t+\text{d}t)\}\right]\nonumber\\
+&=&\mathbb{P}\left[\bigcap_{k=1}^{n}\{U_{k:n}\leq S_{z+k-1}/ t\}\cap\{S_{z+n}\in(t,t+\text{d}t)\}\right]\nonumber\\
+&=&\mathbb{P}\left[\bigcap_{k=1}^{n}\{U_{k:n}\leq S_{z+k-1}/t\}\big\rvert S_{z+n}\in(t,t+\text{d}t)\right]\mathbb{P}[S_{z+n}\in(t,t+\text{d}t)]\nonumber\\
+&=&\mathbb{E}\left\{(-1)^{n}G_{n}[0\big\rvert S_{z}/t,\ldots, S_{z+n-1} / t] \big\rvert S_{z+n}\in(t,t+\text{d}t)\right\}\mathbb{P}[S_{z+n}\in(t,t+\text{d}t)],\nonumber\\
+&=&(-1/t)^{n}\mathbb{E}\left\{G_{n}[0\big\rvert S_{z},\ldots, S_{z+n-1}] \big\rvert S_{z+n}\in(t,t+\text{d}t)\right\}\mathbb{P}[S_{z+n}\in(t,t+\text{d}t)],\nonumber\\
+&&\label{eq:AGPolynomialsProof}
+\end{eqnarray}
+where $U_{1:n},\ldots,U_{n:n}$ denote the order statistics of a sample of $n$ \iid uniform random variables on $(0,1)$, and $G_n(.|.)$ correspond to the sequence of A-G polynomials as defined in \cref{sssec:exp_distribution}. The last equation in \eqref{eq:AGPolynomialsProof} follows from using the first identity of \cref{prop:Appell_AG_polynomials_properties}.
+Inserting \eqref{eq:AGPolynomialsProof} into \eqref{eq:LawOfTotalProbabilityTh1} and letting $\text{d}t$ be small enough yields
+\begin{eqnarray}
+f_{\tau_z|N(t)\geq1}(t)&=&\sum_{n=1}^{+\infty}(-1/t)^{n}\mathbb{E}\left\{G_{n}[0\big\rvert S_{z},\ldots,S_{z+n-1}] \big\rvert S_{z+n}=t\right\}\nonumber\\
+&\times&f_{S_{z+n}}(t)\mathbb{P}[N(t)=n]\label{eq:cond_pdf_tau_N_greater_than_1}.
+\end{eqnarray}
+We further work on the AG polynomials to simplify the above expressions. We have that
+\begin{eqnarray} 
+\mathbb{E}\left\{G_{n}(0\big\rvert S_{z},\ldots,S_{z+n-1}) \rvert S_{z+n}=t\right\}&=& \mathbb{E}\left\{G_{n}(-S_z\rvert 0,\ldots,S_{z+n-1}-S_z) \rvert S_{z+n}=t\right\} \nonumber\\
+&=& \mathbb{E}\left\{\mathbb{E}\left[G_{n}(-S_z\rvert 0,\ldots,S_{z+n-1}-S_z)\rvert S_{z+n}-S_z, S_{z+n}\right] \rvert S_{z+n}=t\right\} \nonumber\\
+&=& \mathbb{E}\left\{(-S_z)(-S_z-S_{n+z}+S_z)^{n-1} \rvert S_{z+n}=t\right\} \nonumber\\
+&=& (-1)^n\mathbb{E}\left\{S_z S_{n+z}^{n-1} \rvert S_{z+n}=t\right\} \nonumber\\
+&=& (-1)^nt^{n-1}\frac{z}{z+n}t =(-t)^n\frac{z}{z+n} \label{eq:AG_polynomial_simplification}
+\end{eqnarray}
+Inserting \eqref{eq:AG_polynomial_simplification} into \eqref{eq:cond_pdf_tau_N_greater_than_1} yields
+\begin{equation*}
+f_{\tau_z|N_t\geq1}(t)=\sum_{n=1}^{+\infty}\frac{z}{z+n}f_{S_{z+n}}(t)\mathbb{P}(N_t=n)
+\end{equation*}
+The final step consists in adding the case $N_t=0$ to the sum, therefore writing
+\begin{equation*}
+f_{\tau_z}(t)=\sum_{n=0}^{+\infty}\frac{z}{z+n}f_{S_{z+n}}(t)\mathbb{P}(N_t=n)
+\end{equation*}
+which is equivalent to the announced result \eqref{eq:DS_time_pdf}.  
 \end{proof}
-
-
+\begin{remark}
+Just like in the random walk framework of \cref{ssec:double_spending_rw}, the number $z$ is actually a random variable defined as 
+$$
+Z = (\alpha - M_{T_\alpha})_+,
+$$
+where $T_\alpha$ is the arrival time of the $\alpha^{th}$ block in the main branch of the blockchain. If $(M_t)_{t\geq0}$ is a Poisson process with intensity $\mu$ then $M_{T_\alpha})$ is mixed Poisson distributed with parameter $\mu\cdot T_{\alpha}$. We have that 
+\begin{eqnarray*}
+\mathbb{P}(M_{T_\alpha} = m) &=& \int_{0}^{\infty}\frac{\e^{-\mu t}(\mu t)^m}{m!}\frac{\e^{-\lambda t}t^{\alpha-1}\lambda ^\alpha}{(\alpha -1)}\text{d}t\\
+&=&\frac{\mu^m\lambda^{\alpha}}{m!(\alpha-1)!}\int_{0}^{\infty}\e^{-t(\mu + \lambda)}t^{m+\alpha-1}\text{d}t\\
+&=&\binom{m+\alpha-1}{m}\left(\frac{\lambda}{\lambda+\mu}\right)^{\alpha}\left(\frac{\mu}{\lambda+\mu}\right)^{m}.
+\end{eqnarray*}
+The number of blocks found by the attacker until the vendor's transaction gets $\alpha$ confirmations is governed by a negative binomial distribution.
+\end{remark}
 \section{Blockwitholding in PoW}\label{sec:blockwithholding}
+Blockwitholding is a deviation from the prescribed protocol in which miner would constitute a stock of block to be released aat well chosen time in order to fork the chain. We focus in this section on the first blockwitholding strategy called selfish mining and described in \citet{Eyal2014}.
 \subsection{The selfish mining strategy}\label{ssec:selfish_mining}
 \subsection{Ruin and expected profit of a miner}\label{ssec:selfish_mining}
 \subsection{Ruin and expected profit of a selfish miner}\label{ssec:selfish_mining}
