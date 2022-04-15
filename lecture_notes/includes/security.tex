@@ -765,6 +765,11 @@ Hereafter are a couple of useful properties
 A_{n}(x|a+bU) = b^n A_n\left((x-a)/b \, |U\right), \quad n\geq 1, \label{eq:LinearTransform}
 \end{equation}
 with the same identity for $G_n$.
+\item We have 
+\begin{eqnarray}
+&&A_{n}(x|1,\ldots,n) = x^{n-1}(x-n), \label{eq:ExplicitExpressionIntAppellPolynomials}\\
+&&G_{n}(x|0,\ldots,n-1)= x(x-n)^{n-1}.    \label{eq:ExplicitExpressionIntAGPolynomials}
+\end{eqnarray}
 \item Let $\{X_{n}\text{ , }n\geq1\}$ be a sequence of \iid nonnegative random variables, of partial sums $S_{n}=\sum_{k=1}^{n}X_{k}$ with $S_0=0$. Then, for $n\geq 1$,
 \begin{eqnarray}
 &&\mathbb{E} \left[A_{n}(x|S_{1},\ldots,S_{n})\vert S_{n}\right] = x^{n-1}(x-S_{n}), \label{eq:ExplicitExpressionPartialSumsAppellPolynomials}\\
@@ -792,6 +797,25 @@ with the same identity for $G_n$.
   &=&b^{n+1}A_{n+1}\left(\frac{x-a}{b}\Big|U\right),
   \end{eqnarray*}
   so the property holds for $n+1$. No need to do the job for the $G_n(.|U)$'s thanks to \eqref{eq:link_AG_Appell}.
+\item Again induction on $n\geq1$. Take $n = 1$, we have
+$$
+A_1(x|1) = x-1
+$$
+Assume that the result holds true for some $n$ and consider $n+1$. We have 
+\begin{eqnarray*}
+A_{n+1}(x|1,\ldots, n,n+1) &=& \int_{n+1}^{x}A_{n+1}'(y|1,2,\ldots, n+1)\text{d}y\\
+&=& (n+1)\int_{n+1}^{x}A_{n}(y|1,2,\ldots, n)\text{d}y\\
+&=& (n+1)\int_{n+1}^{x}y^{n-1}(y-n)\text{d}y\\
+&=& x^n[x - (n + 1)]
+\end{eqnarray*}
+For identity \eqref{eq:ExplicitExpressionIntAGPolynomials}, write 
+\begin{eqnarray*}
+G_{n}(x|0,\ldots, n-1)&=&G_{n}(x-n|-n ,\ldots,-1)\\
+&=&(-1)^nG_{n}(n-x|n,\ldots, 1)|\\
+&=&(-1)^nA_{n}(n-x|1,\ldots, n)\\
+&=&(-1)^n(n-x)^{n-1}(-x)\\
+&=&x(x-n)^{n-1}.
+\end{eqnarray*}
 \item Again induction on $n\geq1$. Take $n = 1$, we have
 $$
 \mathbb{E}[A_1(x|S_1)|S_1] = x-S_1
@@ -1072,11 +1096,216 @@ where $T_\alpha$ is the arrival time of the $\alpha^{th}$ block in the main bran
 \end{eqnarray*}
 The number of blocks found by the attacker until the vendor's transaction gets $\alpha$ confirmations is governed by a negative binomial distribution.
 \end{remark}
+\noindent For further results on the distribution of $\tau_z$ with different set of assumptions, the reader is referred to \citet{Goffard2019}.
 \section{Blockwitholding in PoW}\label{sec:blockwithholding}
-Blockwitholding is a deviation from the prescribed protocol in which miner would constitute a stock of block to be released aat well chosen time in order to fork the chain. We focus in this section on the first blockwitholding strategy called selfish mining and described in \citet{Eyal2014}.
+Blockwitholding is a deviation from the prescribed protocol. The goal is to build up a stock of blocks and release them publicly at well chosen times so as to fork the chain and make a part of the mining activities of competitors worthless, depending on which branch is followed up in the longer run. We focus here on a simplified version\footnote{For the sake of tractability.} of the original blockwitholding strategy called selfish mining and described in \citet{Eyal2014}.
 \subsection{The selfish mining strategy}\label{ssec:selfish_mining}
+Let Sam be a miner with hashpower $q\in(0,1)$ and define a discrete time stochastic process $(Z_n)_{n\geq0}$ that corresponds to the number of blocks in Sam's buffer. At each time step a block is found by the network and it belongs to Sam with probability $q$. The process $(Z_n)_{n\geq0}$ is a Markov chain with state space $E = \{0, 0^{\ast}, 1\}$. The state $0^{\ast}$ corresponds to the situation where a fork is ongoing, one branch is Sam's while the other branch belong to the honest miners. If Sam finds the next block then he appends it to his own branch. If the honest miners find the next block then they may append it to Sam's branch with probability $\gamma\in(0,1)$, a parameter refered to as Sam's connectivity. If $\gamma$ is high then Sam is well connected to the network which allows him to advertize his own branch to the other nodes that will then work on top of it. The honest miners append a block to the other branch with probability $1-\gamma$.  The dynamic of $(Z_n)_{n\geq0}$ is as follows. Consider some time $n\geq0$,
+\begin{itemize}
+\item If Sam is not hiding any block, then $Z_n = 0$, 
+\begin{itemize}
+\item if Sam finds the next block, he stores it in a buffer and $Z_{n+1} = 1$, 
+\item if the other miners discover a block then Sam's buffer remains empty $Z_{n+1}=0$, 
+\end{itemize}
+In both cases, Sam is not collecting any reward.
+\item If Sam is hiding one block at that time, then $Z_n = 1$,
+\begin{itemize} 
+\item if he then finds a new block, then he broadcasts both blocks immediately (which resets the Markov chain to $Z_{n+1}=0$), and he collects two rewards,
+\item if the others find a block, then Sam also releases his block leading to a fork situation characterized by $Z_{n+1} = 0^\ast$. At that moment Sam is not collecting any rewards.
+\end{itemize}
+\item If a fork situation is present at that time ($Z_n = 0^{\ast}$), then 
+\begin{itemize}
+\item if Sam finds a new block then he appends it to his branch of the chain and collects the reward for two blocks and $Z_{n+1} = 0$.  
+\item if the others find a block then 
+\begin{itemize}
+\item they append it to Sam's branch with a probability $0\leq \gamma \leq 1$, in which case Sam gets the reward for one block. 
+\item If the block is mined on top of the competing branch, then Sam earns nothing. 
+\end{itemize}
+In both cases, the number of hidden blocks then becomes $Z_{n+1}=0$.
+\end{itemize}
+\end{itemize}
+Let $(\xi_n)_{n\geq1}$ be a sequence of \iid Bernouill variables with parameter $q$, we have that 
+\begin{equation}\label{eq:gain_function_selfish}
+Z_n = f\left[Z_{n-1},\xi_{n}\right] = \begin{cases}
+0,&\text{ if } Z_{n-1} =0^\ast,\\
+0,&\text{ if } Z_{n-1} =1\text{ }\&\text{ }\xi_{n} =1,\\
+0,&\text{ if } Z_{n-1} =0\text{ }\&\text{ }\xi_{n} =0,\\
+0^\ast,&\text{ if } Z_{n-1} =1\text{ }\&\text{ }\xi_{n} =0,\\
+1,&\text{ if } Z_{n-1} =0 \text{ }\&\text{ }\xi_{n} = 1.\\
+\end{cases}
+\end{equation} 
+The process $(Z_n)_{n\geq0}$ is a Markov chain with transition graph provided in \cref{fig:transition_graph}.
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=3cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)                     {$0$};
+\node[state]    (2)[right of=1]         {$1$};
+\node[state]    (3)[above of=2]         {$0^{\ast}$};
+\path
+(1) edge[loop left]     node{$1-q$}        (1)
+    edge[bend left]     node{$q$}          (2)
+(2) edge[bend left]      node{$q$}         (1)
+    edge[bend right]      node{$1-q$}      (3)
+(3) edge[bend right, above]      node{$1$}         (1);
+\end{tikzpicture}
+\end{center}
+\caption{Transition graph of the Markov chain $(Z_k)_{k\geq0}$ representing the stock of blocks retained by Sam when implementing the simplified selfish mining strategy.}
+\label{fig:transition_graph}
+\end{figure} 
+Let $(\zeta_n)_{n\geq1}$ be a sequence of \iid Bernouilli variables with parameter $\gamma$ independent from the sequence $(\xi_n)_{n\geq1}$. We now define a reward collection process $(B_n)_{n\geq0}$ for Sam based on the values of $(Z_n)_{n\geq0}$, $(\xi_n)_{n\geq1}$, and $(\zeta_n)_{n\geq1}$. 
+\begin{equation}\label{eq:gain_function_selfish}
+B_n = f\left[Z_{n-1},\xi_n, \zeta_{n}\right] = \begin{cases}
+0,&\text{ if } Z_{n-1} =0,\\
+0,&\text{ if } Z_{n-1} =0^\ast\text{ }\&\text{ }\xi_{n} =0\text{ }\&\text{ }\zeta_{n} =0,\\
+1,&\text{ if } Z_{n-1} =0^\ast\text{ }\&\text{ }\xi_{n} =0\text{ }\&\text{ }\zeta_{n} =1,\\
+2,&\text{ if } Z_{n-1} =0^\ast\text{ }\&\text{ }\xi_{n} =1,\\
+2,&\text{ if } Z_{n-1} =1\text{ }\&\text{ }\xi_{n} =1.\\
+\end{cases}
+\end{equation} 
+We further define a reward collection process $(C_n)_{n\geq0}$ for the honest miners based on the values of $(Z_n)_{n\geq0}$, $(\xi_n)_{n\geq1}$, and $(\zeta_n)_{n\geq1}$. 
+\begin{equation}\label{eq:gain_function_selfish}
+C_n = f\left[Z_{n-1},\xi_n, \zeta_{n}\right] = \begin{cases}
+0,&\text{ if } Z_{n-1} =1,\\
+0,&\text{ if } Z_{n-1} =0^{\ast}\text{ }\&\text{ }\xi_{n} =1,\\
+1,&\text{ if } Z_{n-1} =0\text{ }\&\text{ }\xi_{n} =0,\\
+1,&\text{ if } Z_{n-1} =0^\ast\text{ }\&\text{ }\xi_{n} =0\text{ }\&\text{ }\zeta_{n} =1,\\
+2,&\text{ if } Z_{n-1} =0^\ast\text{ }\&\text{ }\xi_{n} =0\text{ }\&\text{ }\zeta_{n} =0,\\
+\end{cases}
+\end{equation} 
+Let $\mathcal{F}_n  =\sigma[(\xi_k, \zeta_k),\text{ }k\geq n]$ be a filtration. The processes $Z_n, B_n$ and $C_n$ are $\mathcal{F}_n$-adapted. We have that 
+\begin{equation}\label{eq:mean_B_n}
+\mathbb{E}(B_n) =\mathbb{E}[\mathbb{E}(B_{n}|\mathcal{F}_{n-1})] = \mathbb{P}(Z_{n-1} = 0^{\ast})(1-q)\gamma +2\mathbb{P}(Z_{n-1} = 0^{\ast})q +2\mathbb{P}(Z_{n-1} = 1)q  
+\end{equation}
+and
+\begin{equation}\label{eq:mean_C_n}
+\mathbb{E}(C_n) =\mathbb{E}[\mathbb{E}(C_{n}|\mathcal{F}_{n-1})] = \mathbb{P}(Z_{n-1} = 0)(1-q) +\mathbb{P}(Z_{n-1} = 0^{\ast})(1-q)\gamma +2\mathbb{P}(Z_{n-1} = 0^{\ast})(1-q)(1-\gamma)  
+\end{equation}
+Selfish mining may enable a miner to get a revenue higher than his fair share. The quantity to inspect is then the relative revenue of Sam defined as $\mathbb{E}(B_n) /[\mathbb{E}(B_n) +\mathbb{E}(C_n)]$ and the question is whether it holds that 
+$$
+\frac{\mathbb{E}(B_n) }{[\mathbb{E}(B_n) +\mathbb{E}(C_n)]}\geq q.
+$$ 
+The Markov chain $(Z_n)_{n\geq0}$ is irreducible on a finite state space, thuscd b it has a unique stationary distribution given by 
+$$
+\mathbb{P}(Z = 0)=\frac{1}{1+2q-q^2},\text{ }\mathbb{P}(Z = 1)=\frac{q}{1+2q-q^2},\text{ and }\mathbb{P}(Z = 0^{\ast})=\frac{q(1-q)}{1+2q-q^2}.
+$$
+We can then plot the function 
+$$
+(q,\gamma)\mapsto\frac{\mathbb{E}(B_\infty) }{[\mathbb{E}(B_\infty) +\mathbb{E}(C_\infty)]}- q,
+$$
+the heatmap is provided in \cref{fig:relative_rev_map}.
+\begin{figure}[!ht]
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{../Figures/relative_rev_map.pdf}
+    \caption{Relative revenue as function of $q$ and $\gamma$.}
+    \label{fig:relative_rev_map}
+  \end{center}
+\end{figure}
+We observe that selfish mining is advantageous for some combinations of $q$ and $\gamma$ from a relative revenue point of view. Note that selfish mining entail a waste for all the nodes even the selfish one. The fact that the honest node tends to waste more than the selfish one may result in the honest nodes leaving the mining business or join the selfish miner and therefore making them prominent. Another consequence of selfish mining is the block production slowdown which will result in a downward adjustment of the cryptopuzzle difficulty. If miner resume following the protocol afterward, it might be beneficial. \\
+
+\noindent The next section introduces a model for the financial reserves of miners to assess the risk and profitability of mining and selfish mining.
 \subsection{Ruin and expected profit of a miner}\label{ssec:selfish_mining}
+A miner, referred to as Sam, starts operating with an initial surplus level $u>0$. We consider the following stochastic model for the surplus process over time. Mining blocks generates steady operational costs of amount $c>0$ per unit of time, most notably due to electricity consumption. The entire network of miners appends blocks to the blockchain at an exponential rate $\lambda$, which means that the length of the blockchain over time is governed by a Poisson process $(N_t)_{t\geq0}$ with intensity $\lambda$. We assume that Sam owns a fraction $q\in(0,1/2)$ of the overall computing power, which implies that each block is published by Sam with a probability $q$. The number of blocks found by Sam and therefore the number of rewards of size $b>0$ he collects up to time $t\geq 0$ is a thinned Poisson process $(\tilde{N}_t)_{t\geq0}$ with intensity $\lambda$ and thinning parameter $q$. Sam's surplus $R_t$ at time $t$ is then given by  
+\begin{equation}\label{eq:surplus_protocol}
+R_t = u + b\cdot\tilde{N}_t - c\cdot t,\qquad t\ge 0.
+\end{equation}
+The stochastic process $(R_t)_{t\geq0}$ is referred to as the dual risk process in risk theory, see for instance \citet{Avanzi2007}. Our goal is to measure the profitability of mining blocks on the blockchain, but subject to a ruin constraint. In this context, the time of ruin $\tau_u = \inf\{t\geq0:\text{ }R_t = 0\}$ is defined as the first time when the surplus reaches zero, i.e.\ the miner runs out of money and cannot continue to operate. 
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}
+  %Origin and axis
+  \coordinate (O) at (0,0);
+  \draw[->] (-0.5,0) -- (5.5,0) coordinate[label = {below:$t$}] (xmax);
+  \draw[->] (0,-0.5) -- (0,4) coordinate[label = {right:$R_t$}] (ymax);
+   %Initial reserves
+  \draw (0,3) node[black,left] {$u$} node{};
+ % % %Length of the honest chain
+  \draw[thick, blue,-] (0,3) -- (2,1) node[pos=0.5, above] {};
+  \draw[thick, dashed, blue] (2,1) -- (2,2) node[pos=0.5, above left] {\color{black}$b$};
+  \draw[thick, blue] (2,2) -- (3.5,0.5) node[pos=0.5, above] {};
+  \draw[thick, dashed, blue] (3.5,0.5) -- (3.5, 1.5) node[pos=0.5, above left] {\color{black}$b$};
+  \draw[thick, blue] (3.5,1.5) -- (5, 0) node[pos=0.5, above] {};
+
+  %Block finding Times 
+  \draw (2,0) node[black,below] {$T_1$} node{ \color{black}$\bullet$};
+  \draw (3.5,0) node[black,below] {$T_2$} node{ \color{black}$\bullet$};
+  \draw (5,0) node[black,below] {$\tau_u$} node{ \color{black}$\bullet$};
+\end{tikzpicture}
+\end{center}
+\caption{Ruin time in the miner risk model}
+\label{fig:ruin_time_miner}
+\end{figure}
+The riskiness of the mining business may be assessed via the finite-time and infinite-time horizon ruin probabilities defined as 
+\begin{equation}\label{eq:ruin_probabilities}
+\psi(u,t) = \mathbb{P}(\tau_u\leq t),\text{ and }\psi(u)=\mathbb{P}(\tau_u<\infty), 
+\end{equation}
+respectively. The rewards earned through mining must in expectation exceed the operational cost per time unit. The latter condition translates into $q\lambda b > c$, and is referred to as the net profit condition in standard risk theory, see \citet{Asmussen_2010}. In particular, this implies $\psi(u)<1$, i.e.\ ruin does not occur almost surely. The profitability for a time horizon $t>0$ is now measured by
+\begin{equation}\label{eq:value_function_finite_time}
+V(u,t) = \mathbb{E}(R_t\cdot \mathbb{I}_{\tau_u>t}),
+\end{equation}
+Correspondingly, $V(u,t)$ is the expected surplus level at time $t$, where in the case of ruin up to $t$ this surplus is $0$ (i.e., due to the ruin event the surplus is frozen in at $0$). In terms of a conditional expectation, one can equivalently express $V(u,t)$ as the probability to still be alive at $t$ times the expected value of the surplus at that time given that ruin has not occurred:
+\[V(u,t)= (1-\psi(u,t))\cdot \mathbb{E}(R_t\vert {\tau_u>t}).\]
+ The following result provides formulas for the ruin probabilities and $V(u,t)$ in this setting.
+\begin{prop}\label{prop:ruin_proba_and_value_func} 
+\text{ }
+\begin{enumerate}
+\item For any $u\ge 0$, the infinite-time ruin probability is given by
+\begin{equation}\label{eq:infinite_time_ruin_proba}
+\psi(u) =e^{-\theta^\ast u},
+\end{equation}
+where $\theta^\ast$ is the positive solution in $\theta$ of the equation 
+\begin{equation}\label{eq:cl_equation}
+{c}\,\theta + q\lambda \, (e^{-b\, \theta }-1)=0.
+\end{equation}
+\item For any $u\ge 0$, the finite-time ruin probability is given by 
+\begin{equation}\label{eq:finite_time_ruin_proba}
+\psi(u,t) = \sum_{n = 0}^{\infty}\frac{u}{u+bn}\;\mathbb{P}\left[\tilde{N}_{\frac{u+bn}{c}} = n\right]\mathbb{I}_{\left\{t>\frac{u+bn}{c}\right\}}. 
+\end{equation}
+\item For any $u\ge 0$, the expected surplus at time $t$ in case ruin has not occurred until then, can be written as 
+\begin{equation}\label{eq:value_function_finite_time_prop}
+V(u,t) = \mathbb{E}\left[\left(u+b\tilde{N}_t - ct\right)_+(-1)^{\tilde{N}_t}G_{\tilde{N}_t}\left(0\;\Big\rvert \left\{\frac{u}{ct}\land 1,\ldots, \frac{u+(\tilde{N}_t-1)b}{ct}\land 1\right\}\right) \right],
+\end{equation}
+where $(.)_+$ denotes the positive part, $\land$ stands for the minimum operator and\\ $\left(G_n(\cdot\rvert\{\ldots\}\right)_{n\in\mathbb{N}}$ is the sequence of Abel-Gontcharov polynomials defined in \cref{sssec:exp_distribution}. 
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+  \item Define the process 
+  \[
+  S_t = ct -  b\cdot\tilde{N}_t,\text{ }t\geq0.
+  \]
+  It is L\'evy and such that $S_t\rightarrow-\infty$. Note that 
+  \[
+  \kappa(\theta) = \log\left\{\mathbb{E}\left[\e^{\theta(c-bN_1)}\right]\right\} = \theta c+q\lambda(\e^{-b\theta}-1).
+  \]
+  The equation $\kappa(\theta) = 0$ has only one nonnegative solution $\theta^{\ast}$. The process $(\e^{\theta^{\ast}})$ is a martingale, we then apply \cref{prop:ruin_proba_levy} to get 
+  $$
+  \psi(u) = \e^{-\theta^{\ast}},
+  $$
+  noting that $\xi(u) = 0$ as ruin occurs exactly.
+  \item The ruin time $\tau_u$ may be rewritten as 
+\begin{equation*}
+\tau_u = \inf\left\{t\geq 0\text{ ; }\tilde{N}_t = {ct}/{b} - {u}/{b}\right\}.
+\end{equation*}
+Note that ruin can only occur at the specific times 
+$$
+t_k = \frac{u+bk}{c}\text{, }k \geq0,
+$$
+when the function $t\mapsto {ct}/{b} - {u}/{b}$ reaches integer levels. For $t>0$, define the set of indices $\mathcal{I} = \{k\geq0\text{ ; }t_k\leq t\}$. The finite-time ruin probability can then be written as 
+\begin{equation*}
+\psi(u,t)=\sum_{k\in\mathcal{I}}\mathbb{P}(\tau_u = t_k)
+\end{equation*}
+We have that 
+\begin{eqnarray*}
+\mathbb{P}(\tau_u = t_k) &=& \mathbb{P}\left(\bigcap_{l = 1}^{k}\{T_l\leq t_l\}\cap\{T_{k+1}> t_k\}\right)\\
+&=& \mathbb{P}\left(\bigcap_{l = 1}^{k-1}\{T_l\leq t_l\}\cap\{N_{t_k} = k\}\right)\\
+&=& \mathbb{P}\left(\bigcap_{l = 1}^{k-1}\{T_l\leq t_l\}|N_{t_k} = k\right)\mathbb{P}(N_{t_k} = k)
+\end{eqnarray*}
+\end{enumerate}
+
+\end{proof}
+
 \subsection{Ruin and expected profit of a selfish miner}\label{ssec:selfish_mining}
 
-\section{Nothing-at-stake in PoS}\label{sec:NaS}
-\newpage
+% \section{Nothing-at-stake in PoS}\label{sec:NaS}
+% \newpage
