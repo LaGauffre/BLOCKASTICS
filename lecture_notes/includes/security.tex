@@ -1297,12 +1297,20 @@ when the function $t\mapsto {ct}/{b} - {u}/{b}$ reaches integer levels. For $t>0
 \end{equation*}
 We have that 
 \begin{eqnarray*}
-\mathbb{P}(\tau_u = t_k) &=& \mathbb{P}\left(\bigcap_{l = 1}^{k}\{T_l\leq t_l\}\cap\{T_{k+1}> t_k\}\right)\\
-&=& \mathbb{P}\left(\bigcap_{l = 1}^{k-1}\{T_l\leq t_l\}\cap\{N_{t_k} = k\}\right)\\
-&=& \mathbb{P}\left(\bigcap_{l = 1}^{k-1}\{T_l\leq t_l\}|N_{t_k} = k\right)\mathbb{P}(N_{t_k} = k)
+\mathbb{P}(\tau_u = t_k) &=& \mathbb{P}\left(\bigcap_{l = 1}^{k}\{T_l\leq t_{l-1}\}\cap\{T_{k+1}> t_k\}\right)\\
+&=& \mathbb{P}\left(\bigcap_{l = 1}^{k}\{T_l\leq t_{l-1}\}\cap\{T_{k} \leq t_k\}\cap\{T_{k+1} > t_k\}\right)\\
+&=& \mathbb{P}\left(\bigcap_{l = 1}^{k}\{T_l\leq t_{l-1}\}\cap\{N_{t_k} = k\}\right)\\
+&=& \mathbb{P}\left(\bigcap_{l = 1}^{k}\{T_l\leq t_{l-1}\}|N_{t_k} = k\right)\mathbb{P}(N_{t_k} = k)\\
+&=&\mathbb{P}\left(\bigcap_{l = 1}^{k}\{U_{(l)}\leq t_{l-1}/t_k\}|\right)\mathbb{P}(N_{t_k} = k)\\
+&=&(-1)^kG_{k}(0|t_0/t_k, \ldots, t_{k-1}/t_k)\mathbb{P}(N_{t_k} = k)\\
+&=&(-1)^kG_{k}\left\{0|u/(u+bk), \ldots, [u+b(k-1)]/(u+bk)\right\}\mathbb{P}(N_{t_k} = k)\\
+&=&(-1)^k\left(\frac{1}{u+bk}\right)^{k}G_{k}\left\{0|u, \ldots, [u+b(k-1)]\right\}\mathbb{P}(N_{t_k} = k)\\
+&=&(-1)^k\left(\frac{b}{u+bk}\right)^{k}G_{k}\left\{-u/b|0, \ldots, k-1\right\}\mathbb{P}(N_{t_k} = k)\\
+&=&(-1)^k\left(\frac{b}{u+bk}\right)^{k}\left(-\frac{u}{b}\right)\left(-\frac{u}{b}-k\right)^{k-1}\mathbb{P}(N_{t_k} = k)\\
+&=& \frac{u}{u+bk}\mathbb{P}(N_{t_k} = k)
 \end{eqnarray*}
+\item 
 \end{enumerate}
-
 \end{proof}
 
 \subsection{Ruin and expected profit of a selfish miner}\label{ssec:selfish_mining}
