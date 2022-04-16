@@ -1309,7 +1309,14 @@ We have that
 &=&(-1)^k\left(\frac{b}{u+bk}\right)^{k}\left(-\frac{u}{b}\right)\left(-\frac{u}{b}-k\right)^{k-1}\mathbb{P}(N_{t_k} = k)\\
 &=& \frac{u}{u+bk}\mathbb{P}(N_{t_k} = k)
 \end{eqnarray*}
-\item 
+\item Using the tower property, we can express the value function \eqref{eq:value_function_finite_time} as 
+\begin{eqnarray}
+V(u,t) &=&  \mathbb{E}\left[\mathbb{E}\left(R_t\mathbb{I}_{\tau_u>t}\Big\rvert \tilde{N}_t\right)\right]\nonumber\\
+&=&\mathbb{E}\left[\left(u+b\tilde{N}_t - ct\right)\mathbb{E}\left(\mathbb{I}_{\tau_u>t}\Big\rvert \tilde{N}_t\right)\right]\nonumber\\
+&=&\mathbb{E}\left[\left(u+b\tilde{N}_t - ct\right)_+\mathbb{P}\left(\bigcap_{k = 1}^{\tilde{N}_t}\{T_k \leq t_{k-1}\land t\}\Big\rvert \tilde{N}_t\right)\right]\nonumber\\
+&=&\mathbb{E}\left[\left(u+b\tilde{N}_t - ct\right)_+\mathbb{P}\left(\bigcap_{k = 1}^{\tilde{N}_t}\{U_{1:k} \leq \frac{t_{k-1}}{t}\land 1\}\right)\right],
+\end{eqnarray}
+where $U_{1:n},\ldots, U_{n:n}$ denote the order statistics of $n$ \iid standard uniform random variables. Using the interpretation of Abel-Gontcharov polynomials as the joint probabilities of uniform order statistics then yields \eqref{eq:value_function_finite_time_prop}.
 \end{enumerate}
 \end{proof}
 
