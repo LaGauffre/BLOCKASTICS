@@ -1319,6 +1319,89 @@ V(u,t) &=&  \mathbb{E}\left[\mathbb{E}\left(R_t\mathbb{I}_{\tau_u>t}\Big\rvert \
 where $U_{1:n},\ldots, U_{n:n}$ denote the order statistics of $n$ \iid standard uniform random variables. Using the interpretation of Abel-Gontcharov polynomials as the joint probabilities of uniform order statistics then yields \eqref{eq:value_function_finite_time_prop}.
 \end{enumerate}
 \end{proof}
+\noindent The main issue with formula \eqref{eq:value_function_finite_time_prop} is the lack of tractability. Formula \eqref{eq:value_function_finite_time_prop} is not a closed form expression because of the infinite serie. Note also that the evaluation of the higher order AG polynomials can result in numerical instabilities when using the recurrence relationship. The work around is to replace the fixed time horizon $t$ by an independent exponential random time horizon $T$ with mean $t$. We hence consider the ruin probability and expected profit at $T\sim \text{Exp}(t)$, defined by
+\begin{equation}\label{eq:value_function_exp_time_horizon}
+V(u,t):= \mathbb{E}[V(u,T)] = \mathbb{E}(R_T\mathbb{I}_{\tau_u>T}).
+\end{equation} 
+Simple expressions for these quantities are given in the following result 
+\begin{theo}\label{theo:psi_V_T_solo_mining}
+For any $u\geq0$, we have
+\begin{equation*}
+\widehat{\psi}(u,t) = e^{\rho^\ast u},
+\end{equation*}
+and 
+\begin{equation*}
+\widehat{V}(u,t) = u+(p\lambda b-c)t\left(1-e^{\rho^\ast u }\right),
+\end{equation*}
+where $\rho^\ast$ is the negative solution of the equation
+\begin{equation}\label{eq:equation_rho}
+-c\rho + p\lambda(e^{b\rho}-1) = 1/t.
+\end{equation}
+The solution $\rho^\ast$ of \eqref{eq:equation_rho} is given by 
+\begin{equation*}
+  \rho^{\ast}=-\frac{p \lambda t+1}{ct}
+  -\frac{1}{b} \,{\rm W} \left[-\frac{p\lambda
+    \,b}{c}\,{e^{-b\,\left(\frac{p \lambda t+1}{ct}\right)}}
+  \right],
+  \end{equation*}
+  where $W(.)$ denotes the Lambert function.
+\end{theo}
+\begin{proof}
+Let $0<h<u/c$, so that ruin can not occur in the interval $(0,h)$. We distinguish three cases:
+\begin{itemize}
+  \item[(i)] $T>h$ and there is no block discovery in the interval $(0,h)$,
+  \item[(ii)] $T<h$ and there is no block discovery in the interval $(0,T)$,
+  \item[(iii)] There is a block discovery before time $T$ and in the interval $(0,h)$. 
+\end{itemize}
+Let $T_1$ be the arrival time of the first block. Applying the strong Markov property at $S = T\land h\land T_1$, we see that 
+\begin{equation*}
+  \widehat{\psi}(u,t)=e^{-h(1/t + p\lambda)}\,\widehat{\psi}(u-ch,t) +\int\limits_0^h p\lambda\, e^{-s(1/t + p\lambda)}\,\widehat{\psi}(u-cs+b,t)ds,
+  \end{equation*}
+and 
+\begin{eqnarray*}
+  \widehat{V}(u,t)& =&e^{-h(1/t + p\lambda)}\,\widehat{V}(u-ch,t)+\int\limits_0^h\frac1t\, e^{-s(1/t + p\lambda)}\,(u-cs)ds\\
+  &&\quad+\int\limits_0^h p\lambda\, e^{-s(1/t + p\lambda)}\,\widehat{V}(u-cs+b,t)ds.
+  \end{eqnarray*}
+Now we take the derivative with respect to $h$ and set $h=0$ to obtain
+\begin{equation}\label{eq:ODE_psi}
+c\widehat{\psi}'(u,t) + \left(\frac{1}{t} +  p\lambda\right)\widehat{\psi}(u,t) - p\lambda \widehat{\psi}(u+b,t)=0,
+\end{equation}
+ and
+\begin{equation}\label{eq:ODE_V}
+c\widehat{V}'(u,t) + \left(\frac{1}{t} +  p\lambda\right)\widehat{V}(u,t) - p\lambda \widehat{V}(u+b,t) - \frac{u}{t} =0,
+\end{equation}
+Note that the derivative is with respect to the first argument and that
+equations \eqref{eq:ODE_psi} and \eqref{eq:ODE_V} are advanced functional differential equations. Equation \eqref{eq:ODE_psi} is actually the homogeneous counterpart of \eqref{eq:ODE_V}. For \eqref{eq:ODE_psi} consider the form 
+\begin{equation}\label{eq:potential_solution_psi}
+\widehat{\psi}(u,t) = A_1e^{\rho u } + B_1,\text{ }u \ge 0. 
+\end{equation}
+Substituting in \eqref{eq:ODE_psi}, together with the boundary condition $\widehat{\psi}(0,t) = 1$, yields
+\begin{equation*}
+\begin{cases}
+0&=ct\rho + \left(1+p\lambda t\right)-p\lambda te^{\rho b}, \\
+0&=B_1, \\
+0&= A_1+B_1,
+\end{cases}
+\end{equation*}
+where $A_1, B_1$ and $\rho$ are constant to be determined. We have that $B_1 = 0$ and $A_1= 1$. We then take the nonnegative solution $\rho^{\ast}$ of 
+\begin{equation*}
+ct\rho + \left(1+p\lambda t\right)-p\lambda te^{\rho b} = 0,
+\end{equation*}
+to ensure that $\underset{u\rightarrow \infty}{\lim}\psi(u,t) = 1$.
+\begin{equation}\label{eq:potential_solution}
+\widehat{V}(u,t) = Ae^{\rho u }+Bu + C,\text{ }u \ge 0, 
+\end{equation}
+where $A, B,C$ and $\rho$ are constants to be determined. Substituting \eqref{eq:potential_solution} in \eqref{eq:ODE_V} together with the boundary condition yields the system of equations 
+\begin{equation*}
+\begin{cases}
+0&=ct\rho + \left(1+p\lambda t\right)-p\lambda te^{\rho b}, \\
+0&= B\left(1+tp\lambda\right)-p\lambda tB - 1,\\
+0&=Bct+C(1+tp\lambda) - p\lambda t Bb-p\lambda tC, \\
+0&=A+C.
+\end{cases}
+\end{equation*}
+% We then have $A = -t(p\lambda b - c)$, $B = 1$, $C = t(p\lambda b - c)$ and $\rho$ is solution of Equation \eqref{eq:equation_rho}, which admits one negative and one positive solution. As $A<0$, we have to choose the negative solution $\rho^\ast<0$ in order to ensure $\vh(u,t)>0$. Substituting $A,B,C$ and $\rho^{\ast}$ in \eqref{eq:potential_solution}  yields the result.
+\end{proof}
 
 \subsection{Ruin and expected profit of a selfish miner}\label{ssec:selfish_mining}
 
