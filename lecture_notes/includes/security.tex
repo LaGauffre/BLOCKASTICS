@@ -1098,112 +1098,10 @@ The number of blocks found by the attacker until the vendor's transaction gets $
 \end{remark}
 \noindent For further results on the distribution of $\tau_z$ with different set of assumptions, the reader is referred to \citet{Goffard2019}.
 \section{Blockwitholding in PoW}\label{sec:blockwithholding}
-Blockwitholding is a deviation from the prescribed protocol. The goal is to build up a stock of blocks and release them publicly at well chosen times so as to fork the chain and make a part of the mining activities of competitors worthless, depending on which branch is followed up in the longer run. We focus here on a simplified version\footnote{For the sake of tractability.} of the original blockwitholding strategy called selfish mining and described in \citet{Eyal2014}.
-\subsection{The selfish mining strategy}\label{ssec:selfish_mining}
-Let Sam be a miner with hashpower $q\in(0,1)$ and define a discrete time stochastic process $(Z_n)_{n\geq0}$ that corresponds to the number of blocks in Sam's buffer. At each time step a block is found by the network and it belongs to Sam with probability $q$. The process $(Z_n)_{n\geq0}$ is a Markov chain with state space $E = \{0, 0^{\ast}, 1\}$. The state $0^{\ast}$ corresponds to the situation where a fork is ongoing, one branch is Sam's while the other branch belong to the honest miners. If Sam finds the next block then he appends it to his own branch. If the honest miners find the next block then they may append it to Sam's branch with probability $\gamma\in(0,1)$, a parameter refered to as Sam's connectivity. If $\gamma$ is high then Sam is well connected to the network which allows him to advertize his own branch to the other nodes that will then work on top of it. The honest miners append a block to the other branch with probability $1-\gamma$.  The dynamic of $(Z_n)_{n\geq0}$ is as follows. Consider some time $n\geq0$,
-\begin{itemize}
-\item If Sam is not hiding any block, then $Z_n = 0$, 
-\begin{itemize}
-\item if Sam finds the next block, he stores it in a buffer and $Z_{n+1} = 1$, 
-\item if the other miners discover a block then Sam's buffer remains empty $Z_{n+1}=0$, 
-\end{itemize}
-In both cases, Sam is not collecting any reward.
-\item If Sam is hiding one block at that time, then $Z_n = 1$,
-\begin{itemize} 
-\item if he then finds a new block, then he broadcasts both blocks immediately (which resets the Markov chain to $Z_{n+1}=0$), and he collects two rewards,
-\item if the others find a block, then Sam also releases his block leading to a fork situation characterized by $Z_{n+1} = 0^\ast$. At that moment Sam is not collecting any rewards.
-\end{itemize}
-\item If a fork situation is present at that time ($Z_n = 0^{\ast}$), then 
-\begin{itemize}
-\item if Sam finds a new block then he appends it to his branch of the chain and collects the reward for two blocks and $Z_{n+1} = 0$.  
-\item if the others find a block then 
-\begin{itemize}
-\item they append it to Sam's branch with a probability $0\leq \gamma \leq 1$, in which case Sam gets the reward for one block. 
-\item If the block is mined on top of the competing branch, then Sam earns nothing. 
-\end{itemize}
-In both cases, the number of hidden blocks then becomes $Z_{n+1}=0$.
-\end{itemize}
-\end{itemize}
-Let $(\xi_n)_{n\geq1}$ be a sequence of \iid Bernouill variables with parameter $q$, we have that 
-\begin{equation}\label{eq:gain_function_selfish}
-Z_n = f\left[Z_{n-1},\xi_{n}\right] = \begin{cases}
-0,&\text{ if } Z_{n-1} =0^\ast,\\
-0,&\text{ if } Z_{n-1} =1\text{ }\&\text{ }\xi_{n} =1,\\
-0,&\text{ if } Z_{n-1} =0\text{ }\&\text{ }\xi_{n} =0,\\
-0^\ast,&\text{ if } Z_{n-1} =1\text{ }\&\text{ }\xi_{n} =0,\\
-1,&\text{ if } Z_{n-1} =0 \text{ }\&\text{ }\xi_{n} = 1.\\
-\end{cases}
-\end{equation} 
-The process $(Z_n)_{n\geq0}$ is a Markov chain with transition graph provided in \cref{fig:transition_graph}.
-\begin{figure}[!ht]
-\begin{center}
-\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=3cm]
-\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
-\node[state]    (1)                     {$0$};
-\node[state]    (2)[right of=1]         {$1$};
-\node[state]    (3)[above of=2]         {$0^{\ast}$};
-\path
-(1) edge[loop left]     node{$1-q$}        (1)
-    edge[bend left]     node{$q$}          (2)
-(2) edge[bend left]      node{$q$}         (1)
-    edge[bend right]      node{$1-q$}      (3)
-(3) edge[bend right, above]      node{$1$}         (1);
-\end{tikzpicture}
-\end{center}
-\caption{Transition graph of the Markov chain $(Z_k)_{k\geq0}$ representing the stock of blocks retained by Sam when implementing the simplified selfish mining strategy.}
-\label{fig:transition_graph}
-\end{figure} 
-Let $(\zeta_n)_{n\geq1}$ be a sequence of \iid Bernouilli variables with parameter $\gamma$ independent from the sequence $(\xi_n)_{n\geq1}$. We now define a reward collection process $(B_n)_{n\geq0}$ for Sam based on the values of $(Z_n)_{n\geq0}$, $(\xi_n)_{n\geq1}$, and $(\zeta_n)_{n\geq1}$. 
-\begin{equation}\label{eq:gain_function_selfish}
-B_n = f\left[Z_{n-1},\xi_n, \zeta_{n}\right] = \begin{cases}
-0,&\text{ if } Z_{n-1} =0,\\
-0,&\text{ if } Z_{n-1} =0^\ast\text{ }\&\text{ }\xi_{n} =0\text{ }\&\text{ }\zeta_{n} =0,\\
-1,&\text{ if } Z_{n-1} =0^\ast\text{ }\&\text{ }\xi_{n} =0\text{ }\&\text{ }\zeta_{n} =1,\\
-2,&\text{ if } Z_{n-1} =0^\ast\text{ }\&\text{ }\xi_{n} =1,\\
-2,&\text{ if } Z_{n-1} =1\text{ }\&\text{ }\xi_{n} =1.\\
-\end{cases}
-\end{equation} 
-We further define a reward collection process $(C_n)_{n\geq0}$ for the honest miners based on the values of $(Z_n)_{n\geq0}$, $(\xi_n)_{n\geq1}$, and $(\zeta_n)_{n\geq1}$. 
-\begin{equation}\label{eq:gain_function_selfish}
-C_n = f\left[Z_{n-1},\xi_n, \zeta_{n}\right] = \begin{cases}
-0,&\text{ if } Z_{n-1} =1,\\
-0,&\text{ if } Z_{n-1} =0^{\ast}\text{ }\&\text{ }\xi_{n} =1,\\
-1,&\text{ if } Z_{n-1} =0\text{ }\&\text{ }\xi_{n} =0,\\
-1,&\text{ if } Z_{n-1} =0^\ast\text{ }\&\text{ }\xi_{n} =0\text{ }\&\text{ }\zeta_{n} =1,\\
-2,&\text{ if } Z_{n-1} =0^\ast\text{ }\&\text{ }\xi_{n} =0\text{ }\&\text{ }\zeta_{n} =0,\\
-\end{cases}
-\end{equation} 
-Let $\mathcal{F}_n  =\sigma[(\xi_k, \zeta_k),\text{ }k\geq n]$ be a filtration. The processes $Z_n, B_n$ and $C_n$ are $\mathcal{F}_n$-adapted. We have that 
-\begin{equation}\label{eq:mean_B_n}
-\mathbb{E}(B_n) =\mathbb{E}[\mathbb{E}(B_{n}|\mathcal{F}_{n-1})] = \mathbb{P}(Z_{n-1} = 0^{\ast})(1-q)\gamma +2\mathbb{P}(Z_{n-1} = 0^{\ast})q +2\mathbb{P}(Z_{n-1} = 1)q  
-\end{equation}
-and
-\begin{equation}\label{eq:mean_C_n}
-\mathbb{E}(C_n) =\mathbb{E}[\mathbb{E}(C_{n}|\mathcal{F}_{n-1})] = \mathbb{P}(Z_{n-1} = 0)(1-q) +\mathbb{P}(Z_{n-1} = 0^{\ast})(1-q)\gamma +2\mathbb{P}(Z_{n-1} = 0^{\ast})(1-q)(1-\gamma)  
-\end{equation}
-Selfish mining may enable a miner to get a revenue higher than his fair share. The quantity to inspect is then the relative revenue of Sam defined as $\mathbb{E}(B_n) /[\mathbb{E}(B_n) +\mathbb{E}(C_n)]$ and the question is whether it holds that 
-$$
-\frac{\mathbb{E}(B_n) }{[\mathbb{E}(B_n) +\mathbb{E}(C_n)]}\geq q.
-$$ 
-The Markov chain $(Z_n)_{n\geq0}$ is irreducible on a finite state space, thuscd b it has a unique stationary distribution given by 
-$$
-\mathbb{P}(Z = 0)=\frac{1}{1+2q-q^2},\text{ }\mathbb{P}(Z = 1)=\frac{q}{1+2q-q^2},\text{ and }\mathbb{P}(Z = 0^{\ast})=\frac{q(1-q)}{1+2q-q^2}.
-$$
-We can then plot the function 
-$$
-(q,\gamma)\mapsto\frac{\mathbb{E}(B_\infty) }{[\mathbb{E}(B_\infty) +\mathbb{E}(C_\infty)]}- q,
-$$
-the heatmap is provided in \cref{fig:relative_rev_map}.
-\begin{figure}[!ht]
-  \begin{center}
-  \includegraphics[width=0.8\textwidth]{../Figures/relative_rev_map.pdf}
-    \caption{Relative revenue as function of $q$ and $\gamma$.}
-    \label{fig:relative_rev_map}
-  \end{center}
-\end{figure}
-We observe that selfish mining is advantageous for some combinations of $q$ and $\gamma$ from a relative revenue point of view. Note that selfish mining entail a waste for all the nodes even the selfish one. The fact that the honest node tends to waste more than the selfish one may result in the honest nodes leaving the mining business or join the selfish miner and therefore making them prominent. Another consequence of selfish mining is the block production slowdown which will result in a downward adjustment of the cryptopuzzle difficulty. If miner resume following the protocol afterward, it might be beneficial. \\
+The constant operational cost and the infrequent capital gains make mining block on a \PoW blockchain a risky activity. One way to tackle this problem is to engage in blockwitholding strategy. The goal is to build up a stock of blocks and release them publicly at well chosen times so as to fork the chain and make a part of the mining activities of competitors worthless, depending on which branch is followed up in the longer run. We focus here on a simplified version\footnote{For the sake of tractability.} of the original blockwitholding strategy called selfish mining and described in \citet{Eyal2014}. \\
 
-\noindent The next section introduces a model for the financial reserves of miners to assess the risk and profitability of mining and selfish mining.
+\noindent We start by introducing a risk model to follow the financial reserves of a miner over time. The ruin probability and expected profit given that ruin did not occur plays teh role of risk and performace indicators which will allow us to compare the solo mining strategy to the selfish mining strategy.
+
 \subsection{Ruin and expected profit of a miner}\label{ssec:selfish_mining}
 A miner, referred to as Sam, starts operating with an initial surplus level $u>0$. We consider the following stochastic model for the surplus process over time. Mining blocks generates steady operational costs of amount $c>0$ per unit of time, most notably due to electricity consumption. The entire network of miners appends blocks to the blockchain at an exponential rate $\lambda$, which means that the length of the blockchain over time is governed by a Poisson process $(N_t)_{t\geq0}$ with intensity $\lambda$. We assume that Sam owns a fraction $q\in(0,1/2)$ of the overall computing power, which implies that each block is published by Sam with a probability $q$. The number of blocks found by Sam and therefore the number of rewards of size $b>0$ he collects up to time $t\geq 0$ is a thinned Poisson process $(\tilde{N}_t)_{t\geq0}$ with intensity $\lambda$ and thinning parameter $q$. Sam's surplus $R_t$ at time $t$ is then given by  
 \begin{equation}\label{eq:surplus_protocol}
@@ -1313,6 +1211,7 @@ We have that
 \begin{eqnarray}
 V(u,t) &=&  \mathbb{E}\left[\mathbb{E}\left(R_t\mathbb{I}_{\tau_u>t}\Big\rvert \tilde{N}_t\right)\right]\nonumber\\
 &=&\mathbb{E}\left[\left(u+b\tilde{N}_t - ct\right)\mathbb{E}\left(\mathbb{I}_{\tau_u>t}\Big\rvert \tilde{N}_t\right)\right]\nonumber\\
+&=&\mathbb{E}\left[\left(u+b\tilde{N}_t - ct\right)\mathbb{E}\left(\prod_{k = 1}^{\tilde{N}_t}\mathbb{I}_{\{T_k \leq t_{k-1}\land t\}}\mathbb{I}_{\{u+b\tilde{N}_t-ct>0\}}\Big\rvert \tilde{N}_t\right)\right]\nonumber\\
 &=&\mathbb{E}\left[\left(u+b\tilde{N}_t - ct\right)_+\mathbb{P}\left(\bigcap_{k = 1}^{\tilde{N}_t}\{T_k \leq t_{k-1}\land t\}\Big\rvert \tilde{N}_t\right)\right]\nonumber\\
 &=&\mathbb{E}\left[\left(u+b\tilde{N}_t - ct\right)_+\mathbb{P}\left(\bigcap_{k = 1}^{\tilde{N}_t}\{U_{1:k} \leq \frac{t_{k-1}}{t}\land 1\}\right)\right],
 \end{eqnarray}
@@ -1331,17 +1230,17 @@ For any $u\geq0$, we have
 \end{equation*}
 and 
 \begin{equation*}
-\widehat{V}(u,t) = u+(p\lambda b-c)t\left(1-e^{\rho^\ast u }\right),
+\widehat{V}(u,t) = u+(q\lambda b-c)t\left(1-e^{\rho^\ast u }\right),
 \end{equation*}
 where $\rho^\ast$ is the negative solution of the equation
 \begin{equation}\label{eq:equation_rho}
--c\rho + p\lambda(e^{b\rho}-1) = 1/t.
+-c\rho + q\lambda(e^{b\rho}-1) = 1/t.
 \end{equation}
 The solution $\rho^\ast$ of \eqref{eq:equation_rho} is given by 
 \begin{equation*}
-  \rho^{\ast}=-\frac{p \lambda t+1}{ct}
-  -\frac{1}{b} \,{\rm W} \left[-\frac{p\lambda
-    \,b}{c}\,{e^{-b\,\left(\frac{p \lambda t+1}{ct}\right)}}
+  \rho^{\ast}=-\frac{q\lambda t+1}{ct}
+  -\frac{1}{b} \,{\rm W} \left[-\frac{q\lambda
+    \,b}{c}\,{e^{-b\,\left(\frac{q\lambda t+1}{ct}\right)}}
   \right],
   \end{equation*}
   where $W(.)$ denotes the Lambert function.
@@ -1355,20 +1254,20 @@ Let $0<h<u/c$, so that ruin can not occur in the interval $(0,h)$. We distinguis
 \end{itemize}
 Let $T_1$ be the arrival time of the first block. Applying the strong Markov property at $S = T\land h\land T_1$, we see that 
 \begin{equation*}
-  \widehat{\psi}(u,t)=e^{-h(1/t + p\lambda)}\,\widehat{\psi}(u-ch,t) +\int\limits_0^h p\lambda\, e^{-s(1/t + p\lambda)}\,\widehat{\psi}(u-cs+b,t)ds,
+  \widehat{\psi}(u,t)=e^{-h(1/t + q\lambda)}\,\widehat{\psi}(u-ch,t) +\int\limits_0^h q\lambda\, e^{-s(1/t + q\lambda)}\,\widehat{\psi}(u-cs+b,t)ds,
   \end{equation*}
 and 
 \begin{eqnarray*}
-  \widehat{V}(u,t)& =&e^{-h(1/t + p\lambda)}\,\widehat{V}(u-ch,t)+\int\limits_0^h\frac1t\, e^{-s(1/t + p\lambda)}\,(u-cs)ds\\
-  &&\quad+\int\limits_0^h p\lambda\, e^{-s(1/t + p\lambda)}\,\widehat{V}(u-cs+b,t)ds.
+  \widehat{V}(u,t)& =&e^{-h(1/t + q\lambda)}\,\widehat{V}(u-ch,t)+\int\limits_0^h\frac1t\, e^{-s(1/t + q\lambda)}\,(u-cs)ds\\
+  &&\quad+\int\limits_0^h q\lambda\, e^{-s(1/t + q\lambda)}\,\widehat{V}(u-cs+b,t)ds.
   \end{eqnarray*}
 Now we take the derivative with respect to $h$ and set $h=0$ to obtain
 \begin{equation}\label{eq:ODE_psi}
-c\widehat{\psi}'(u,t) + \left(\frac{1}{t} +  p\lambda\right)\widehat{\psi}(u,t) - p\lambda \widehat{\psi}(u+b,t)=0,
+c\widehat{\psi}'(u,t) + \left(\frac{1}{t} +  q\lambda\right)\widehat{\psi}(u,t) - q\lambda \widehat{\psi}(u+b,t)=0,
 \end{equation}
  and
 \begin{equation}\label{eq:ODE_V}
-c\widehat{V}'(u,t) + \left(\frac{1}{t} +  p\lambda\right)\widehat{V}(u,t) - p\lambda \widehat{V}(u+b,t) - \frac{u}{t} =0,
+c\widehat{V}'(u,t) + \left(\frac{1}{t} +  q\lambda\right)\widehat{V}(u,t) - q\lambda \widehat{V}(u+b,t) - \frac{u}{t} =0,
 \end{equation}
 Note that the derivative is with respect to the first argument and that
 equations \eqref{eq:ODE_psi} and \eqref{eq:ODE_V} are advanced functional differential equations. Equation \eqref{eq:ODE_psi} is actually the homogeneous counterpart of \eqref{eq:ODE_V}. For \eqref{eq:ODE_psi} consider the form 
@@ -1378,32 +1277,130 @@ equations \eqref{eq:ODE_psi} and \eqref{eq:ODE_V} are advanced functional differ
 Substituting in \eqref{eq:ODE_psi}, together with the boundary condition $\widehat{\psi}(0,t) = 1$, yields
 \begin{equation*}
 \begin{cases}
-0&=ct\rho + \left(1+p\lambda t\right)-p\lambda te^{\rho b}, \\
+0&=ct\rho + \left(1+q\lambda t\right)-q\lambda te^{\rho b}, \\
 0&=B_1, \\
 0&= A_1+B_1,
 \end{cases}
 \end{equation*}
-where $A_1, B_1$ and $\rho$ are constant to be determined. We have that $B_1 = 0$ and $A_1= 1$. We then take the nonnegative solution $\rho^{\ast}$ of 
+where $A_1, B_1$ and $\rho$ are constant to be determined. We have that $B_1 = 0$ and $A_1= 1$. 
+The equation
 \begin{equation*}
-ct\rho + \left(1+p\lambda t\right)-p\lambda te^{\rho b} = 0,
+ct\rho + \left(1+q\lambda t\right)-q\lambda te^{\rho b} = 0,
 \end{equation*}
-to ensure that $\underset{u\rightarrow \infty}{\lim}\psi(u,t) = 1$.
-\begin{equation}\label{eq:potential_solution}
-\widehat{V}(u,t) = Ae^{\rho u }+Bu + C,\text{ }u \ge 0, 
+have two solutions on the real line, one being negative, the other being positive. To ensure that $\underset{u\rightarrow \infty}{\lim}\widehat{\psi}(u,t) = 1$, we must take the negative solution that we denote by $\rho^\ast$. We finally get
+\[
+\widehat{\psi}(u,t) = \e^{\rho^{\ast} u}.
+\]
+Now for \eqref{eq:ODE_V} consider form
+\begin{equation}\label{eq:potential_solution_V}
+\widehat{V}(u,t) = A_2e^{\rho u }+B_2u + C_2,\text{ }u \ge 0, 
 \end{equation}
-where $A, B,C$ and $\rho$ are constants to be determined. Substituting \eqref{eq:potential_solution} in \eqref{eq:ODE_V} together with the boundary condition yields the system of equations 
+where $A_2, B_2,C_2$ and $\rho$ are constants to be determined. Substituting \eqref{eq:potential_solution_V} in \eqref{eq:ODE_V} together with the boundary condition yields the system of equations 
 \begin{equation*}
 \begin{cases}
-0&=ct\rho + \left(1+p\lambda t\right)-p\lambda te^{\rho b}, \\
-0&= B\left(1+tp\lambda\right)-p\lambda tB - 1,\\
-0&=Bct+C(1+tp\lambda) - p\lambda t Bb-p\lambda tC, \\
-0&=A+C.
+0&=ct\rho + \left(1+q\lambda t\right)-q\lambda te^{\rho b}, \\
+0&= B_2\left(1+tq\lambda\right)-q\lambda tB_2 - 1,\\
+0&=B_2ct+C_2(1+tq\lambda) - q\lambda t B_2b-q\lambda tC_2, \\
+0&=A_2+C_2.
 \end{cases}
 \end{equation*}
-% We then have $A = -t(p\lambda b - c)$, $B = 1$, $C = t(p\lambda b - c)$ and $\rho$ is solution of Equation \eqref{eq:equation_rho}, which admits one negative and one positive solution. As $A<0$, we have to choose the negative solution $\rho^\ast<0$ in order to ensure $\vh(u,t)>0$. Substituting $A,B,C$ and $\rho^{\ast}$ in \eqref{eq:potential_solution}  yields the result.
+We then have $A_2 = -t(q\lambda b - c)$, $B_2 = 1$, $C_2 = t(q\lambda b - c)$. As $A<0$, we have to choose the negative solution $\rho^\ast<0$ 
+\begin{equation*}
+ct\rho + \left(1+q\lambda t\right)-q\lambda te^{\rho b} = 0,
+\end{equation*}
+in order to ensure $\widehat{V}(u,t)>0$. Substituting $A_2,B_2,C_2$ and $\rho^{\ast}$ in \eqref{eq:potential_solution_V} yields the result.
 \end{proof}
 
 \subsection{Ruin and expected profit of a selfish miner}\label{ssec:selfish_mining}
+Let $(N_t)_{t\geq0}$ be the homogeneous Poisson process with intensity $\lambda$ that governs the block discovery process of the entire network. As in the previous section, we consider a miner named Sam who owns a share $q\in(0,1)$ of the computing power so that a newly found block belongs to Sam with probability $q$.  We keep track of Sam's lead over the honest chain in terms of number of blocks via a Markov jump process
+$$
+X_t=Z_{N_t}, \text{ }t\geq0,
+$$ 
+where $(Z_{k})_{k \geq 0}$ is a homogeneous Markov chain with finite state space $E = \{0,1,0^\ast\}$ which we define now. Consider some time $n\geq0$,
+\begin{itemize}
+\item If Sam is not hiding any block, then $Z_n = 0$, 
+\begin{itemize}
+\item if Sam finds the next block, he stores it in a buffer and $Z_{n+1} = 1$, 
+\item if the other miners discover a block then Sam's buffer remains empty $Z_{n+1}=0$, 
+\end{itemize}
+In both cases, Sam is not collecting any reward.
+\item If Sam is hiding one block at that time, then $Z_n = 1$,
+\begin{itemize} 
+\item if he then finds a new block, then he broadcasts both blocks immediately (which resets the Markov chain to $Z_{n+1}=0$), and he collects two rewards,
+\item if the others find a block, then Sam also releases his block leading to a fork situation characterized by $Z_{n+1} = 0^\ast$. At that moment Sam is not collecting any rewards.
+\end{itemize}
+\item If a fork situation is present at that time ($Z_n = 0^{\ast}$), then 
+\begin{itemize}
+\item if Sam finds a new block then he appends it to his branch of the chain and collects the reward for two blocks and $Z_{n+1} = 0$.  
+\item if the others find a block then 
+\begin{itemize}
+\item they append it to Sam's branch with a probability $0\leq \gamma \leq 1$, in which case Sam gets the reward for one block. 
+\item If the block is mined on top of the competing branch, then Sam earns nothing. 
+\end{itemize}
+In both cases, the number of hidden blocks then becomes $Z_{n+1}=0$.
+\end{itemize}
+\end{itemize}
+Let $(\xi_n)_{n\geq1}$ be a sequence of \iid Bernouill variables with parameter $q$, we have that 
+\begin{equation}\label{eq:gain_function_selfish}
+Z_n = g\left[Z_{n-1},\xi_{n}\right] = \begin{cases}
+0,&\text{ if } Z_{n-1} =0^\ast,\\
+0,&\text{ if } Z_{n-1} =1\text{ }\&\text{ }\xi_{n} =1,\\
+0,&\text{ if } Z_{n-1} =0\text{ }\&\text{ }\xi_{n} =0,\\
+0^\ast,&\text{ if } Z_{n-1} =1\text{ }\&\text{ }\xi_{n} =0,\\
+1,&\text{ if } Z_{n-1} =0 \text{ }\&\text{ }\xi_{n} = 1.\\
+\end{cases}
+\end{equation} 
+The process $(Z_n)_{n\geq0}$ is a Markov chain with transition graph provided in \cref{fig:transition_graph}.
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=3cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)                     {$0$};
+\node[state]    (2)[right of=1]         {$1$};
+\node[state]    (3)[above of=2]         {$0^{\ast}$};
+\path
+(1) edge[loop left]     node{$1-q$}        (1)
+    edge[bend left]     node{$q$}          (2)
+(2) edge[bend left]      node{$q$}         (1)
+    edge[bend right]      node{$1-q$}      (3)
+(3) edge[bend right, above]      node{$1$}         (1);
+\end{tikzpicture}
+\end{center}
+\caption{Transition graph of the Markov chain $(Z_k)_{k\geq0}$ representing the stock of blocks retained by Sam when implementing the simplified selfish mining strategy.}
+\label{fig:transition_graph}
+\end{figure} 
+The selfish mining strategy alters the reward collecting process. The surplus process of Sam introduced in \eqref{eq:surplus_protocol} now becomes 
+\begin{equation}\label{eq:surplus_selfish}
+R_t = u-c\cdot t+b\cdot\sum_{n = 1}^{N(t)}f\left[Z_{n-1},\xi_n, \zeta_n\right],
+\end{equation}
+where the $(\xi_n)_{n\ge 1}$ and $(\zeta_n)_{n\ge 1}$ are \iid Bernoulli random variables with parameter $q$ and $\gamma$, respectively, and 
+\begin{equation}\label{eq:gain_function_selfish}
+f\left[Z_{n-1},\xi_n, \zeta_{n}\right] = \begin{cases}
+0,&\text{ if } Z_{n-1} =0,\\
+0,&\text{ if } Z_{n-1} =0^\ast\text{ }\&\text{ }\xi_{n} =0\text{ }\&\text{ }\zeta_{n} =0,\\
+1,&\text{ if } Z_{n-1} =0^\ast\text{ }\&\text{ }\xi_{n} =0\text{ }\&\text{ }\zeta_{n} =1,\\
+2,&\text{ if } Z_{n-1} =0^\ast\text{ }\&\text{ }\xi_{n} =1,\\
+2,&\text{ if } Z_{n-1} =1\text{ }\&\text{ }\xi_{n} =1.\\
+\end{cases}
+\end{equation} 
+\noindent It is interesting to see whether selfish mining is still profitable for Sam if the possibility of ruin is included in the analysis. His average earning per time unit is now given by 
+\begin{equation}\label{eq:average_earning_selfish}
+\frac{b}{t}\,\mathbb{E}\left[\sum_{k = 1}^{N(t)}f(Z_{k-1},\xi_k,\zeta_k)\right] - c.
+\end{equation}
+This quantity can be determined if we assume that Sam has been mining in a selfish way for quite some time already, so that we can consider the Markov chain to be in stationarity with stationary probabilities
+$$
+\mathbb{P}(Z = 0)=\frac{1}{1+2q-q^2},\text{ }\mathbb{P}(Z = 1)=\frac{q}{1+2q-q^2},\text{ and }\mathbb{P}(Z = 0^{\ast})=\frac{q(1-q)}{1+2q-q^2}.
+$$
+The quantities $U_k:=f\left(Z_{k-1},\xi_k,\zeta_k\right),\text{ }n\geq1$ then have a \pmf $p_U(\cdot): =\mathbb{P}(U = \cdot)$ given by 
+$$
+p_U(0) =\frac{1+q(1-q)+q(1-q)^2(1-q)}{1+2q-q^2},\text{ }p_U(1)=\frac{p\gamma(1-p)^2}{1+2q-q^2},\text{ and }p_U(2)=\frac{q^2+q^2(1-q)}{1+2q-q^2},
+$$
+and the net profit condition correspondingly reads
+\begin{equation*}
+b\lambda\frac{\gamma q(1-q)^2 + 4q^2-2q^3}{1+2q-q^2} - c>0.
+\end{equation*}
+The profitability of selfish mining consequently depends on the interplay between the probabilities $q$ and $\gamma$, and not all values of $q$ and $\gamma$ will lead to positive expected profit.
+
 
 % \section{Nothing-at-stake in PoS}\label{sec:NaS}
 % \newpage
