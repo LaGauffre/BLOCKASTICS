@@ -1,4 +1,4 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -19,6 +19,14 @@ Saif Al-Kuwari, James~H. Davenport, and Russell~J. Bradford.
   notions.
 \newblock Cryptology ePrint Archive, Report 2011/565, 2011.
 \newblock \url{https://ia.cr/2011/565}.
+
+\bibitem[Albrecher and Goffard(2021)]{albrecher:hal-02649025}
+Hansj{\"o}rg Albrecher and Pierre-Olivier Goffard.
+\newblock {On the profitability of selfish blockchain mining under
+  consideration of ruin}.
+\newblock \emph{To appear in Operations Research}, May 2021.
+\newblock URL \url{https://hal.archives-ouvertes.fr/hal-02649025}.
+\newblock \url{https://arxiv.org/abs/2010.12577}.
 
 \bibitem[Antonopoulos(2017)]{Antonopoulos2017}
 Andreas Antonopoulos.
@@ -72,6 +80,13 @@ Pierre-O. Goffard.
   443--467, jun 2019.
 \newblock \doi{10.1017/apr.2019.18}.
 \newblock \url{https://hal.archives-ouvertes.fr/hal-01716687v2}.
+
+\bibitem[Goffard and Lef{\`{e}}vre(2017)]{Goffard2017}
+Pierre-Olivier Goffard and Claude Lef{\`{e}}vre.
+\newblock Boundary crossing of order statistics point processes.
+\newblock \emph{Journal of Mathematical Analysis and Applications},
+  447\penalty0 (2):\penalty0 890--907, mar 2017.
+\newblock \doi{10.1016/j.jmaa.2016.10.044}.
 
 \bibitem[King and Nadal(2012)]{ppcoin}
 Sunny King and Scott Nadal.

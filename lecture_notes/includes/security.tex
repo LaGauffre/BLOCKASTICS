@@ -580,6 +580,7 @@ Can you propose another way to show this result? Without using induction.
 \begin{eqnarray*}
 \mathbb{E}[g(T_{1},\ldots,T_n)]&=& \mathbb{E}[g(\Delta^T_{1},\Delta^T_1+\Delta^T_2\ldots,\Delta^T_1+\ldots+ \Delta^T_n)]\\
 &=&\int_{\mathbb{R}^n}g(t_{1},\ldots,t_1+\ldots+ t_n)f_{(\Delta^T_{1},\ldots,\Delta^T_n)}(t_1,\ldots,t_n)\text{d}\lambda_n(t_{1},\ldots,t_n)\\
+&=&\int_{\mathbb{R}_+^n}g(t_{1},\ldots,t_1+\ldots+ t_n)\lambda^n\e^{-\lambda(t_1+\ldots+t_n)}\text{d}\lambda_n(t_{1},\ldots,t_n)\\
 \end{eqnarray*}
 Let us apply the following change of variable 
 $$
@@ -656,7 +657,7 @@ We have
 \end{eqnarray*}
 Divide by $h^{n}$ and let $h$ go to $0$ to get \eqref{eq:joint_density_arrival_times}. After applying a change of variable (reciprocal of that used in the proof of \cref{prop:erlang_dist}) to recover the joint distribution of $(\Delta^{T}_1, \ldots, \Delta^{T}_n)$, we see that the later is actually that of an \iid sample of size $n$ of exponential random variables.
 \end{proof}
-Last but not the lis, we establish the order statistic property of the Poisson process.
+Last but not the least, we establish the order statistic property of the Poisson process.
 \begin{prop}
 Provided that$\{N_t=n\}$, The jump times $T_1,\ldots,T_n$ have the same distribution as the order statistic of an \iid sample of $n$ uniform random variable on $(0,t)$, namely it holds that
 $$
@@ -1097,8 +1098,9 @@ where $T_\alpha$ is the arrival time of the $\alpha^{th}$ block in the main bran
 The number of blocks found by the attacker until the vendor's transaction gets $\alpha$ confirmations is governed by a negative binomial distribution.
 \end{remark}
 \noindent For further results on the distribution of $\tau_z$ with different set of assumptions, the reader is referred to \citet{Goffard2019}.
+
 \section{Blockwitholding in PoW}\label{sec:blockwithholding}
-The constant operational cost and the infrequent capital gains make mining block on a \PoW blockchain a risky activity. One way to tackle this problem is to engage in blockwitholding strategy. The goal is to build up a stock of blocks and release them publicly at well chosen times so as to fork the chain and make a part of the mining activities of competitors worthless, depending on which branch is followed up in the longer run. We focus here on a simplified version\footnote{For the sake of tractability.} of the original blockwitholding strategy called selfish mining and described in \citet{Eyal2014}. \\
+The constant operational cost and the infrequent capital gains make mining blocks on a \PoW blockchain a risky activity. One way to tackle this problem is to engage in blockwitholding strategy. The goal is to build up a stock of blocks and release them publicly at well chosen times so as to fork the chain and make a part of the mining activities of competitors worthless, depending on which branch is followed up in the longer run. We focus here on a simplified version\footnote{For the sake of tractability.} of the original blockwitholding strategy called selfish mining and described in \citet{Eyal2014}. \\
 
 \noindent We start by introducing a risk model to follow the financial reserves of a miner over time. The ruin probability and expected profit given that ruin did not occur plays teh role of risk and performace indicators which will allow us to compare the solo mining strategy to the selfish mining strategy.
 
@@ -1218,7 +1220,7 @@ V(u,t) &=&  \mathbb{E}\left[\mathbb{E}\left(R_t\mathbb{I}_{\tau_u>t}\Big\rvert \
 where $U_{1:n},\ldots, U_{n:n}$ denote the order statistics of $n$ \iid standard uniform random variables. Using the interpretation of Abel-Gontcharov polynomials as the joint probabilities of uniform order statistics then yields \eqref{eq:value_function_finite_time_prop}.
 \end{enumerate}
 \end{proof}
-\noindent The main issue with formula \eqref{eq:value_function_finite_time_prop} is the lack of tractability. Formula \eqref{eq:value_function_finite_time_prop} is not a closed form expression because of the infinite serie. Note also that the evaluation of the higher order AG polynomials can result in numerical instabilities when using the recurrence relationship. The work around is to replace the fixed time horizon $t$ by an independent exponential random time horizon $T$ with mean $t$. We hence consider the ruin probability and expected profit at $T\sim \text{Exp}(t)$, defined by
+\noindent The reader who wants to learn more on the use of Appell and Abel-Gontcharov polynomials to solve first passage problems involving point processes is referred to \citet{Goffard2017}. The main issue with formula \eqref{eq:value_function_finite_time_prop} is the lack of tractability. Formula \eqref{eq:value_function_finite_time_prop} is not a closed form expression because of the infinite serie. Note also that the evaluation of the higher order AG polynomials can result in numerical instabilities when using the recurrence relationship. The work around is to replace the fixed time horizon $t$ by an independent exponential random time horizon $T$ with mean $t$. We hence consider the ruin probability and expected profit at $T\sim \text{Exp}(t)$, defined by
 \begin{equation}\label{eq:value_function_exp_time_horizon}
 V(u,t):= \mathbb{E}[V(u,T)] = \mathbb{E}(R_T\mathbb{I}_{\tau_u>T}).
 \end{equation} 
@@ -1269,8 +1271,7 @@ c\widehat{\psi}'(u,t) + \left(\frac{1}{t} +  q\lambda\right)\widehat{\psi}(u,t) 
 \begin{equation}\label{eq:ODE_V}
 c\widehat{V}'(u,t) + \left(\frac{1}{t} +  q\lambda\right)\widehat{V}(u,t) - q\lambda \widehat{V}(u+b,t) - \frac{u}{t} =0,
 \end{equation}
-Note that the derivative is with respect to the first argument and that
-equations \eqref{eq:ODE_psi} and \eqref{eq:ODE_V} are advanced functional differential equations. Equation \eqref{eq:ODE_psi} is actually the homogeneous counterpart of \eqref{eq:ODE_V}. For \eqref{eq:ODE_psi} consider the form 
+Note that the derivative is with respect to the first argument and that equations \eqref{eq:ODE_psi} and \eqref{eq:ODE_V} are advanced functional differential equations. Equation \eqref{eq:ODE_psi} is actually the homogeneous counterpart of \eqref{eq:ODE_V}. For \eqref{eq:ODE_psi} consider the form 
 \begin{equation}\label{eq:potential_solution_psi}
 \widehat{\psi}(u,t) = A_1e^{\rho u } + B_1,\text{ }u \ge 0. 
 \end{equation}
@@ -1399,8 +1400,193 @@ and the net profit condition correspondingly reads
 \begin{equation*}
 b\lambda\frac{\gamma q(1-q)^2 + 4q^2-2q^3}{1+2q-q^2} - c>0.
 \end{equation*}
-The profitability of selfish mining consequently depends on the interplay between the probabilities $q$ and $\gamma$, and not all values of $q$ and $\gamma$ will lead to positive expected profit.
+The profitability of selfish mining consequently depends on the interplay between the probabilities $q$ and $\gamma$, and not all values of $q$ and $\gamma$ will lead to positive expected profit. Define 
+\begin{equation*}
+\widehat{\psi}_z(u,t)\equiv \mathbb{E}\left[\psi_z(u,T)\right] = \mathbb{E}\left(\psi(u,T)\Big \rvert Z_0 = z\right)
+\text{ and }\widehat{V}_z(u,t)\equiv \mathbb{E}[V_z(u,T)] = \mathbb{E}\left(R_T\mathbb{I}_{\tau_u>T}\Big \rvert Z_0 = z\right).
+\end{equation*}
+\begin{theo}\label{theo:psi_V_selfish}
+For any $u\ge 0$, the ruin probability and expected profit of a selfish miner are given by
+\begin{equation*}\label{ruin_selfish_app}
+\widehat{\psi}_0(u,t) =
+{\it C_1}\,{{\rm e}^{\rho_1\,u}}+{{\rm e}^{\rho_2\,u}} \left[ {\it C_2}\,
+\cos \left( \rho_3\,u \right) +{\it C_3}\,\sin \left( \rho_3\,u \right)\right],
+\end{equation*}
+and 
+\begin{equation*}
+\widehat{V}_0(u,t)={\it A_1}\,{{\rm e}^{\rho_1\,u}}+{{\rm e}^{\rho_2\,u}} \left[ {\it A_2}\,
+\cos \left( \rho_3\,u \right) +{\it A_3}\,\sin \left( \rho_3\,u \right)\right] +u+C,\label{thisone}
+\end{equation*}
+\end{theo}
+\begin{proof}
+See \citet{albrecher:hal-02649025}.
+\end{proof}
 
+The truth is that following the protocol is always more profitable on average, the question is then why selfish mining?\\
+
+Three reasons:
+\begin{enumerate}
+  \item The relative revenue of selfish miner can be greater than their fair share
+  \item Honest miners waste resources, therefore they might quite making malicious miners more prominent
+  \item Selfish mining slows down the pace of block arrivals leading to a downward adjustment of the cryptopuzzle difficulty
+\end{enumerate}
+Reason 1 is the one invoked in the paper of \citet{Eyal2014}. Reason 2 is probably difficult to study as we would have to model the resilience of honest miners, it probably requires a game theoretic framework. We will try to illustrate numerically reason 3 in \cref{ssec:solo_mining_VS_selfish_mining}.
+
+\subsection{Solo mining versus selfish mining when including a difficulty adjustment}\label{ssec:solo_mining_VS_selfish_mining}
+Let the time unit be the hour. Since the Bitcoin blockchain protocol is designed to ensure that one block of confirmed transactions is added to the blockchain about every ten minutes, this renders the block arrival intensity in our model to be $\lambda = 6$. The reward $b$ is determined by the number $n_{BTC}$ of bitcoins earned when finding a block and the price $\pi_{BTC}$ of the bitcoin. For the illustrations in this paper, we use the data of January 1, $2020$, when $n_{BTC}=12.5$ and $\pi_{BTC} =\$7,174.74$\footnote{Source:\href{https://www.blockchain.com/}{blockchain.com}}, so that the reward amounts to
+$$
+b = n_{BTC}\times \pi_{BTC} = \$89,684.30.
+$$
+We assume that the operational cost of mining reduces to the electricity consumed when computing hashes. On January 1,  $2020$, the yearly consumption of the network was estimated by the Cambridge Bitcoin Electricity Consumption Index\footnote{Source:\href{https://www.cbeci.org/}{CBEI}} to $72.1671$ TWh.\footnote{The choice of this concrete date for the illustrations in this paper is somewhat arbitrary. Choosing another date and estimate of the Bitcoin price will, however, not crucially change the conclusions as long as the reward for finding a block compensates the operational cost.    
+} We denote by 
+$$
+W = \frac{72.1671\times 10^9}{365.25\times 24}
+$$
+the electricity consumption of the network expressed in kWh. We let the operational cost $c$ of a given miner be proportional to its share $p\in(0,1)$ of the network computing power with 
+$$
+c = p\times W \times \pi_W,
+$$  
+where $\pi_W$ denotes the price of the electricity where the miner is located, expressed in USD per kWh. Mining (at least on the bitcoin blockchain) boils down to drawing random numbers, referred to as hashes uniformly inside the set $\{0,\ldots, 2^{256}-1\}$. The block is mined if the computed hash is smaller than some target $T$. Calibrating $T$ helps to maintain a steady flow of blocks in the blockchain. In the bitcoin blockchain, the target $T$ is set so as to ensure that $6$ blocks are generated per hour. The target may be estimated by comparing $2^{256}$ to the number of hashes computed by the network in ten minutes. On January 1, 2020, the network was computing $97.01$\footnote{Source: \href{https://www.blockchain.com/}{blockchain.com}} exahashes per second. The number of hashes required on average to mine a block is given by the difficulty defined as $D = T_{\max}/T$. Define $H= 97.01 \times 10^{18} \times 3600$ as the number of hashes computed per hour by the network. We then set the target so that $D / H = 6$ which is equivalent to 
+\[
+T = \frac{T_{\max}}{6H}
+\] 
+The difficulty/target is adjusted every $2,016$ blocks by changing the target $T$ to 
+$$
+T^\ast = T\times \frac{t^\ast}{336},
+$$
+where $t^\ast$ is the time (in hours) it took to mine $2,016$ blocks (here $2016/6=336$ hours is the time it should have taken to mine $2,016$ blocks). The difficulty adjustment was studied in \citet{Bowden2020} and led them to conclude that the block arrival process is well captured by a non-homogeneous Poisson process. Following their terminology, we refer to the time elapsed between two difficulty adjustments as a \textit{segment}.\\
+
+\noindent We now want to quantitatively address whether selfish mining is worthwhile when considering the possibly implied adjustment of the cryptopuzzle difficulty. We do so in a simplified setup, where only Sam may switch between selfish mining and following the protocol, whereas everyone else follows the protocol. Concretely, we compute the ruin probability and expected profit of Sam over two segments when
+\begin{enumerate}
+\item[(i)]  he is following the protocol during both segments,
+\item[(ii)] he applies selfish mining during the first segment and resumes following the protocol during the second segment. 
+\end{enumerate}
+
+\noindent For (i), we compute the expected profit using the result of \cref{theo:psi_V_T_solo_mining} by setting the average time horizon to $t = 672$ (the number of hours in four weeks). We assume that the arrival intensity of the blocks in the blockchain remains unchanged over the two segments with $\lambda = 6$, as does the cryptopuzzle difficulty $T$.\\
+
+\noindent For (ii), we proceed as follows. Selfish mining slows down the pace at which the blocks are added to the blockchain, and the number of blocks wasted exactly corresponds to the number of passages of the Markov chain $(Z_n)_{n\geq0}$ through the state $0^\ast$. We know that once stationarity is reached, the probability for  $(Z_n)_{n\geq0}$ to be in state $0^\ast$ is 
+$$
+\frac{p(1-p)}{1+2p-p^2}.
+$$
+We therefore approximate the arrival process in this first segment by a homogeneous Poisson process with intensity 
+ $$
+\lambda_1 = \lambda \times\left(1- \frac{p(1-p)}{ 1+2p-p^2}\right).
+$$ 
+When blocks are being withheld, the average time required to mine $2,016$ blocks increases from $336$ to $t_1 = 2016/\lambda_1$. We hence compute the ruin probability and expected surplus over the first segment using \cref{theo:psi_V_selfish} respectively with time horizon $t_1$. Selfish mining during the first segment then leads to a downward adjustment of the cryptopuzzle difficulty  to $T_2 = T\times{t_1}/{336}$ that will be in force during the second segment. As the miner resumes following the protocol on that second segment, the block arrival process becomes again a proper homogeneous Poisson process with intensity $\lambda_2$ to be determined as follows. Let $H$ be the number of hashes computed per hour (hashrate) by the network. The number of blocks mined per hour is then given by 
+$$
+\lambda_2 = \frac{2^{256}}{L_2\times H}.
+$$
+
+The miner's ruin probability and surplus over the second segment are now computed using the formulas of \cref{theo:psi_V_T_solo_mining} using as initial wealth the miner's expected surplus over the first segment
+\[
+u_2 = \widehat{V}_0(u,t), 
+\]
+a block arrival intensity equal to $\lambda_2$ and a reduced time horizon equal to $t_2=2016/\lambda_2$.\\  
+
+\noindent We consider a miner who owns a share $p = 0.2$ of the network computing power. If he follows the protocol, then the net profit condition holds if $\pi_W<0.065$. If he withholds blocks on the first segment, then the net profit condition frontier depends on the electricity price and the hashpower provided that his connectivity is fixed, for instance set to $q=0.75$. \cref{fig:nbc_segments} shows the net profit condition frontiers for a selfish miner on Segment $1$ who starts following again the protocol on Segment $2$. 
+\begin{figure}[!ht]
+  \begin{center}
+    \subfloat[Net profit condition frontier on Segment 1]{
+      \includegraphics[width=0.45\textwidth]{../Figures/nbc_segment1_12a}
+      \label{sub:nbc_segment1}
+                         }
+                         \hskip1em
+    \subfloat[Net profit condition frontier on Segment 2.]{
+      \includegraphics[width=0.45\textwidth]{../Figures/nbc_segment2_12b}
+      \label{sub:nbc_segment2}
+                         }
+    \caption{Net profit condition frontier on Segment 1 and 2 for a selfish miner.}
+    \label{fig:nbc_segments}
+  \end{center}
+\end{figure}
+\noindent In absence of ruin considerations, selfish mining on Segment $1$ is profitable only if the price of electricity is lower than $0.058$, see \cref{sub:nbc_segment1}. Only when the selfish miner owns the totality of the hashpower, is selfish mining as profitable as following the protocol. On Segment $2$, the profitability is always greater than when following the protocol. The profitability on Segment $2$ holds in our case if the electricity price is lower than $0.074$, see \cref{sub:nbc_segment2}. It is interesting to note that by increasing the hashpower beyond a certain threshold we actually lower the profitability during Segment $2$. At higher hashpower levels, the probability of the Markov chain $(Z_n)_{n\geq 0}$ visiting state $0^\ast$ becomes small. In that case fewer blocks are being wasted, which in turn reduces the downward adjustment of the cryptopuzzle difficulty and hence the profitability during Segment 2.\\
+
+\noindent Figure \ref{fig:rp_difficulty_adjusment} shows the ruin probability of a selfish miner and a miner following the protocol as a function of initial wealth for a range of electricity prices. 
+\begin{figure}[!ht]
+  \begin{center}
+      % \subfloat[$\pi_W = 0.04$.]{
+      % \includegraphics[width=0.45\textwidth]{Figures/rp_difficulty_adjusment_4}
+      % \label{sub:rp_difficulty_adjusment_4}
+      %                    }
+                         \hskip1em
+    \subfloat[$\pi_W = 0.05$.]{
+      \includegraphics[width=0.45\textwidth]{../Figures/rp_difficulty_adjusment_5_13a}
+      \label{sub:rp_difficulty_adjusment_5}
+                         }
+                         \hskip1em
+       \subfloat[$\pi_W = 0.06$.]{
+      \includegraphics[width=0.45\textwidth]{../Figures/rp_difficulty_adjusment_6_13b}
+      \label{sub:rp_difficulty_adjusment_6}
+                         }
+                         \hskip1em
+    \subfloat[$\pi_W = 0.07$.]{
+      \includegraphics[width=0.45\textwidth]{../Figures/rp_difficulty_adjusment_7_13c}
+      \label{sub:rp_difficulty_adjusment_7}
+                         }
+                         \hskip1em
+       \subfloat[$\pi_W = 0.08$.]{
+      \includegraphics[width=0.45\textwidth]{../Figures/rp_difficulty_adjusment_8_13d}
+      \label{sub:rp_difficulty_adjusment_8}
+                         }
+                         \hskip1em
+    % \subfloat[$\pi_W = 0.09$.]{
+    %   \includegraphics[width=0.45\textwidth]{../Figures/rp_difficulty_adjusment_9}
+    %   \label{sub:rp_difficulty_adjusment_9}
+    %                      }
+    \caption{Ruin probability over two segments as a function of initial wealth of a miner following the protocol (solid) and a selfish miner (dashed) for various electricity prices with hashpower $p=0.2$ and connectivity $q=0.75$.}
+    \label{fig:rp_difficulty_adjusment}
+  \end{center}
+\end{figure}
+From a ruin probability perspective, reducing the difficulty adjustment does not compensate for the risk involved in implementing selfish mining. 
+
+Figure \ref{fig:rev_difficulty_adjusment} displays the expected profit of a selfish miner and a miner following the protocol as a function of initial wealth for a range of electricity prices.
+\begin{figure}[!ht]
+  \begin{center}
+      % \subfloat[$\pi_W = 0.04$.]{
+      % \includegraphics[width=0.45\textwidth]{../Figures/rev_difficulty_adjusment_4}
+      % \label{sub:rev_difficulty_adjusment_4}
+      %                    }
+                         \hskip1em
+    \subfloat[$\pi_W = 0.05$.]{
+      \includegraphics[width=0.45\textwidth]{../Figures/rev_difficulty_adjusment_5_14a}
+      \label{sub:rev_difficulty_adjusment_5}
+                         }
+                         \hskip1em
+       \subfloat[$\pi_W = 0.06$.]{
+      \includegraphics[width=0.45\textwidth]{../Figures/rev_difficulty_adjusment_6_14b}
+      \label{sub:rev_difficulty_adjusment_6}
+                         }
+                         \hskip1em
+    \subfloat[$\pi_W = 0.07$.]{
+      \includegraphics[width=0.45\textwidth]{../Figures/rev_difficulty_adjusment_7_14c}
+      \label{sub:rev_difficulty_adjusment_7}
+                         }
+                         \hskip1em
+       \subfloat[$\pi_W = 0.08$.]{
+      \includegraphics[width=0.45\textwidth]{../Figures/rev_difficulty_adjusment_8_14d}
+      \label{sub:rev_difficulty_adjusment_8}
+                         }
+                         \hskip1em
+    % \subfloat[$\pi_W = 0.09$.]{
+    %   \includegraphics[width=0.45\textwidth]{../Figures/rev_difficulty_adjusment_9}
+    %   \label{sub:rev_difficulty_adjusment_9}
+    %                      }
+    \caption{Expected profit over two segments as a function of initial wealth of a miner following the protocol (solid) and a selfish miner (dashed) for various electricity prices with hashpower $p=0.2$ and connectivity $q=0.75$.}
+    \label{fig:rev_difficulty_adjusment}
+  \end{center}
+\end{figure}
+ One can observe the different profit and loss profile of a selfish miner compared to that of a miner following the protocol on both segments. If the net profit condition holds when following the protocol, then it also holds for the second segment when blocks were withheld during the first segment. For electricity prices $\pi_W = 0.05, 0.06$, the expected profit as a function of $u$ reaches a plateau of level 
+\begin{equation}\label{eq:plateau_protocol}
+(c-b\lambda p)\times t
+\end{equation}
+when following the protocol, and 
+\begin{equation}\label{eq:plateau_selfish}
+(c-b\lambda_2 p)\times t_2,
+\end{equation}
+when selfish mining is applied during the first segment.  For $\pi_W = 0.05$, the plateau when following the protocol \eqref{eq:plateau_protocol} is higher than the plateau when withholding blocks \eqref{eq:plateau_selfish}, but the expected profit at lower initial wealth is greater for the selfish miner, see Figure \ref{sub:rev_difficulty_adjusment_5}. The exact opposite holds when $\pi_W = 0.06$, see Figure \ref{sub:rev_difficulty_adjusment_6}. The latter is probably the most desirable situation for a selfish miner. For $\pi_W = 0.07$, the net profit condition no longer holds when following the protocol which entails a loss, it holds however on the second segment of the selfish miner but it does not compensate for the loss incurred during the first segment, see Figure \ref{sub:rev_difficulty_adjusment_7}. Selfish mining helps at least in slightly mitigating the losses in this case. For electricity prices $\pi_W > 0.074$, the net profit condition breaks down in each case, resulting in huge losses for both the selfish and the honest miner (cf.\ Figure \ref{sub:rev_difficulty_adjusment_8} ).\\
+
+
+\noindent The above analysis allowed us to distinguish situations where selfish mining can be considered worthwile and when it may not. In particular, it turns out that selfish mining can be advisable when following the protocol is not profitable. 
 
 % \section{Nothing-at-stake in PoS}\label{sec:NaS}
 % \newpage
