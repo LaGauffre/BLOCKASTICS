@@ -1,13 +1,75 @@
 % !TEX root = ../main_lecture_notes.tex
 \chapter{Decentralization of blockchain system}\label{chap:decentralization}
-Decentralization represents th efairness of the distribution of the accouunting right of the nodes in thee blockchain network. The consensus protocol must be designed so that the decision power does not eventually concentrate on a few nodes.\\
+Decentralization represents the fairness of the distribution of the accouunting right of the nodes in thee blockchain network. The consensus protocol must be designed so that the decision power does not eventually concentrate on a few nodes leading to a centralized system. In leader based consensus protocols, each peer is associated to a probability of being chosen. Measuring decentrality then reduces to computing the entropy of the probability distribution of the random variable equal to the peer selected  \\
 
 \noindent \cref{sec:decentralization_pos} focuses on the \PoS protocol by modelling the evolution of the stakes of the nodes by a stochastic process with reinforcement. \cref{sec:decentralization_pow} presents the concept of mining pool and discusses the threat they represent for the decentralized aspect of the network.
 
 \section{Decentralization in PoS}\label{sec:decentralization_pos}
-Rich get richer? Polya's urn
+The \textit{Proof-of-Stake} protocol is a leader based consensus protocol that appoints a block validator depending on how many cryptocoins he owned which corresponds to its stake. In its most basic form a coins is drawn at random, the owner of that coin appends a block and collect a reward. The stake of each peers is governed by stochastic process with reinforcement similar to that studied in the polya's urn problem. In Polya's urn, there are balls of various colors. At each time step a ball is drawn, the ball is then replaced in the urn together with a ball of the same color. The coins are the balls and the color is the peer that owns the balls. This analogy has been used to study the decentralization\\
+
+\noindent Let the network be of size $p$ and denote by $r$ the reward collected at each round $n\in\mathbb{N}$ by the lucky node $x\in \{1, \ldots, p\} = E$. At time $n=0$, each peer $x\in E$ has $N^{(x)}_0$ coins so that the total number of coins is $N_0 = \sum_{x\in E}N^{(x)}_0$. The number of coins owned by each peers evolve over time as
+$$
+N^{(x)}_n = N^{(x)}_0 + r\sum_{k = 1}^n\mathbb{I}_{A_{k}^{(x)}}\text{ and }N_n = \sum_{x\in E}N^{(x)}_n = N_0 + nr,    
+$$
+where $A_{n}^{(x)}$ is the event that a coin own by peer $x\in E$ is drawn at time $n\in\mathbb{N}$. Let $(Z_n^{(x)})_{n\geq0}$ be the proportion of coins owned by peer $x$ at time $n$, given by 
+$$
+Z_n = \frac{N^{(x)}_n}{N_n}. 
+$$
+Let $\mathcal{F}_n = \sigma(\{Y_k^{(x)}\text{ , }x\in E, k\leq n\})$. Note that 
+$$
+\mathbb{P}\left(A_{n}^{(x)}|\mathcal{F}_{n-1}\right) = Z_{n-1}.
+$$
 \subsection{Average stake own by each peer}
-\subsection{Distribution of the stakes}
+The following result provide the average behaviour of the share of coins owned by each peer.
+\begin{prop}\label{prop:average_stakes}
+$$
+\mathbb{E}(Z_n^{(x)}) = \frac{N_0^{(x)}}{N_0},\text{ }x\in E\text{ }, n\geq0.
+$$
+\end{prop}
+\begin{proof}
+We show that $(Z_n^{(x)})_{n\geq0}$ is a martingale. We have that 
+\begin{eqnarray*}
+\mathbb{E}\left[Z_n^{(x)}|\mathcal{F}_{n-1}\right]&=& \mathbb{E}\left[\frac{N^{(x)}_{n-1} + r\mathbb{I}_{A_n^{(x)}}}{N_0 + rn}\Big \rvert\mathcal{F}_{n-1}\right]\\
+&=& \frac{N^{(x)}_{n-1} }{N_0 + rn}+\frac{rZ_{n-1}^{x}}{N_0 + rn}\\\
+&=& \frac{Z^{(x)}[N_0 + r(n-1)]}{N_0 + rn}+\frac{rZ_{n-1}^{x}}{N_0 + rn}\\
+&=&Z_{n-1}^{x}.
+\end{eqnarray*}
+It then follows that 
+$$
+\mathbb{E}(Z_n^{(x)}) = \frac{N_0^{(x)}}{N_0},\text{ }x\in E\text{ }, n\geq0.
+$$
+\end{proof}
+The long term average of the stake of each peer is stable, we focus on their asymptotic distribution in the following section.
+\subsection{Asymptotic distribution of the stakes}\label{ssec:stakes_distribution}
+To go beyond the mean and study the distribution of the stake of the peers, we have to consider the case $r = 1$. We can then show that the joint distribution of $(Z_\infty^{(1)},\ldots,  Z_\infty^{(p)})$ is the Dirichlet one. 
+\begin{definition}\label{def:dirichlet}
+A random variable $W$ has a gamma distribution $\text{Gamma}(\alpha,\beta)$ if it has \pdf
+\[
+f(w) = 
+\begin{cases}
+\frac{e^{-\beta w}w^{\alpha-1}\beta^{\alpha}}{\Gamma(\alpha)},& x>0, \\
+0,&\text{ otherwise}, 
+\end{cases}
+\]
+where $\Gamma(\alpha) = \int_0^{\infty}e^{-w}w^{\alpha-1}\text{d}w$ is the gamma function.
+\end{definition}
+\begin{definition}\label{def:dirichlet}
+A random vector $(Z_1,\ldots, Z_p)$ has a Dirichlet distribution $\text{Dir}(\alpha_1,\ldots, \alpha_p)$ if 
+\[
+(Z_1,\ldots, Z_p) = \left(\frac{W_1}{\sum_{i = 1}^{p}W_i},\ldots, \frac{W_p}{\sum_{i = 1}^{p}W_i}\right)
+\]
+The joint \pdf is given by
+$$
+f(z_1,\ldots, z_p;\alpha_1,\ldots, \alpha_p) = \frac{1}{B(\alpha)}\prod_{i=1}^p z_i^{\alpha_i-1}, 
+$$
+for $\alpha_1,\ldots, \alpha_p>0$, $0< z_1,\ldots, z_p <1$ and $\sum_{i=1}^pz_i=1$, where 
+$$
+B(\alpha) = \frac{\prod_{i = 1}^p \Gamma(\alpha_i)}{\Gamma(\sum_{i=1}^p \alpha_i)}.
+$$
+\end{definition}
+\begin{proof}
+\end{proof}
+
 \section{Decentralization in PoW}\label{sec:decentralization_pow}
 \subsection{Mining pools and reward systems}
 \subsection{Mining pool risk analysis}
