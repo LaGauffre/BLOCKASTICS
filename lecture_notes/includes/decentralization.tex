@@ -7,67 +7,223 @@ Decentralization represents the fairness of the distribution of the accouunting 
 \section{Decentralization in PoS}\label{sec:decentralization_pos}
 The \textit{Proof-of-Stake} protocol is a leader based consensus protocol that appoints a block validator depending on how many cryptocoins he owned which corresponds to its stake. In its most basic form a coins is drawn at random, the owner of that coin appends a block and collect a reward. The stake of each peers is governed by stochastic process with reinforcement similar to that studied in the polya's urn problem. In Polya's urn, there are balls of various colors. At each time step a ball is drawn, the ball is then replaced in the urn together with a ball of the same color. The coins are the balls and the color is the peer that owns the balls. This analogy has been used to study the decentralization\\
 
-\noindent Let the network be of size $p$ and denote by $r$ the reward collected at each round $n\in\mathbb{N}$ by the lucky node $x\in \{1, \ldots, p\} = E$. At time $n=0$, each peer $x\in E$ has $N^{(x)}_0$ coins so that the total number of coins is $N_0 = \sum_{x\in E}N^{(x)}_0$. The number of coins owned by each peers evolve over time as
+\noindent Let the network be of size $p$ and denote by $r$ the reward collected at each round $n\in\mathbb{N}$ by the lucky node $x\in \{1, \ldots, p\} = E$. At time $n=0$, each peer $x\in E$ has $Z^{(x)}_0$ coins so that the total number of coins is $Z_0 = \sum_{x\in E}Z^{(x)}_0$. The number of coins owned by each peers evolve over time as
 $$
-N^{(x)}_n = N^{(x)}_0 + r\sum_{k = 1}^n\mathbb{I}_{A_{k}^{(x)}}\text{ and }N_n = \sum_{x\in E}N^{(x)}_n = N_0 + nr,    
+Z^{(x)}_n = Z^{(x)}_0 + r\sum_{k = 1}^n\mathbb{I}_{A_{k}^{(x)}}\text{ and }Z_n = \sum_{x\in E}Z^{(x)}_n = Z_0 + nr,    
 $$
 where $A_{n}^{(x)}$ is the event that a coin own by peer $x\in E$ is drawn at time $n\in\mathbb{N}$. Let $(Z_n^{(x)})_{n\geq0}$ be the proportion of coins owned by peer $x$ at time $n$, given by 
 $$
-Z_n = \frac{N^{(x)}_n}{N_n}. 
+W_n = \frac{Z^{(x)}_n}{Z_n}. 
 $$
 Let $\mathcal{F}_n = \sigma(\{Y_k^{(x)}\text{ , }x\in E, k\leq n\})$. Note that 
 $$
-\mathbb{P}\left(A_{n}^{(x)}|\mathcal{F}_{n-1}\right) = Z_{n-1}.
+\mathbb{P}\left(A_{n}^{(x)}|\mathcal{F}_{n-1}\right) = W_{n-1}.
 $$
-\subsection{Average stake own by each peer}
+\subsection{Average stake owned by each peer}
 The following result provide the average behaviour of the share of coins owned by each peer.
 \begin{prop}\label{prop:average_stakes}
 $$
-\mathbb{E}(Z_n^{(x)}) = \frac{N_0^{(x)}}{N_0},\text{ }x\in E\text{ }, n\geq0.
+\mathbb{E}(W_n^{(x)}) = \frac{Z_0^{(x)}}{Z_0},\text{ }x\in E\text{ }, n\geq0.
 $$
 \end{prop}
 \begin{proof}
-We show that $(Z_n^{(x)})_{n\geq0}$ is a martingale. We have that 
+We show that $(W_n^{(x)})_{n\geq0}$ is a martingale. We have that 
 \begin{eqnarray*}
-\mathbb{E}\left[Z_n^{(x)}|\mathcal{F}_{n-1}\right]&=& \mathbb{E}\left[\frac{N^{(x)}_{n-1} + r\mathbb{I}_{A_n^{(x)}}}{N_0 + rn}\Big \rvert\mathcal{F}_{n-1}\right]\\
-&=& \frac{N^{(x)}_{n-1} }{N_0 + rn}+\frac{rZ_{n-1}^{x}}{N_0 + rn}\\\
-&=& \frac{Z^{(x)}[N_0 + r(n-1)]}{N_0 + rn}+\frac{rZ_{n-1}^{x}}{N_0 + rn}\\
-&=&Z_{n-1}^{x}.
+\mathbb{E}\left[W_n^{(x)}|\mathcal{F}_{n-1}\right]&=& \mathbb{E}\left[\frac{Z^{(x)}_{n-1} + r\mathbb{I}_{A_n^{(x)}}}{Z_0 + rn}\Big \rvert\mathcal{F}_{n-1}\right]\\
+&=& \frac{Z^{(x)}_{n-1} }{Z_0 + rn}+\frac{rW_{n-1}^{x}}{Z_0 + rn}\\\
+&=& \frac{Z^{(x)}[Z_0 + r(n-1)]}{Z_0 + rn}+\frac{rW_{n-1}^{x}}{Z_0 + rn}\\
+&=&W_{n-1}^{x}.
 \end{eqnarray*}
 It then follows that 
 $$
-\mathbb{E}(Z_n^{(x)}) = \frac{N_0^{(x)}}{N_0},\text{ }x\in E\text{ }, n\geq0.
+\mathbb{E}(W_n^{(x)}) = \frac{Z_0^{(x)}}{Z_0},\text{ }x\in E\text{ }, n\geq0.
 $$
 \end{proof}
 The long term average of the stake of each peer is stable, we focus on their asymptotic distribution in the following section.
 \subsection{Asymptotic distribution of the stakes}\label{ssec:stakes_distribution}
-To go beyond the mean and study the distribution of the stake of the peers, we have to consider the case $r = 1$. We can then show that the joint distribution of $(Z_\infty^{(1)},\ldots,  Z_\infty^{(p)})$ is the Dirichlet one. 
+To go beyond the mean and study the distribution of the stake of the peers, we have to consider the case $r = 1$. We can then show that the joint distribution of $(W_\infty^{(1)},\ldots,  W_\infty^{(p)})$ is the Dirichlet one. 
 \begin{definition}\label{def:dirichlet}
-A random variable $W$ has a gamma distribution $\text{Gamma}(\alpha,\beta)$ if it has \pdf
+A random variable $X$ has a gamma distribution $\text{Gamma}(\alpha,\beta)$ if it has \pdf
 \[
-f(w) = 
+f(x) = 
 \begin{cases}
-\frac{e^{-\beta w}w^{\alpha-1}\beta^{\alpha}}{\Gamma(\alpha)},& x>0, \\
+\frac{e^{-\beta x}x^{\alpha-1}\beta^{\alpha}}{\Gamma(\alpha)},& x>0, \\
 0,&\text{ otherwise}, 
 \end{cases}
 \]
-where $\Gamma(\alpha) = \int_0^{\infty}e^{-w}w^{\alpha-1}\text{d}w$ is the gamma function.
+where $\Gamma(\alpha) = \int_0^{\infty}e^{-x}x^{\alpha-1}\text{d}x$ is the gamma function.
 \end{definition}
 \begin{definition}\label{def:dirichlet}
-A random vector $(Z_1,\ldots, Z_p)$ has a Dirichlet distribution $\text{Dir}(\alpha_1,\ldots, \alpha_p)$ if 
-\[
-(Z_1,\ldots, Z_p) = \left(\frac{W_1}{\sum_{i = 1}^{p}W_i},\ldots, \frac{W_p}{\sum_{i = 1}^{p}W_i}\right)
-\]
-The joint \pdf is given by
+A random vector $(W_1,\ldots, W_p)$ has a Dirichlet distribution $\text{Dir}(\alpha_1,\ldots, \alpha_p)$ if it has a joint \pdf given by 
+\begin{equation}\label{eq:dirichlet_pdf}
+f(w_1,\ldots, w_p;\alpha_1,\ldots, \alpha_p) = \frac{1}{B(\alpha)}\prod_{i=1}^p w_i^{\alpha_i-1}, 
+\end{equation}
+for $\alpha_1,\ldots, \alpha_p>0$, $0< w_1,\ldots, w_p <1$ and $\sum_{i=1}^pw_i=1$, where 
 $$
-f(z_1,\ldots, z_p;\alpha_1,\ldots, \alpha_p) = \frac{1}{B(\alpha)}\prod_{i=1}^p z_i^{\alpha_i-1}, 
+B(\alpha) = \frac{\prod_{i = 1}^p \Gamma(\alpha_i)}{\Gamma(\sum_{i=1}^p \alpha_i)},
 $$
-for $\alpha_1,\ldots, \alpha_p>0$, $0< z_1,\ldots, z_p <1$ and $\sum_{i=1}^pz_i=1$, where 
-$$
-B(\alpha) = \frac{\prod_{i = 1}^p \Gamma(\alpha_i)}{\Gamma(\sum_{i=1}^p \alpha_i)}.
-$$
+and $\Gamma(\alpha) = \int_{0}^{\infty}\e^{-x}x^{\alpha-1}\text{d}x$ is the gamma function.
 \end{definition}
+\noindent A Dirichlet random vector can be generated by independent Gamma random variables. Recall that $X\sim\GammaDist(\alpha, \beta)$ if $X$ has \pdf
+\begin{equation}\label{eq:gamma_pdf}
+f_{X}(x) = \begin{cases}
+\frac{e^{-\beta x}x^{\alpha-1}\beta^\alpha}{\Gamma(\alpha_i)},&
+x>0\\
+0,&\text{otherwise}.\end{cases}
+\end{equation}
+
+\begin{prop}\label{prop:gamma_to_dirichlet}
+Let $X_i\sim \GammaDist(\alpha_i,1)$ for $i = 1,\ldots, p$ be independent ranodm variables then 
+\[
+\left(\frac{X_1}{\sum_{i=1}^{p}X_i},\ldots, \frac{X_p}{\sum_{i=1}^{p}X_i}\right)\sim\text{Dir}(\alpha_1,\ldots, \alpha_p)
+\]
+\end{prop}
 \begin{proof}
+Note that because $(w_1,\ldots, w_p)$ belongs to the $p-1$ simplex then the \pdf \eqref{eq:dirichlet_pdf} may be rewritten as 
+$$
+f(w_1,\ldots, w_p;\alpha_1,\ldots, \alpha_p) = \frac{1}{B(\alpha)}\prod_{i=1}^{p-1} w_i^{\alpha_i-1}\left(1-\sum_{i=1}^{p-1} w_i\right)^{\alpha_p-1}, 
+$$
+which means that we are only interested in the distribution of the vector $\left(W_1,\ldots, W_{p-1}\right) = \left(X_{1}/\sum_{i=1}^{p}X_i,\ldots, X_{p-1}/\sum_{i=1}^{p}X_i\right)$.
+Let $g:\mathbb{R}^p\mapsto \mathbb{R}^+$ be measurable and bounded and consider
+\begin{eqnarray*}
+&&\mathbb{E}\left[g\left(\frac{X_1}{\sum_{i=1}^{p}X_i},\ldots, \frac{X_{p-1}}{\sum_{i=1}^{p}X_i}\right)\right]\\
+&=&\int_{\mathbb{R_+^p}}g\left(\frac{x_1}{\sum_{i=1}^{p}x_i},\ldots, \frac{x_{p-1}}{\sum_{i=1}^{p}x_i}\right)\frac{e^{-\sum_{i}^px_i}\prod_{i=1}^px_i^{\alpha_i-1}}{\prod_{i=1}^p\Gamma(\alpha_i)}\text{d}\lambda(x_1,\ldots, x_p)
+\end{eqnarray*}
+We use the change of variable 
+\[
+\Phi:(w_1,\ldots, w_{p-1}, v) \mapsto \left[vw_1,\ldots, vw_{p-1}, v\left(1-\sum_{i=1}^{p-1}w_i\right)\right] = \left(x_1, \ldots, x_{p-1},\sum_{i=1}^{p}x_i\right)   
+\]
+minding the change in the integration domain as 
+$$
+\Phi(\Delta_{p-1}\times \mathbb{R}_+) = \mathbb{R}^p_+ ,
+$$
+$\Delta_{p-1}$ is the $p-1$ simplex and the Jacobian $\left|\frac{\text{d}\Phi}{\text{d}(w_1,\ldots, w_{p-1},v)}\right|=v^{p-1}$, we get 
+ \begin{eqnarray*}
+ &&\mathbb{E}\left[g\left(\frac{X_1}{\sum_{i=1}^{p}X_i},\ldots, \frac{X_{p-1}}{\sum_{i=1}^{p}X_i}\right)\right]\\
+&=&\int_{\Delta_{p-1}}\int_{\mathbb{R}_+}g\left(w_1,\ldots, w_{p-1}\right) \frac{e^{- v}\prod_{i=1}^{p-1}w_i^{\alpha_i-1}\left(1-\sum_{i=1}^{p-1}w_i\right)^{\alpha_p-1}v^{\sum_{i=1}^{p-1}\alpha_i-1}}
+{\prod_{i=1}^p\Gamma(\alpha_i)}\text{d}\lambda(w_1,\ldots, w_{p-1}, v)\\
+&=&\int_{\Delta_{p-1}}g\left(w_1,\ldots, w_{p-1}\right) \frac{\Gamma\left(\sum_{i =1}^{p}\alpha_i\right)}{\prod_{i=1}^p\Gamma(\alpha_i)}\prod_{i=1}^{p-1}w_i^{\alpha_i-1}\left(1-\sum_{i=1}^{p-1}w_i\right)^{\alpha_p-1}\text{d}\lambda(w_1,\ldots, w_{p-1}).
+\end{eqnarray*} 
+\end{proof}
+To show that the stochastic process $(W_n^{(1)},\ldots, W_n^{(p)})$ has a Dirichlet limiting distribution we need to introduce a counting process known as Yule process.
+\begin{definition}\label{def:yule_process}
+A Yule process $(Y_t)_{t\geq0}$ is a pure birth process with linear birth rate given as 
+\[
+\mathbb{P}(Y_{t+h} = y+1|Y_{t} =y) = nh+o(h).
+\] 
+\end{definition}
+The Yulee process models the population of some particle over time, assuming that there is one particle at time $0$, so $Y_0=1$ this particle will split in two after some exponential time and this going on and on, see the illustration on \cref{fig:yule_tree}. 
+
+%définitiondesstyles 
+\tikzstyle{lien}=[-,>=stealth',rounded corners=5pt,thick] \tikzset{individu/.style={draw,thick}, individu/.default={green}} 
+%définitiondel’arbre 
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture} 
+\node[individu] (1) at (0,0) {}; 
+\node[individu] (11) at (-3,-2) {}; 
+\node[individu] (12) at (3,-2) {}; 
+\node[individu] (111) at (-4.5,-4) {}; 
+\node[individu] (112) at (-1.5,-4) {}; 
+\node[individu] (1121) at (-2,-6.5) {}; 
+\node[individu] (1122) at (-1,-6.5) {}; 
+\node[individu] (121) at (1.5,-8) {}; 
+\node[individu] (122) at (4.5,-8) {}; 
+\draw[lien] (1) |- (-1,-1.7)  coordinate[label = {above:$\ExpDist(1)$}] -|  (11); 
+\draw[lien] (1) |- (1,-1.7)-| (12); 
+\draw[lien] (11) |- (-3.5,-3.7) coordinate[label = {above:$\ExpDist(1)$}]-| (111); 
+\draw[lien] (11) |- (-2.5,-3.7)-| (112); 
+\draw[lien] (112) |- (-1.5,-6.2) coordinate[label = {above left:$\ExpDist(1)$}]-| (1121); 
+\draw[lien] (112) |- (-1.5,-6.2)-| (1122);
+\draw[lien] (12) |- (2.5,-7.7) coordinate[label = {above:$\ExpDist(1)$}]-| (121); 
+\draw[lien] (12) |- (3.5,-7.7)-| (122);
+\draw (122) -- (4.5,-9);
+\draw (121) -- (1.5,-9);
+\draw (111) -- (-4.5,-9);
+\draw (1121) -- (-2,-9);
+\draw (1122) -- (-1,-9);
+\draw[->] (-5,0) -- (-5,-10) coordinate[label = {below:$t$}] (xmax);
+\draw[-, thick, dashed] (-5.5,-7) coordinate[label = {below left:$Y_t = 4$}] -- (5,-7)  (xmax);
+\end{tikzpicture}
+\caption{Yule tree}
+\label{fig:yule_tree}
+\end{center}
+\end{figure}
+Before moving forward, two remarks.
+\begin{remark}\label{rem:yule_process_initial}
+If we have $Y_0 = y_0$ particles at the initial state, then it is like starting $y_0$ independent copies of the Yule process with one particle and summing up at time $t$ the number of particles of all the Yule processes. Namely, let $(Y_t)_{t\geq0}$ be a Yule process such that $Y_0 = y_0$, then
+$$
+Y_t = \sum_{i = 1}^{y_0}Y_t^{(i)},
+$$   
+where the $Y_t^{(i)}$'s are independent Yule processes such that $Y_t^{(i)}$ for $i = 1,\ldots, y_0$.
+\end{remark}
+\begin{remark}\label{rem:stopped_yule_process}
+The Yule process $(Y_t)_{t\geq0}$ is strong Markov in the sense that for any stopping time $\tau$, the stopped process 
+$$
+\tilde{Y}_t = Y_{\tau+t},\text{ }t\geq0
+$$
+is again a Yule process such that $\tilde{Y}_0 = Y_\tau$.
+\end{remark}
+\begin{prop}\label{prop:yule_process_dist}
+Let $(Y_t)_{t\geq0}$ be a Yule process such that $Y_0 = 1$ then 
+$$
+\mathbb{P}(Y_t = y) = \left(1-\e^{-t}\right)^{y-1}e^{-t}.
+$$
+
+\end{prop}
+\begin{proof}
+The inter-arrival times $(\Delta^T_n)_{n\geq1}$ of the Yule process are independent random variable such that $\Delta^T_n = \ExpDist(n)$. If we have $n$ particles at some time $t\geq0$, that's $n$ exponential $\ExpDist(1)$ competing and a new particle appears as soon as one of them ring. We then have $\Delta^T_n = \min(X_1,\ldots, X_{n})$, where $X_1,\ldots, X_n \overset{\text{i.i.d.}}{\sim}\ExpDist(1)$ and so $\Delta^T_n \sim \ExpDist(n)$. The arrival time of the $n^{th}$ particles is given by   
+$$
+T_n = \sum_{k =1}^{n-1}\Delta^T_k,\text{ }n\geq2.
+$$
+By induction on $n\geq2$, we can show that 
+\[
+\mathbb{P}(T_n\leq t) = \left(1-e^{-t}\right)^{n-1}.
+\]
+We further deduce that 
+\[
+\mathbb{P}(Y_t = y) = \mathbb{P}(Y_t > y) - \mathbb{P}(Y_t > y+1) = \mathbb{P}(T_{y} \leq t) - \mathbb{P}(T_{y+1} \leq t)=\left(1-\e^{-t}\right)^{y-1}e^{-t}   
+\]
+\end{proof}
+\begin{theo}\label{theo:convergence_yule_process}
+We have that 
+\[
+e^{-t}Y_t\overset{\mathcal{D}}{\longrightarrow}\ExpDist(1),\text{ as }t\rightarrow \infty.
+\]
+\end{theo}
+\begin{proof}
+Let us show that $\left(e^{-t}Y_t\right)_{t\geq0}$ is a martingale. We have that, for $s\leq t$, 
+\[
+\mathbb{E}(e^{-t}Y_t|\mathcal{F}_s) = e^{-t}\mathbb{E}(Y_t|\mathcal{F}_s) = e^{-t}Y_se^{t-s} = e^{-s}Y_s.
+\]
+Because of the martingale convergence theorem, we know that $\left(e^{-t}Y_t\right)_{t\geq0}$ has a limiting distribution. Consider the Laplace transform 
+\[
+\mathbb{E}\left(\e^{-\theta e^{-t}Y_t}\right) = \frac{\e^{-\theta \e^{-t}}\e^{-t} }{1-\e^{-\theta \e^{-t}}(1-\e^{-t})}\rightarrow\frac{1}{1+\theta},\text{ as }t\rightarrow\infty.
+\]
+which coincides with that of an exponential random variable $\ExpDist(1)$.
+
+\end{proof}
+We finally link the asymptotic behavior of the Yule processes to our initial question about the asymptotic distributions of the stakes.
+\begin{theo}
+We have that 
+\[
+\left(W_\infty^{(1)},\ldots, W_\infty^{(p)}\right)\sim\text{Dir}\left(Z_0^{(1)},\ldots, Z_0^{(p)}\right).
+\]
+\end{theo}
+\begin{proof}
+Assume that each coin owned at time $n=0$ is like the initial particle of a Yule process. That's $Z_0$ Yule processes $(Y_t^{i,j})_{t\geq0}$ for $i = 1, \ldots, Z_0^{(j)}$ and $j = 1,\ldots, p$. Each time step $n$ corresponds to the jump of one of the Yule processes $\tau_n$. The number of coins owned by peer $j=1,\ldots, p$ is then 
+\[
+Z_n^{(j)} = \sum_{i=1}^{Z_0^{(j)}} Y^{i,j}_{\tau_n},
+\]
+we have $\tau_n\rightarrow\infty$ as $n\rightarrow\infty$ and therefore 
+\[
+e^{-\tau_n}Z_n^{(j)} = \sum_{i=1}^{Z_0^{(j)}} Y^{i,j}_{\tau_n}e^{-\tau_n}\overset{\mathcal{D}}{\longrightarrow} \GammaDist\left(Z_0^{(j)}, 1\right),\text{ as }n\rightarrow\infty
+\]
+Finally 
+\[
+\left(W_n^{(1)},\ldots, W_n^{(p)}\right) = \left(\frac{e^{-\tau_n}Z_n^{(1)}}{\sum_{j=1}^{p}e^{-\tau_n}Z_n^{(j)}},\ldots, \frac{e^{-\tau_n}Z_n^{(p)}}{\sum_{j=1}^{p}e^{-\tau_n}Z_n^{(j)}}\right)\overset{\mathcal{D}}{\longrightarrow}\text{Dir}(Z_0^{(1)},\ldots, Z_0^{(p)})
+,\text{ as }n\rightarrow\infty.
+\]
 \end{proof}
 
 \section{Decentralization in PoW}\label{sec:decentralization_pow}
