@@ -1,4 +1,0 @@
-\babel@toc {french}{}
-\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
-\beamer@sectionintoc {2}{Th\IeC {\'e}orie du risque en assurance}{8}{0}{2}
-\beamer@sectionintoc {3}{Lien avec la blockchain}{10}{0}{3}

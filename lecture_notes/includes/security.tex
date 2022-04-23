@@ -554,10 +554,11 @@ We require some additional result about the gamma distribution.
 \begin{prop}\label{prop:erlang_dist}
 Let $\Delta^T_1,\ldots, \Delta^T_n$ be \iid exponential $\text{Exp}(\lambda)$ random variables, define the sequence $T_k=\sum_{i=1}^{k}\Delta^T_i, k=1,\ldots, n$.
 \begin{enumerate}
-\item The $T_{k}$'s have an Erlang distribution. We denote by $T_{k}\sim\text{Erl}(k,\lambda)$ with 
+\item The $T_{k}$'s are gamma distributed, $T_{k}\sim\GammaDist(k,\lambda)$ with \pdf 
 $$
-f_{T_k}(t)=\frac{t^{k-1}e^{-\lambda t}\lambda^k}{(k-1)!},\text{ }t>0.
+f_{T_k}(t)=\frac{t^{k-1}e^{-\lambda t}\lambda^k}{\Gamma(k)},\text{ }t>0,
 $$
+where $\Gamma(k) = \int_{0}^{\infty}\e^{- x}x^{k-1}\text{d}x$.
 \item The joint distribution of $(T_1,\ldots, T_n)$ has \pmf given by
 $$
 f_{(T_1,\ldots, T_n)}(t_1,\ldots, t_n)=\lambda^n e^{-\lambda t_n }\mathbb{I}_{0<t_1<\ldots< t_n}(t_1,\ldots, t_n)
@@ -576,7 +577,7 @@ f_{T_{k+1}}(t)&=&\int_{0}^{t}f_{T_k}(x)f_{\Delta^T_{k+1}}(t-x)\text{d}x\\
 \begin{exercise}
 Can you propose another way to show this result? Without using induction.
 \end{exercise}
-\item Let $g:\mathbb{R}^n\mapsto \mathbb{R}_+$ be meaurable and bounded, we have
+\item Let $g:\mathbb{R}^n\mapsto \mathbb{R}_+$ be measurable and bounded, we have
 \begin{eqnarray*}
 \mathbb{E}[g(T_{1},\ldots,T_n)]&=& \mathbb{E}[g(\Delta^T_{1},\Delta^T_1+\Delta^T_2\ldots,\Delta^T_1+\ldots+ \Delta^T_n)]\\
 &=&\int_{\mathbb{R}^n}g(t_{1},\ldots,t_1+\ldots+ t_n)f_{(\Delta^T_{1},\ldots,\Delta^T_n)}(t_1,\ldots,t_n)\text{d}\lambda_n(t_{1},\ldots,t_n)\\
@@ -659,7 +660,7 @@ Divide by $h^{n}$ and let $h$ go to $0$ to get \eqref{eq:joint_density_arrival_t
 \end{proof}
 Last but not the least, we establish the order statistic property of the Poisson process.
 \begin{prop}
-Provided that$\{N_t=n\}$, The jump times $T_1,\ldots,T_n$ have the same distribution as the order statistic of an \iid sample of $n$ uniform random variable on $(0,t)$, namely it holds that
+Provided that $\{N_t=n\}$, the jump times $T_1,\ldots,T_n$ have the same distribution as the order statistic of an \iid sample of $n$ uniform random variable on $(0,t)$, namely it holds that
 $$
 [T_1,\ldots,T_n|N_t=n]\sim \left(U_{(1)}(0,t),\ldots, U_{(n)}(0,t)\right).
 $$
@@ -669,10 +670,11 @@ We have
 \begin{eqnarray*}
 &&\mathbb{E}\left[g(T_1,\ldots, T_n)|N_t = n\right]\\
 &=&\frac{\mathbb{E}\left[g(T_1,\ldots, T_n)\mathbb{I}_{N_t = n}\right]}{\mathbb{P}(N_t = n)}\\
+&=&\frac{\mathbb{E}\left[g(T_1,\ldots, T_n)\mathbb{I}_{T_n \leq t}\mathbb{I}_{T_{n+1} > t}\right]}{\mathbb{P}(N_t = n)}\\
 &=&\frac{n!}{e^{-\lambda t}(\lambda t)^n}\int_{\mathbb{R}^{n+1}}g(t_1,\ldots, t_n)\mathbb{I}_{t_n\leq t<t_{n+1}}(t_n,t_{n+1})f_{T_1,\ldots, T_{n+1}}(t_1,\ldots, t_{n+1})\text{d}\lambda_{n+1}(t_1,\ldots, t_{n+1})\\
 &=&\frac{n!}{e^{-\lambda t}(\lambda t)^n}\int_{\mathbb{R}^{n}}\int_{t}^{+\infty}g(t_1,\ldots, t_n)\mathbb{I}_{0<t_1<\ldots t_n\leq t}(t_1,\ldots,t_{n})\lambda^{n+1} e^{-\lambda t_{n+1}}\text{d}\lambda_{n+1}(t_1,\ldots, t_{n+1})\\
-&=&\frac{n!}{e^{-\lambda t}(\lambda t)^n}\int_{\mathbb{R}^{n}}\int_{t}^{+\infty}g(t_1,\ldots, t_n)\mathbb{I}_{0<t_1<\ldots t_n\leq t}(t_1,\ldots,t_{n})\lambda^{n} \text{d}\lambda_{n}(t_1,\ldots,t_n)\e^{-\lambda t}\\
- &=&\int_{\mathbb{R}^{n}}g(t_1,\ldots, t_n)\frac{n!}{t^n}\mathbb{I}_{0<t_1<\ldots t_n\leq t}(t_1,\ldots,t_{n})\text{d}\lambda(t_1,\ldots,t_{n} ).
+&=&\frac{n!}{e^{-\lambda t}(\lambda t)^n}\int_{\mathbb{R}^{n}}g(t_1,\ldots, t_n)\mathbb{I}_{0<t_1<\ldots t_n\leq t}(t_1,\ldots,t_{n})\lambda^{n} \text{d}\lambda_{n}(t_1,\ldots,t_n)\e^{-\lambda t}\\
+&=&\int_{\mathbb{R}^{n}}g(t_1,\ldots, t_n)\frac{n!}{t^n}\mathbb{I}_{0<t_1<\ldots t_n\leq t}(t_1,\ldots,t_{n})\text{d}\lambda(t_1,\ldots,t_{n} ).
 \end{eqnarray*}
 \end{proof}
 \noindent The order statistic property of the Poisson process will be useful to solve the first hitting time problem arising later on. To fully benefit from this nice property, we need to introduce Appell and Abel-Gontcharov polynomials.\\
@@ -716,12 +718,12 @@ The two families (i.e. for all $n\geq 0$), however, are distinct and enjoy diffe
 \begin{prop}
 For $0\leq u_1 \leq \ldots \leq u_{n} \leq x \leq 1$,
 \begin{equation}\label{eq:ProbabilisticInterpretationAppellPolynomials}
-P[U_{(1)} \geq u_1, \ldots, U_{(n)} \geq u_{n}\, \mbox{ and }\, U_{(n)}\leq x]= 
+P[U_{(1)} > u_1, \ldots, U_{(n)} > u_{n}\, \mbox{ and }\, U_{(n)}\leq x]= 
 A_n(x \vert u_1, \ldots, u_{n}), \quad n\geq1.
 \end{equation}
 For $0\leq x \leq u_1 \leq \ldots \leq u_{n} \leq 1$,
 \begin{equation}\label{eq:ProbabilisticInterpretationAGPolynomials}
-P[U_{(1)} \leq u_1, \ldots, U_{(n)} \leq u_{n}\, \mbox{ and }\, U_{(1)}\geq x]
+P[U_{(1)} \leq u_1, \ldots, U_{(n)} \leq u_{n}\, \mbox{ and }\, U_{(1)}> x]
 = (-1)^n \, G_n(x \vert u_1, \ldots, u_{n}), \quad n\geq 1.
 \end{equation}
 \end{prop}
@@ -743,7 +745,7 @@ G_{n}(x|U)=x^{n}-\sum_{k=0}^{n-1} \binom{n}{k} u_{k+1}^{n-k} G_{k}(x|U), \quad n
 \begin{proof}
 The Maclaurin expansion of $A_n(x|U)$ gives \eqref{eq:appell_polynomials_recursion_1} as
 $$
-A_n(x|U) = \sum_{k = 0}^n\frac{A_n^{(k)}(x|U)}{k!}x^k = \sum_{k = 0}^n\binom{n}{k}A_{n-k}(x|U)x^k.
+A_n(x|U) = \sum_{k = 0}^n\frac{A_n^{(k)}(0|U)}{k!}x^k = \sum_{k = 0}^n\binom{n}{k}A_{n-k}(0|U)x^k.
 $$
 Evaluation at $x = u_n$ then provides \eqref{eq:appell_polynomials_recursion_2}. Regarding \eqref{eq:recursion_AG_polynomials}, first note that 
 $$
@@ -812,7 +814,7 @@ A_{n+1}(x|1,\ldots, n,n+1) &=& \int_{n+1}^{x}A_{n+1}'(y|1,2,\ldots, n+1)\text{d}
 For identity \eqref{eq:ExplicitExpressionIntAGPolynomials}, write 
 \begin{eqnarray*}
 G_{n}(x|0,\ldots, n-1)&=&G_{n}(x-n|-n ,\ldots,-1)\\
-&=&(-1)^nG_{n}(n-x|n,\ldots, 1)|\\
+&=&(-1)^nG_{n}(n-x|n,\ldots, 1)\\
 &=&(-1)^nA_{n}(n-x|1,\ldots, n)\\
 &=&(-1)^n(n-x)^{n-1}(-x)\\
 &=&x(x-n)^{n-1}.
@@ -826,7 +828,7 @@ Assume that the result holds true for some $n$ and consider $n+1$. We have
 \mathbb{E}\left[A_{n+1}(x|S_1,\ldots, S_n,S_{n+1})|S_{n+1}\right]&=&\mathbb{E}\left[\int_{S_{n+1}}^x A_{n+1}'(y|S_1,\ldots, S_n,S_{n+1})\text{d}y|S_{n+1}\right]\\
 &=&\int_{S_{n+1}}^x\mathbb{E}\left[ A_{n+1}'(y|S_1,\ldots, S_n,S_{n+1})|S_{n+1}\right]\text{d}y\\
 &=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left[A_{n}(y|S_1,\ldots, S_n)|S_{n+1}\right]\text{d}y\\
-&=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left\{\mathbb{E}\left[A_{n}(y|S_1,\ldots, S_n)|S_n,S_{n+1}\right]S_{n+1}\right\}\text{d}y\\
+&=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left\{\mathbb{E}\left[A_{n}(y|S_1,\ldots, S_n)|S_n,S_{n+1}\right]|S_{n+1}\right\}\text{d}y\\
 &=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left\{\mathbb{E}\left[A_{n}(y|S_1,\ldots, S_n)|S_n\right]|S_{n+1}\right\}\text{d}y\\
 &=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left[y^{n-1}(y-S_n)|S_{n+1}\right]\text{d}y\\
 &=&(n+1)\int_{S_{n+1}}^xy^n-\frac{n}{n+1}S_{n+1}y^{n-1} \text{d}y\\
@@ -866,7 +868,7 @@ The name of the game is to compute the ruin probabilities
 \begin{equation}\label{eq:ruin_probabilities}
 \psi(u,T) = \mathbb{P}(\tau_0 \leq T),\text{ and }\psi(u) = \mathbb{P}(\tau_0 < \infty),
 \end{equation} 
-where $\tau_0 = \inf\{t\geq0\text{ ; }R_t \leq 0\}$ is the ruin time. This first hitting time problem is illustrated on \cref{fig:ruin_time_CL}
+where $\tau_u = \inf\{t\geq0\text{ ; }R_t \leq 0\}$ is the ruin time. This first hitting time problem is illustrated on \cref{fig:ruin_time_CL}
 \begin{figure} 
 \begin{center}
 \begin{tikzpicture}
@@ -887,7 +889,7 @@ where $\tau_0 = \inf\{t\geq0\text{ ; }R_t \leq 0\}$ is the ruin time. This first
   %Block finding Times 
   \draw (2,0) node[black,below] {$T_1$} node{ \color{black}$\bullet$};
   \draw (3,0) node[black,below] {$T_2$} node{ \color{black}$\bullet$};
-  \draw (5,0) node[black,below left] {$\tau_0$} node{ \color{black}$\bullet$};
+  \draw (5,0) node[black,below left] {$\tau_u$} node{ \color{black}$\bullet$};
 \end{tikzpicture}
 \end{center}
 \label{fig:ruin_time_CL}
@@ -905,27 +907,37 @@ The following result is the counterpart of \cref{lem:wald_martingale_RW} for Lé
 \begin{prop}\label{prop:wald_martingale_levy}
 If $(S_t)_{t\geq0}$ is a L\'evy process then
 $$
-M_t = \exp\left[s S_t-t\kappa(s)\right]\text{, }t\geq0,
+M_t = \exp\left[\theta S_t-t\kappa(\theta)\right]\text{, }t\geq0,\text{ and }\theta\in \mathbb{R}, 
 $$
-where $\kappa(s)=\log\mathbb{E}\left(e^{s S_1}\right)$, is a Martingale.
+where $\kappa(\theta)=\log\mathbb{E}\left(e^{\theta S_1}\right)<\infty$, is a martingale.
+\begin{proof}
+We have that 
+\begin{eqnarray*}
+\mathbb{E}(M_t|\mathcal{F}_s) &=&\mathbb{E}\left\{\exp\left[\theta S_t-t\kappa(\theta)\right]|\mathcal{F}_s\right\} \\
+&=&\e^{-t\kappa(\theta)}\mathbb{E}\left\{\exp\left[\theta (S_t-S_s) + \theta S_s\right]|\mathcal{F}_s\right\}\\
+&=&\e^{-t\kappa(\theta)}\e^{\theta S_s}\mathbb{E}\left(\e^{\theta (S_t-S_s)}\right)\\
+&=&\e^{-t\kappa(\theta)}\e^{\theta S_s}\e^{(t-s)\kappa(\theta)}\\
+&=&\e^{\theta S_s -s\kappa(\theta)}.
+\end{eqnarray*}
+\end{proof}
 \end{prop}
 The infinite time horizon ruin probability may be evaluated using the following result.
 \begin{prop}\label{prop:ruin_proba_levy}
 If $S_t\overset{\textbf{a.s.}}{\rightarrow} -\infty$, and there exists $\gamma>0$ such that $\left(e^{\gamma S_t}\right)_{t\geq0}$ is a martingale then
 $$
-\mathbb{P}(\tau_0<\infty)=\frac{e^{-\gamma u}}{\mathbb{E}\left[e^{\gamma \xi(u)}|\tau_0<\infty\right]},
+\mathbb{P}(\tau_u<\infty)=\frac{e^{-\gamma u}}{\mathbb{E}\left[e^{\gamma \xi(u)}|\tau_u<\infty\right]},
 $$
-where $\xi(u)=S_{\tau_0}-u$ denotes the deficit at ruin.
+where $\xi(u)=S_{\tau_u}-u$ denotes the deficit at ruin.
 \end{prop}
 \begin{proof}
-We apply the optionnal stopping theorem on $(e^{\gamma S_t})_{t\geq0}$ at time $T\land \tau_0$ for some $T>0$ to get 
+We apply the optionnal stopping theorem on $(e^{\gamma S_t})_{t\geq0}$ at time $T\land \tau_u$ for some $T>0$ to get 
 \begin{eqnarray*}
-1 = \mathbb{E}\left(\e^{\gamma S_0}\right)&=& \mathbb{E}\left(\e^{\gamma S_{T\land \tau_0}}\right)\\  
-&=& \mathbb{E}\left(\e^{\gamma S_{\tau_0}}\mathbb{I}_{\tau_0\leq T} + \e^{\gamma S_{T}}\mathbb{I}_{\tau_0> T}\right).\\
+1 = \mathbb{E}\left(\e^{\gamma S_0}\right)&=& \mathbb{E}\left(\e^{\gamma S_{T\land \tau_u}}\right)\\  
+&=& \mathbb{E}\left(\e^{\gamma S_{\tau_u}}\mathbb{I}_{\tau_u\leq T} + \e^{\gamma S_{T}}\mathbb{I}_{\tau_u> T}\right).\\
 \end{eqnarray*} 
 Letting $T\rightarrow\infty$ yields\footnote{Thanks to $S_t\rightarrow -\infty$, monotone and dominated convergence.}
 \begin{eqnarray*}
-1 &=&\mathbb{E}\left(\e^{\gamma S_{\tau_0}}\mathbb{I}_{\tau_0<\infty}\right)\\
+1 &=&\mathbb{E}\left(\e^{\gamma S_{\tau_u}}\mathbb{I}_{\tau_u<\infty}\right)\\
 &=&\e^{\gamma u}\mathbb{E}\left(\e^{\gamma \xi(u))}|\tau_0<\infty\right)\psi(u).
 \end{eqnarray*} 
 \end{proof}
