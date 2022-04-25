@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 % \usepackage{amscd, amsfonts, amsmath, amssymb, amstext, amsthm, caption, epsfig, fancyhdr, float, graphicx, latexsym, mathtools, multicol, multirow, algorithm, chngcntr}
-\usepackage[english, french]{babel}
+\usepackage[english]{babel}
 \usepackage{booktabs}
 
 \usepackage{amsmath,amssymb}
@@ -153,7 +153,7 @@
 
 \setbeamertemplate{navigation symbols}{}%remove navigation symbols
 
-\title[BLOCKASTICS]{Blockchain mining risk management}
+\title[BLOCKASTICS]{Blockchain miner's risk management}
 \author{Pierre-O. Goffard}
 \institute[ISFA]{Institut de Science Financières et d'Assurances\\
  \texttt{pierre-olivier.goffard@univ-lyon1.fr}
@@ -179,7 +179,7 @@ A decentralized data ledger made of blocks maintained by achieving consensus in 
 \begin{itemize}
   \item Decentralized
   \item Public/private
-  \item Permissionned/permissionned
+  \item Permissionned/permissionless
   \item Immutable
   \item Incentive compatible
 \end{itemize}
@@ -451,7 +451,7 @@ Steady operational cost VS infrequent capital gains
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \scriptsize
-LThe finanial reserves of a nonlife insurance company is given by
+The financial reserves of a nonlife insurance company is given by
 \begin{equation*}
 R_t = u +ct - \sum_{i = 1}^{N_t}U_i\text{, }t\geq0,
 \end{equation*}
@@ -467,7 +467,7 @@ où
   \item The $U_i$'s are the claim amounts
   \begin{itemize}
     \scriptsize
-    \item[$\hookrightarrow$] Nonnegative random variables, \textbf{i.i.d.}, et indépendantes de $N_t$
+    \item[$\hookrightarrow$] Nonnegative random variables, \textbf{i.i.d.}, and independent from $N_t$
   \end{itemize}
 \end{itemize}
 \end{column}
@@ -490,13 +490,13 @@ où
   %Block finding Times 
   \draw (2,0) node[black,below] {\scriptsize$T_1$} node{ \color{black}$\bullet$};
   \draw (3,0) node[black,below] {\scriptsize$T_2$} node{ \color{black}$\bullet$};
-  \draw (5,0) node[black,below left] {\scriptsize$\tau_z$} node{ \color{black}$\bullet$};
+  \draw (5,0) node[black,below left] {\scriptsize$\tau_u$} node{ \color{black}$\bullet$};
 \end{tikzpicture}
 \end{column}
 \end{columns}
 
 \end{frame}
-\begin{frame}{Probabilités de ruine}
+\begin{frame}{Ruin probability}
 \scriptsize
 Define the ruin time as
 $$
@@ -605,9 +605,13 @@ Use $\psi$ and $V$ to compare mining solo to
 \bibitem{rosenfeld2011analysis}
 M.~Rosenfeld, ``Analysis of bitcoin pooled mining reward systems,'' 2011.
 
-\bibitem{albrecher2021blockchain}
-H.~Albrecher, D.~Finger, and P.-O. Goffard, ``Blockchain mining in pools:
-  Analyzing the trade-off between profitability and ruin,'' 2021.
+\bibitem[Albrecher et~al.(2022)Albrecher, Finger, and
+  Goffard]{albrecher:hal-03336851}
+Hansj{\"o}rg Albrecher, Dina Finger, and Pierre-Olivier Goffard.
+\newblock {Blockchain mining in pools: Analyzing the trade-off between
+  profitability and ruin}.
+\newblock to appear in Insurance; Mathematics and Economics, April 2022.
+\newblock URL \url{https://hal.archives-ouvertes.fr/hal-03336851}.
 
 
 \end{thebibliography}
@@ -620,11 +624,13 @@ I.~Eyal and E.~G. Sirer, ``Majority is not enough: Bitcoin mining is
   vulnerable,'' in {\em Financial Cryptography and Data Security},
   pp.~436--454, Springer Berlin Heidelberg, 2014.
 
-\bibitem{albrecher:hal-02649025}
-H.~Albrecher and P.-O. Goffard, ``{On the profitability of selfish blockchain
-  mining under consideration of ruin},'' {\em To appear in Operations
-  Research}, May 2021.
-\newblock \url{https://arxiv.org/abs/2010.12577}.
+\bibitem[Albrecher and Goffard(2022)]{Hansjoerg2022}
+Hansjoerg Albrecher and Pierre-Olivier Goffard.
+\newblock On the profitability of selfish blockchain mining under consideration
+  of ruin.
+\newblock \emph{Operations Research}, 70(1):179--200, jan
+  2022.
+\newblock \url{10.1287/opre.2021.2169}.
 \end{thebibliography}
 \end{itemize}
 Analytical expressions for 
@@ -711,13 +717,13 @@ We get $A = -t(p\lambda b - c)$, $B = 1$, $C = t(p\lambda b - c)$ and $\rho$ ver
 $$
 c\rho + \left(1+p\lambda t\right)-p\lambda te^{\rho b} = 0,
 $$
-The latter has two solutions on th ereal line, one negative and the other is negative. As $A<0$, we must take  $\rho^\ast<0$ to ensure that $\widehat{V}(u,t)>0$. Substituting $A,B,C$ and $\rho^{\ast}$ in \eqref{eq:potential_solution} yields the result.\\
+The latter has two solutions on the real line, one negative and the other is positive. As $A<0$, we must take  $\rho^\ast<0$ to ensure that $\widehat{V}(u,t)>0$. Substituting $A,B,C$ and $\rho^{\ast}$ in \eqref{eq:potential_solution} yields the result.\\
 
-De manière analogue, la probabilité de ruine vérifie 
+Similarly, the ruin probability satisfies
 \begin{equation*}\label{psii}
 c\widehat{\psi}'(u,t)+(p \lambda+1/t)\,\widehat{\psi}(u,t)-p \lambda\,\widehat{\psi}(u+b,t)=0
 \end{equation*}
-avec les conditions initiales $\widehat{\psi}(0,t)=1$ et la condition limite $\lim_{u\to\infty}\widehat{\psi}(u,t)=0$.
+with initial condition $\widehat{\psi}(0,t)=1$ and boundary condition $\lim_{u\to\infty}\widehat{\psi}(u,t)=0$.
 \end{frame}
 \begin{frame}{Mining pool?}
 \scriptsize
@@ -732,7 +738,7 @@ $$
 The pool manager chooses
 \begin{itemize} 
   \item the participant remuneration system
-  \item the relative difficulty $q\in(0,1)$ of finding a \textit{share} VS finding a prooper solution
+  \item the relative difficulty $q\in(0,1)$ of finding a \textit{share} VS finding a proper solution
   \item the amount of management fees $f$
   \end{itemize} 
 \end{frame}
@@ -791,7 +797,7 @@ slush pool, ``Reward system specifications,'' 2021.
   \item A miner may postpone the communication of a solution
   \begin{itemize}
     \scriptsize
-    \item[$\hookrightarrow$] to wait for her proporrtion of submitted \textit{shares} to improve 
+    \item[$\hookrightarrow$] to wait for her proportion of submitted \textit{shares} to improve 
   \end{itemize} 
   \item No risk transfer from miner to pool manager
     \begin{itemize}
@@ -835,7 +841,7 @@ where
 \end{frame}
 \begin{frame}{Pool manager's risk}
 \scriptsize
-Let us conndier randomized rewards
+Let us consider randomized rewards
 $$
 R_t= u - \sum_{i=1}^{M_t} W_i +\sum_{j=1}^{N_t} B_j,\text{ }t\geq0.
 $$
@@ -864,9 +870,9 @@ and the expected wealth is
 \begin{equation*}\label{Vcombexpe}
     \w{V}(u,t) = (1 - Rw)[w-t(\lambda b^\ast-\mu^\ast w)] e^{-R u}+u+t(\lambda b^\ast-\mu^\ast w),
 \end{equation*}
-where $R$ is the only solutoion to 
+where $R$ is the only solution to 
 \begin{equation*} \label{VLunde}
-    -(t^{-1}+\lambda+\mu^\ast)+\lambda(1+b^\ast r)^{-1}+\mu^\ast(1-wr)^{-1}=0.
+    -(t^{-1}+\lambda+\mu^\ast)+\lambda(1+b^\ast r)^{-1}+\mu^\ast(1-wr)^{-1}=0,
 \end{equation*}
 with positive real part.
 \end{tcolorbox}
@@ -882,7 +888,7 @@ H.~Albrecher, D.~Finger, and P.-O. Goffard, ``Blockchain mining in pools:
 \end{frame}
 \begin{frame}[allowframebreaks]{Sketch of the proof}
 \scriptsize
-BConditionning upon the events that occur during $(0,h)$. Four possibilities
+Conditionning upon the events that occur during $(0,h)$. Four possibilities
 \begin{itemize}
   \item[(i)] $T>h$ and no jumps $(0,h)$
   \item[(ii)] $T<h$ and no jumps $(0,T)$
@@ -919,7 +925,7 @@ BConditionning upon the events that occur during $(0,h)$. Four possibilities
     $$
   \end{itemize}
 \end{frame}
-\begin{frame}{Problèmes liés au minage}
+\begin{frame}{Problem related to mining pools}
 \begin{itemize}
   \item Arm race, ramping electricity consumption and e-waste generation
 \tiny
@@ -950,6 +956,11 @@ Z.~Li, A.~M. Reppen, and R.~Sircar, ``A mean field games model for
 \end{thebibliography}
 \end{itemize}
 \end{frame}
+% \begin{frame}
+% \cite{albrecher:hal-03336851,Hansjoerg2022}
+% \bibliography{../../blockastics}
+% \bibliographystyle{plainnat}
+% \end{frame}
 
 
 \end{document}

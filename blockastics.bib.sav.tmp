@@ -27,20 +27,6 @@
   url           = {https://bitcoin.org/bitcoin.pdf},
 }
 
-@Article{albrecher:hal-02649025,
-  author      = {Albrecher, Hansj{\"o}rg and Goffard, Pierre-Olivier},
-  journal     = {To appear in Operations Research},
-  title       = {{On the profitability of selfish blockchain mining under consideration of ruin}},
-  year        = {2021},
-  month       = May,
-  note        = {\url{https://arxiv.org/abs/2010.12577}},
-  file        = {Albrecher_Goffard_Selfish_Mine.pdf:https\://hal.archives-ouvertes.fr/hal-02649025/file/Albrecher_Goffard_Selfish_Mine.pdf:PDF},
-  hal_id      = {hal-02649025},
-  hal_version = {v1},
-  keywords    = {Blockchain ; miner ; cryptocurrency ; ruin theory ; dual risk model},
-  url         = {https://hal.archives-ouvertes.fr/hal-02649025},
-}
-
 @Article{Goffard2019,
   author    = {Pierre-O. Goffard},
   title     = {Fraud risk assessment within blockchain transactions},
@@ -666,4 +652,27 @@ journal = {ACM Transactions on Programming Languages and Systems},
   pages     = {345--352},
   volume    = {80},
   doi       = {10.1080/0025570x.2007.11953509},
-  publisher = {Informa {UK} Limi
+  publisher = {Informa {UK} Limited},
+}
+
+@Article{Takacs1962,
+  author    = {Lajos Tak{\'{a}}cs},
+  journal   = {Journal of the American Statistical Association},
+  title     = {A Generalization of the Ballot Problem and its Application in the Theory of Queues},
+  year      = {1962},
+  month     = {jun},
+  number    = {298},
+  pages     = {327--337},
+  volume    = {57},
+  doi       = {10.1080/01621459.1962.10480662},
+  publisher = {Informa {UK} Limited},
+}
+
+@Article{Lefevre2011,
+  author    = {Claude Lef{\`{e}}vre and Philippe Picard},
+  journal   = {Insurance: Mathematics and Economics},
+  title     = {A new look at the homogeneous risk model},
+  year      = {2011},
+  month     = {nov},
+  number    = {3},
+  pages     = {512-
