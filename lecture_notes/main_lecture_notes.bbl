@@ -20,14 +20,6 @@ Saif Al-Kuwari, James~H. Davenport, and Russell~J. Bradford.
 \newblock Cryptology ePrint Archive, Report 2011/565, 2011.
 \newblock \url{https://ia.cr/2011/565}.
 
-\bibitem[Albrecher and Goffard(2021)]{albrecher:hal-02649025}
-Hansj{\"o}rg Albrecher and Pierre-Olivier Goffard.
-\newblock {On the profitability of selfish blockchain mining under
-  consideration of ruin}.
-\newblock \emph{To appear in Operations Research}, May 2021.
-\newblock URL \url{https://hal.archives-ouvertes.fr/hal-02649025}.
-\newblock \url{https://arxiv.org/abs/2010.12577}.
-
 \bibitem[Antonopoulos(2017)]{Antonopoulos2017}
 Andreas Antonopoulos.
 \newblock \emph{Mastering Bitcoin}.
@@ -48,6 +40,12 @@ Benjamin Avanzi, Hans~U. Gerber, and Elias~S.W. Shiu.
 \newblock \emph{Insurance: Mathematics and Economics}, 41\penalty0
   (1):\penalty0 111--123, jul 2007.
 \newblock \doi{10.1016/j.insmatheco.2006.10.002}.
+
+\bibitem[Blackwell and MacQueen(1973)]{Blackwell1973}
+David Blackwell and James~B. MacQueen.
+\newblock Ferguson distributions via polya urn schemes.
+\newblock \emph{The Annals of Statistics}, 1\penalty0 (2), mar 1973.
+\newblock \doi{10.1214/aos/1176342372}.
 
 \bibitem[Bowden et~al.(2020)Bowden, Keeler, Krzesinski, and Taylor]{Bowden2020}
 R.~Bowden, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor.

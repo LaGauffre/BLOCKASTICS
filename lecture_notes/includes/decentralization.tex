@@ -13,7 +13,7 @@ Z^{(x)}_n = Z^{(x)}_0 + r\sum_{k = 1}^n\mathbb{I}_{A_{k}^{(x)}}\text{ and }Z_n =
 $$
 where $A_{n}^{(x)}$ is the event that a coin own by peer $x\in E$ is drawn at time $n\in\mathbb{N}$. Let $(Z_n^{(x)})_{n\geq0}$ be the proportion of coins owned by peer $x$ at time $n$, given by 
 $$
-W_n = \frac{Z^{(x)}_n}{Z_n}. 
+W_n^{(x)} = \frac{Z^{(x)}_n}{Z_n}. 
 $$
 Let $\mathcal{F}_n = \sigma(\{Y_k^{(x)}\text{ , }x\in E, k\leq n\})$. Note that 
 $$
@@ -42,17 +42,17 @@ $$
 The long term average of the stake of each peer is stable, we focus on their asymptotic distribution in the following section.
 \subsection{Asymptotic distribution of the stakes}\label{ssec:stakes_distribution}
 To go beyond the mean and study the distribution of the stake of the peers, we have to consider the case $r = 1$. We can then show that the joint distribution of $(W_\infty^{(1)},\ldots,  W_\infty^{(p)})$ is the Dirichlet one. 
-\begin{definition}\label{def:dirichlet}
-A random variable $X$ has a gamma distribution $\text{Gamma}(\alpha,\beta)$ if it has \pdf
-\[
-f(x) = 
-\begin{cases}
-\frac{e^{-\beta x}x^{\alpha-1}\beta^{\alpha}}{\Gamma(\alpha)},& x>0, \\
-0,&\text{ otherwise}, 
-\end{cases}
-\]
-where $\Gamma(\alpha) = \int_0^{\infty}e^{-x}x^{\alpha-1}\text{d}x$ is the gamma function.
-\end{definition}
+% \begin{definition}\label{def:dirichlet}
+% A random variable $X$ has a gamma distribution $\text{Gamma}(\alpha,\beta)$ if it has \pdf
+% \[
+% f(x) = 
+% \begin{cases}
+% \frac{e^{-\beta x}x^{\alpha-1}\beta^{\alpha}}{\Gamma(\alpha)},& x>0, \\
+% 0,&\text{ otherwise}, 
+% \end{cases}
+% \]
+% where $\Gamma(\alpha) = \int_0^{\infty}e^{-x}x^{\alpha-1}\text{d}x$ is the gamma function.
+% \end{definition}
 \begin{definition}\label{def:dirichlet}
 A random vector $(W_1,\ldots, W_p)$ has a Dirichlet distribution $\text{Dir}(\alpha_1,\ldots, \alpha_p)$ if it has a joint \pdf given by 
 \begin{equation}\label{eq:dirichlet_pdf}
@@ -225,9 +225,61 @@ Finally
 ,\text{ as }n\rightarrow\infty.
 \]
 \end{proof}
+\begin{remark}\label{req:alternative_proof}
+One can take a shorter road to show the above result. Let $(X_n)_{n\geq1}$ be the color of the ball drawn during the $n^{th}$ round. We have that 
+\begin{equation}\label{eq:polya_sequence_1}
+\mathbb{P}(X_1=x) = \frac{Z_0^{(x)}}{Z_{0}}
+\end{equation}
+and 
+\begin{equation}\label{eq:polya_sequence_2}
+\mathbb{P}(X_{n+1}=x) = \frac{Z_0^{(x)} + \sum_{i=1}^n\delta_{X_i}(x)}{Z_0+n} = \frac{Z_0^{(x)} + \lambda_n(x)}{Z_0+n} = m_n(x)
+\end{equation}
+where $\delta_{X_i}$ denotes the Dirac measure at $X_i$.
+A sequence that satisfies \eqref{eq:polya_sequence_1} and \eqref{eq:polya_sequence_2} is said to be a Polya sequence with parameter $N_x\text{, }x\in E$.
+\begin{lemma}
+The following statements are equivalent:
+\begin{itemize}
+\item[(i)] $X_1,X_2,\ldots,$ is a Polya sequence
+\item[(ii)] $\mu^{\ast}\sim \text{Dir}(N_x,x\in E)$ and $X_1,X_2,\ldots$ given $\mu^\ast$ are \iid as $\mu^\ast$
+\end{itemize}
+\end{lemma}
+Consider the event $A_n = \{X_1 = x_1,\ldots, X_n = x_n\}$. Induction on $n$ allows us to show that (i) is equivalent to 
+\begin{equation}\label{eq:P_A_polya_i}
+\mathbb{P}(A_n) = \frac{\prod_{x\in E} \left(Z_0^{(x)}\right)^{[\lambda_n(x)]}}{Z_0^{[n]}},
+\end{equation}
+where $\lambda_n(x)$ is the number of $i$'s in $1,\ldots, n$ for which $x_i = x$ and $a^{[k]} = a(a+1)\ldots(a+k-1)$.  Now assume that $(ii)$ holds true, then 
+$$
+\mathbb{P}(A_n|\mu^\ast) = \prod_{x\in E}\mu^\ast(x)^{\lambda_n(x)},
+$$
+recall that $\mu^\ast$ is a random vector, indexed on $E$, We denote by $\mu^\ast(x)$ the component associated with $x\in E$. The law of total probability then yields
+\begin{equation}\label{eq:P_A_polya_ii}
+\mathbb{P}(A_n) = \mathbb{E}\left[\prod_{x\in E}\mu^\ast(x)^{\lambda_n(x)}\right],
+\end{equation}
+which is the same as \eqref{eq:P_A_polya_i}. Applying the lemma together with the law of large number yields 
+$$
+n^{-1}\sum_{i=1}^n\delta_{X_i}(x) \rightarrow \mu^{\ast}(x)\text{ as } n\rightarrow\infty.
+$$
+and then $m_n(x)\rightarrow\mu^{\ast}(x)$. This proof is taken from \citet{Blackwell1973}.
+\end{remark}
+The asymptotic distribution of the stakes among the peers is a Dirichlet random vector denoted by $\mu^{\ast}$ which may be considered as a probability distribution over the set of peers. Decentralization is achieved when the weights do not concentrate around a few nodes. The most desirable situation corresponds to all the peers being equally likely to be selected. It would corresponds to a uniform distribution over the set of peers which would maximizes the Shannon entropy. For $\mu^{\ast}\sim \text{Dir}(Z^{(x)}_0)$, we have 
+$$
+H(\mu^\ast) = -\mathbb{E}\left\{\sum_x \mu^\ast(x)\ln[\mu^\ast(x)]\right\} = -\sum_x\frac{Z_0}{Z_0^{(x)}}\left[\psi(Z_0^{(x)}+1)-\psi(Z_0+1)\right],
+$$
+where $\psi(x) = \frac{\text{d}}{\text{d}x}\ln[\Gamma(x)]$ is the digamma function, to be compared to $\ln(p)$.
 
 \section{Decentralization in PoW}\label{sec:decentralization_pow}
-\subsection{Mining pools and reward systems}
-\subsection{Mining pool risk analysis}
+In \cref{chap:security}, we have observed that mining blocks in a \PoW equipped blockchain is a risky business. Nodes may deviate from the prescribed protocol to counteract that but the most common way to mitigate the underlying risk is to join forces by forming mining pool. A mining pool is a joint initiative of miners that pool their computing ressources to make their capital gains more frequent and therefore have a steadier income. Consider a network of $n$ miners of hashpower $p_i, \text{ }i = 1,\ldots, n$ and assume that a subset $I\in \{1,\ldots, n\}$ decides to form a mining pool. The cumulated hashpower of this pool is then
+\[
+p_I = \sum_{i\in I}p_i.
+\]
+and the arrival rate of block rewards for a given miner $i$ rises from $p_i\cdot\lambda$ to $p_I\cdot\lambda$. Because the reward is shared among the pool participants, the size of the reward collected by miner $i$ decreases from $b$ to $p_i\cdot b$. The expected surplus is the same when mining solo and mining for a pool, but the variance (and therefore the risk) is smaller when mining for a pool. The management of a mining pool relies heavily on the reward distribution mechanism set up by a pool manager. For the redistribution system to be fair, each miner must be remunerated in proportion to her calculation effort. Miner $i$ must earn a share $p_i/p_I$
+of the mining pool total income. The pool manager has to find a way to estimate the contribution of each pool participant. This is done by submitting \textit{shares} which are partial solutions to the cryptopuzzle easier to find than the actual solution. For instance, if the target is such that the hash value for finding a block must starts with $4$ leading zeros then a partial solution could be a hash value with $3$ leading zeros.  If the current difficulty of the cryptopuzzle is $D$, then the difficulty for finding a \textit{share} is set to $q\cdot D$ by the pool manager, where $q\in(0,1)$. The manager's cut is a fraction $f\in(0,1)$ of the block discovery reward $b$.\\
+
+\noindent \cref{ssec:mining_pool_reward_system} presents the mining pool remuneration schemes and introduces the \textit{Pay-per-Share} (PpS) system on which we will focus. \cref{ssec:mining_pool_risk_analysis} defines risk models for miners and pool managers participating to a PpS pool.
+
+\subsection{Mining pools and reward systems}\label{ssec:mining_pool_reward_system}
+\subsubsection{Proportional reward system}
+The most natural reward redistribution system we can think of is a scheme that share the blockfining reward in proportion to each miner contribution to the computing effort. 
+\subsection{Mining pool risk analysis}\label{ssec:mining_pool_risk_analysis}
 
 \newpage
