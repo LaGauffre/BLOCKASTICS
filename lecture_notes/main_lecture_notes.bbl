@@ -1,4 +1,4 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{25}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -91,6 +91,14 @@ Sunny King and Scott Nadal.
 \newblock Ppcoin: Peer-to-peer crypto-currency with proof-of-stake.
 \newblock \emph{whitepaper}, 2012.
 
+\bibitem[Kingman(1993)]{Kingman1993}
+J.~F.~C. Kingman.
+\newblock \emph{Poisson Processes}.
+\newblock OXFORD UNIV PR, January 1993.
+\newblock ISBN 0198536933.
+\newblock URL
+  \url{https://www.ebook.de/de/product/3252041/j_f_c_kingman_poisson_processes.html}.
+
 \bibitem[Lamport et~al.(1982)Lamport, Shostak, and Pease]{lamport1982the}
 Leslie Lamport, Robert Shostak, and Marshall Pease.
 \newblock The byzantine generals problem.
@@ -121,6 +129,11 @@ Marc Renault.
   2007.
 \newblock \doi{10.1080/0025570x.2007.11953509}.
 
+\bibitem[Rosenfeld(2011)]{rosenfeld2011analysis}
+Meni Rosenfeld.
+\newblock Analysis of bitcoin pooled mining reward systems, 2011.
+\newblock URL \url{https://arxiv.org/abs/1112.4980}.
+
 \bibitem[Rosenfeld(2014)]{rosenfeld2014analysis}
 Meni Rosenfeld.
 \newblock Analysis of hashrate-based double spending.
@@ -132,6 +145,21 @@ Fahad Saleh.
 \newblock \emph{The Review of Financial Studies}, 34\penalty0 (3):\penalty0
   1156--1190, jul 2020.
 \newblock \doi{10.1093/rfs/hhaa075}.
+
+\bibitem[Schrijvers et~al.(2017)Schrijvers, Bonneau, Boneh, and
+  Roughgarden]{Schrijvers2017}
+Okke Schrijvers, Joseph Bonneau, Dan Boneh, and Tim Roughgarden.
+\newblock Incentive compatibility of bitcoin mining pool reward functions.
+\newblock In \emph{Financial Cryptography and Data Security}, pages 477--498.
+  Springer Berlin Heidelberg, 2017.
+\newblock \doi{10.1007/978-3-662-54970-4_28}.
+
+\bibitem[slush pool(2021)]{slush}
+slush pool.
+\newblock Reward system specifications.
+\newblock 2021.
+\newblock URL
+  \url{https://help.slushpool.com/en/support/solutions/articles/77000426280-reward-system-specification}.
 
 \bibitem[Tak{\'{a}}cs(1962)]{Takacs1962}
 Lajos Tak{\'{a}}cs.

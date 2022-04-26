@@ -345,16 +345,6 @@
   publisher = {Institute for Operations Research and the Management Sciences ({INFORMS})},
 }
 
-@Misc{albrecher2021blockchain,
-  author        = {Hansjoerg Albrecher and Dina Finger and Pierre-Olivier Goffard},
-  note          = {\url{https://arxiv.org/abs/2109.03085}},
-  title         = {Blockchain mining in pools: Analyzing the trade-off between profitability and ruin},
-  year          = {2021},
-  archiveprefix = {arXiv},
-  eprint        = {2109.03085},
-  primaryclass  = {cs.CR},
-}
-
 @Article{slush,
   author = {slush pool},
   title  = {Reward system specifications},
@@ -675,4 +665,18 @@ journal = {ACM Transactions on Programming Languages and Systems},
   year      = {2011},
   month     = {nov},
   number    = {3},
-  pages     = {512-
+  pages     = {512--519},
+  volume    = {49},
+  doi       = {10.1016/j.insmatheco.2011.08.005},
+  publisher = {Elsevier {BV}},
+}
+
+@Article{Ta2015,
+  author    = {Bao Quoc Ta},
+  journal   = {Expositiones Mathematicae},
+  title     = {Probabilistic approach to Appell polynomials},
+  year      = {2015},
+  number    = {3},
+  pages     = {269--294},
+  volume    = {33},
+  doi       = {10.1016/j.exmath.2014.07.0

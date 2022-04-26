@@ -279,7 +279,69 @@ of the mining pool total income. The pool manager has to find a way to estimate 
 
 \subsection{Mining pools and reward systems}\label{ssec:mining_pool_reward_system}
 \subsubsection{Proportional reward system}
-The most natural reward redistribution system we can think of is a scheme that share the blockfining reward in proportion to each miner contribution to the computing effort. 
+The proportional reward system splits time in \textit{rounds} which correspond to the time elapsed between two block discoveries. During these \textit{rounds}, the miners submit \textit{shares}. The ratio of the number of \textit{shares} submitted by miner $i$ over the total number of \textit{shares} submitted by her fellow mining pool participants determines her share of the reward and should converge to her share of the mining pool computing power, that is $p_i/p_I$ (for sufficiently low complexity of the shares, the latter limit will be a very good approximation for the actual situation indeed). The surplus of miner $i$ is then given 
+\begin{equation}\label{eq:surplus_miner_proportional}
+R_t^i = u - c_i\cdot t + N^I_t\cdot (1-f)\cdot \frac{p_i}{p_I}\cdot b,\text{ }t\geq0, 
+\end{equation}
+where $(N^I_t)$ is a Poisson proccess of intensity $p_I\cdot\lambda$ that gives the number of blocks appended to the blockchain by the mining pool. The duration of a \textit{round} is exponentially distributed $\text{Exp}\left[(p_I\lambda)^{-1}\right]$. The uncertainty on the length of the round has undesirable consequences on the time value of the \textit{shares} submitted by the miners. Indeed, if $n$ shares are submitted during a round, then the value of a given \textit{share} is $(1-f)\cdot b / n$. The longer a \textit{round} lasts, the greater the value of $n$ is. The \textit{shares} are worth less in longer rounds which triggers an exodus behavior of miners toward mining pools with shorter rounds. This phenomenon, called pool hopping, has been documented in the early work of Rosenfeld \citet{rosenfeld2011analysis}. Yet another drawback is that a miner that has found a full solution may delay the submission until her ratio of \textit{shares} submitted reflects her fraction of the mining pool computing power. The proportional system is not \textit{incentive-compatible} using the terminology of Schrijvers et al. \citet{Schrijvers2017}. A discounting factor may be applied to compensate the decreasing value of shares over time, see for instance the slush's method \citet{slush}. Now if we take a look at the risk undertaken by pool managers. Within the frame of the proportional reward system, the surplus of the pool manager is given by
+\begin{equation}\label{eq:surplus_pool_manager_proportional} 
+R_t^I = u + N^I_t\cdot f\cdot b,\text{ }t\geq0.
+\end{equation}
+Model \eqref{eq:surplus_pool_manager_proportional} does not account for any mining pool operating cost. The mining costs are entirely borne by miners and the mining pool manager only serves as coordinator. A proportional-type reward system should therefore lead to a low management fee $f$. \\
+
+\noindent Although this system provides fairness, it has weaknesses that justify the introduction of a more sophisticated distribution mechanism. In particular, if miners seek to actually transfer some of the risk associated to the mining activity to the pool manager, then they should rather turn to a mining pool based on a \textit{Pay-per-Share} system, which is the focus of the next section.
+\subsubsection{Pay-per-Share reward system}\label{eq:pps}
+In a \textit{Pay-per-Share} reward system, the pool manager immediately rewards the miners for each \textit{share} submitted. Let $(M_t)_{t\geq0}$ be a Poisson process of intensity $\mu$ that counts the number of \textit{shares} submitted by the entire network of miners up to time $t\geq0$. Denote by $q\in(0,1)$ the relative difficulty of finding a block compared to finding a share. Let $0<w<b$ be the reward for finding a \textit{share}. The number of \textit{shares} submitted by miner $i$ is then a (thinned) Poisson process $(M^i_t)_{t\geq0}$ with intensity $p_i\cdot\mu$, $p_i$ being the share of the individual miner's network hashpower as defined above, and her surplus when joining a PpS mining pool becomes  
+\begin{equation}\label{eq:surplus_miner_pps}
+R_t^i = u - c_i\cdot t + M^i_t\cdot w,\text{ }t\geq0. 
+\end{equation}
+The intensities of the processes $(N_t)_{t\geq0}$ and $(M_t)_{t\geq0}$ are linked through $\lambda  = q\cdot\mu$. By setting $w=(1-f)\cdot b\cdot q$, we observe that the surplus \eqref{eq:surplus_miner_proportional} and \eqref{eq:surplus_miner_pps} have the same expectation at time $t$, but the variance and therefore the risk associated to \eqref{eq:surplus_miner_pps} is lower. This reward system has been shown to be resistant to pool hopping and is incentive compatible. It also entails a significant transfer of risk to the pool manager whose surplus process is now given by
+\begin{equation}\label{eq:surplus_manager_pps}
+R^I_t = u - M_t^I\cdot w + N_t^I\cdot b,\text{ }t\geq0,
+\end{equation}
+making her subject to the risk of bankruptcy.
+
+\begin{remark}\label{remark_Md}
+Since the process $(M_t^I)_{t\geq 0}$ requires solving for a problem of lower complexitiy than $(N_t^I)_{t\geq 0}$, ($N_t^I)_{t\geq 0}$ is a subset of the path defined by the process $(M_t^I)_{t\geq 0}$. It means that both processes are not independent. Concretely, at the moment of the block reward payment $b$, at the same time there is a realisation of the miners' reward $w$. As we sometimes need to isolate downward jumps without the simultaneous upward jump point, we define another process with a reduced intensity. We apply the superposition theorem (see e.g. \cite{Kingman1993}) to the Poisson process $M_t^I$ by redefining the down jump process as $(M_t^{I,d})_{t\geq 0} \sim Poisson(\mu_d)$, where $\mu_d = \mu-\lambda$.
+\end{remark}
+\noindent In addition to the bounty for finding a new block, blockchain users usually include a small financial incentive for the network to process their transaction. These transaction fees (e.g.\ referred to as \textit{gas} within the ETHEREUM blockchain), are known to be variable as they highly depend on the network congestion at a given time. Note also that since the operational cost is paid by miners using a fiat currency, it would be more accurate to account for the exchange rate of the cryptocurrency to some fiat currency. We can therefore model the successive rewards for \textit{shares} and blocks as sequences of nonnegative random variables denoted by $(W_k)_{k\geq1}$ and $(B_k)_{k\geq1}$ respectively, which for simplicity we will both assume to be \textit{i.i.d.}\  exponential variables in these notes. A reward system that features a \textit{Pay-per-Share} mechanism and includes in the miners' reward the transaction fees is referred to as a \textit{Full Pay-per-Share} reward system by practitioners. The surplus of miner $i$ in a mining pool applying the FPpS\,system is given by  
+\begin{equation}\label{eq:surplus_miner_fpps}
+R_t^i = u - c_i\cdot t + \sum_{k = 1}^{M^i_t}W_k,\text{ }t\geq0,
+\end{equation}
+and the surplus of the pool manager then becomes 
+\begin{equation}\label{eq:surplus_manager_fpps}
+R^I_t = u - \sum_{k = 1}^{M^I_t}W_k + \sum_{l = 1}^{N_t^I}B_l,\text{ }t\geq0. 
+\end{equation}
+The next section is devoted to deriving formulas for the ruin probability and expected surplus in case ruin did not occur up to a given time horizon for the models discussed above.
+
 \subsection{Mining pool risk analysis}\label{ssec:mining_pool_risk_analysis}
+
+
+\subsubsection{From the miners' viewpoint}\label{sssec:miner_viewpoint}
+Consider miner $i\in \{1,\ldots, n\}$ with hashpower $p_i\in(0,1)$ that joined a FPpS mining pool $I\subset\{1,\ldots, n\}$ with relative difficulty $q\in(0,1)$ and management fee $f\in(0,1)$. Let $\lambda$ the average number of solutions published by the network per time unit and let $\mu = \lambda/q$ be the average number of partial solutions. The surplus of miner $i$ in a mining pool applying the FPpS\,system is given by
+\begin{equation*}
+R_t^i = u - c_i\cdot t + \sum_{k = 1}^{M^i_t}W_k,\text{ }t\geq0,
+\end{equation*}
+where $(M^i_t)_{t\geq0}$ is a Poisson process with intensity $\mu \cdot p_i$, and the $W_k$'s are \iid exponential variable with mean $w = (1-f)\cdot q\cdot b$. The ruin time is defined as 
+$$
+\tau_u^{(i)} = \inf\{t\geq0\text{ ; } R_t^i = 0\},
+$$
+and the net profit condition reads as 
+$$
+(1-f)\cdot p^{i}\cdot b\cdot \lambda>c_i.
+$$
+We first provide the probability distribution of $\tau_u^{i}$.
+\begin{theo}\label{theo:pdf_ruin_time_miner_in_pool}
+The ruin time $\tau_u^{(i)}$ takes value $t\geq u/c_i$. It has an atom of probability with 
+\[
+\mathbb{P}(\tau_u^{(i)} = u/c_i) = \mathbb{P}(M^{(i)}_{u/c_i}=0)=\e^{-p_i\mu u/c_i}
+\]
+and \pdf given by 
+\[
+f_{\tau_u^{(i)}}(t)=\frac{u}{t}\mathbb{E}\left[f_{W}^{\ast M_t^{(i)}}(c_i t-u)\mathbb{I}_{M^{(i)}_t \geq1}\right]\text{, for }t\geq u/c_i.
+\]
+\end{theo}
+\subsubsection{From the pool manager's viewpoint}\label{ssec:manager_viewpoint}
+\subsubsection{Numerical illustrations}\label{ssec:numerical_illustrations}
 
 \newpage
