@@ -337,10 +337,90 @@ The ruin time $\tau_u^{(i)}$ takes value $t\geq u/c_i$. It has an atom of probab
 \mathbb{P}(\tau_u^{(i)} = u/c_i) = \mathbb{P}(M^{(i)}_{u/c_i}=0)=\e^{-p_i\mu u/c_i}
 \]
 and \pdf given by 
-\[
+\begin{equation}\label{eq:pdf_ruin_time_miner_in_pool}
 f_{\tau_u^{(i)}}(t)=\frac{u}{t}\mathbb{E}\left[f_{W}^{\ast M_t^{(i)}}(c_i t-u)\mathbb{I}_{M^{(i)}_t \geq1}\right]\text{, for }t\geq u/c_i.
-\]
+\end{equation}
 \end{theo}
+\begin{proof}
+Ruin is not possible before time $u/c_i$. It may occur exactly at time $t = u/c_i$ if no capital gain occur before that time. Hence we have 
+$$
+\mathbb{P}(\tau_u^{(i)} = u/c_i) = \mathbb{P}(M_{u/c_i} = 0) = \exp\left(-p_i\mu \frac{u}{c_i}\right).
+$$
+Now consider some time $t>u/c_i$. We have that 
+\begin{equation*}
+\{\tau_u^{(i)}\in(t,t+\text{dt})\} = \bigcup_{n = 1}^{+\infty}\left\{M_t^{(i)} = n \right\}\cap\{\tau_u^{(i)}\in(t,t+\text{dt})\},\\
+\end{equation*}
+and therefore
+\begin{equation}\label{eq:law_of_total_prob}
+\mathbb{P}\left[\tau_u^{(i)}\in(t,t+\text{dt})\right] = \sum_{n = 1}^{+\infty}\mathbb{P}\left[\tau_u^{(i)}\in(t,t+\text{dt})\big\rvert M_t^{(i)} = n\right]\mathbb{P}\left(M_t^{(i)} = n \right).
+\end{equation}
+Note that 
+\[
+\left\{M_t^{(i)} = n \right\}\cap\{\tau_u^{(i)}\in(t,t+\text{dt})\} =\left\{M_t^{(i)} = n \right\}\cap\bigcap_{k = 1}^{n}\{T_k\leq\frac{S_{k-1}+u}{c_i}\}\cap\left\{\frac{S_n+u}{c_i}\in(t,t+\text{dt})\right\}.
+\]
+We then have 
+\begin{eqnarray*}
+&&\mathbb{P}\left[\tau_u^{(i)}\in (t,t+\text{d}t)\big\rvert M_t^{(i)} = n \right]\\
+&=&\mathbb{P}\left[\bigcap_{k = 1}^{n}\left\{T_k\leq\frac{S_{k-1}+u}{c_i}\right\}\cap\left\{\frac{S_n+u}{c_i}\in(t,t+\text{dt})\right\}\big\rvert M_t^{(i)} = n \right]\\
+&=&\mathbb{P}\left[\bigcap_{k = 1}^{n}\left\{
+U_{(k)}\leq\frac{S_{k-1}+u}{c_i t}
+\right\}
+\Big\rvert\frac{S_n+u}{c_i}\in(t,t+\text{dt})\right]
+\mathbb{P}\left[\frac{S_n+u}{c_i}\in(t,t+\text{dt})\right]\\
+&=&\mathbb{P}\left[\bigcap_{k = 1}^{n}\left\{
+U_{(k)}\leq\frac{S_{k-1}+u}{c_i t}
+\right\}
+\Big\rvert S_{n}=c_i t -u\right]
+c_i f_{W}^{\ast(n)}(c_i t -u)\\
+&=&\mathbb{E}\left\{\mathbb{P}\left[\bigcap_{k = 1}^{n}\left\{
+U_{(k)}\leq\frac{S_{k-1}+u}{c_i t}
+\right\}\Big\rvert S_1,\ldots, S_n\right]
+\Big\rvert S_{n}=c_i t -u\right\}
+c_i f_{W}^{\ast(n)}(c_i t -u)\\
+&=&\mathbb{E}\left\{(-1)^nG_n\left(0\Big\rvert \frac{S_0+u}{c_i t}, \ldots, \frac{S_{n-1}+u}{c_i t}\right)
+\Big\rvert S_{n}=c_i t -u\right\}
+c_i f_{W}^{\ast(n)}(c_i t -u)\\
+&=&\frac{(-1)^n}{(c_it)^{n} }\mathbb{E}\left[G_n\left(-u\Big\rvert S_0, \ldots, S_{n-1}\right)
+\Big\rvert S_{n}=c_i t -u\right]
+c_i f_{W}^{\ast(n)}(c_i t -u)\\
+&=&\frac{(-1)^n}{(c_it)^{n} }(-u)(-u-c_i t + u)^{n-1}
+c_i f_{W}^{\ast(n)}(c_i t -u) \\
+&=& \frac{u}{ t}f_{W}^{\ast(n)}(c_i t -u) .
+\end{eqnarray*}
+Reinserting in \eqref{eq:law_of_total_prob} yields the result.
+
+\end{proof}
+\noindent The infinite serie in \eqref{eq:pdf_ruin_time_miner_in_pool} is problematic for numerical purposes although a workable approximation may be otained by truncating it. Just like in \cref{chap:security}, we shall consider an exponential time horizon $T\sim\ExpDist(t)$ instead of a deterministic one and compute
+\[
+\widehat{\psi}(u,t) = \mathbb{P}(\tau_u \leq T),\text{ and }\widehat{V}(u,t) = \mathbb{E}(R_T\mathbb{I}_{\tau_u > T}).
+\]
+We start with the ruin probability
+\begin{prop}\label{prop:rp_hat_miner_in_pool}
+The ruin probability up to an exponential time horizon is given by 
+\[
+\widehat{\psi}(u,t) = e^{\theta^{\ast} u}
+\]
+where $\theta^{\ast}$ is the solution of the equation
+\[
+p_i\mu + 1/t - c_i \theta = p\mu_i\mathbb{E}\left(e^{-\theta W}\right)
+\]
+\end{prop}
+\begin{proof}
+Define the process
+\[
+S_t^{(i)} = R^{(i)}_t-u =c_i t-\sum_{k = 1}^{N_t}W_k,
+\]
+as it is a Levy process then the process
+\[
+M_t^{(i)}=\exp\left(\theta S_t^{(i)} - t\kappa(\theta)\right),
+\]
+is a martingale, where 
+\[
+\kappa(\theta) =\log \mathbb{E}(e^{\theta S_1^{(i)}}) = c_i\theta + p_i\mu \mathbb{E}\left(e^{-\theta W}\right)
+\]
+
+\end{proof}
+
 \subsubsection{From the pool manager's viewpoint}\label{ssec:manager_viewpoint}
 \subsubsection{Numerical illustrations}\label{ssec:numerical_illustrations}
 
