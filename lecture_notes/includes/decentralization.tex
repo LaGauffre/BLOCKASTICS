@@ -416,10 +416,80 @@ M_t^{(i)}=\exp\left(\theta S_t^{(i)} - t\kappa(\theta)\right),
 \]
 is a martingale, where 
 \[
-\kappa(\theta) =\log \mathbb{E}(e^{\theta S_1^{(i)}}) = c_i\theta + p_i\mu \mathbb{E}\left(e^{-\theta W}\right)
+\kappa(\theta) =\log \mathbb{E}(e^{\theta S_1^{(i)}}) = c_i\theta + p_i\mu \mathbb{E}\left(e^{-\theta W}\right) -\mu p_i
 \]
+We apply the optional stopping theorem at time $\tau_u\land T_1$, where $T_1>0$ to get 
+\begin{eqnarray*}
+\mathbb{E}\left(M_0^{(i)}\right) &=& \mathbb{E}\left(M_{\tau_u^{(i)}\land T_1}^{(i)}\right)\\
+1 &=& \mathbb{E}\left(M_{\tau_u^{(i)}}|\tau_u^{(i)} < T_1\right)\mathbb{P}(\tau_u^{(i)} < T_1)+\mathbb{E}\left(M_T|\tau_u^{(i)} \geq T_1\right)\mathbb{P}(\tau_u^{(i)} \geq T_1)
+\end{eqnarray*}
+By letting $T_1\rightarrow \infty$ we get 
+\begin{eqnarray*}
+1 &=& \mathbb{E}\left(M_{\tau_u^{(i)}}|\tau_u^{(i)} < \infty\right)\mathbb{P}(\tau_u^{(i)} < \infty)\\
+1 &=& \e^{\theta u}\mathbb{E}\left(\e^{-\kappa(\theta) \tau_u^{(i)}}|\tau_u^{(i)} < \infty\right)\mathbb{P}(\tau_u^{(i)} < \infty)
+\end{eqnarray*}
+Let $s>0$ and $\theta(s)$ be the unique positive solution of the equation $\kappa(\theta) =s$, then 
+\begin{eqnarray*}
+1 &=& \e^{\theta(s) u}\mathbb{E}\left(\e^{-\kappa(\theta(s)) \tau_u^{(i)}}|\tau_u^{(i)} < \infty\right)\mathbb{P}(\tau_u^{(i)} < \infty)\\
+1 &=& \e^{\theta(s) u}\mathbb{E}\left(\e^{-s\tau_u^{(i)}}|\tau_u^{(i)} < \infty\right)\mathbb{P}(\tau_u^{(i)} < \infty)\\
+1 &=& \e^{\theta(s) u}\mathbb{E}\left(\e^{-s\tau_u^{(i)}}\right)\\
+\mathbb{E}\left(\e^{-s\tau_u^{(i)}}\right) &=& \e^{-\theta(s) u}\\
+\end{eqnarray*}
+Note that 
+\[
+\widehat{\psi}(u,t) = \mathbb{P}(\tau_u^{i}\geq T) = \mathbb{E}(e^{-\tau_u^{(i)}/t}) = \e^{-\theta(1/t) u}.
+\]
+\end{proof}
+\begin{prop}\label{prop:rp_hat_miner_in_pool}
+The expected wealth up to an exponential time horizon is given by 
+\[
+\widehat{V}(u,t) = t(c_i-p_i\mu w)e^{-\theta^{\ast} u}+u +t(p_i\mu w - c_i)
+\]
+where $\theta^{\ast}$ is the solution of the equation
+\[
+c_i\theta^{2}+\theta\left(\frac{1}{t}+p_i\mu-\frac{c}{w}\right)+\frac{1}{wt} = 0.
+\]
+\end{prop}
+\begin{proof}
+Conditionning upon the events that may occur over th time interval $(0,h)$ with 
+\begin{itemize}
+    \item $T>h$ and no partial solution submitted
+    \item $T\leq h$ and no partial solution submitted
+    \item A partial solution submitted before $T$ and $h$
+\end{itemize}
+It then holds that 
+\begin{eqnarray*}
+\widehat{V}(u,t) &=&\e^{-h(1/t + \mu p_i)}\widehat{V}(u-ch,t)+\int_{0}^{h}\frac{1}{t}\e^{-h(1/t + \mu p_i)}(u-cs)\text{d}s\\
+&+& \int_{0}^{h}\int_{0}^{+\infty}\mu p_i\e^{-h(1/t + \mu p_i)}\widehat{V}(u-cs+x,t)\frac{\e^{-x/w}}{w}\text{d}x\text{d}s.
+\end{eqnarray*}
+Differentiating with respect to $h$ and letting $h\rightarrow\infty$ yields
+\begin{equation}\label{eq:integro_differentiql_equation_miner_in_pool}
+\left(\frac{1}{t}+p_i\mu\right)\widehat{V}(u,t)+c_i\widehat{V}'(u,t)-\frac{u}{t}-\int_0^{+\infty}\widehat{V}(u+x,t)\frac{p_i\mu}{w}\e^{-x/w}\text{d}x=0,
+\end{equation}
+with boundary conditions \(\widehat{V}(0,t) = 0\) and \(0\leq \widehat{V}(u,t)\leq u-c_i t +p_i\mu w\). The solution is of the form 
+\begin{equation}\label{eq:ansatz}
+\widehat{V}(u,t) = A+Bu+C\e^{-\theta u},
+\end{equation}
+so that 
+\begin{equation}\label{eq:ansatz_derivative}
+\widehat{V}'(u,t) = B-\theta C\e^{-\theta u}.
+\end{equation}
+Reinserting \eqref{eq:ansatz} and \eqref{eq:ansatz_derivative} into \eqref{eq:integro_differentiql_equation_miner_in_pool}, together with the boundary condition, yields the following system of equation
+\begin{equation}
+\begin{cases}
+\frac{A}{t}-Bp_i\mu w+Bc =0\\
+B\left(\frac{1}{t}+p_i\mu\right)-\frac{1}{t}-Bp_i\mu = 0\\
+\left(\frac{1}{t}+p_i\mu\right)-\theta c -\frac{p_i\mu}{1+\theta w}\\
+A+C = 0 
+\end{cases}
+\end{equation}
+It follows that $B = 1$, $A = t(p_i\mu w-c_i)$, $C = -A$ and $\theta^{\ast}$ is solution to 
+$$
+c_i\theta^{2}+\theta\left(\frac{1}{t}+p_i\mu-\frac{c}{w}\right)+\frac{1}{wt} = 0.
+$$
 
 \end{proof}
+
 
 \subsubsection{From the pool manager's viewpoint}\label{ssec:manager_viewpoint}
 \subsubsection{Numerical illustrations}\label{ssec:numerical_illustrations}
