@@ -826,8 +826,8 @@ $$
 Assume that the result holds true for some $n$ and consider $n+1$. We have 
 \begin{eqnarray*}
 \mathbb{E}\left[A_{n+1}(x|S_1,\ldots, S_n,S_{n+1})|S_{n+1}\right]&=&\mathbb{E}\left[\int_{S_{n+1}}^x A_{n+1}'(y|S_1,\ldots, S_n,S_{n+1})\text{d}y|S_{n+1}\right]\\
-&=&\int_{S_{n+1}}^x\mathbb{E}\left[ A_{n+1}'(y|S_1,\ldots, S_n,S_{n+1})|S_{n+1}\right]\text{d}y\\
-&=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left[A_{n}(y|S_1,\ldots, S_n)|S_{n+1}\right]\text{d}y\\
+&=&(n+1)\mathbb{E}\left[\int_{S_{n+1}}^x A_{n}(y|S_1,\ldots, S_n)\text{d}y|S_{n+1}\right]\\
+&=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left[A_{n}(y|S_1,\ldots, S_n)|S_{n+1}\right]\text{d}y\text{ (Fubini)}\\
 &=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left\{\mathbb{E}\left[A_{n}(y|S_1,\ldots, S_n)|S_n,S_{n+1}\right]|S_{n+1}\right\}\text{d}y\\
 &=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left\{\mathbb{E}\left[A_{n}(y|S_1,\ldots, S_n)|S_n\right]|S_{n+1}\right\}\text{d}y\\
 &=&(n+1)\int_{S_{n+1}}^x\mathbb{E}\left[y^{n-1}(y-S_n)|S_{n+1}\right]\text{d}y\\
@@ -858,7 +858,7 @@ where
 \end{itemize}
 The classical assumes that the premium are collected linearly in times at some rate $c$ per time unit. Namely, we have 
 $$
-P_t = c\times t.
+P_t = c\cdot t.
 $$
 The number of claims is governed by a counting process $(N_t)_{t\geq0}$, usually a standard Poisson process with intensity $\lambda$. To each claim is associated a randomly sized compensation distributed as $U$. The claim sizes $U_1,U_2,\ldots$ form a sequence of \iid random variables independent from $N_t$. We therefore have 
 $$
@@ -866,7 +866,7 @@ L_t = \sum_{k = 1}^{N_t}U_k.
 $$
 The name of the game is to compute the ruin probabilities 
 \begin{equation}\label{eq:ruin_probabilities}
-\psi(u,T) = \mathbb{P}(\tau_0 \leq T),\text{ and }\psi(u) = \mathbb{P}(\tau_0 < \infty),
+\psi(u,T) = \mathbb{P}(\tau_u \leq T),\text{ and }\psi(u) = \mathbb{P}(\tau_u < \infty),
 \end{equation} 
 where $\tau_u = \inf\{t\geq0\text{ ; }R_t \leq 0\}$ is the ruin time. This first hitting time problem is illustrated on \cref{fig:ruin_time_CL}
 \begin{figure} 
@@ -911,7 +911,11 @@ M_t = \exp\left[\theta S_t-t\kappa(\theta)\right]\text{, }t\geq0,\text{ and }\th
 $$
 where $\kappa(\theta)=\log\mathbb{E}\left(e^{\theta S_1}\right)<\infty$, is a martingale.
 \begin{proof}
-We have that 
+Note that for a Levy process, we have that 
+\[
+\mathbb{E}(e^{\theta S_t}) =\mathbb{E}(e^\theta S_1)^t. 
+\]
+It follows that 
 \begin{eqnarray*}
 \mathbb{E}(M_t|\mathcal{F}_s) &=&\mathbb{E}\left\{\exp\left[\theta S_t-t\kappa(\theta)\right]|\mathcal{F}_s\right\} \\
 &=&\e^{-t\kappa(\theta)}\mathbb{E}\left\{\exp\left[\theta (S_t-S_s) + \theta S_s\right]|\mathcal{F}_s\right\}\\
@@ -933,13 +937,14 @@ where $\xi(u)=S_{\tau_u}-u$ denotes the deficit at ruin.
 We apply the optionnal stopping theorem on $(e^{\gamma S_t})_{t\geq0}$ at time $T\land \tau_u$ for some $T>0$ to get 
 \begin{eqnarray*}
 1 = \mathbb{E}\left(\e^{\gamma S_0}\right)&=& \mathbb{E}\left(\e^{\gamma S_{T\land \tau_u}}\right)\\  
-&=& \mathbb{E}\left(\e^{\gamma S_{\tau_u}}\mathbb{I}_{\tau_u\leq T} + \e^{\gamma S_{T}}\mathbb{I}_{\tau_u> T}\right).\\
+&=& \mathbb{E}\left(\e^{\gamma S_{\tau_u}}\mathbb{I}_{\tau_u<T} + \e^{\gamma S_{T}}\mathbb{I}_{\tau_u\geq T}\right).\\
 \end{eqnarray*} 
-Letting $T\rightarrow\infty$ yields\footnote{Thanks to $S_t\rightarrow -\infty$, monotone and dominated convergence.}
+Letting $T\rightarrow\infty$  yields
 \begin{eqnarray*}
 1 &=&\mathbb{E}\left(\e^{\gamma S_{\tau_u}}\mathbb{I}_{\tau_u<\infty}\right)\\
-&=&\e^{\gamma u}\mathbb{E}\left(\e^{\gamma \xi(u))}|\tau_0<\infty\right)\psi(u).
+&=&\e^{\gamma u}\mathbb{E}\left(\e^{\gamma \xi(u))}|\tau_u<\infty\right)\psi(u),
 \end{eqnarray*} 
+thanks to $S_t\rightarrow -\infty$, monotone and dominated convergence ($\e^{\gamma S_{T}}<\e^{\gamma u}$ on $\{\tau_u\geq T\}$)
 \end{proof}
 We will use \cref{prop:ruin_proba_levy} to derive the double spending probability within a continuous time framework in the next sections.
 \subsubsection{Double spending probability}\label{sssec:double_spending_counting_process_dsp}
