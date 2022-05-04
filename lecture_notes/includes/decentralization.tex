@@ -492,6 +492,16 @@ $$
 
 
 \subsubsection{From the pool manager's viewpoint}\label{ssec:manager_viewpoint}
+Consider a pool manager that coordinate a FPpS mining pool $I\subset\{1,\ldots, n\}$. The manager sets the relative difficulty of finding a share compared to finding a block to $q\in(0,1)$. If we let $(N_t)_{t\geq0}$ and $(M_t)_{t\geq0}$ be Poisson processes with respective intensity $\lambda$ and $\mu$ equal to the number of block and \textit{shares} find by the network then we have $\lambda = q\mu$. Note that a \textit{share} that turns out to be a proper solution triggers a jump for both $(N_t)_{t\geq0}$ and $(M_t)_{t\geq0}$. The two processes are dependent because the paths of $(N_t)_{t\geq0}$ is a subset of the path of $(M_t)_{t\geq0}$. To isolate the jumps of the two processes we define a Poisson process $(\tilde{M}_t)_{t\geq0}$ of intensity $\tilde{\mu} = \mu -\lambda$ which corresponds to the \textit{share} that do not solve the cryptopuzzle. We have that 
+\[
+M_t = N_t+\tilde{M}_t,\text{ }t\geq0\text{ a.s.,}
+\] 
+where $N_t$ and $\tilde{M}_t$ are independent Poisson processes. The number of shares and blocks found by the pool are then thinned versions $(N_t^I)$ and $\tilde{M}_t^{I}$ of the former processes with respective intensity $p_I\lambda$ and $p_I\tilde{\mu}$. The wealth of the pool manager is given by 
+\begin{equation}\label{eq:wealth_pool_manager_fpps}
+R^I_t = u - \sum_{k = 1}^{\tilde{M}^I_t}\tilde{W}_k + \sum_{l = 1}^{N_t^I}\tilde{B}_l,\text{ }t\geq0, 
+\end{equation}
+where $\tilde{B}_l\overset{iid}{\sim}\ExpDist\left(1/\tilde{b}\right)$, $\tilde{b} = b-w$, and $W_k\overset{iid}{\sim}\ExpDist(1/w)$.
+
 \subsubsection{Numerical illustrations}\label{ssec:numerical_illustrations}
 
 \newpage
