@@ -402,7 +402,7 @@ The ruin probability up to an exponential time horizon is given by
 \]
 where $\theta^{\ast}$ is the solution of the equation
 \[
-p_i\mu + 1/t - c_i \theta = p\mu_i\mathbb{E}\left(e^{-\theta W}\right)
+p_i\mu + 1/t - c_i \theta = p_i\mu\mathbb{E}\left(e^{-\theta W}\right)
 \]
 \end{prop}
 \begin{proof}
@@ -445,9 +445,9 @@ The expected wealth up to an exponential time horizon is given by
 \[
 \widehat{V}(u,t) = t(c_i-p_i\mu w)e^{-\theta^{\ast} u}+u +t(p_i\mu w - c_i)
 \]
-where $\theta^{\ast}$ is the solution of the equation
+where $\theta^{\ast}$ is the positive solution of the equation
 \[
-c_i\theta^{2}+\theta\left(\frac{1}{t}+p_i\mu-\frac{c}{w}\right)+\frac{1}{wt} = 0.
+-c_i\theta^{2}+\theta\left(\frac{1}{t}+p_i\mu-\frac{c_i}{w}\right)+\frac{1}{wt} = 0.
 \]
 \end{prop}
 \begin{proof}
@@ -479,29 +479,101 @@ Reinserting \eqref{eq:ansatz} and \eqref{eq:ansatz_derivative} into \eqref{eq:in
 \begin{cases}
 \frac{A}{t}-Bp_i\mu w+Bc =0\\
 B\left(\frac{1}{t}+p_i\mu\right)-\frac{1}{t}-Bp_i\mu = 0\\
-\left(\frac{1}{t}+p_i\mu\right)-\theta c -\frac{p_i\mu}{1+\theta w}\\
+\left(\frac{1}{t}+p_i\mu\right)-\theta c -\frac{p_i\mu}{1+\theta w}=0\\
 A+C = 0 
 \end{cases}
 \end{equation}
 It follows that $B = 1$, $A = t(p_i\mu w-c_i)$, $C = -A$ and $\theta^{\ast}$ is solution to 
 $$
-c_i\theta^{2}+\theta\left(\frac{1}{t}+p_i\mu-\frac{c}{w}\right)+\frac{1}{wt} = 0.
+-c_i\theta^{2}+\theta\left(\frac{1}{t}+p_i\mu-\frac{c}{w}\right)+\frac{1}{wt} = 0.
 $$
 
 \end{proof}
+\begin{ex}\label{ex:miner_in_pool}
+Consider a miner with haspower $p = 0.01$. Let the BTC price be $\$39753.62$, and the reward be $\text{BTC}6.25 = \$248460.12$. If the time unit is the hour then $\lambda = 6$ so that one block is generated every ten minutes on average. The network consumes $10914487\text{kWh}$ per time unit. Suppose that our miner is joining a mining pool with a management fee $f = 0.05$. The ruin probability of the miner as a function of the initial reserve $u$ for a time horizon of one week is shown in 
+\begin{figure}[!ht]
+  \begin{center}
+ 
+      \includegraphics[width = \textwidth]{../Figures/rp_miner_in_pool}
+      
+                         
+    \caption{Ruin probability of a miner in mining pool as a function of the initial reserves depending on the relative difficulty proposed by the pool manager $q\in \{0.25, 0.5, 0.75\}$.}
+    \label{fig:rp_miner_in_pool}
+  \end{center}
+\end{figure}
+\end{ex}
 
 
 \subsubsection{From the pool manager's viewpoint}\label{ssec:manager_viewpoint}
-Consider a pool manager that coordinate a FPpS mining pool $I\subset\{1,\ldots, n\}$. The manager sets the relative difficulty of finding a share compared to finding a block to $q\in(0,1)$. If we let $(N_t)_{t\geq0}$ and $(M_t)_{t\geq0}$ be Poisson processes with respective intensity $\lambda$ and $\mu$ equal to the number of block and \textit{shares} find by the network then we have $\lambda = q\mu$. Note that a \textit{share} that turns out to be a proper solution triggers a jump for both $(N_t)_{t\geq0}$ and $(M_t)_{t\geq0}$. The two processes are dependent because the paths of $(N_t)_{t\geq0}$ is a subset of the path of $(M_t)_{t\geq0}$. To isolate the jumps of the two processes we define a Poisson process $(\tilde{M}_t)_{t\geq0}$ of intensity $\tilde{\mu} = \mu -\lambda$ which corresponds to the \textit{share} that do not solve the cryptopuzzle. We have that 
+Consider a pool manager that coordinate a FPpS mining pool $I\subset\{1,\ldots, n\}$. The manager sets the relative difficulty of finding a share compared to finding a block to $q\in(0,1)$. If we let $(N_t)_{t\geq0}$ and $(M_t)_{t\geq0}$ be Poisson processes with respective intensity $\lambda$ and $\mu$ equal to the number of block and \textit{shares} find by the network then we have $\lambda = q\mu$. Note that a \textit{share} that turns out to be a proper solution triggers a jump for both $(N_t)_{t\geq0}$ and $(M_t)_{t\geq0}$. The two processes are dependent because the paths of $(N_t)_{t\geq0}$ is a subset of the path of $(M_t)_{t\geq0}$. To isolate the jumps of the two processes we define a Poisson process $(\tilde{M}_t)_{t\geq0}$ of intensity $\mu^{\ast} = \mu -\lambda$ which corresponds to the \textit{share} that do not solve the cryptopuzzle. We have that 
 \[
 M_t = N_t+\tilde{M}_t,\text{ }t\geq0\text{ a.s.,}
 \] 
-where $N_t$ and $\tilde{M}_t$ are independent Poisson processes. The number of shares and blocks found by the pool are then thinned versions $(N_t^I)$ and $\tilde{M}_t^{I}$ of the former processes with respective intensity $p_I\lambda$ and $p_I\tilde{\mu}$. The wealth of the pool manager is given by 
+where $N_t$ and $\tilde{M}_t$ are independent Poisson processes. The number of shares and blocks found by the pool are then thinned versions $(N_t^I)$ and $\tilde{M}_t^{I}$ of the former processes with respective intensity $p_I\lambda$ and $p_I\mu^{\ast}$. The wealth of the pool manager is given by 
 \begin{equation}\label{eq:wealth_pool_manager_fpps}
 R^I_t = u - \sum_{k = 1}^{\tilde{M}^I_t}\tilde{W}_k + \sum_{l = 1}^{N_t^I}\tilde{B}_l,\text{ }t\geq0, 
 \end{equation}
-where $\tilde{B}_l\overset{iid}{\sim}\ExpDist\left(1/\tilde{b}\right)$, $\tilde{b} = b-w$, and $W_k\overset{iid}{\sim}\ExpDist(1/w)$.
+where $\tilde{B}_l\overset{iid}{\sim}\ExpDist\left(1/b^{\ast}\right)$, $b^{\ast} = b-w$, and $W_k\overset{iid}{\sim}\ExpDist(1/w)$. The following result provides formulas for the ruin probability $\widehat{\psi}(u,t)$ and expected surplus $\widehat{V}(u,t)$ of the pool manager up to an exponential time horizon $T\sim \ExpDist(1/t)$. The ruin time is defined as 
+\[
+\tau_u = \inf\{t\geq0\text{ ; }R^I_t<0\},
+\]
+which means that the pool manager may start with no initial reserves. In the following theorem we omit the superscript $I$ and remove the $p^{I}$ from the intensities of the Poisson processes
+\begin{theo}
+The ruin probability is given by 
+\begin{equation*}\label{psiexpe}
+    \widehat{\psi}(u,t) = (1-Rw)  e^{-R u},\;u\ge 0,
+\end{equation*}
+and the expected profit is given by
+\begin{equation*}\label{Vcombexpe}
+    \widehat{V}(u,t) = (1 - Rw)[w-t(\lambda b^\ast-\mu^\ast w)] e^{-R u}+u+t(\lambda b^\ast-\mu^\ast w),
+\end{equation*}
+where $R$ is the (unique) solution with positive real part of 
+\begin{equation*} \label{VLunde}
+    -(t^{-1}+\lambda+\mu^\ast)+\lambda(1+b^\ast r)^{-1}+\mu^\ast(1-wr)^{-1}=0.
+\end{equation*}
+\end{theo}
+\begin{proof}
+Let us consider only $\widehat{V}(u,t)$ (the reasoning is the same for $\widehat{\psi}(u,t)$).
+We condition upon what happen during the time interval $(0,h)$. Four possibilities
+\begin{itemize}
+  \item[(i)] $T>h$ and no jump during $(0,h)$
+  \item[(ii)] $T<h$ and no jump over $(0,T)$
+  \item[(iii)] An upward jump in the interval $(0,h)$
+  \item[(iv)] A downward jump in the interval $(0,h)$
+\end{itemize}
+  \begin{eqnarray*}\label{neu0}
+      \widehat{V}(u,t)&=& e^{-(\frac{1}{t}+\lambda+\mu^\ast)h}\widehat{V}(u,t) + \frac{1}{t}\int_0^h e^{-{s}/{t}}e^{-(\lambda +\mu^\ast) s} u\,ds\\
+      & +& \lambda\int_0^he^{-\lambda s} e^{-({1}/{t}+\mu^\ast) s} \int_0^\infty\widehat{V}(u+x,t)\,dF_{B}(x)\,ds\\
+      &  +&\mu^\ast \int_0^he^{-\mu^\ast s} e^{-({1}/{t}+\lambda) s}\int_0^u \widehat{V}(u-y,t) \,dF_W(y)\,ds.
+  \end{eqnarray*}
+  Differentiating with respect to $h$ and letting $h\rightarrow 0$ yields the following integral equation
+  \begin{equation} \label{inteq}
+    \lambda\int_0^\infty\widehat{V}(u+x,t)\,dF_{B}(x)-(\lambda+\mu^\ast+{1}/{t})\widehat{V}(u,t)+\mu^\ast\int_0^u \widehat{V}(u-y,t) \,dF_W(y)+{u}/{t}=0,\quad u\ge 0,
+  \end{equation}
+  with boundary conditions $\widehat{V}(u,t)=0$ for all $u<0$ and $0\leq\widehat{V}(u,t)\leq u+(\lambda b^\ast - \mu^\ast w)t$. Let us plug in the ansatz
+  $$
+  Ae^{-ru}+Bu+C
+  $$
+  \begin{itemize}
+    \item Comparing the terms in $e^{-r u}$ gives and equation for $r$
+    $$
+    -(t^{-1}+\lambda+\mu^\ast)+\lambda(1+b^\ast r)^{-1}+\mu^\ast(1-wr)^{-1}=0
+    $$
+    of which only the positive solution $R>0$ is valid due to the boundary conditions.
+    \item Comparing the terms in $u$ yields $B = 1$
+    \item Comparing the terms in $1$ yields
+    $$
+    C = t(\lambda b^\ast-\mu^\ast w)
+    $$
+    \item Comparing the terms in $e^{-u/w}$
+    $$
+    A = (1 - Rw)[w-t(\lambda b^\ast-\mu^\ast w)]
+    $$
+\end{itemize}
+\end{proof}
 
-\subsubsection{Numerical illustrations}\label{ssec:numerical_illustrations}
+\begin{ex}\label{ex:rp_pool_manager}
+\end{ex}
+\subsubsection{Risk of centralization?}\label{ssec:numerical_illustrations}
 
 \newpage
