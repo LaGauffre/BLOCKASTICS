@@ -1164,7 +1164,7 @@ Correspondingly, $V(u,t)$ is the expected surplus level at time $t$, where in th
 \[V(u,t)= (1-\psi(u,t))\cdot \mathbb{E}(R_t\vert {\tau_u>t}).\]
  The following result provides formulas for the ruin probabilities and $V(u,t)$ in this setting.
 \begin{prop}\label{prop:ruin_proba_and_value_func} 
-\text{ }
+
 \begin{enumerate}
 \item For any $u\ge 0$, the infinite-time ruin probability is given by
 \begin{equation}\label{eq:infinite_time_ruin_proba}
@@ -1328,6 +1328,26 @@ ct\rho + \left(1+q\lambda t\right)-q\lambda te^{\rho b} = 0,
 \end{equation*}
 in order to ensure $\widehat{V}(u,t)>0$. Substituting $A_2,B_2,C_2$ and $\rho^{\ast}$ in \eqref{eq:potential_solution_V} yields the result.
 \end{proof}
+\begin{ex}
+Consider a miner with hashpower $q = 0.1$. We are going to illustrate the difference between taking a fixed time horizon as opposed to an exponentially distributed time horizon. Let the BTC price be $\$36,303.27$ and the block fiinding reward be $\text{BTC}6.25$. The rewards then amounts to $\$226,895$. Suppose the network consumes $10,913,757.70\text{kWh}$ of electricity per time and that the miner operates in an area where the electricity price is $\$0.09$ per kWh then the operational cost is $c = \$98,223.81$. The time unit is the hour so that $\lambda = 6$. \cref{fig:rp_V_exp_fixed_time} shows the ruin probability and expected profit given that ruin did not occur as a function of the initial reserves $u$ for $t = 24$.
+\begin{figure}[!ht]
+  \begin{center}
+      \subfloat[$\psi(u), \psi(u,t)$ and $\widehat{\psi}(u,t)$.]{
+      \includegraphics[width=0.45\textwidth]{../Figures/rp_exp_fixed_time}
+      \label{sub:rp_exp_fixed_time}
+                         }
+                         \hskip1em
+    \subfloat[$V(u, t)-u, \widehat{V}(u,t)-u$ and $\mathbb{E}(R_t) - u$.]{
+      \includegraphics[width=0.45\textwidth]{../Figures/V_exp_fixed_time}
+      \label{sub:V_exp_fixed_time}
+                         }
+
+    \caption{Ruin probabilities and expected profit given that ruin did not occur.}
+    \label{fig:rp_V_exp_fixed_time}
+  \end{center}
+\end{figure}
+An exponential time horizon tends to put more weight on smaller time horizon, which results in smaller ruin probability \cref{sub:rp_exp_fixed_time} and higher expected profit \cref{sub:V_exp_fixed_time}.
+\end{ex}
 
 \subsection{Ruin and expected profit of a selfish miner}\label{ssec:selfish_mining}
 Let $(N_t)_{t\geq0}$ be the homogeneous Poisson process with intensity $\lambda$ that governs the block discovery process of the entire network. As in the previous section, we consider a miner named Sam who owns a share $q\in(0,1)$ of the computing power so that a newly found block belongs to Sam with probability $q$.  We keep track of Sam's lead over the honest chain in terms of number of blocks via a Markov jump process

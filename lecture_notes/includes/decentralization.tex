@@ -490,17 +490,15 @@ $$
 
 \end{proof}
 \begin{ex}\label{ex:miner_in_pool}
-Consider a miner with haspower $p = 0.01$. Let the BTC price be $\$39753.62$, and the reward be $\text{BTC}6.25 = \$248460.12$. If the time unit is the hour then $\lambda = 6$ so that one block is generated every ten minutes on average. The network consumes $10914487\text{kWh}$ per time unit. Suppose that our miner is joining a mining pool with a management fee $f = 0.05$. The ruin probability of the miner as a function of the initial reserve $u$ for a time horizon of one week is shown in 
+Consider a miner with haspower $p = 0.01$. Let the BTC price be $\$36347.89$, and the reward be $\text{BTC}6.25 = \$248460.12$. If the time unit is the hour then $\lambda = 6$ so that one block is generated every ten minutes on average. The network consumes $10914487\text{kWh}$ per time unit. Suppose that our miner is joining a mining pool with a management fee $f = 0.05$. The ruin probability of the miner as a function of the initial reserve $u$ for a time horizon of one week is shown in \cref{fig:rp_miner_in_pool} for various relative difficulty $q = 0.25, 0.5, 0.75$.
 \begin{figure}[!ht]
   \begin{center}
- 
-      \includegraphics[width = \textwidth]{../Figures/rp_miner_in_pool}
-      
-                         
+      \includegraphics[width = 0.5\textwidth]{../Figures/rp_miner_in_pool}
     \caption{Ruin probability of a miner in mining pool as a function of the initial reserves depending on the relative difficulty proposed by the pool manager $q\in \{0.25, 0.5, 0.75\}$.}
     \label{fig:rp_miner_in_pool}
   \end{center}
 \end{figure}
+The ruin probability of a miner, mining on his own is also plotted. We see that joining a mining pool is beneficial as it reduces significantly the ruin probability.
 \end{ex}
 
 
@@ -573,7 +571,32 @@ We condition upon what happen during the time interval $(0,h)$. Four possibiliti
 \end{proof}
 
 \begin{ex}\label{ex:rp_pool_manager}
+Consider a mining pool with hashpower $p_I = 0.1$ and management fee $f = 0.05$. Let the BTC price be $\$36347.89$, and the reward be $\text{BTC}6.25 = \$248460.12$. If the time unit is the hour then $\lambda = 6$ so that one block is generated every ten minutes on average. \cref{fig:rp_pool_manager} displays the ruin probability of the pool manager as a function of the initial reserves depending on the relative difficulty.
+\begin{figure}[!ht]
+  \begin{center}
+      \includegraphics[width = 0.5\textwidth]{../Figures/rp_pool_manager}
+    \caption{Ruin probability of a pool manager as a function of the initial reserves depending on the relative difficulty $q\in \{0.25, 0.5, 0.75\}$.}
+    \label{fig:rp_pool_manager}
+  \end{center}
+\end{figure}
+The ruin probability is higher for low relative difficulty.
 \end{ex}
 \subsubsection{Risk of centralization?}\label{ssec:numerical_illustrations}
-
+Th risk of centralization exists because a mining pool that is growing larger canb reduce the management fee while maintaining the same profitability. Consider a mining pool with initial reserves $u = 10^6$ and relative difficulty $q=0.25$. The time horizon is $t = 168$ (one week). \cref{fig:level_plot_V_pool_manager_p_f} shows the expected wealth as a function of $p$ and $f$.  
+\begin{figure}[!ht]
+  \begin{center}
+      \includegraphics[width = 0.5\textwidth]{../Figures/level_plot_V_pool_manager_p_f}
+    \caption{Expected wealth as a function of $p_I$ and $f$.}
+    \label{fig:level_plot_V_pool_manager_p_f}
+  \end{center}
+\end{figure}
+A large mining pool offers lower fees, thus attracts more miner and grows even larger. However a large mining pool cannot offer the same level of risk transfer than smaller mining pool. Consider two mining pool with respective hashpower $p_1 = 0.05$ and $p_2 = 0.2$ and initial reserves $u = 10^6$. The time horizon is $t = 168$ (one week). \cref{fig:level_plot_V_pool_manager_p_f} shows the expected wealth for each of these mining pool as a function of $q$ and $f$.  
+\begin{figure}[!ht]
+  \begin{center}
+      \includegraphics[width = \textwidth]{../Figures/level_plots_V_pool_manager_q_f}
+    \caption{Expected wealth as a function of $p_I$ and $f$.}
+    \label{fig:level_plots_V_pool_manager_q_f}
+  \end{center}
+\end{figure}
+To offer the same level of risk transfer a larger mining pool needs to increase the fee. Centralization may prevail if the miner's preferences in terms of profitability and risk transfer are heterogenous. A game theoretic framework must be introduced to appropriately model the behaviors of the miners and mining pool manager, see the works of \citet{li2019mean} and \citet{Cong2020}.
 \newpage
