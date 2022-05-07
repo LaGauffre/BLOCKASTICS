@@ -1101,6 +1101,12 @@ f_{\tau_z}(t)=\sum_{n=0}^{+\infty}\frac{z}{z+n}f_{S_{z+n}}(t)\mathbb{P}(N_t=n)
 \end{equation*}
 which is equivalent to the announced result \eqref{eq:DS_time_pdf}.  
 \end{proof}
+\begin{exercise}
+Assume that $(M_t)_{t\geq0}$ is a Poisson process with intensity $\mu$, compute 
+\[
+\mathbb{P}(\tau_u<\infty) = \int_0^{\infty}f_{\tau_u}(t)\text{d}t.
+\]
+\end{exercise}
 \begin{remark}
 Just like in the random walk framework of \cref{ssec:double_spending_rw}, the number $z$ is actually a random variable defined as 
 $$
@@ -1122,7 +1128,7 @@ The constant operational cost and the infrequent capital gains make mining block
 \noindent We start by introducing a risk model to follow the financial reserves of a miner over time. The ruin probability and expected profit given that ruin did not occur plays teh role of risk and performace indicators which will allow us to compare the solo mining strategy to the selfish mining strategy.
 
 \subsection{Ruin and expected profit of a miner}\label{ssec:selfish_mining}
-A miner, referred to as Sam, starts operating with an initial surplus level $u>0$. We consider the following stochastic model for the surplus process over time. Mining blocks generates steady operational costs of amount $c>0$ per unit of time, most notably due to electricity consumption. The entire network of miners appends blocks to the blockchain at an exponential rate $\lambda$, which means that the length of the blockchain over time is governed by a Poisson process $(N_t)_{t\geq0}$ with intensity $\lambda$. We assume that Sam owns a fraction $q\in(0,1/2)$ of the overall computing power, which implies that each block is published by Sam with a probability $q$. The number of blocks found by Sam and therefore the number of rewards of size $b>0$ he collects up to time $t\geq 0$ is a thinned Poisson process $(\tilde{N}_t)_{t\geq0}$ with intensity $\lambda$ and thinning parameter $q$. Sam's surplus $R_t$ at time $t$ is then given by  
+A miner, referred to as Sam, starts operating with an initial surplus level $u>0$. Mining blocks generates steady operational costs of amount $c>0$ per unit of time, most notably due to electricity consumption. The entire network of miners appends blocks to the blockchain at an exponential rate $\lambda$, which means that the length of the blockchain over time is governed by a Poisson process $(N_t)_{t\geq0}$ with intensity $\lambda$. We assume that Sam owns a fraction $q\in(0,1/2)$ of the overall computing power, which implies that each block is published by Sam with a probability $q$. The number of blocks found by Sam and therefore the number of rewards of size $b>0$ he collects up to time $t\geq 0$ is a thinned Poisson process $(\tilde{N}_t)_{t\geq0}$ with intensity $\lambda$ and thinning parameter $q$. Sam's surplus $R_t$ at time $t$ is then given by  
 \begin{equation}\label{eq:surplus_protocol}
 R_t = u + b\cdot\tilde{N}_t - c\cdot t,\qquad t\ge 0.
 \end{equation}
@@ -1195,9 +1201,9 @@ where $(.)_+$ denotes the positive part, $\land$ stands for the minimum operator
   \[
   \kappa(\theta) = \log\left\{\mathbb{E}\left[\e^{\theta(c-bN_1)}\right]\right\} = \theta c+q\lambda(\e^{-b\theta}-1).
   \]
-  The equation $\kappa(\theta) = 0$ has only one nonnegative solution $\theta^{\ast}$. The process $(\e^{\theta^{\ast}})$ is a martingale, we then apply \cref{prop:ruin_proba_levy} to get 
+  The equation $\kappa(\theta) = 0$ has only one positive solution $\theta^{\ast}$. The process $(\e^{\theta^{\ast}}S_t)$ is a martingale, we then apply \cref{prop:ruin_proba_levy} to get 
   $$
-  \psi(u) = \e^{-\theta^{\ast}},
+  \psi(u) = \e^{-\theta^{\ast}u},
   $$
   noting that $\xi(u) = 0$ as ruin occurs exactly.
   \item The ruin time $\tau_u$ may be rewritten as 
@@ -1239,7 +1245,7 @@ where $U_{1:n},\ldots, U_{n:n}$ denote the order statistics of $n$ \iid standard
 \end{proof}
 \noindent The reader who wants to learn more on the use of Appell and Abel-Gontcharov polynomials to solve first passage problems involving point processes is referred to \citet{Goffard2017}. The main issue with formula \eqref{eq:value_function_finite_time_prop} is the lack of tractability. Formula \eqref{eq:value_function_finite_time_prop} is not a closed form expression because of the infinite serie. Note also that the evaluation of the higher order AG polynomials can result in numerical instabilities when using the recurrence relationship. The work around is to replace the fixed time horizon $t$ by an independent exponential random time horizon $T$ with mean $t$. We hence consider the ruin probability and expected profit at $T\sim \text{Exp}(t)$, defined by
 \begin{equation}\label{eq:value_function_exp_time_horizon}
-V(u,t):= \mathbb{E}[V(u,T)] = \mathbb{E}(R_T\mathbb{I}_{\tau_u>T}).
+\widehat{\psi}(u,t):= \mathbb{E}[\psi(u,T)] \text{ and }\widehat{V}(u,t):= \mathbb{E}[V(u,T)] = \mathbb{E}(R_T\mathbb{I}_{\tau_u>T}).
 \end{equation} 
 Simple expressions for these quantities are given in the following result 
 \begin{theo}\label{theo:psi_V_T_solo_mining}
@@ -1456,7 +1462,7 @@ and
 \end{equation*}
 \end{theo}
 \begin{proof}
-See \citet{albrecher:hal-02649025}.
+See \citet{Hansjoerg2022}.
 \end{proof}
 
 The truth is that following the protocol is always more profitable on average, the question is then why selfish mining?\\

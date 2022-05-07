@@ -1,4 +1,4 @@
-\begin{thebibliography}{27}
+\begin{thebibliography}{28}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -19,6 +19,14 @@ Saif Al-Kuwari, James~H. Davenport, and Russell~J. Bradford.
   notions.
 \newblock Cryptology ePrint Archive, Report 2011/565, 2011.
 \newblock \url{https://ia.cr/2011/565}.
+
+\bibitem[Albrecher and Goffard(2022)]{Hansjoerg2022}
+Hansjoerg Albrecher and Pierre-Olivier Goffard.
+\newblock On the profitability of selfish blockchain mining under consideration
+  of ruin.
+\newblock \emph{Operations Research}, 70\penalty0 (1):\penalty0 179--200, jan
+  2022.
+\newblock \doi{10.1287/opre.2021.2169}.
 
 \bibitem[Antonopoulos(2017)]{Antonopoulos2017}
 Andreas Antonopoulos.
