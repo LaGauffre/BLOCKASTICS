@@ -175,5 +175,34 @@ G(z) = \frac{1-z^\ast}{z-z^{\ast}}.
 $$
 $N^q$ is then a geometric random variable with parameter $p = \frac{1}{z^\ast}.$
 \end{proof}
+The result above can be found in \citet{Bailey1954}. The application to blockchain under more general assumptions over the block discovery time is given in \citet{Kawase2017}.
 \section{Latency and throughputs computation}\label{sec:latency_throughputs}
+The practical computation of latency and throughputs then follow from a standard result in queueing, known as Little's law, see \citet{Little1961}.
+\begin{theo}
+Consider a stationary queueing system and denote by 
+\begin{itemize}
+  \item $1/\lambda$ the mean of the unit inter-arrival times
+  \item $L$ be the mean number of units in the system
+  \item $W$ be the mean time spent by units in the system
+\end{itemize}
+We have
+$$
+L = \lambda \cdot W
+$$
+\end{theo}
+\begin{itemize}
+  \item Latency is the confirmation time of a transaction 
+    $$
+    \text{Latency} = W + \frac{1}{\mu} = \frac{\mathbb{E}(N^q)}{\lambda} + \frac{1}{\mu} =  \frac{p}{(1-p)\lambda} + \frac{1}{\mu}.
+    $$
+  \item Throughput is the number of transaction confirmed per time unit
+  $$
+    \text{Throughput} = \mu\mathbb{E}(N^q\mathbb{I}_{N^q\leq b}+b\mathbb{I}_{N^q> b}) = \mu\sum_{n = 0}^bn(1-p)p^n + bp^{b+1}.
+  $$
+\end{itemize}
+Avenue for future research includes 
+\begin{itemize}
+	\item the inclusion of priority consideration, accounting for the transaction fee, see \citet{Kawase2020}
+	\item Refine the hypothesis of the queueing system to better adapt to the different consensus protocol, see \citet{Li2018} and \citet{Li2019}.
+\end{itemize}
 \newpage

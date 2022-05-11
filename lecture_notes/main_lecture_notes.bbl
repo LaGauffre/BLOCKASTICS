@@ -1,4 +1,4 @@
-\begin{thebibliography}{31}
+\begin{thebibliography}{36}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -123,6 +123,22 @@ Pierre-Olivier Goffard and Claude Lef{\`{e}}vre.
   447\penalty0 (2):\penalty0 890--907, mar 2017.
 \newblock \doi{10.1016/j.jmaa.2016.10.044}.
 
+\bibitem[Kawase and Kasahara(2017)]{Kawase2017}
+Yoshiaki Kawase and Shoji Kasahara.
+\newblock Transaction-confirmation time for bitcoin: A~queueing analytical
+  approach to~blockchain~mechanism.
+\newblock In \emph{Queueing Theory and Network Applications}, pages 75--88.
+  Springer International Publishing, 2017.
+\newblock \doi{10.1007/978-3-319-68520-5_5}.
+
+\bibitem[Kawase et~al.(2020)Kawase, , and Kasahara]{Kawase2020}
+Yoshiaki Kawase, , and Shoji Kasahara.
+\newblock Priority queueing analysis of transaction-confirmation time for
+  bitcoin.
+\newblock \emph{Journal of Industrial {\&} Management Optimization},
+  16\penalty0 (3):\penalty0 1077--1098, 2020.
+\newblock \doi{10.3934/jimo.2018193}.
+
 \bibitem[King and Nadal(2012)]{ppcoin}
 Sunny King and Scott Nadal.
 \newblock Ppcoin: Peer-to-peer crypto-currency with proof-of-stake.
@@ -151,9 +167,31 @@ Jan Lansky.
   19--31, jan 2018.
 \newblock \doi{10.20470/jsi.v9i1.335}.
 
-\bibitem[Li et~al.(2019)Li, Reppen, and Sircar]{li2019mean}
+\bibitem[Li et~al.(2018)Li, Ma, and Chang]{Li2018}
+Quan-Lin Li, Jing-Yu Ma, and Yan-Xia Chang.
+\newblock Blockchain queue theory.
+\newblock In \emph{Computational Data and Social Networks}, pages 25--40.
+  Springer International Publishing, 2018.
+\newblock \doi{10.1007/978-3-030-04648-4_3}.
+
+\bibitem[Li et~al.(2019{\natexlab{a}})Li, Ma, Chang, Ma, and Yu]{Li2019}
+Quan-Lin Li, Jing-Yu Ma, Yan-Xia Chang, Fan-Qi Ma, and Hai-Bo Yu.
+\newblock Markov processes in blockchain systems.
+\newblock \emph{Computational Social Networks}, 6\penalty0 (1), jul
+  2019{\natexlab{a}}.
+\newblock \doi{10.1186/s40649-019-0066-1}.
+
+\bibitem[Li et~al.(2019{\natexlab{b}})Li, Reppen, and Sircar]{li2019mean}
 Zongxi Li, A.~Max Reppen, and Ronnie Sircar.
-\newblock A mean field games model for cryptocurrency mining, 2019.
+\newblock A mean field games model for cryptocurrency mining,
+  2019{\natexlab{b}}.
+
+\bibitem[Little(1961)]{Little1961}
+John D.~C. Little.
+\newblock A proof for the queuing formula:{L}= $ \lambda${W}.
+\newblock \emph{Operations Research}, 9\penalty0 (3):\penalty0 383--387, jun
+  1961.
+\newblock \doi{10.1287/opre.9.3.383}.
 
 \bibitem[Nakamoto(2008)]{Na08}
 S.~Nakamoto.
