@@ -1,5 +1,179 @@
 % !TEX root = ../main_lecture_notes.tex
 \chapter{Efficiency of blockchain systems}\label{chap:efficiency}
+
 \section{A queueing model with bulk service}\label{sec:queue}
+Blockchain users send transactions to the network of validators according to some rate $\lambda$. These transactions enter a queue of pending transactions. The validators select a subset of $b$ transactions to be recorded in the next block. The block is built by a leader elected via a consensus protocol. The block is then communicated to the other validators and the $b$ transactions exit the queue. We assume that building a block takes some exponentially distributed time with mean $\mu$. What we just described is exactly a single server with bulk service queueing system, described for instance in \citet{Bailey1954} and \citet{Chaudhry1981} with exponential arrival times, that processes $k$ items at a time, with an exponential service time. This a $M/M^b/1$ queue in Kendall's notation summarized in \cref{fig:blockchain_queue}.  
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}[-, >=stealth', auto, semithick, node distance=1cm]
+
+\tikzstyle{phantom block}=[rectangle, fill=white,draw=white, thick,text=black,scale=2]
+\tikzstyle{block}=[rectangle, fill=white,draw=black,thick,text=black,scale=4]
+\tikzstyle{Intensity}=[circle, fill=white,draw=blue,very thick, text=black,scale=1.2]
+\tikzstyle{transaction pending}=[circle, fill=white,draw=blue,very thick, text=black,scale=1]
+\tikzstyle{transaction considered}=[circle, fill=blue, text=black, scale=1]
+\node[Intensity]    (1){$\lambda$};
+\node[phantom block]  (2)[right of=1] {};
+\node[transaction pending] (3)[right of=2] {};
+\node[transaction pending] (4)[above of=3] {};
+\node[transaction pending] (5)[above of=4] {};
+\node[transaction pending] (6)[above of=5] {};
+\node[transaction pending] (7)[below of=3] {};
+\node[transaction pending] (8)[below of=7] {};
+\path
+(1) edge[->,bend left]     node{} (4)
+    edge[->, bend right]     node{}          (7);
+
+\node[Intensity]  (14)[above of=6]{$\mu$};
+% \path
+% (1) edge[->,bend left]     node{$\text{Exp}(\lambda)$}        (4)
+%     edge[->, bend right]     node{}          (7);
+
+\node[transaction considered] (3)[right of=2] {};
+\node[transaction considered] (4)[above of=3] {};
+\node[transaction considered] (5)[above of=4] {};
+\node[transaction considered] (6)[above of=5] {};
+
+
+\node[phantom block]  (10)[right of=3] {};
+\node[block]  (11)[right of=10] {};
+\path
+(6) edge[->]   node{} (11)
+(5) edge[->]   node{} (11)
+(4) edge[->]   node{} (11)
+(3) edge[->]   node{} (11)
+;
+\node[Intensity]  (12)[above of=11] {$\mu$};
+\node[phantom block]  (13)[above of=12] {};
+
+\path
+(11) edge[-]     node{}        (12);
+\path
+(12) edge[->]     node{}        (13);
+
+\end{tikzpicture}
+\end{center}
+\caption{Blockchain queue}
+\label{fig:blockchain_queue}
+\end{figure}
+One specificity of this queue is that the server is always busy. Our goal is to assess the efficiency which is characterized by
+\begin{itemize}
+  \item Throughputs: Number of transaction being processed per time unit
+  \item Latency: Average transaction confirmation time
+\end{itemize} 
+This can be done by studying the distribution of the number of pending transaction in the queue over the long run. A stationary state can only be reached if 
+\begin{equation}\label{eq:stationarity_cond}
+\mu \cdot b > \lambda.
+\end{equation}
+Denote by $N^q$ the length of the queue upon stationarity, The following result holds.
+\begin{theo}
+Assume that \eqref{eq:stationarity_cond} holds then $N^q$ is geometrically distributed 
+$$
+\mathbb{P}(N^q = n) = (1-p)\cdot p^n,\text{ } n\geq0
+$$
+where $p = 1/z^\ast$ and $z^\ast$ is the only root of 
+$$
+-\frac{\lambda}{\mu}z^{b+1}+z^b\left(\frac{\lambda}{\mu}+1\right) - 1,
+$$
+such that $|z^\ast$|>1.  
+\end{theo}
+\begin{proof}
+Let $N^q_t$ be the number of transactions in the queue at time $t\geq0$ and $X_t$ the time elapsed since the last block was found. Further define
+\[
+P_{n}(x,t)\text{d}x  =\mathbb{P}[N_t^q = n, X_t \in(x, x + \text{dx})] 
+\]
+If $\lambda < \mu\cdot b$ holds then the process admits a limiting distribution given by 
+\[
+\underset{t\rightarrow\infty}{\lim}P_{n}(x,t) = P_{n}(x).
+\]
+Adding the variable $X_t$ is a known trick going back to \citet{Cox1955}, it allows us to make the process $(N_t^q)_{t\geq0}$ Markovian. We aim at finding the distribution of the queue length upon stationarity
+\begin{equation}\label{eq:alpha_n}
+\mathbb{P}(N^q=n):=\alpha_n =\int_{0}^\infty P_{n}(x)\text{d}x, \text{ }n\geq0.
+\end{equation}
+Consider the possible transitions over a small time lapse \text{h} during which no block is being generated. Over this time interval, either 
+\begin{itemize}
+  \item no transactions arrives
+  \item one transaction arrives
+\end{itemize}
+We have for $n\geq1$
+\[
+P_{n}(x+h) = e^{-\mu h}\left[e^{-\lambda h}P_{n}(x)+\lambda h e^{-\lambda h}P_{n-1}(x)\right].
+\]
+Differentiating with respect to $h$ and letting $h\rightarrow0$ leads to 
+\begin{equation}\label{eq:diff_eq_n_geq_1}
+P_{n}'(x) = -(\lambda+\mu)P_{n}(x)+\lambda P_{n-1}(x),\text{ }n \geq1.
+\end{equation}
+Similarly for $n = 0$, we have 
+\begin{equation}\label{eq:diff_eq_n_eq_0}
+P_{0}'(x) = -(\lambda+\mu)P_{0}(x).
+\end{equation}
+We denote by 
+$$
+\xi(x)\text{d}x =\mathbb{P}(x\leq X< x+\text{d}x|X\geq x)= \mu\text{d}x,
+$$
+the hazard function of the block arrival time (constant as it is exponentially distributed). The system of differential equations \eqref{eq:diff_eq_n_geq_1}, \eqref{eq:diff_eq_n_eq_0} admits boundary conditions at $x = 0$ with 
+\begin{equation}\label{eq:boundary_cond_1}
+\begin{cases}
+P_{n}(0) = \int_0^{+\infty} P_{n+b}(x)\xi(x)\text{d}x = \mu\alpha_{n+b},&n \geq1,\\
+P_{0}(0) = \mu\sum_{n=0}^{b}\alpha_n,&n = 0,\ldots,b\\
+\end{cases}
+\end{equation}
+Define the probability generating function of $N^q$ at some elapsed service time $x\geq 0$ as 
+$$
+G(z;x) = \sum_{n=0}^\infty P_{n}(x)z^n.
+$$
+By differentiating with respect to $x$, we get (using \eqref{eq:diff_eq_n_geq_1} and \eqref{eq:diff_eq_n_eq_0})
+$$
+\frac{\partial}{\partial x}G(z;x) = -\left[\lambda(1-z)+\mu\right]G(z;x),
+$$
+and therefore
+$$
+G(z;x) = G(z;0)\exp\left\{-\left[\lambda(1-z)+\mu\right]x\right\}.
+$$
+We get the probability generating function of $N^q$ by integrating over $x$ as 
+\begin{equation}\label{eq:G_z_solve_ODE}
+G(z) = \frac{G(z;0)}{\lambda(1-z)+\mu}.
+\end{equation}
+Using the boundary conditions \eqref{eq:boundary_cond_1}, we write 
+\begin{eqnarray}
+G(z;0) &= &\sum_{n = 0}^\infty P_{n}(0)z^n \nonumber\\
+&= &P_{0}(0)+\sum_{n=1}^{+\infty}P_{n}(0)z^n\nonumber\\
+&=& \mu\sum_{n = 0}^{b}\alpha_n  + \mu\sum_{n=1}^{+\infty}\alpha_{n+b} z^n\nonumber\\
+&=& \mu\sum_{n = 0}^{b}\alpha_n + \mu z^{-b}\left[G(z)-\sum_{n = 0}^{b}\alpha_n z^n\right]\label{eq:G_z_0}
+\end{eqnarray}
+Replacing the left hand side of \eqref{eq:G_z_0} by \eqref{eq:G_z_solve_ODE}, multiplying on both side by $z^b$ and rearranging yields 
+\begin{equation}\label{eq:G_z_as_rational_function}
+\frac{G(z)}{M(z)}[z^b - M(z)] =\sum_{n=0}^{b-1}\alpha_n(z^b - z^n), 
+\end{equation}
+where $M(z) = \mu/(\lambda(1-z)+\mu)$. Using Rouche's theorem, we find that both side of the equation shares $b$ zeros inside the circle $\mathcal{C} = \{z\in\mathbb{C}\text{ ; }|z| <1+\epsilon\}$ for some epsilon. 
+\begin{lemma}
+Let $\mathcal{C}\in \mathbb{C}$ and $f$ and $g$ two holomorphic functions on $\mathcal{C}$. Let $\partial\mathcal{C}$ be the contour of $\partial\mathcal{C}$. If 
+$$
+|f(z)-g(z)|<|g(z)|\text{, }\forall z\in\partial\mathcal{C}
+$$ 
+then $Z_f-P_f = Z_g-P_g$, where $Z_f$, $P_f$, $Z_g$, and $P_g$ are the number of zeros and poles of $f$ and $g$ respectively.
+\end{lemma}
+We have $\partial\mathcal{C} =\{z\in\mathbb{C}\text{ ; }|z| =1+\epsilon\}$. The left hand side can be rewritten as
+$$
+G(z)\left[-\frac{\lambda}{\mu}z^{b+1} + \left(1 + \frac{\lambda}{\mu}\right)z^b -1\right].
+$$
+Define $f(z) = -\frac{\lambda}{\mu}z^{b+1} + \left(1 + \frac{\lambda}{\mu}\right)z^b -1$ and $g(z)=\left(1 + \frac{\lambda}{\mu}\right)z^b$. We have 
+ $$
+|f(z) - g(z)| = |-\frac{\lambda}{\mu}z^{b+1}-1|\leq \frac{\lambda}{\mu}(1+\epsilon)^{b+1}+1< \left(1 + \frac{\lambda}{\mu}\right)(1+\epsilon)^b= |g(z)| ,\text{ with }\epsilon \rightarrow 0. 
+$$
+Regarding the right hand side, define $f(z) = \sum_{n=0}^{b-1}\alpha_n(z^b - z^n)$ and $g(z) =\sum_{n=0}^{b-1}\alpha_nz^b $. We have 
+$$
+|f(z) - g(z)| < |\sum_{n=0}^{b-1}\alpha_n z^n| \leq \sum_{n=0}^{b-1}\alpha_n (1+\epsilon)^n<(1+\epsilon)^b\sum_{n=0}^{b-1}\alpha_n = |g(z)|.
+$$
+We deduce from Rouche's theorem that both sides have $b$ share roots inside $\mathcal{C}$. Note that one of them is $1$, and we denote by $z_k$, $k = 1,\ldots, b-1$ the remaining $b-1$ roots. Given the polynomial form of the right hand side of \eqref{eq:G_z_as_rational_function}, the fundamental theorem of algebra indicates that the number of zero is $b$. Given the left hand side 
+$$
+G(z)\left[-\frac{\lambda}{\mu}z^{b+1} + \left(1 + \frac{\lambda}{\mu}\right)z^b -1\right].
+$$
+we deduce that there is one zeros outside $\mathcal{C}$, we can further show that it is a real number $z^\ast$. Multiplying both side of \eqref{eq:G_z_as_rational_function} by $(z-1)\prod_{k =1}^{b-1}(z-z_k)$, and using $G(1)=1$ yields
+$$
+G(z) = \frac{1-z^\ast}{z-z^{\ast}}.
+$$
+$N^q$ is then a geometric random variable with parameter $p = \frac{1}{z^\ast}.$
+\end{proof}
 \section{Latency and throughputs computation}\label{sec:latency_throughputs}
 \newpage

@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{31}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -49,6 +49,13 @@ Benjamin Avanzi, Hans~U. Gerber, and Elias~S.W. Shiu.
   (1):\penalty0 111--123, jul 2007.
 \newblock \doi{10.1016/j.insmatheco.2006.10.002}.
 
+\bibitem[Bailey(1954)]{Bailey1954}
+Norman T.~J. Bailey.
+\newblock On queueing processes with bulk service.
+\newblock \emph{Journal of the Royal Statistical Society: Series B
+  (Methodological)}, 16\penalty0 (1):\penalty0 80--87, jan 1954.
+\newblock \doi{10.1111/j.2517-6161.1954.tb00149.x}.
+
 \bibitem[Blackwell and MacQueen(1973)]{Blackwell1973}
 David Blackwell and James~B. MacQueen.
 \newblock Ferguson distributions via polya urn schemes.
@@ -72,12 +79,27 @@ Miguel Castro and Barbara Liskov.
 \newblock ISBN 1880446391.
 \newblock URL \url{https://dl.acm.org/doi/10.5555/296806.296824}.
 
+\bibitem[Chaudhry and Templeton(1981)]{Chaudhry1981}
+M.L. Chaudhry and J.G.C. Templeton.
+\newblock The queuing system m/{GB}/l and its ramifications.
+\newblock \emph{European Journal of Operational Research}, 6\penalty0
+  (1):\penalty0 56--60, jan 1981.
+\newblock \doi{10.1016/0377-2217(81)90328-3}.
+
 \bibitem[Cong et~al.(2020)Cong, He, and Li]{Cong2020}
 Lin~William Cong, Zhiguo He, and Jiasun Li.
 \newblock Decentralized mining in centralized pools.
 \newblock \emph{The Review of Financial Studies}, 34\penalty0 (3):\penalty0
   1191--1235, apr 2020.
 \newblock \doi{10.1093/rfs/hhaa040}.
+
+\bibitem[Cox(1955)]{Cox1955}
+D.~R. Cox.
+\newblock The analysis of non-markovian stochastic processes by the inclusion
+  of supplementary variables.
+\newblock \emph{Mathematical Proceedings of the Cambridge Philosophical
+  Society}, 51\penalty0 (3):\penalty0 433--441, jul 1955.
+\newblock \doi{10.1017/s0305004100030437}.
 
 \bibitem[Eyal and Sirer(2014)]{Eyal2014}
 Ittay Eyal and Emin~Gün Sirer.
