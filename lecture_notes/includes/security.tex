@@ -1268,7 +1268,10 @@ The solution $\rho^\ast$ of \eqref{eq:equation_rho} is given by
     \,b}{c}\,{e^{-b\,\left(\frac{q\lambda t+1}{ct}\right)}}
   \right],
   \end{equation*}
-  where $W(.)$ denotes the Lambert function.
+  where $W(.)$ denotes the Lambert function, which satisfies
+  $$
+  W(z)\e^{W(z)} = z,\text{ for }z\in\mathbb{C}.
+  $$
 \end{theo}
 \begin{proof}
 Let $0<h<u/c$, so that ruin can not occur in the interval $(0,h)$. We distinguish three cases:
@@ -1277,7 +1280,8 @@ Let $0<h<u/c$, so that ruin can not occur in the interval $(0,h)$. We distinguis
   \item[(ii)] $T<h$ and there is no block discovery in the interval $(0,T)$,
   \item[(iii)] There is a block discovery before time $T$ and in the interval $(0,h)$. 
 \end{itemize}
-Let $T_1$ be the arrival time of the first block. Applying the strong Markov property at $S = T\land h\land T_1$, we see that 
+All the other events will have negligible probabilities when leting $h\rightarrow0$.
+Let $T_1$ be the arrival time of the first block. We have that  
 \begin{equation*}
   \widehat{\psi}(u,t)=e^{-h(1/t + q\lambda)}\,\widehat{\psi}(u-ch,t) +\int\limits_0^h q\lambda\, e^{-s(1/t + q\lambda)}\,\widehat{\psi}(u-cs+b,t)ds,
   \end{equation*}
@@ -1303,7 +1307,7 @@ Substituting in \eqref{eq:ODE_psi}, together with the boundary condition $\wideh
 \begin{cases}
 0&=ct\rho + \left(1+q\lambda t\right)-q\lambda te^{\rho b}, \\
 0&=B_1, \\
-0&= A_1+B_1,
+1&= A_1+B_1,
 \end{cases}
 \end{equation*}
 where $A_1, B_1$ and $\rho$ are constant to be determined. We have that $B_1 = 0$ and $A_1= 1$. 
@@ -1509,15 +1513,15 @@ where $t^\ast$ is the time (in hours) it took to mine $2,016$ blocks (here $2016
 
 \noindent For (ii), we proceed as follows. Selfish mining slows down the pace at which the blocks are added to the blockchain, and the number of blocks wasted exactly corresponds to the number of passages of the Markov chain $(Z_n)_{n\geq0}$ through the state $0^\ast$. We know that once stationarity is reached, the probability for  $(Z_n)_{n\geq0}$ to be in state $0^\ast$ is 
 $$
-\frac{p(1-p)}{1+2p-p^2}.
+\frac{q(1-q)}{1+2q-q^2}.
 $$
 We therefore approximate the arrival process in this first segment by a homogeneous Poisson process with intensity 
  $$
-\lambda_1 = \lambda \times\left(1- \frac{p(1-p)}{ 1+2p-p^2}\right).
+\lambda_1 = \lambda \times\left(1- \frac{q(1-q)}{ 1+2q-q^2}\right).
 $$ 
 When blocks are being withheld, the average time required to mine $2,016$ blocks increases from $336$ to $t_1 = 2016/\lambda_1$. We hence compute the ruin probability and expected surplus over the first segment using \cref{theo:psi_V_selfish} respectively with time horizon $t_1$. Selfish mining during the first segment then leads to a downward adjustment of the cryptopuzzle difficulty  to $T_2 = T\times{t_1}/{336}$ that will be in force during the second segment. As the miner resumes following the protocol on that second segment, the block arrival process becomes again a proper homogeneous Poisson process with intensity $\lambda_2$ to be determined as follows. Let $H$ be the number of hashes computed per hour (hashrate) by the network. The number of blocks mined per hour is then given by 
 $$
-\lambda_2 = \frac{2^{256}}{L_2\times H}.
+\lambda_2 = \frac{T_{\max}}{T_2\times H}.
 $$
 
 The miner's ruin probability and surplus over the second segment are now computed using the formulas of \cref{theo:psi_V_T_solo_mining} using as initial wealth the miner's expected surplus over the first segment
@@ -1620,11 +1624,11 @@ Figure \ref{fig:rev_difficulty_adjusment} displays the expected profit of a self
 \end{figure}
  One can observe the different profit and loss profile of a selfish miner compared to that of a miner following the protocol on both segments. If the net profit condition holds when following the protocol, then it also holds for the second segment when blocks were withheld during the first segment. For electricity prices $\pi_W = 0.05, 0.06$, the expected profit as a function of $u$ reaches a plateau of level 
 \begin{equation}\label{eq:plateau_protocol}
-(c-b\lambda p)\times t
+(c-b\lambda q)\times t
 \end{equation}
 when following the protocol, and 
 \begin{equation}\label{eq:plateau_selfish}
-(c-b\lambda_2 p)\times t_2,
+(c-b\lambda_2 q)\times t_2,
 \end{equation}
 when selfish mining is applied during the first segment.  For $\pi_W = 0.05$, the plateau when following the protocol \eqref{eq:plateau_protocol} is higher than the plateau when withholding blocks \eqref{eq:plateau_selfish}, but the expected profit at lower initial wealth is greater for the selfish miner, see Figure \ref{sub:rev_difficulty_adjusment_5}. The exact opposite holds when $\pi_W = 0.06$, see Figure \ref{sub:rev_difficulty_adjusment_6}. The latter is probably the most desirable situation for a selfish miner. For $\pi_W = 0.07$, the net profit condition no longer holds when following the protocol which entails a loss, it holds however on the second segment of the selfish miner but it does not compensate for the loss incurred during the first segment, see Figure \ref{sub:rev_difficulty_adjusment_7}. Selfish mining helps at least in slightly mitigating the losses in this case. For electricity prices $\pi_W > 0.074$, the net profit condition breaks down in each case, resulting in huge losses for both the selfish and the honest miner (cf.\ Figure \ref{sub:rev_difficulty_adjusment_8} ).\\
 
