@@ -1,11 +1,11 @@
 % !TEX root = ../main_lecture_notes.tex
 \chapter{Decentralization of blockchain system}\label{chap:decentralization}
-Decentralization represents the fairness of the distribution of the accouunting right of the nodes in thee blockchain network. The consensus protocol must be designed so that the decision power does not eventually concentrate on a few nodes leading to a centralized system. In leader based consensus protocols, each peer is associated to a probability of being chosen. Measuring decentrality then reduces to computing the entropy of the probability distribution of the random variable equal to the peer selected  \\
+Decentralization represents the fairness of the distribution of the accounting right of the nodes in the blockchain network. The consensus protocol must be designed so that the decision power does not eventually concentrate on a few nodes leading to a centralized system. In leader based consensus protocols, each peer is associated to a probability of being chosen. Measuring decentrality then reduces to computing the entropy of the probability distribution of the random variable equal to the peer selected  \\
 
 \noindent \cref{sec:decentralization_pos} focuses on the \PoS protocol by modelling the evolution of the stakes of the nodes by a stochastic process with reinforcement. \cref{sec:decentralization_pow} presents the concept of mining pool and discusses the threat they represent for the decentralized aspect of the network.
 
 \section{Decentralization in PoS}\label{sec:decentralization_pos}
-The \textit{Proof-of-Stake} protocol is a leader based consensus protocol that appoints a block validator depending on how many cryptocoins he owned which corresponds to its stake. In its most basic form a coins is drawn at random, the owner of that coin appends a block and collect a reward. The stake of each peers is governed by stochastic process with reinforcement similar to that studied in the polya's urn problem. In Polya's urn, there are balls of various colors. At each time step a ball is drawn, the ball is then replaced in the urn together with a ball of the same color. The coins are the balls and the color is the peer that owns the balls. This analogy has been used to study the decentralization\\
+The \textit{Proof-of-Stake} protocol is a leader based consensus protocol that appoints a block validator depending on how many cryptocoins he owned which corresponds to its stake. In its most basic form a coins is drawn at random, the owner of that coin appends a block and collect a reward. The stake of each peers is governed by stochastic processes with reinforcement similar to that studied in the Polya's urn problem. In Polya's urn, there are balls of various colors. At each time step a ball is drawn, the ball is then replaced in the urn together with a ball of the same color. The coins are the balls and the color is the peer that owns the balls. This analogy has been used to study the decentralization\\
 
 \noindent Let the network be of size $p$ and denote by $r$ the reward collected at each round $n\in\mathbb{N}$ by the lucky node $x\in \{1, \ldots, p\} = E$. At time $n=0$, each peer $x\in E$ has $Z^{(x)}_0$ coins so that the total number of coins is $Z_0 = \sum_{x\in E}Z^{(x)}_0$. The number of coins owned by each peers evolve over time as
 $$
@@ -17,7 +17,7 @@ W_n^{(x)} = \frac{Z^{(x)}_n}{Z_n}.
 $$
 Let $\mathcal{F}_n = \sigma(\{Y_k^{(x)}\text{ , }x\in E, k\leq n\})$. Note that 
 $$
-\mathbb{P}\left(A_{n}^{(x)}|\mathcal{F}_{n-1}\right) = W_{n-1}.
+\mathbb{P}\left(A_{n}^{(x)}|\mathcal{F}_{n-1}\right) = W_{n-1}^{(x)}.
 $$
 \subsection{Average stake owned by each peer}
 The following result provide the average behaviour of the share of coins owned by each peer.
@@ -36,7 +36,7 @@ We show that $(W_n^{(x)})_{n\geq0}$ is a martingale. We have that
 \end{eqnarray*}
 It then follows that 
 $$
-\mathbb{E}(W_n^{(x)}) = \frac{Z_0^{(x)}}{Z_0},\text{ }x\in E\text{ }, n\geq0.
+\mathbb{E}\left(W_n^{(x)}\right) = \frac{Z_0^{(x)}}{Z_0},\text{ }x\in E\text{ }, n\geq0.
 $$
 \end{proof}
 The long term average of the stake of each peer is stable, we focus on their asymptotic distribution in the following section.
@@ -112,7 +112,7 @@ A Yule process $(Y_t)_{t\geq0}$ is a pure birth process with linear birth rate g
 \mathbb{P}(Y_{t+h} = y+1|Y_{t} =y) = nh+o(h).
 \] 
 \end{definition}
-The Yulee process models the population of some particle over time, assuming that there is one particle at time $0$, so $Y_0=1$ this particle will split in two after some exponential time and this going on and on, see the illustration on \cref{fig:yule_tree}. 
+The Yule process models the population of some particle over time, assuming that there is one particle at time $0$, so $Y_0=1$ this particle will split in two after some exponential time and this going on and on, see the illustration on \cref{fig:yule_tree}. 
 
 %définitiondesstyles 
 \tikzstyle{lien}=[-,>=stealth',rounded corners=5pt,thick] \tikzset{individu/.style={draw,thick}, individu/.default={green}} 
@@ -155,7 +155,7 @@ If we have $Y_0 = y_0$ particles at the initial state, then it is like starting 
 $$
 Y_t = \sum_{i = 1}^{y_0}Y_t^{(i)},
 $$   
-where the $Y_t^{(i)}$'s are independent Yule processes such that $Y_t^{(i)}$ for $i = 1,\ldots, y_0$.
+where the $Y_t^{(i)}$'s are independent Yule processes such that $Y_t^{(i)}=1$ for $i = 1,\ldots, y_0$.
 \end{remark}
 \begin{remark}\label{rem:stopped_yule_process}
 The Yule process $(Y_t)_{t\geq0}$ is strong Markov in the sense that for any stopping time $\tau$, the stopped process 
@@ -198,7 +198,7 @@ Let us show that $\left(e^{-t}Y_t\right)_{t\geq0}$ is a martingale. We have that
 \]
 Because of the martingale convergence theorem, we know that $\left(e^{-t}Y_t\right)_{t\geq0}$ has a limiting distribution. Consider the Laplace transform 
 \[
-\mathbb{E}\left(\e^{-\theta e^{-t}Y_t}\right) = \frac{\e^{-\theta \e^{-t}}\e^{-t} }{1-\e^{-\theta \e^{-t}}(1-\e^{-t})}\rightarrow\frac{1}{1+\theta},\text{ as }t\rightarrow\infty.
+\mathbb{E}\left(\e^{-\theta e^{-t}Y_t}\right) = \frac{\e^{-\theta \e^{-t}}\e^{-t} }{1-\e^{-\theta \e^{-t}}(1-\e^{-t})}=\frac{1}{e^t\left(\e^{\theta\e^{-1}}-1\right)+1}\rightarrow\frac{1}{1+\theta},\text{ as }t\rightarrow\infty.
 \]
 which coincides with that of an exponential random variable $\ExpDist(1)$.
 
