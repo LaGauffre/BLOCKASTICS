@@ -1,0 +1,24 @@
+\begin{thebibliography}{2}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Albrecher and Goffard(2022)]{Hansjoerg2022}
+Hansjoerg Albrecher and Pierre-Olivier Goffard.
+\newblock On the profitability of selfish blockchain mining under consideration
+  of ruin.
+\newblock \emph{Operations Research}, 70\penalty0 (1):\penalty0 179--200, jan
+  2022.
+\newblock \doi{10.1287/opre.2021.2169}.
+
+\bibitem[Albrecher et~al.(2022)Albrecher, Finger, and
+  Goffard]{albrecher:hal-03336851}
+Hansj{\"o}rg Albrecher, Dina Finger, and Pierre-Olivier Goffard.
+\newblock {Blockchain mining in pools: Analyzing the trade-off between
+  profitability and ruin}.
+\newblock to appear in Insurance; Mathematics and Economics, April 2022.
+\newblock URL \url{https://hal.archives-ouvertes.fr/hal-03336851}.
+
+\end{thebibliography}

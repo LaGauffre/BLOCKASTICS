@@ -1,0 +1,5 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Double spending attack}{14}{0}{2}
+\beamer@sectionintoc {3}{Insurance risk theory}{20}{0}{3}
+\beamer@sectionintoc {4}{Link to double spending}{24}{0}{4}
