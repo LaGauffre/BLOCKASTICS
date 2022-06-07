@@ -3,3 +3,4 @@
 \beamer@sectionintoc {2}{Double spending attack}{14}{0}{2}
 \beamer@sectionintoc {3}{Insurance risk theory}{20}{0}{3}
 \beamer@sectionintoc {4}{Link to double spending}{24}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{29}{0}{5}
