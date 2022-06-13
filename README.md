@@ -19,34 +19,36 @@ The material of this section is made of 3 45-50 minutes lectures covered during 
 
 
 ### 1. Blockchain concepts ###
+
 A blockchain is a distributed data ledger maintained by achieving consensus among a number of nodes in Peer-to-peer network. After providing some preliminary definitions, we introduce the  *proof-of-work* and *proof-of-stake* consensus protocols which are at the core of public and permissionless blochchains (like the bitcoin and ethereum ones). We further define three dimensions according to which a blockchain system may be evaluated including (1) efficiency, (2) decentralization and (3) security.
-	* Slides: [Lecture 1](/Slides/BFS/Lecture1/blockastics_lec_1.pdf)  
-	* Recording: [Lecture 1](https://youtu.be/c_9LQEEwzE0)   
-	* Python notebooks: 
-		- [Build a blockchain](/Python/lecture1_build_blockchain.ipynb)
-		- [Blockchain data](/Python/Lecture1_blockchain_data.ipynb)
+* Slides: [Lecture 1](/Slides/BFS/Lecture1/blockastics_lec_1.pdf)  
+* Recording: [Lecture 1](https://youtu.be/c_9LQEEwzE0)   
+* Python notebooks: 
+	- [Build a blockchain](/Python/lecture1_build_blockchain.ipynb)
+	- [Blockchain data](/Python/Lecture1_blockchain_data.ipynb)
 
 
 
 ### 2. Simple models for blockchain performance analysis ###
+
 A review of the mathematical models and tools used so far to assess the performance of blockchain systems is provided. They consist of standard models from the applied probability literature like random walks, Markov chains, urns and queues.
-	* Slides: [Lecture 2](/Slides/BFS/Lecture2/blockastics_lec_2.pdf)
-	* Recording: [Lecture 2](https://youtu.be/QDt_ItxO3u0)      
-	* Python notebooks: 
-		- [Proof of stake and decentralization](/Python/lecture_2_POS_Decentralization.ipynb)
-		- [Queueing model and efficiency](/Python/lecture_2_Efficiency.ipynb)
+* Slides: [Lecture 2](/Slides/BFS/Lecture2/blockastics_lec_2.pdf)
+* Recording: [Lecture 2](https://youtu.be/QDt_ItxO3u0)      
+* Python notebooks: 
+	- [Proof of stake and decentralization](/Python/lecture_2_POS_Decentralization.ipynb)
+	- [Queueing model and efficiency](/Python/lecture_2_Efficiency.ipynb)
 
 
 ### 3. Risk models and blockchain mining ###
 
 Mining blocks on a blockchain equipped with a proof of work consensus protocol is well-known to be resource-consuming. A miner bears the operational cost, mainly
 electricity consumption and IT gear, of mining, and is compensated by a capital gain when a block is discovered. The profitability of mining is studied via stochastic models and tools borrowed from insurance risk theory. We consider the case of solo mining, pool mining and selfish mining.  
-	* Slides: [Lecture 3](/Slides/BFS/Lecture3/blockastics_lec_3.pdf)
-	* Recording: [Lecture 3](https://youtu.be/NSB1Zjt8-_0)     
-	* Python notebooks: 
-		- [Solo mining](/Python/Lecture3_solo_mining.ipynb)
-		- [Pool mining](/Python/Lecture3_mining_pool.ipynb)
-		- [Selfish mining](/Python/Lecture3_selfish_mining.ipynb)  
+* Slides: [Lecture 3](/Slides/BFS/Lecture3/blockastics_lec_3.pdf)
+* Recording: [Lecture 3](https://youtu.be/NSB1Zjt8-_0)     
+* Python notebooks: 
+	- [Solo mining](/Python/Lecture3_solo_mining.ipynb)
+	- [Pool mining](/Python/Lecture3_mining_pool.ipynb)
+	- [Selfish mining](/Python/Lecture3_selfish_mining.ipynb)  
 
    
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
