@@ -37,8 +37,9 @@ The material of this section is made of 3 45-50 minutes lectures covered during 
 
 Section             | Material
 -----------------   | -------------
-Blockchain concepts | [Slides](/Slides/BFS/Lecture1/blockastics_lec_1.pdf)
-Simple models       | [Slides](/Slides/BFS/Lecture1/blockastics_lec_2.pdf) 
+Blockchain concepts | [Slides](/Slides/BFS/Lecture1/blockastics_lec_1.pdf), [Recording](https://youtu.be/c_9LQEEwzE0)
+Simple models       | [Slides](/Slides/BFS/Lecture1/blockastics_lec_2.pdf), [Recording](https://youtu.be/QDt_ItxO3u0)
+Risk models and blockchain mining      | [Slides](/Slides/BFS/Lecture3/blockastics_lec_3.pdf), [Recording](https://youtu.be/NSB1Zjt8-_0)
 
 
 
