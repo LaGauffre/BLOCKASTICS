@@ -17,10 +17,12 @@ You will find on this page the research publications associated to the BLOCKASTI
 
 The material of this section is made of 3 45-50 minutes lectures covered during the first Bachelier Finance Society summer school that took place on September 2021
 
+<details>
+<summary>Title 1</summary>
+           <p>A blockchain is a distributed data ledger maintained by achieving consensus among a number of nodes in Peer-to-peer network. After providing some preliminary definitions, we introduce the  *proof-of-work* and *proof-of-stake* consensus protocols which are at the core of public and permissionless blochchains (like the bitcoin and ethereum ones). We further define three dimensions according to which a blockchain system may be evaluated including (1) efficiency, (2) decentralization and (3) security.</p>
+</details>
 
-### 1. Blockchain concepts ###
 
-A blockchain is a distributed data ledger maintained by achieving consensus among a number of nodes in Peer-to-peer network. After providing some preliminary definitions, we introduce the  *proof-of-work* and *proof-of-stake* consensus protocols which are at the core of public and permissionless blochchains (like the bitcoin and ethereum ones). We further define three dimensions according to which a blockchain system may be evaluated including (1) efficiency, (2) decentralization and (3) security.
 * Slides: [Lecture 1](/Slides/BFS/Lecture1/blockastics_lec_1.pdf)  
 * Recording: [Lecture 1](https://youtu.be/c_9LQEEwzE0)   
 * Python notebooks: 
