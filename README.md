@@ -22,9 +22,9 @@ The BLOCKASTICS project aims at building mathematical models to analyse the cons
 
 ## Advanced topics in applied probability at UC, Santa Barbara
 
-I taught a graduate class during spring 2022 (ten weeks) in the PSTAT department at UC, Santa Barbara. Here are the [Lecture notes](/lecture_notes/main_lecture_notes.pdf). 
+I taught a graduate class during spring 2022 (ten weeks) in the PSTAT department at UC, Santa Barbara. Here are the [lecture notes](/lecture_notes/main_lecture_notes.pdf). 
 
-*(Please note that it is a work in progress, I am planning to write a more comprehensive overview with additional references).*
+*(Please note that it is a work in progress, I am planning to write a more comprehensive overview with additional references)*
 
 ## BFS summer school
 
@@ -34,6 +34,12 @@ The material of this section is made of 3 45-50 minutes lectures covered during 
 <summary> 1. Blockchain concepts</summary>
            <p>A blockchain is a distributed data ledger maintained by achieving consensus among a number of nodes in Peer-to-peer network. After providing some preliminary definitions, we introduce the  *proof-of-work* and *proof-of-stake* consensus protocols which are at the core of public and permissionless blochchains (like the bitcoin and ethereum ones). We further define three dimensions according to which a blockchain system may be evaluated including (1) efficiency, (2) decentralization and (3) security.</p>
 </details>
+
+Section             | Material
+-----------------   | -------------
+Blockchain concepts | [Slides](/Slides/BFS/Lecture1/blockastics_lec_1.pdf)
+Simple models       | [Slides](/Slides/BFS/Lecture1/blockastics_lec_2.pdf) 
+
 
 
 * Slides: [Lecture 1](/Slides/BFS/Lecture1/blockastics_lec_1.pdf)  
