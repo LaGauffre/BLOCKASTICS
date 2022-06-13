@@ -18,7 +18,7 @@ You will find on this page the research publications associated to the BLOCKASTI
 The material of this section is made of 3 45-50 minutes lectures covered during the first Bachelier Finance Society summer school that took place on September 2021
 
 
-1. Blockchain concepts
+### 1. Blockchain conceptsv ###
 A blockchain is a distributed data ledger maintained by achieving consensus among a number of nodes in Peer-to-peer network. After providing some preliminary definitions, we introduce the  *proof-of-work* and *proof-of-stake* consensus protocols which are at the core of public and permissionless blochchains (like the bitcoin and ethereum ones). We further define three dimensions according to which a blockchain system may be evaluated including (1) efficiency, (2) decentralization and (3) security.
 
 	* Slides: [Lecture 1](/Slides/BFS/Lecture1/blockastics_lec_1.pdf)  
@@ -29,7 +29,7 @@ A blockchain is a distributed data ledger maintained by achieving consensus amon
 
 
 
-2. Simple models for blockchain performance analysis
+### 2. Simple models for blockchain performance analysis ###
 A review of the mathematical models and tools used so far to assess the performance of blockchain systems is provided. They consist of standard models from the applied probability literature like random walks, Markov chains, urns and queues.
 
 	* Slides: [Lecture 2](/Slides/BFS/Lecture2/blockastics_lec_2.pdf)
@@ -39,7 +39,8 @@ A review of the mathematical models and tools used so far to assess the performa
 		- [Queueing model and efficiency](/Python/lecture_2_Efficiency.ipynb)
 
 
-3. Risk models and blockchain mining
+### 3. Risk models and blockchain mining ###
+
 Mining blocks on a blockchain equipped with a proof of work consensus protocol is well-known to be resource-consuming. A miner bears the operational cost, mainly
 electricity consumption and IT gear, of mining, and is compensated by a capital gain when a block is discovered. The profitability of mining is studied via stochastic models and tools borrowed from insurance risk theory. We consider the case of solo mining, pool mining and selfish mining.  
 
