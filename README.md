@@ -1,3 +1,5 @@
+You will find on this page the research publications associated to the BLOCKASTICS project as well as some graduate level course materials.
+
 A blockchain is a distributed ledger maintained by achieving consensus among a number of nodes in a peer-to-peer network. The blockchain technology has attracted a lot of interest after the advent of the bitcoin cryptocurrency in 2008. Since then, the blockchain concept has been used to develop decentralized systems to store and maintain the integrity of time-stamped transaction data across peer-to-peer networks. Besides the creation of a digital currency, blockchain applications include the sharing of IT resources, the registration of authentication certificate or the implementation of smart contracts.
 
 ---
@@ -7,11 +9,22 @@ The BLOCKASTICS project aims at building mathematical models to analyse the cons
 
 ---
 
-You will find on this page the research publications associated to the BLOCKASTICS project as well as some graduate level course materials.
 
 # Publications
 
+* 2022 H. Albrecher, Dina Finger & **P.O. Goffard**, Blockchain mining in pools: Analyzing the trade-off between profitability and ruin, *Insurance: Mathematics and Economics*, [DOI](https://doi.org/10.1016/j.insmatheco.2022.04.004) [preprint](/Publications/blockchain_pool.pdf).
+
+* 2021 H. Albrecher & **P.O. Goffard**, On the profitability of selfish blockchain mining under consideration of ruin, *Operations Research* , [DOI](https://doi.org/10.1287/opre.2021.2169), [preprint](/Publications/Albrecher_Goffard_Selfish_MineR2.pdf).
+
+* 2019 **P.O. Goffard**, Fraud risk assessment within blockchain transactions, *Advances in Applied Probability*, [DOI](https://doi.org/10.1017/apr.2019.18), [preprint](/Publications/Fraud_Risk_Assessment_Blockchain_APT.pdf).
+
 # Course materials
+
+## Advanced topics in applied probability at UC, Santa Barbara
+
+I taught a graduate class during spring 2022 (ten weeks) in the PSTAT department at UC, Santa Barbara. Here are the [Lecture notes](/lecture_notes/main_lecture_notes.pdf). 
+
+*(Please that it is a work in progress, I am planning to write a more comprehensive account. Many references are missing).*
 
 ## BFS summer school
 
