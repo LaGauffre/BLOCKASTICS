@@ -18,7 +18,7 @@ You will find on this page the research publications associated to the BLOCKASTI
 The material of this section is made of 3 45-50 minutes lectures covered during the first Bachelier Finance Society summer school that took place on September 2021
 
 <details>
-<summary>Title 1</summary>
+<summary> 1. Blockchain concepts</summary>
            <p>A blockchain is a distributed data ledger maintained by achieving consensus among a number of nodes in Peer-to-peer network. After providing some preliminary definitions, we introduce the  *proof-of-work* and *proof-of-stake* consensus protocols which are at the core of public and permissionless blochchains (like the bitcoin and ethereum ones). We further define three dimensions according to which a blockchain system may be evaluated including (1) efficiency, (2) decentralization and (3) security.</p>
 </details>
 
@@ -30,10 +30,11 @@ The material of this section is made of 3 45-50 minutes lectures covered during 
 	- [Blockchain data](/Python/Lecture1_blockchain_data.ipynb)
 
 
+<details>
+<summary>2. Simple models for blockchain performance analysis</summary>
+           <p>A review of the mathematical models and tools used so far to assess the performance of blockchain systems is provided. They consist of standard models from the applied probability literature like random walks, Markov chains, urns and queues.</p>
+</details>
 
-### 2. Simple models for blockchain performance analysis ###
-
-A review of the mathematical models and tools used so far to assess the performance of blockchain systems is provided. They consist of standard models from the applied probability literature like random walks, Markov chains, urns and queues.
 * Slides: [Lecture 2](/Slides/BFS/Lecture2/blockastics_lec_2.pdf)
 * Recording: [Lecture 2](https://youtu.be/QDt_ItxO3u0)      
 * Python notebooks: 
@@ -41,10 +42,12 @@ A review of the mathematical models and tools used so far to assess the performa
 	- [Queueing model and efficiency](/Python/lecture_2_Efficiency.ipynb)
 
 
-### 3. Risk models and blockchain mining ###
+<details>
+<summary>3. Risk models and blockchain mining</summary>
+           <p>Mining blocks on a blockchain equipped with a proof of work consensus protocol is well-known to be resource-consuming. A miner bears the operational cost, mainly
+electricity consumption and IT gear, of mining, and is compensated by a capital gain when a block is discovered. The profitability of mining is studied via stochastic models and tools borrowed from insurance risk theory. We consider the case of solo mining, pool mining and selfish mining.</p>
+</details>
 
-Mining blocks on a blockchain equipped with a proof of work consensus protocol is well-known to be resource-consuming. A miner bears the operational cost, mainly
-electricity consumption and IT gear, of mining, and is compensated by a capital gain when a block is discovered. The profitability of mining is studied via stochastic models and tools borrowed from insurance risk theory. We consider the case of solo mining, pool mining and selfish mining.  
 * Slides: [Lecture 3](/Slides/BFS/Lecture3/blockastics_lec_3.pdf)
 * Recording: [Lecture 3](https://youtu.be/NSB1Zjt8-_0)     
 * Python notebooks: 
