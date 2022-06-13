@@ -1,3 +1,9 @@
+A blockchain is a distributed ledger maintained by achieving consensus among a number of nodes in a peer-to-peer network. The blockchain technology has attracted a lot of interest after the advent of the bitcoin cryptocurrency in 2008. Since then, the blockchain concept has been used to develop decentralized systems to store and maintain the integrity of time-stamped transaction data across peer-to-peer networks. Besides the creation of a digital currency, blockchain applications include the sharing of IT resources, the registration of authentication certificate or the implementation of smart contracts.
+---
+Objectives:
+The BLOCKASTICS project aims at building mathematical models to analyse the consensus protocols that allow the nodes to agree on a common data history. The consensus protocol must be analysed through three dimensions: (1) efficiency, characterized by the amount of data being processed per time unit, (2) decentralization, measured by the fairness of the decision-making power distribution between network actors and (3) security, assessed by the probability of success of attacks on the blockchain.
+---
+
 In 2008, Blockchain was introduced to the world as the underlying technology of the Bitcoin electronic cash system. After more than a decade of development, various blockchain systems have been proposed with application going beyond the creation of a cryptocurrency. This course is organized around four 45-minute lectures on the theme of stochastic models in relation to the analysis of blockchain systems.
 
 ## Part 1: Blockchain concepts
@@ -33,4 +39,4 @@ electricity consumption and IT gear, of mining, and is compensated by a capital 
 	- [Selfish mining](/Python/Lecture3_selfish_mining.ipynb)  
 
    
-
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
