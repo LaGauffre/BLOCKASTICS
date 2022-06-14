@@ -3,7 +3,7 @@ You will find on this page the research publications associated to the BLOCKASTI
 A blockchain is a distributed ledger maintained by achieving consensus among a number of nodes in a peer-to-peer network. The blockchain technology has attracted a lot of interest after the advent of the bitcoin cryptocurrency in 2008. Since then, the blockchain concept has been used to develop decentralized systems to store and maintain the integrity of time-stamped transaction data across peer-to-peer networks. Besides the creation of a digital currency, blockchain applications include the sharing of IT resources, the registration of authentication certificate or the implementation of smart contracts.
 
 ---
-Objectives:
+**Objectives:**
 
 The BLOCKASTICS project aims at building mathematical models to analyse the consensus protocols that allow the nodes to agree on a common data history. The consensus protocol must be analysed through three dimensions: (1) efficiency, characterized by the amount of data being processed per time unit, (2) decentralization, measured by the fairness of the decision-making power distribution between network actors and (3) security, assessed by the probability of success of attacks on the blockchain.
 
@@ -30,7 +30,7 @@ I taught a graduate class during spring 2022 (ten weeks) in the PSTAT department
 
 The material of this section is made of 3 45-50 minutes lectures covered during the first [Bachelier Finance Society summer school](https://www.bachelierfinance.org/09-2021) that took place on September 2021.
 
-<details>
+<!-- <details>
 <summary> 1. Blockchain concepts</summary>
            <p>A blockchain is a distributed data ledger maintained by achieving consensus among a number of nodes in Peer-to-peer network. After providing some preliminary definitions, we introduce the  <i>proof-of-work</i> and <i>proof-of-stake</i> consensus protocols which are at the core of public and permissionless blochchains (like the bitcoin and ethereum ones). We further define three dimensions according to which a blockchain system may be evaluated including (1) efficiency, (2) decentralization and (3) security.</p>
 </details>
@@ -44,7 +44,8 @@ The material of this section is made of 3 45-50 minutes lectures covered during 
 <summary>3. Risk models and blockchain mining</summary>
            <p>Mining blocks on a blockchain equipped with a proof of work consensus protocol is well-known to be resource-consuming. A miner bears the operational cost, mainly
 electricity consumption and IT gear, of mining, and is compensated by a capital gain when a block is discovered. The profitability of mining is studied via stochastic models and tools borrowed from insurance risk theory. We consider the case of solo mining, pool mining and selfish mining.</p>
-</details>
+</details> -->
+
 
 Section             | Material
 -----------------   | -------------
