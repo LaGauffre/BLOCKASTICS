@@ -28,7 +28,7 @@ I taught a graduate class during spring 2022 (ten weeks) in the PSTAT department
 
 ## BFS summer school
 
-The material of this section is made of 3 45-50 minutes lectures covered during the first Bachelier Finance Society summer school that took place on September 2021
+The material of this section is made of 3 45-50 minutes lectures covered during the first [Bachelier Finance Society summer school](https://www.bachelierfinance.org/09-2021) that took place on September 2021.
 
 <details>
 <summary> 1. Blockchain concepts</summary>
@@ -39,8 +39,6 @@ The material of this section is made of 3 45-50 minutes lectures covered during 
 <summary>2. Simple models for blockchain performance analysis</summary>
            <p>A review of the mathematical models and tools used so far to assess the performance of blockchain systems is provided. They consist of standard models from the applied probability literature like random walks, Markov chains, urns and queues.</p>
 </details>
-
-
 
 <details>
 <summary>3. Risk models and blockchain mining</summary>
