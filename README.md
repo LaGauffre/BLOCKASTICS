@@ -1,6 +1,11 @@
 You will find on this page the research publications associated to the BLOCKASTICS project as well as some graduate level course materials.
 
+---
+**Introduction:**
 A blockchain is a distributed ledger maintained by achieving consensus among a number of nodes in a peer-to-peer network. The blockchain technology has attracted a lot of interest after the advent of the bitcoin cryptocurrency in 2008. Since then, the blockchain concept has been used to develop decentralized systems to store and maintain the integrity of time-stamped transaction data across peer-to-peer networks. Besides the creation of a digital currency, blockchain applications include the sharing of IT resources, the registration of authentication certificate or the implementation of smart contracts.
+
+---
+
 
 ---
 **Objectives:**
