@@ -9,7 +9,13 @@ A blockchain is a distributed ledger maintained by achieving consensus among a n
 
 **Objectives:**
 
-The BLOCKASTICS project aims at building mathematical models to analyse the consensus protocols that allow the nodes to agree on a common data history. The consensus protocol must be analysed through three dimensions: (1) efficiency, characterized by the amount of data being processed per time unit, (2) decentralization, measured by the fairness of the decision-making power distribution between network actors and (3) security, assessed by the probability of success of attacks on the blockchain.
+The BLOCKASTICS project aims at building mathematical models to analyse the consensus protocols that allow the nodes to agree on a common data history. The consensus protocol must be analysed through three dimensions: 
+
+1. Efficiency, characterized by the amount of data being processed per time unit. 
+
+2. Decentralization, measured by the fairness of the decision-making power distribution between network actors.
+
+3. Security, assessed by the probability of success of attacks on the blockchain.
 
 ---
 
