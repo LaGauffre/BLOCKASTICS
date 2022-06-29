@@ -16,7 +16,7 @@ The BLOCKASTICS project aims at building mathematical models to analyse the cons
 
 # Publications
 
-* 2022 H. Albrecher, Dina Finger & **P.O. Goffard**, Blockchain mining in pools: Analyzing the trade-off between profitability and ruin, *Insurance: Mathematics and Economics*, [DOI](https://doi.org/10.1016/j.insmatheco.2022.04.004) [preprint](/Publications/blockchain_pool.pdf).
+* 2022 H. Albrecher, Dina Finger & **P.O. Goffard**, Blockchain mining in pools: Analyzing the trade-off between profitability and ruin, *Insurance: Mathematics and Economics*, [DOI](https://doi.org/10.1016/j.insmatheco.2022.04.004), [preprint](/Publications/blockchain_pool.pdf).
 
 * 2022 H. Albrecher & **P.O. Goffard**, On the profitability of selfish blockchain mining under consideration of ruin, *Operations Research* , [DOI](https://doi.org/10.1287/opre.2021.2169), [preprint](/Publications/Albrecher_Goffard_Selfish_MineR2.pdf).
 
@@ -26,13 +26,13 @@ The BLOCKASTICS project aims at building mathematical models to analyse the cons
 
 ## Advanced Topics in Applied Probability at UC, Santa Barbara
 
-I taught a graduate class during spring 2022 (ten weeks) in the PSTAT department at UC, Santa Barbara. Here are the [lecture notes](/lecture_notes/main_lecture_notes.pdf). 
+I taught a graduate class during spring quarter 2022 (ten weeks) in the PSTAT department at UC, Santa Barbara. Here are the [lecture notes](/lecture_notes/main_lecture_notes.pdf). 
 
 *(Please note that it is a work in progress, I am planning to write a more comprehensive overview with additional references)*
 
 ## BFS summer school
 
-The material of this section is made of 3 45-50 minutes lectures covered during the first [Bachelier Finance Society summer school](https://www.bachelierfinance.org/09-2021) that took place on September 2021.
+The material of this section is made of 3 45-50 minutes lectures covered during the first [Bachelier Finance Society summer school](https://www.bachelierfinance.org/09-2021) that took place in September 2021.
 
 <!-- <details>
 <summary> 1. Blockchain concepts</summary>
