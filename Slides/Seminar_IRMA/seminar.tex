@@ -153,7 +153,7 @@
 
 \setbeamertemplate{navigation symbols}{}%remove navigation symbols
 
-\title[BLOCKASTICS]{Stochastic models for blockchain analysis}
+\title[BLOCKASTICS]{Journée de rentrée de l'IRMA}
 \author{Pierre-O. Goffard}
 \institute[UNISTRA]{Université de Strasbourg\\
  \texttt{goffard@unistra.fr}
@@ -164,6 +164,21 @@
 \begin{document}
 \begin{frame}
   \titlepage
+\end{frame}
+\begin{frame}{Bio}
+\hspace{1cm}
+\begin{itemize}
+\item[] \color{tublue}{\textbf{Nov. 2011 - Jun. 2015}}\\
+\color{black} PhD thesis \textit{Aix-Marseille Université /  AXA France (convention CIFRE)}
+\item[] \color{tublue}{\textbf{Aug.-Nov. 2015}}\\
+\color{black} Research visit \textit{Aarhus University}
+\item[]\color{tublue}{\textbf{Nov. 2015 - Jun. 2016}}\\
+\color{black}  Post Doc, \textit{Université Libre de Bruxelles}
+\item[]\color{tublue}{\textbf{Jul. 2016 - Jun. 2018}}\\
+\color{black}  Visiting Assistant Professor, \textit{University of California Santa Barbara}
+\item[]\color{tublue}{\textbf{Sep. 2018 - Now}}\\
+\color{black}  Associate Professor, \textit{Université Claude Bernard Lyon 1}
+\end{itemize}
 \end{frame}
 \begin{frame}
   \tableofcontents
@@ -291,7 +306,7 @@ The three dimensions of blockchain systems analysis
 
 \end{enumerate}
 \begin{tcolorbox}[enhanced,drop shadow, title=BLOCKASTICS project]
-Analysis and optimization of blockchain systems.
+Stochastic Models for Blockchain Analysis
 \end{tcolorbox}
 \blfootnote{ 
 \href{https://pierre-olivier.goffard.me/BLOCKASTICS/}{\texttt{link}}}
@@ -513,14 +528,13 @@ Let $\mathcal{M}$ be a model with parameters $\mathbf{\theta}$, and $\mathbf{x}$
 by updating the prior $\pi(\mathbf{\theta})$ via the likelihood $p(\mathbf{x}|\theta)$.
 \item[\tiny$\hookrightarrow$] Model calibration
 \end{itemize}
-If many models $\mathcal{M}_1,\ldots,  \mathcal{M}_K$ are competing  
-\begin{itemize}
-\item The posterior model evidence of each model follow from 
-\begin{equation*}
-\pi(M_i|\mathbf{x}) = \frac{p(\mathbf{x}|M_i)\pi(\mathcal{M}_i)}{\sum_{j = 1}^Kp(\mathbf{x}|M_j)\pi(\mathcal{M}_j)},\text{ }i=1,\ldots, K.
-\end{equation*}
-\item[$\hookrightarrow$] Select or combine models 
-\end{itemize}
+% 
+\begin{figure}[!ht]
+  \begin{center}
+      \includegraphics[width=0.9\textwidth]{../../Figures/posterior_plots_danish_weibull_loglogistic_continuous}
+      \label{sub:posterior_plots_danish_weibull_loglogistic_continuous}
+  \end{center}
+\end{figure}
 \end{frame}
 \begin{frame}{My contributions}
 \begin{itemize}
