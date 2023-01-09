@@ -876,4 +876,13 @@ journal = {ACM Transactions on Programming Languages and Systems},
   HAL_VERSION = {v2},
 }
 
+@Misc{levine,
+  author       = {Matt Levine},
+  howpublished = {Bloomberg business week},
+  month        = oct,
+  note         = {\url{https://www.bloomberg.com/features/2022-the-crypto-story/?leadSource=uverify%20wall}},
+  title        = {The crypto story},
+  year         = {2022},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

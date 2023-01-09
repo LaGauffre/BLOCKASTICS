@@ -601,7 +601,7 @@ journal = {ACM Transactions on Programming Languages and Systems},
     note         = {\url{https://ia.cr/2011/565}},
 }
 
-@Book{Antonopoulos2017,
+@Book{https://doi.org/10.1142/11857,
   author    = {Antonopoulos, Andreas},
   publisher = {O'Reilly UK Ltd.},
   title     = {Mastering Bitcoin},
@@ -679,4 +679,26 @@ journal = {ACM Transactions on Programming Languages and Systems},
   number    = {3},
   pages     = {269--294},
   volume    = {33},
-  doi       = {10.1016/j.exmath.2014.07.0
+  doi       = {10.1016/j.exmath.2014.07.003},
+  publisher = {Elsevier {BV}},
+}
+
+@Article{Goffard2018,
+  author    = {Pierre-Olivier Goffard and Claude Lef{\`{e}}vre},
+  journal   = {Insurance: Mathematics and Economics},
+  title     = {Duality in ruin problems for ordered risk models},
+  year      = {2018},
+  month     = {jan},
+  pages     = {44--52},
+  volume    = {78},
+  doi       = {10.1016/j.insmatheco.2017.11.005},
+  publisher = {Elsevier {BV}},
+}
+
+@Article{Avanzi2007,
+  author    = {Benjamin Avanzi and Hans U. Gerber and Elias S.W. Shiu},
+  journal   = {Insurance: Mathematics and Economics},
+  title     = {Optimal dividends in the dual model},
+  year      = {2007},
+  month     = {jul},
+  number
