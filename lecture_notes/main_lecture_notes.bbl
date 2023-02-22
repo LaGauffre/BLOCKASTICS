@@ -1,4 +1,4 @@
-\begin{thebibliography}{36}
+\begin{thebibliography}{35}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -27,14 +27,6 @@ Hansjoerg Albrecher and Pierre-Olivier Goffard.
 \newblock \emph{Operations Research}, 70\penalty0 (1):\penalty0 179--200, jan
   2022.
 \newblock \doi{10.1287/opre.2021.2169}.
-
-\bibitem[Antonopoulos(2017)]{Antonopoulos2017}
-Andreas Antonopoulos.
-\newblock \emph{Mastering Bitcoin}.
-\newblock O'Reilly UK Ltd., July 2017.
-\newblock ISBN 1491954388.
-\newblock URL
-  \url{https://www.ebook.de/de/product/26463992/andreas_antonopoulos_mastering_bitcoin.html}.
 
 \bibitem[Asmussen and Albrecher(2010)]{Asmussen_2010}
 S{\o}ren Asmussen and Hansjörg Albrecher.
