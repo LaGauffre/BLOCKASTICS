@@ -1,0 +1,4 @@
+\babel@toc {french}{}\relax 
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Examples of consensus protocol}{8}{0}{2}
+\beamer@sectionintoc {3}{Stochastic Models}{17}{0}{3}
