@@ -1,8 +1,15 @@
 \begin{thebibliography}{1}
 
-\bibitem{Abegg2021}
-J.-P. Abegg, Q.~Bramas, and T.~Noël, ``Blockchain using
-  proof-of-interaction,'' in {\em Networked Systems}, pp.~129--143, Springer
-  International Publishing, 2021.
+\bibitem{Dembo2020}
+A.~Dembo, S.~Kannan, E.~N. Tas, D.~Tse, P.~Viswanath, X.~Wang, and O.~Zeitouni,
+  ``Everything is a race and nakamoto always wins,'' in {\em Proceedings of the
+  2020 {ACM} {SIGSAC} Conference on Computer and Communications Security},
+  {ACM}, oct 2020.
+
+\bibitem{Anceaume_2018}
+E.~Anceaume, A.~Guellier, R.~Ludinard, and B.~Sericola, ``Sycomore: A
+  permissionless distributed ledger that self-adapts to transactions demand,''
+  in {\em 2018 {IEEE} 17th International Symposium on Network Computing and
+  Applications ({NCA})}, {IEEE}, nov 2018.
 
 \end{thebibliography}
