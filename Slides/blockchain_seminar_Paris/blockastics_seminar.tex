@@ -172,10 +172,10 @@
 \title[BLOCKASTICS]{Stochastic Models for blockchain analysis}
 % \subtitle{Consensus protocols}
 \author{Pierre-O. Goffard}
-\institute[ISFA]{Institut de Science Financières et d'Assurances\\
- \texttt{pierre-olivier.goffard@univ-lyon1.fr}
+\institute[UNISTRA]{Université de Strasbourg\\
+ \texttt{goffard@unistra.fr}
 }
-\date{\today}
+\date{May $17$, 2023}
 % \titlegraphic{\includegraphics[width=2.5cm]{../../Figures/bfs_logo.png}} 
 
 \begin{document}
@@ -442,7 +442,7 @@ The number of trial is geometrically distributed
   \item One block every 10 minutes on average
   \item Depends on the hashrate of the network
   \item Difficulty adjustment every 2,016 blocks ($\approx$ two weeks)
-  \item Reward halving every 210,000 blocks
+  % \item Reward halving every 210,000 blocks
 \end{itemize}
 Check out \url{https://www.bitcoinblockhalf.com/}
 \end{frame}
@@ -595,7 +595,7 @@ S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
 \scriptsize
 Assume that
 \begin{itemize}
-\item $R_0=z\geq1$ (the honest chain is z blocks ahead)
+\item $Z_0=z\geq1$ (the honest chain is z blocks ahead)
 \item at each time unit a block is created
 \begin{itemize}
   \scriptsize
@@ -603,8 +603,8 @@ Assume that
 \item[$\hookrightarrow$] in the dishonest chain with probability $q=1-p$
 \end{itemize}
 \end{itemize}
-The process $(R_n)_{n\geq0}$ is a random walk on $\mathbb{Z}$ with
-$$R_n=z+Y_1+\ldots+Y_n,$$
+The process $(Z_n)_{n\geq0}$ is a random walk on $\mathbb{Z}$ with
+$$Z_n=z+Y_1+\ldots+Y_n,$$
 where $Y_1,\ldots,Y_n$ are the \textbf{i.i.d.} steps of the random walk. 
 
 \end{frame}
@@ -612,7 +612,7 @@ where $Y_1,\ldots,Y_n$ are the \textbf{i.i.d.} steps of the random walk.
 \scriptsize
 Double spending occurs at time
 $$
-\tau_z=\inf\{n\in \mathbb{N}\text{ ; }R_n=0\}.
+\tau_z=\inf\{n\in \mathbb{N}\text{ ; }Z_n=0\}.
 $$
 \begin{tikzpicture}
   %Origin and axis
@@ -1255,10 +1255,39 @@ Q.-L. Li, J.-Y. Ma, Y.-X. Chang, F.-Q. Ma, and H.-B. Yu, ``Markov processes in
 \end{enumerate}
 
 \end{frame}
-\begin{frame}
-\bibliography{../../blockastics}
-\bibliographystyle{ieeetr}
+\begin{frame}{Blockchain as a research topic}
+\begin{itemize}
+  \item Computer science
+  \begin{itemize}
+  \item Peer-to-peer networks and consensus algorithm
+  \item Cryptography and security
+  \end{itemize}
+  \item Economics  
+  \begin{itemize}
+  \item Game theory to study the incentive mechanism at play
+  \item Nature of the cryptoassets
+  \end{itemize}
+  \item Operations research  
+  \begin{itemize}
+  \item Optimization of complex system
+  \end{itemize}
+  \item Financial math  
+  \begin{itemize}
+  \item Valuation models for cryptoassets
+  \end{itemize}
+  \item Machine learning and statistics  
+  \begin{itemize}
+  \item Open data
+  \item Interaction between blockchain users
+  \item (Social) network analysis
+  \item Clustering of public keys and addresses in the bitcoin blockchain.
+  \end{itemize}
+\end{itemize}
 \end{frame}
+% \begin{frame}
+% \bibliography{../../blockastics}
+% \bibliographystyle{ieeetr}
+% \end{frame}
 
 \appendix
 
