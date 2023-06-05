@@ -1,0 +1,3 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{PoW Blockchain}{3}{0}{1}
+\beamer@sectionintoc {2}{Blockchain miner's risk model}{12}{0}{2}
