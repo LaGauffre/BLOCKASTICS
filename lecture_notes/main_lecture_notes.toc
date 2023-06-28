@@ -1,42 +1,55 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Consensus protocol}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Voting system}{7}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Two generals problem}{7}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Byzantine General problem}{8}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Leader system}{12}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Proof-of-Work}{12}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Proof-of-SpaceTime and Proof-of-Capacity}{15}{subsection.2.2.2}%
-\contentsline {subsubsection}{Proof-of-Capacity}{15}{section*.10}%
-\contentsline {subsubsection}{Proof-of-Spacetime}{15}{section*.11}%
-\contentsline {subsection}{\numberline {2.2.3}Proof-of-Interaction}{15}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Proof-of-Stake}{15}{subsection.2.2.4}%
-\contentsline {chapter}{\numberline {3}Security of blockchain systems}{18}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Double-spending in PoW}{18}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Random walk model}{19}{subsection.3.1.1}%
-\contentsline {subsubsection}{Double spending probability}{20}{section*.14}%
-\contentsline {subsubsection}{Double spending time}{22}{section*.15}%
-\contentsline {subsection}{\numberline {3.1.2}Counting process model}{24}{subsection.3.1.2}%
-\contentsline {subsubsection}{Poisson process, Exponential distributions and friends}{25}{section*.17}%
-\contentsline {subsubsection}{A tiny bit of insurance risk theory}{33}{section*.19}%
-\contentsline {subsubsection}{Double spending probability}{35}{section*.21}%
-\contentsline {subsubsection}{Double spending time}{36}{section*.23}%
-\contentsline {section}{\numberline {3.2}Blockwitholding in PoW}{39}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Ruin and expected profit of a miner}{39}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Ruin and expected profit of a selfish miner}{44}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Solo mining versus selfish mining when including a difficulty adjustment}{47}{subsection.3.2.3}%
-\contentsline {chapter}{\numberline {4}Decentralization of blockchain system}{53}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Decentralization in PoS}{53}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Average stake owned by each peer}{54}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Asymptotic distribution of the stakes}{54}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Decentralization in PoW}{59}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Mining pools and reward systems}{60}{subsection.4.2.1}%
-\contentsline {subsubsection}{Proportional reward system}{60}{section*.31}%
-\contentsline {subsubsection}{Pay-per-Share reward system}{61}{section*.32}%
-\contentsline {subsection}{\numberline {4.2.2}Mining pool risk analysis}{62}{subsection.4.2.2}%
-\contentsline {subsubsection}{From the miners' viewpoint}{62}{section*.33}%
-\contentsline {subsubsection}{From the pool manager's viewpoint}{65}{section*.35}%
-\contentsline {subsubsection}{Risk of centralization?}{68}{section*.37}%
-\contentsline {chapter}{\numberline {5}Efficiency of blockchain systems}{70}{chapter.5}%
-\contentsline {section}{\numberline {5.1}A queueing model with bulk service}{70}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Latency and throughputs computation}{73}{section.5.2}%
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Consensus protocol}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Voting system}{8}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Two generals problem}{8}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Byzantine General problem}{9}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Leader system}{13}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Proof-of-Work}{13}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Proof-of-SpaceTime and Proof-of-Capacity}{16}{subsection.2.2.2}%
+\contentsline {subsubsection}{Proof-of-Capacity}{16}{section*.10}%
+\contentsline {subsubsection}{Proof-of-Spacetime}{16}{section*.11}%
+\contentsline {subsection}{\numberline {2.2.3}Proof-of-Interaction}{16}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Proof-of-Stake}{16}{subsection.2.2.4}%
+\contentsline {chapter}{\numberline {3}Security of blockchain systems}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Double-spending in PoW}{19}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Random walk model}{20}{subsection.3.1.1}%
+\contentsline {subsubsection}{Double spending probability}{21}{section*.14}%
+\contentsline {subsubsection}{Double spending time}{23}{section*.15}%
+\contentsline {subsection}{\numberline {3.1.2}Counting process model}{25}{subsection.3.1.2}%
+\contentsline {subsubsection}{Poisson process, Exponential distributions and friends}{26}{section*.17}%
+\contentsline {subsubsection}{A tiny bit of insurance risk theory}{34}{section*.19}%
+\contentsline {subsubsection}{Double spending probability}{36}{section*.21}%
+\contentsline {subsubsection}{Double spending time}{37}{section*.23}%
+\contentsline {section}{\numberline {3.2}Blockwitholding in PoW}{40}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Ruin and expected profit of a miner}{40}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Ruin and expected profit of a selfish miner}{45}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Solo mining versus selfish mining when including a difficulty adjustment}{48}{subsection.3.2.3}%
+\contentsline {chapter}{\numberline {4}Decentralization of blockchain system}{54}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Decentralization in PoS}{54}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Average stake owned by each peer}{55}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Asymptotic distribution of the stakes}{55}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Decentralization in PoW}{60}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Mining pools and reward systems}{61}{subsection.4.2.1}%
+\contentsline {subsubsection}{Proportional reward system}{61}{section*.31}%
+\contentsline {subsubsection}{Pay-per-Share reward system}{62}{section*.32}%
+\contentsline {subsection}{\numberline {4.2.2}Mining pool risk analysis}{63}{subsection.4.2.2}%
+\contentsline {subsubsection}{From the miners' viewpoint}{63}{section*.33}%
+\contentsline {subsubsection}{From the pool manager's viewpoint}{66}{section*.35}%
+\contentsline {subsubsection}{Risk of centralization?}{69}{section*.37}%
+\contentsline {chapter}{\numberline {5}Efficiency of blockchain systems}{71}{chapter.5}%
+\contentsline {section}{\numberline {5.1}A queueing model with bulk service}{71}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Latency and throughputs computation}{74}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Decenralized Finance and Data Analysis}{76}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Decentralized Finance}{76}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Maximum Extractable value}{76}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Automated Market Makers}{76}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Data and statistics}{76}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Stochastic volatility model}{77}{subsection.6.2.1}%
+\contentsline {subsubsection}{Definition}{77}{section*.41}%
+\contentsline {subsubsection}{ABC}{77}{section*.42}%
+\contentsline {subsubsection}{Application to stochastic volatility}{77}{section*.43}%
+\contentsline {subsection}{\numberline {6.2.2}Detecting trend in (decentralized) financial data}{77}{subsection.6.2.2}%
+\contentsline {subsubsection}{Hidden Markov models}{77}{section*.44}%
+\contentsline {subsubsection}{An example: Markov Modulated Geometric Brownian Motions}{77}{section*.45}%
+\contentsline {subsubsection}{Inference and filtering using a Gibbs sampler}{77}{section*.46}%
