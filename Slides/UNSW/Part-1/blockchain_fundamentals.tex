@@ -26,6 +26,32 @@
 \usetikzlibrary{decorations.text}
 \usetikzlibrary{snakes}
 
+\usepackage{algorithm}
+% \usepackage{algorithmic}
+\usepackage{algorithmicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={My title},    % title
+    pdfauthor={Author},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfcreator={Creator},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfkeywords={keyword1, key2, key3}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=cyan,         % color of file links
+    urlcolor=magenta        % color of external links
+}
+
 % \theoremstyle{definition} % insert bellow all blocks you want in normal text
 % \newtheorem{definition}{Definition}
 
@@ -157,7 +183,7 @@
 \title[BLOCKASTICS I]{Stochastic Models for blockchain analysis}
 \subtitle{Blockchain fundamentals and applications}
 \author{Pierre-O. Goffard}
-\institute[UNISTRA]{UNiversité de Strasbourg\\
+\institute[UNISTRA]{Université de Strasbourg\\
  \texttt{goffard@unistra.fr}
 }
 \date{\today}
@@ -244,36 +270,7 @@ A block contains
 \end{center}
 \url{https://www.blockchain.com/}
 \end{frame}
-% \begin{frame}{Cryptographic Hash function}
-% \small
-% A function that maps data of arbitratry size (message) to a bit array of fixed size (hash value)
-% $$
-% h:\{0,1\}^\ast\mapsto \{0,1\}^d. 
-% $$
-% A good hash function is
-% \begin{itemize}
-% \item deterministic
-% \item quick to compute
-% \item One way
-% \begin{itemize}
-%   \scriptsize
-% \item[$\hookrightarrow$] For a given hash value $\overline{h}$ it is hard to find a message $m$ such that 
-% $$
-% h(m) = \overline{h}
-% $$
-% \end{itemize}
-% \item Colision resistant 
-% \begin{itemize}
-% \item[$\hookrightarrow$] Impossible to find $m_1$ and $m_2$ such that 
-% $$
-% h(m_1) = h(m_2)
-% $$
-% \end{itemize}
-% \item Chaotic
-% $$m_1\approx m_2\Rightarrow  h(m_1) \neq h(m_2)$$
-% \end{itemize}
 
-% \end{frame}
 \begin{frame}{Consensus protocols}
 The mechanism to make all the nodes agree on a common data history.\\
 \vspace{0.3cm}
@@ -301,49 +298,7 @@ X.~Fu, H.~Wang, and P.~Shi, ``A survey of blockchain consensus algorithms:
   Sciences}, vol.~64, nov 2020.
 \end{thebibliography}
 \end{frame}
-% \begin{frame}{Proof of Work}
-% The nodes compete to solve a cryptographic problem by brute force search.
-% \begin{tcolorbox}[enhanced,drop shadow, title=PoW]
-% \begin{enumerate}
-%     \item Draw a random number (nonce)
-%     \[
-%     X\sim\{1,\ldots, 2^{32}\}.
-%     \]
-%     \item While $X > L$, where $L$ is the target then try again  
-% \end{enumerate}
-% \end{tcolorbox}
-% \vspace{0.3cm}
-% Nodes are chosen according to their computing power
-% {\footnotesize
-% \begin{thebibliography}{1}
-% \bibitem{Na08}
-% S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
-%   \href{https://bitcoin.org/bitcoin.pdf}{https://bitcoin.org/bitcoin.pdf},
-%   2008.
-% \end{thebibliography}  
-% }
-% \end{frame}
-% \begin{frame}{Proof of Stake}
-% PoW is slow and ressource consuming. Let $\{1,\ldots, N\}$ be a set of miner and $\{\pi_1,\ldots, \pi_N\}$ be their share of cryptocoins.
-% \begin{tcolorbox}[enhanced,drop shadow, title=PoS]
-% Node $i\in \{1,\ldots, N\}$ is selected with probability $\pi_i$ to append the next block
-% \end{tcolorbox}
-% \vspace{0.3cm}
-% Nodes are chosen according to what they own.
-% \begin{itemize}
-%   \item Nothing at stake problem
-%   \item Rich gets richer ? (To be discussed later on)
-% \end{itemize}
-% \footnotesize{
-% \begin{thebibliography}{1}
 
-% \bibitem{Saleh2020}
-% F.~Saleh, ``Blockchain without waste: Proof-of-stake,'' {\em The Review of
-%   Financial Studies}, vol.~34, pp.~1156--1190, jul 2020.
-
-% \end{thebibliography}}
-
-% \end{frame}
 \begin{frame}{Applications of blockchain: Cryptocurrency}
 \begin{columns}
 \begin{column}{0.5\textwidth}
@@ -370,27 +325,7 @@ S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
 \end{itemize}
 \end{frame}
 
-\begin{frame}{How does it work?}
-\begin{enumerate}
-  \item No central authority (Decentralized network)
-  \item Ledger to record all the transactions and coin ownership (blockchain)
-  \item A coin generation process (block finding reward)
-    \begin{itemize}
-    \item[$\hookrightarrow$] Incentive to the full nodes 
-  \end{itemize}
-  \item Ownership can be proved cryptographically (wallet associated to a public/private key)
-  \item Transactions can be issued by an entity proving ownership of the cryptographic unit (through the private key) 
-  \item The system cannot process more than one transaction associated to the same cryptographic unit (double spending)
-\end{enumerate}
-\tiny
-\begin{thebibliography}{1}
 
-\bibitem{Lansky2018}
-J.~Lansky, ``Possible state approaches to cryptocurrencies,'' {\em Journal of
-  Systems Integration}, vol.~9, pp.~19--31, jan 2018.
-
-\end{thebibliography}
-\end{frame}
 \section{Consensus protocols}
 \begin{frame}{Consensus protocol}
 \begin{tcolorbox}[enhanced,drop shadow, title=Definition]
@@ -424,9 +359,580 @@ L.~Lamport, R.~Shostak, and M.~Pease, ``The byzantine generals problem,'' {\em
 \end{enumerate}
 \end{frame}
 
+\begin{frame}{Byzantine General problem}
+    $n$ generals must agree on a common battle plan, to either 
+    \begin{itemize}
+    \item Attack (A) 
+    \item Retreat (R)
+  \end{itemize}
+\begin{tcolorbox}[enhanced,drop shadow, title=Problem]
+There are $m<n$ traitors among the generals
+\end{tcolorbox}
+\begin{enumerate}
+\item message $m(i,j)$ is sent to general $j$ by general $i$ 
+\item Consensus is reached as general $j$ applies 
+$$
+f(\{m(i,j);\text{ }i = 1,\ldots,n\}) = \begin{cases}
+A,& \text{if }\sum_{i = 1}^n\mathbb{I}_{m(i,j) =A} >n/2,\\
+R, &\text{else}.
+\end{cases}
+$$
+\end{enumerate}
+\end{frame}
+\begin{frame}[plain]
+\begin{figure}[!ht]
+ \begin{center}
+ \subfloat[No traitor]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=2cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)                     {$G_1$};
+\node[state]    (2)[below of=1]   {$G_2$};
+\node[state]    (3)[below of=2]   {$G_3$};
+\node[state]    (4)[below of=3]   {$G_4$};
+\node[state]    (5)[below of=4]   {$G_5$};
+\node[draw] (6) [right of=1]   { \footnotesize$f({A,R,R,A,A}) = A$};
+\node[draw] (7) [right of=2]   { \footnotesize$f({A,R,R,A,A}) = A$};
+\node[draw] (8) [right of=3]   { \footnotesize$f({A,R,R,A,A}) = A$};
+\node[draw] (9) [right of=
+4]   { \footnotesize$f({A,R,R,A,A}) = A$};
+\node[draw] (10) [right of=5]   { \footnotesize$f({A,R,R,A,A}) = A$};
+\path
+(1) edge[bend left]     node{ A}     (2)
+(2) edge[bend left]     node{ R}      (1)
+(2) edge[bend left]     node{ R}      (3)
+(3) edge[bend left]     node{ R}      (2)
+(3) edge[bend left]     node{ R}      (4)
+(4) edge[bend left]     node{ A}      (3)
+(4) edge[bend left]     node{ A}      (5)
+(5) edge[bend left]     node{ A}      (4)
+;
+\path
+(1) edge     (6)
+(2) edge     (7)
+(3) edge     (8)
+(4) edge     (9)
+(5) edge     (10)
+;
+\end{tikzpicture}
+\label{fig:no_traitor}}
+\hskip2em
+ \subfloat[One traitor]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=2cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)                     {$G_1$};
+\node[state]    (2)[below of=1]   {$G_2$};
+\node[state]    (3)[below of=2]   {$G_3$};
+\node[state]    (4)[below of=3]   {\color{red}$G_4$};
+\node[state]    (5)[below of=4]   {$G_5$};
+\node[draw] (6) [right of=1]   { \footnotesize$f({A,R,R,R,A}) = R$};
+\node[draw] (7) [right of=2]   { \footnotesize$f({A,R,R,R,A}) = R$};
+\node[draw] (8) [right of=3]   { \footnotesize$f({A,R,R,R,A}) = R$};
+\node[draw] (9) [right of=
+4]   { \footnotesize$f({A,R,R,?,A}) = ?$};
+\node[draw] (10) [right of=5]   { \footnotesize$f({A,R,R,A,A}) = A$};
+\path
+(1) edge[bend left]     node{ A}     (2)
+(2) edge[bend left]     node{ R}      (1)
+(2) edge[bend left]     node{ R}      (3)
+(3) edge[bend left]     node{ R}      (2)
+(3) edge[bend left]     node{ R}      (4)
+(4) edge[bend left]     node{ \color{red}R}      (3)
+(4) edge[bend left]     node{ \color{red}A}      (5)
+(5) edge[bend left]     node{ A}      (4)
+;
+\path
+(1) edge     (6)
+(2) edge     (7)
+(3) edge     (8)
+(4) edge     (9)
+(5) edge     (10)
+;
+\end{tikzpicture}
+\label{fig:_one_traitor}}
+\end{center}
+\caption{Majority vote with or without a traitor}
+\label{fig:majority_vote}
+\end{figure}
+\end{frame}
+\begin{frame}{Commanders and Lieutenants}
+One general is the commander while the others are the lieutenants
+\begin{tcolorbox}[enhanced,drop shadow, title=Objective]
+Design an algorithm so that the following conditions are met:
+\begin{itemize}
+  \item[C1] All the loyal lieutenants obey the same order
+  \item[C2] If the commanding general is loyal, then  every loyal lieutenants obey the order he sends
+\end{itemize}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,drop shadow, title=Byzantine Fault Tolerance Theorem (Lamport et al.)]
+There are no solution to the Byzantine General problem for $n<3m+1$ generals, where $m$ is the number of traitors.
+\end{tcolorbox}
+\end{frame}
+\begin{frame}[plain]
+\begin{figure}[!ht]
+ \begin{center}
+ \subfloat[Commander is loyal]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=4cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)               {C};
+\node[state]    (2)[below left of=1]   {L1};
+\node[state]    (3)[below right of=1]   {\begin{color}{red}L2 \end{color}};
+\path
+(1) edge[bend left]     node{A}     (3)
+(1) edge[bend right, above]     node{A}      (2)
+(2) edge[bend left]     node{A}      (3)
+(3) edge[bend left]     node{R}      (2)
+% (3) edge[bend left]     node{R}      (4)
+% (4) edge[bend left]     node{A}      (3)
+% (4) edge[bend left]     node{A}      (5)
+% (5) edge[bend left]     node{A}      (4)
+;
+\end{tikzpicture}
+\label{fig:commander_loyal}}
+\hskip2em
+\subfloat[Commander is a traitor]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=4cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)               {\begin{color}{red}C \end{color}};
+\node[state]    (2)[below left of=1]   {L1};
+\node[state]    (3)[below right of=1]   {L2};
+\path
+(1) edge[bend left, above]     node{A}     (3)
+(1) edge[bend right, above]     node{R}      (2)
+(2) edge[bend left]     node{R}      (3)
+(3) edge[bend left]     node{A}      (2)
+% (3) edge[bend left]     node{R}      (4)
+% (4) edge[bend left]     node{A}      (3)
+% (4) edge[bend left]     node{A}      (5)
+% (5) edge[bend left]     node{A}      (4)
+;
+\end{tikzpicture}
+\label{fig:commander_traitor}}
+\end{center}
+\caption{Majority vote with or without a traitor}
+\label{fig:majority_vote}
+\end{figure}
+\end{frame}
+% \begin{frame}[plain]
+% \begin{algorithm}[H]
+% \caption{The Oral message algorithm $\text{OM}(m)$}\label{alg:om}
+% \begin{algorithmic}
+% \If{$m=0$};
+% \For{$i =1 \to n-1$} 
+% \State Commander sends $v_i = v$ to lieutenant $i$ 
+% \State Lieutenant $i$ set their value to $v$
+% \EndFor
+% \EndIf
+% \If{$m>0$};
+% \For{$i =1 \to n-1$} 
+% \State Commander sends $v_i$ to lieutenant $i$ 
+% \State Lieutenant $i$ uses OM(m-1) to communicate $v_i$ to the $n-2$ lieutenants
+% \EndFor
+% \For{$i =1 \to n-1$} 
+% \State Lieutenant $i$ set their value to $f(v_1, \ldots, v_{n-1})$
+% \EndFor
+% \EndIf
+% \end{algorithmic}
+% \end{algorithm}
+% \end{frame}
+\begin{frame}{$n = 4$ and $m = 1$: Step 1}
+\begin{figure}[!ht]
+ \begin{center}
+ \subfloat[Commander is loyal]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=4cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)               {C};
+\node[state]    (2)[below left of=1]   {L1};
+\node[state]    (3)[below of=1]   {L2};
+\node[state]    (4)[below right of=1]   {\begin{color}{red}L3 \end{color}};
+\path
+(1) edge[bend right]     node{A}     (2)
+(1) edge[bend left]     node{A}      (4)
+(1) edge     node{A}      (3)
+% (2) edge[bend right, below]     node{A}      (3)
+% (3) edge[bend right, above]     node{A}      (2)
+% (4) edge[bend right, above]     node{R}      (3)
+% (3) edge[bend right, below]     node{A}      (4)
+;
+\end{tikzpicture}
+\label{fig:commander_loyal_om}}
+\hskip2em
+\subfloat[Commander is a traitor]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=4cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)               {\begin{color}{red}C \end{color}};
+\node[state]    (2)[below left of=1]   {L1};
+\node[state]    (3)[below of=1]   {L2};
+\node[state]    (4)[below right of=1]   {L3};
+\path
+(1) edge[bend right]     node{A}     (2)
+(1) edge[bend left]     node{R}      (4)
+(1) edge     node{R}      (3)
+% (2) edge[bend right, below]     node{A}      (3)
+% (3) edge[bend right, above]     node{R}      (2)
+% (4) edge[bend right, above]     node{R}      (3)
+% (3) edge[bend right, below]     node{R}      (4)
+;
+\end{tikzpicture}
+\label{fig:commander_traitor_om}}
+\end{center}
+\caption{Illustration of the \text{OM}(m) algorithm in the case where $n = 4$ and $m=1$.}
+\label{fig:OM_algorithm_illustration}
+\end{figure}
+\end{frame}
+\begin{frame}{$n = 4$ and $m = 1$: Step 2}
+\begin{figure}[!ht]
+ \begin{center}
+ \subfloat[Commander is loyal]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=4cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)               {C};
+\node[state]    (2)[below left of=1]   {L1};
+\node[state]    (3)[below of=1]   {L2};
+\node[state]    (4)[below right of=1]   {\begin{color}{red}L3 \end{color}};
+\path
+(1) edge[bend right]     node{A}     (2)
+(1) edge[bend left]     node{A}      (4)
+(1) edge     node{A}      (3)
+(2) edge[bend right, below]     node{A}      (3)
+(3) edge[bend right, above]     node{A}      (2)
+(4) edge[bend right, above]     node{R}      (3)
+(3) edge[bend right, below]     node{A}      (4)
+;
+\end{tikzpicture}
+\label{fig:commander_loyal_om}}
+\hskip2em
+\subfloat[Commander is a traitor]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=4cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.8]
+\node[state]    (1)               {\begin{color}{red}C \end{color}};
+\node[state]    (2)[below left of=1]   {L1};
+\node[state]    (3)[below of=1]   {L2};
+\node[state]    (4)[below right of=1]   {L3};
+\path
+(1) edge[bend right]     node{A}     (2)
+(1) edge[bend left]     node{R}      (4)
+(1) edge     node{R}      (3)
+(2) edge[bend right, below]     node{A}      (3)
+(3) edge[bend right, above]     node{R}      (2)
+(4) edge[bend right, above]     node{R}      (3)
+(3) edge[bend right, below]     node{R}      (4)
+;
+\end{tikzpicture}
+\label{fig:commander_traitor_om}}
+\end{center}
+\caption{Illustration of the \text{OM}(m) algorithm in the case where $n = 4$ and $m=1$.}
+\label{fig:OM_algorithm_illustration}
+\end{figure}
+\end{frame}
+\begin{frame}{$n = 4$ and $m = 1$: Step 3}
+\begin{figure}[!ht]
+ \begin{center}
+ \subfloat[Commander is loyal, C1 and C2]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=4cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.78]
+\node[state]    (1)               {C};
+\node[state]    (2)[below left of=1]   {L1};
+\node[state]    (3)[below of=1]   {L2};
+\node[state]    (4)[below right of=1]   {\begin{color}{red}L3 \end{color}};
+
+\path
+(1) edge[bend right]     node{A}     (2)
+(1) edge[bend left]     node{A}      (4)
+(1) edge     node{A}      (3)
+(2) edge[bend right, below]     node{A}      (3)
+(3) edge[bend right, above]     node{A}      (2)
+(4) edge[bend right, above]     node{R}      (3)
+(3) edge[bend right, below]     node{A}      (4)
+(2) edge[loop below] node{\tiny f(A,A,R)=A } (2)
+(3) edge[loop below] node{\tiny f(A,A,R)=A } (3)
+;
+\end{tikzpicture}
+\label{fig:commander_loyal_om}}
+\hskip1em
+\subfloat[Commander is a traitor, C1]{
+\begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=4cm]
+\tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=0.78]
+\node[state]    (1)               {\begin{color}{red}C \end{color}};
+\node[state]    (2)[below left of=1]   {L1};
+\node[state]    (3)[below of=1]   {L2};
+\node[state]    (4)[below right of=1]   {L3};
+\path
+(1) edge[bend right]     node{A}     (2)
+(1) edge[bend left]     node{R}      (4)
+(1) edge     node{R}      (3)
+(2) edge[bend right, below]     node{A}      (3)
+(3) edge[bend right, above]     node{R}      (2)
+(4) edge[bend right, above]     node{R}      (3)
+(3) edge[bend right, below]     node{R}      (4)
+(2) edge[loop below] node{\tiny f(A,R,R)=R } (2)
+(3) edge[loop below] node{\tiny f(A,R,R)=R } (3)
+;
+;
+\end{tikzpicture}
+\label{fig:commander_traitor_om}}
+\end{center}
+\caption{Illustration of the \text{OM}(m) algorithm in the case where $n = 4$ and $m=1$.}
+\label{fig:OM_algorithm_illustration}
+\end{figure}
+\end{frame}
+\begin{frame}{The problem with majority vote}
+The OM algorithm requires to send $n^{m+1}$
+\begin{itemize}
+  \item[\danger] Communication overhead
+  \item[\danger] Denial of service
+\end{itemize}
+\begin{tcolorbox}[enhanced,drop shadow, title=Solution]
+Leader based protocols!
+\end{tcolorbox}
+\end{frame}
+\begin{frame}{Proof-of-Work}
+\begin{tcolorbox}[enhanced,drop shadow, title=Objective]
+    Elect a leader based on computational effort to append the next block.
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{What's inside a block?}
+A block consists of 
+\begin{itemize}
+\item a header 
+\item a list of "transactions" that represents the information recorded through the blockchain. 
+\end{itemize}
+The header usually includes 
+\begin{itemize}
+\item the date and time of creation of the block, 
+\item the block height which is the index inside the blockchain, 
+\item the hash of the block 
+\item the hash of the previous block. 
+\end{itemize}
+\begin{tcolorbox}[enhanced,drop shadow, title=Question]
+What is the hash of a block?
+\end{tcolorbox}
+\end{frame}
+\begin{frame}{Cryptographic Hash function}
+\small
+A function that maps data of arbitratry size (message) to a bit array of fixed size (hash value)
+$$
+h:\{0,1\}^\ast\mapsto \{0,1\}^d. 
+$$
+A good hash function is
+\begin{itemize}
+\item deterministic
+\item quick to compute
+\item One way
+\begin{itemize}
+  \scriptsize
+\item[$\hookrightarrow$] For a given hash value $\overline{h}$ it is hard to find a message $m$ such that 
+$$
+h(m) = \overline{h}
+$$
+\end{itemize}
+\item Colision resistant 
+\begin{itemize}
+\item[$\hookrightarrow$] Impossible to find $m_1$ and $m_2$ such that 
+$$
+h(m_1) = h(m_2)
+$$
+\end{itemize}
+\item Chaotic
+$$m_1\approx m_2\Rightarrow  h(m_1) \neq h(m_2)$$
+\end{itemize}
+\end{frame}
+\begin{frame}{SHA-256}
+The SHA-256 function which converts any message into a hash value of $256$ bits.
+\begin{tcolorbox}[enhanced,drop shadow, title=Example]
+The hexadecimal digest of the message
+$$
+\texttt{Blockastics is fantastic}
+$$
+is 
+\footnotesize
+$$
+\texttt{60a147c28568dc925c347bce20c910ef90f3774e2501ac63344f3411b6a6bf79}
+$$
+\end{tcolorbox}
+\end{frame}
+\begin{frame}{Mining a block}
+\begin{figure}[!ht]
+    \includegraphics[width = \textwidth]{../../../Figures/block_not_mined.png}
+    \captionsetup{width=0.8\textwidth}
+    \centering
+    \caption{A block that has not been mined yet.}
+    \label{fig:block_not_mined}
+\end{figure}
+\end{frame}
+\begin{frame}{Mining a block}
+The maximum value for a 256 bits number is
+$$
+T_\text{max} = 2^{256}-1 \approx 1.16e^{77}.
+$$
+Mining consists in drawing at random a nonce 
+$$
+\text{Nonce} \sim \text{Unif}(\{0,\ldots, 2^{32}-1\}),
+$$
+until 
+$$
+h(\text{Nonce}|\text{Block info})<T,
+$$
+where $T$ is referred to as the target.
+\begin{tcolorbox}[enhanced,drop shadow, title=Difficulty of the cryptopuzzle]
+$$
+D = \frac{T_{\max}}{T}.
+$$
+\end{tcolorbox}
+
+\end{frame}
+\begin{frame}{Mining a block}
+If we set the difficulty to $D = 2^4$ then the hexadecimal digest must start with at least $1$ leading $0$
+\begin{figure}[!ht]
+    \includegraphics[width = \textwidth]{../../../Figures/block_mined.png}
+    \captionsetup{width=0.8\textwidth}
+    \centering
+    \caption{A mined block with a hash value having on leading zero.}
+    \label{fig:block_mined}
+\end{figure}
+The number of trial is geometrically distributed
+\begin{itemize}
+\item Exponential inter-block times
+\item Lenght of the blockchain = Poisson process
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conflict resolution in blockchain}
+\begin{tcolorbox}[enhanced,drop shadow, title=Fork]
+    A fork arises when there is a disagreement between the nodes resulting in several branches in the blockchain.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,drop shadow, title=LCR]
+    The \textit{Longest Chain Rule} states that if there exist several branches of the blockchain then the longest should be trusted.
+\end{tcolorbox}
+In practice 
+\begin{itemize}
+  \item A branch can be considered legitimate if it is $k\in\mathbb{N}$ blocks ahead of its pursuers.
+  \item Fork can be avoided when
+  $$
+  \text{block appending time}> \text{ propagation delay} 
+  $$
+\end{itemize}
+\end{frame}
+\begin{frame}{Bitcoin protocol}
+\begin{itemize}
+  \item One block every 10 minutes on average
+  \item Depends on the hashrate of the network
+  \item Difficulty adjustment every 2,016 blocks ($\approx$ two weeks)
+  \item Reward halving every 210,000 blocks
+\end{itemize}
+Check out \url{https://www.bitcoinblockhalf.com/}
+\end{frame}
+\begin{frame}{Mining equipments}
+How it started
+\begin{itemize}
+  \item CPU, GPU
+\end{itemize}
+How it is going
+\begin{itemize}
+  \item Application Specific Integrated Chip (ASIC)
+  \begin{itemize}
+  \item  \href{https://digiconomist.net/bitcoin-energy-consumption}{\texttt{Network electricity consumption}}
+  \item  \href{https://www.bitmain.com/}{\texttt{E-Waste}}
+  \item \href{https://mempool.space/graphs/mining/pools}{\texttt{Centralization issue}}
+  % \begin{itemize}
+  %   \item \href{https://mempool.space/graphs/mining/pools#3m}{Mining pool ranking}
+  %   \item \href{https://v3.antpool.com/minerIncomeRank}{Mining equipment profitability}
+  % \end{itemize}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof of Stake}
+PoW is slow and ressource consuming. Let $\{1,\ldots, N\}$ be a set of miners and $\{\pi_1,\ldots, \pi_N\}$ be their share of cryptocoins.
+\begin{tcolorbox}[enhanced,drop shadow, title=PoS]
+\begin{enumerate}
+\item Node $i\in \{1,\ldots, N\}$ is selected with probability $\pi_i$ to append the next block
+\end{enumerate}
+\end{tcolorbox}
+\vspace{0.3cm}
+Nodes are chosen according to what they own.
+\begin{itemize}
+  \item Nothing at stake problem
+  \item Rich gets richer ? 
+  \item \url{https://www.peercoin.net/}
+\end{itemize}
+\footnotesize{
+\begin{thebibliography}{1}
+\bibitem{Saleh2020}
+F.~Saleh, ``Blockchain without waste: Proof-of-stake,'' {\em The Review of
+  Financial Studies}, vol.~34, pp.~1156--1190, jul 2020.
+\end{thebibliography}}
+\end{frame}
+% \begin{frame}{Using storage}
+% \begin{itemize}
+%   \item Proof-Of-Capacity: 
+%   \begin{enumerate}
+%     \item Store solution to the PoW cryptopuzzle in a large file
+%     \item Read through the cache for an acceptable solution
+%   \end{enumerate}
+%   \item Proof-of-Spacetime
+%     \begin{enumerate}
+%     \item Deliver proof of storing some data during some time
+%     \item Probability of being selected proportional to the amount of data stored times duration of the storage
+%     \item \url{https://filecoin.io/}
+%   \end{enumerate}
+% \end{itemize}
+
+% \end{frame}
+% \begin{frame}{Using bandwidth}
+% Proof-of-Interaction
+% \begin{itemize}
+%   \item The node receives a list of node they must get in touch with 
+%   \item The first one who is able to complete the task gets a reward and share it with the responding nodes
+% \end{itemize}
+% For an up-to-date list of consensus protocol\\
+% \begin{center}
+% \url{https://tokens-economy.gitbook.io/consensus/}
+% \end{center}
+% \end{frame}
+
+
+
+
 
 \section{Decentralized Finance (and insurance)}
 
+\begin{frame}{cryptocurrencies}
+\begin{enumerate}
+  \item No central authority (Decentralized network)
+  \item Ledger to record all the transactions and coin ownership (blockchain)
+  \item A coin generation process (block finding reward)
+    \begin{itemize}
+    \item[$\hookrightarrow$] Incentive to the full nodes 
+  \end{itemize}
+  \item Ownership can be proved cryptographically (wallet associated to a public/private key)
+  \item Transactions can be issued by an entity proving ownership of the cryptographic unit (through the private key) 
+  \item The system cannot process more than one transaction associated to the same cryptographic unit (double spending)
+\end{enumerate}
+\tiny
+\begin{thebibliography}{1}
+
+\bibitem{Lansky2018}
+J.~Lansky, ``Possible state approaches to cryptocurrencies,'' {\em Journal of
+  Systems Integration}, vol.~9, pp.~19--31, jan 2018.
+
+\end{thebibliography}
+\end{frame}
+
+\begin{frame}{Decentralized Exchange platforms}
+\begin{itemize}
+  \item Liquidity providers
+  \item Stablle coins
+  \item Uniswap
+\end{itemize}
+\end{frame}
+\begin{frame}{Automated Market Makers}
+\begin{itemize}
+  \item liquidity providers
+  \item impermanent loss
+  \item Constant function? 
+  \end{itemize}
+\end{frame}
 
 
 \end{document}
