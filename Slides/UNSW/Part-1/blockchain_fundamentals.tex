@@ -435,7 +435,7 @@ The SHA-256 function which converts any message into a hash value of $256$ bits.
 \begin{tcolorbox}[enhanced,drop shadow, title=Example]
 The hexadecimal digest of the message
 $$
-\texttt{Happy new year}
+\texttt{Is DeFi the future?}
 $$
 is 
 \footnotesize
@@ -857,9 +857,15 @@ S.~M. Werner, D.~Perez, L.~Gudgeon, A.~Klages-Mundt, D.~Harz, and W.~J.
 \begin{frame}{Decentralized Exchange platforms}
 \begin{tcolorbox}[enhanced,drop shadow, title= Centralized Exchange]
 Binance, Coinbase, Kraken,...
+\begin{itemize}
+  \item[$\Rightarrow$] Order book
+\end{itemize}
 \end{tcolorbox}
 \begin{tcolorbox}[enhanced,drop shadow, title= Decentralized Exchange]
-Exchange where you trade one token for another through a smart contract.
+Exchange where you trade one token for another through a smart contract on the Ethereum blockchain (ETH).
+\begin{itemize}
+  \item[$\Rightarrow$] Automated Market Makers (AMM) and Liquidity Providers (LPs)
+\end{itemize}
 \end{tcolorbox}
 
  \end{frame}
@@ -893,15 +899,20 @@ Exchange where you trade one token for another through a smart contract.
       \end{tabular}
     \end{table}
   \end{columns}
-  Lots of orders need to be issued
+  and a market maker in the middle to offer liquidity...
+  \pause
   \begin{itemize}
-    \item Expensive
-    \item Slow
-  \end{itemize}
+  \item[\danger] Lots of transaction must be issued
+  \begin{itemize}
+  \item[$\hookrightarrow$] Slow (10-15 txs/s)
+  \item[$\hookrightarrow$] Expensive (gas fees)
+\end{itemize}
+\end{itemize}
+  
  \end{frame}
 
 \begin{frame}{Automated Market Makers (AMM)}
-Instead of order book AMM relies on a simple mechanism based on 
+A blockchain requires an algorithm $\Rightarrow$ AMM
 \begin{itemize}
   \item liquidity pools
   \item Constant Function Market Makers
