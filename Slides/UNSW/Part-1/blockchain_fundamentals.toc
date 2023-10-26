@@ -1,4 +1,0 @@
-\babel@toc {french}{}\relax 
-\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
-\beamer@sectionintoc {2}{Consensus protocol}{8}{0}{2}
-\beamer@sectionintoc {3}{Cryptocurrencies and Decentralized Finance (and insurance)}{25}{0}{3}

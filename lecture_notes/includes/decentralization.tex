@@ -11,11 +11,11 @@ The \textit{Proof-of-Stake} protocol is a leader based consensus protocol that a
 $$
 Z^{(x)}_n = Z^{(x)}_0 + r\sum_{k = 1}^n\mathbb{I}_{A_{k}^{(x)}}\text{ and }Z_n = \sum_{x\in E}Z^{(x)}_n = Z_0 + nr,    
 $$
-where $A_{n}^{(x)}$ is the event that a coin own by peer $x\in E$ is drawn at time $n\in\mathbb{N}$. Let $(Z_n^{(x)})_{n\geq0}$ be the proportion of coins owned by peer $x$ at time $n$, given by 
+where $A_{n}^{(x)}$ is the event that a coin own by peer $x\in E$ is drawn at time $n\in\mathbb{N}$. Let $(W_n^{(x)})_{n\geq0}$ be the proportion of coins owned by peer $x$ at time $n$, given by 
 $$
 W_n^{(x)} = \frac{Z^{(x)}_n}{Z_n}. 
 $$
-Let $\mathcal{F}_n = \sigma(\{Y_k^{(x)}\text{ , }x\in E, k\leq n\})$. Note that 
+Let $\mathcal{F}_n = \sigma(\{Z_k^{(x)}\text{ , }x\in E, k\leq n\})$. Note that 
 $$
 \mathbb{P}\left(A_{n}^{(x)}|\mathcal{F}_{n-1}\right) = W_{n-1}^{(x)}.
 $$
@@ -23,7 +23,7 @@ $$
 The following result provide the average behaviour of the share of coins owned by each peer.
 \begin{prop}\label{prop:average_stakes}
 $$
-\mathbb{E}(W_n^{(x)}) = \frac{Z_0^{(x)}}{Z_0},\text{ }x\in E\text{ }, n\geq0.
+\mathbb{E}\left(W_n^{(x)}\right) = \frac{Z_0^{(x)}}{Z_0},\text{ }x\in E\text{ }, n\geq0.
 $$
 \end{prop}
 \begin{proof}
@@ -31,7 +31,7 @@ We show that $(W_n^{(x)})_{n\geq0}$ is a martingale. We have that
 \begin{eqnarray*}
 \mathbb{E}\left[W_n^{(x)}|\mathcal{F}_{n-1}\right]&=& \mathbb{E}\left[\frac{Z^{(x)}_{n-1} + r\mathbb{I}_{A_n^{(x)}}}{Z_0 + rn}\Big \rvert\mathcal{F}_{n-1}\right]\\
 &=& \frac{Z^{(x)}_{n-1} }{Z_0 + rn}+\frac{rW_{n-1}^{x}}{Z_0 + rn}\\\
-&=& \frac{Z^{(x)}[Z_0 + r(n-1)]}{Z_0 + rn}+\frac{rW_{n-1}^{x}}{Z_0 + rn}\\
+&=& \frac{W_{n-1}^{(x)}[Z_0 + r(n-1)]}{Z_0 + rn}+\frac{rW_{n-1}^{x}}{Z_0 + rn}\\
 &=&W_{n-1}^{x}.
 \end{eqnarray*}
 It then follows that 
@@ -73,7 +73,7 @@ x>0\\
 \end{equation}
 
 \begin{prop}\label{prop:gamma_to_dirichlet}
-Let $X_i\sim \GammaDist(\alpha_i,1)$ for $i = 1,\ldots, p$ be independent ranodm variables then 
+Let $X_i\sim \GammaDist(\alpha_i,1)$ for $i = 1,\ldots, p$ be independent random variables then 
 \[
 \left(\frac{X_1}{\sum_{i=1}^{p}X_i},\ldots, \frac{X_p}{\sum_{i=1}^{p}X_i}\right)\sim\text{Dir}(\alpha_1,\ldots, \alpha_p)
 \]
