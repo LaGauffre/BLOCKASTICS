@@ -1,0 +1,393 @@
+\begin{thebibliography}{10}
+
+\bibitem{GoHoKrTa16}
+J.~G{\"o}bel, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor, ``Bitcoin
+  blockchain dynamics: The selfish-mine strategy in the presence of propagation
+  delay,'' {\em Performance Evaluation}, vol.~104, pp.~23--41, 2016.
+
+\bibitem{Bu14}
+V.~Buterin, ``A next-generation smart contract and decentralized application
+  platform,'' {\em \url{https://github.com/ethereum/wiki/wiki/White-Paper}},
+  2014.
+
+\bibitem{Na08}
+S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system.'' Available at
+  \href{https://bitcoin.org/bitcoin.pdf}{https://bitcoin.org/bitcoin.pdf},
+  2008.
+
+\bibitem{Goffard2019}
+P.-O. Goffard, ``Fraud risk assessment within blockchain transactions,'' {\em
+  Advances in Applied Probability}, vol.~51, pp.~443--467, jun 2019.
+\newblock \url{https://hal.archives-ouvertes.fr/hal-01716687v2}.
+
+\bibitem{Schilling2019}
+L.~Schilling and H.~Uhlig, ``Some simple bitcoin economics,'' {\em Journal of
+  Monetary Economics}, vol.~106, pp.~16--26, oct 2019.
+
+\bibitem{pfeffer2017institutional}
+J.~Pfeffer, ``An (institutional) investor’s take on cryptoassets,'' {\em
+  Medium}, 2017.
+
+\bibitem{Bowden2020}
+R.~Bowden, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor, ``Modeling and
+  analysis of block arrival times in the bitcoin blockchain,'' {\em Stochastic
+  Models}, vol.~36, pp.~602--637, jul 2020.
+
+\bibitem{Asmussen_2010}
+S.~Asmussen and H.~Albrecher, {\em Ruin Probabilities}.
+\newblock {WORLD} {SCIENTIFIC}, sep 2010.
+
+\bibitem{Cong2020}
+L.~W. Cong, Z.~He, and J.~Li, ``Decentralized mining in centralized pools,''
+  {\em The Review of Financial Studies}, vol.~34, pp.~1191--1235, apr 2020.
+
+\bibitem{Cong2020a}
+L.~W. Cong, Y.~Li, and N.~Wang, ``Tokenomics: Dynamic adoption and valuation,''
+  {\em The Review of Financial Studies}, vol.~34, pp.~1105--1155, aug 2020.
+
+\bibitem{Eyal2014}
+I.~Eyal and E.~G. Sirer, ``Majority is not enough: Bitcoin mining is
+  vulnerable,'' in {\em Financial Cryptography and Data Security},
+  pp.~436--454, Springer Berlin Heidelberg, 2014.
+
+\bibitem{Fu2020}
+X.~Fu, H.~Wang, and P.~Shi, ``A survey of blockchain consensus algorithms:
+  mechanism, design and applications,'' {\em Science China Information
+  Sciences}, vol.~64, nov 2020.
+
+\bibitem{Gochhayat2020}
+S.~P. Gochhayat, S.~Shetty, R.~Mukkamala, P.~Foytik, G.~A. Kamhoua, and
+  L.~Njilla, ``Measuring decentrality in blockchain based systems,'' {\em
+  {IEEE} Access}, vol.~8, pp.~178372--178390, 2020.
+
+\bibitem{Kawase2017}
+Y.~Kawase and S.~Kasahara, ``Transaction-confirmation time for bitcoin:
+  A~queueing analytical approach to~blockchain~mechanism,'' in {\em Queueing
+  Theory and Network Applications}, pp.~75--88, Springer International
+  Publishing, 2017.
+
+\bibitem{OECD}
+OECD, ``The tokenisation of assets and potential implications for financial
+  markets,'' tech. rep., 2020.
+
+\bibitem{rosenfeld2011analysis}
+M.~Rosenfeld, ``Analysis of bitcoin pooled mining reward systems,'' 2011.
+
+\bibitem{Saleh2020}
+F.~Saleh, ``Blockchain without waste: Proof-of-stake,'' {\em The Review of
+  Financial Studies}, vol.~34, pp.~1156--1190, jul 2020.
+
+\bibitem{Rosu2021}
+I.~Ro{\c{s}}u and F.~Saleh, ``Evolution of shares in a proof-of-stake
+  cryptocurrency,'' {\em Management Science}, vol.~67, pp.~661--672, feb 2021.
+
+\bibitem{Li2018}
+Q.-L. Li, J.-Y. Ma, and Y.-X. Chang, ``Blockchain queue theory,'' in {\em
+  Computational Data and Social Networks}, pp.~25--40, Springer International
+  Publishing, 2018.
+
+\bibitem{werner2021sok}
+S.~M. Werner, D.~Perez, L.~Gudgeon, A.~Klages-Mundt, D.~Harz, and W.~J.
+  Knottenbelt, ``Sok: Decentralized finance (defi),'' 2021.
+
+\bibitem{Liu2020}
+W.~Liu, X.~Liang, and G.~Cui, ``Common risk factors in the returns on
+  cryptocurrencies,'' {\em Economic Modelling}, vol.~86, pp.~299--305, mar
+  2020.
+
+\bibitem{Schrijvers2017}
+O.~Schrijvers, J.~Bonneau, D.~Boneh, and T.~Roughgarden, ``Incentive
+  compatibility of bitcoin mining pool reward functions,'' in {\em Financial
+  Cryptography and Data Security}, pp.~477--498, Springer Berlin Heidelberg,
+  2017.
+
+\bibitem{Chaudhry1981}
+M.~Chaudhry and J.~Templeton, ``The queuing system m/{GB}/l and its
+  ramifications,'' {\em European Journal of Operational Research}, vol.~6,
+  pp.~56--60, jan 1981.
+
+\bibitem{Bailey1954}
+N.~T.~J. Bailey, ``On queueing processes with bulk service,'' {\em Journal of
+  the Royal Statistical Society: Series B (Methodological)}, vol.~16,
+  pp.~80--87, jan 1954.
+
+\bibitem{Cox1955}
+D.~R. Cox, ``The analysis of non-markovian stochastic processes by the
+  inclusion of supplementary variables,'' {\em Mathematical Proceedings of the
+  Cambridge Philosophical Society}, vol.~51, pp.~433--441, jul 1955.
+
+\bibitem{rosenfeld2014analysis}
+M.~Rosenfeld, ``Analysis of hashrate-based double spending,'' {\em arXiv
+  preprint arXiv:1402.2009}, 2014.
+
+\bibitem{Blackwell1973}
+D.~Blackwell and J.~B. MacQueen, ``Ferguson distributions via polya urn
+  schemes,'' {\em The Annals of Statistics}, vol.~1, mar 1973.
+
+\bibitem{Lansky2018}
+J.~Lansky, ``Possible state approaches to cryptocurrencies,'' {\em Journal of
+  Systems Integration}, vol.~9, pp.~19--31, jan 2018.
+
+\bibitem{Hargrave2019}
+J.~Hargrave, N.~Sahdev, and O.~Feldmeier, ``How value is created in tokenized
+  assets,'' in {\em Blockchain Economics: Implications of Distributed Ledgers},
+  pp.~125--143, {WORLD} {SCIENTIFIC} ({EUROPE}), jan 2019.
+
+\bibitem{Baumol1952}
+W.~J. Baumol, ``The transactions demand for cash: An inventory theoretic
+  approach,'' {\em The Quarterly Journal of Economics}, vol.~66, p.~545, nov
+  1952.
+
+\bibitem{Gan2021}
+J.~R. Gan, G.~Tsoukalas, and S.~Netessine, ``Initial coin offerings,
+  speculation, and asset tokenization,'' {\em Management Science}, vol.~67,
+  pp.~914--931, feb 2021.
+
+\bibitem{slush}
+slush pool, ``Reward system specifications,'' 2021.
+
+\bibitem{bertucci2020mean}
+C.~Bertucci, L.~Bertucci, J.-M. Lasry, and P.-L. Lions, ``Mean field game
+  approach to bitcoin mining,'' 2020.
+
+\bibitem{Alsabah2018}
+H.~Alsabah and A.~Capponi, ``Bitcoin mining arms race: R{\&}d with
+  spillovers,'' {\em {SSRN} Electronic Journal}, 2018.
+
+\bibitem{li2019mean}
+Z.~Li, A.~M. Reppen, and R.~Sircar, ``A mean field games model for
+  cryptocurrency mining,'' 2019.
+
+\bibitem{Sapirshtein2017}
+A.~Sapirshtein, Y.~Sompolinsky, and A.~Zohar, ``Optimal selfish mining
+  strategies in bitcoin,'' in {\em Financial Cryptography and Data Security},
+  pp.~515--532, Springer Berlin Heidelberg, 2017.
+
+\bibitem{Grunspan2021}
+C.~Grunspan and R.~P{\'{e}}rez-Marco, ``{ON} {PROFITABILITY} {OF} {NAKAMOTO}
+  {DOUBLE} {SPEND},'' {\em Probability in the Engineering and Informational
+  Sciences}, pp.~1--15, feb 2021.
+
+\bibitem{Jang2020}
+J.~Jang and H.-N. Lee, ``Profitable double-spending attacks,'' {\em Applied
+  Sciences}, vol.~10, p.~8477, nov 2020.
+
+\bibitem{Brown2020}
+M.~Brown, E.~Peköz, and S.~Ross, ``{BLOCKCHAIN} {DOUBLE}-{SPEND} {ATTACK}
+  {DURATION},'' {\em Probability in the Engineering and Informational
+  Sciences}, pp.~1--9, may 2020.
+
+\bibitem{GRUNSPAN2018}
+C.~GRUNSPAN and R.~P{\'{E}}REZ-MARCO, ``{DOUBLE} {SPEND} {RACES},'' {\em
+  International Journal of Theoretical and Applied Finance}, vol.~21,
+  p.~1850053, dec 2018.
+
+\bibitem{grunspan2019profitability}
+C.~Grunspan and R.~Pérez-Marco, ``On profitability of selfish mining,'' 2019.
+
+\bibitem{Goebel2016}
+J.~Göbel, H.~Keeler, A.~Krzesinski, and P.~Taylor, ``Bitcoin
+  blockchain~dynamics: The selfish-mine strategy in the presence of propagation
+  delay,'' {\em Performance Evaluation}, vol.~104, pp.~23--41, oct 2016.
+
+\bibitem{Little1961}
+J.~D.~C. Little, ``A proof for the queuing formula:{L}= $ \lambda${W},'' {\em
+  Operations Research}, vol.~9, pp.~383--387, jun 1961.
+
+\bibitem{Li2019}
+Q.-L. Li, J.-Y. Ma, Y.-X. Chang, F.-Q. Ma, and H.-B. Yu, ``Markov processes in
+  blockchain systems,'' {\em Computational Social Networks}, vol.~6, jul 2019.
+
+\bibitem{Kawase2020}
+Y.~Kawase, , and S.~Kasahara, ``Priority queueing analysis of
+  transaction-confirmation time for bitcoin,'' {\em Journal of Industrial {\&}
+  Management Optimization}, vol.~16, no.~3, pp.~1077--1098, 2020.
+
+\bibitem{smith}
+H.~L. Smith, {\em An introduction to delay differential equations with
+  applications to the life sciences}.
+\newblock Springer, New York, 2011.
+
+\bibitem{lamport1982the}
+L.~Lamport, R.~Shostak, and M.~Pease, ``The byzantine generals problem,'' {\em
+  ACM Transactions on Programming Languages and Systems}, pp.~382--401, July
+  1982.
+
+\bibitem{Abegg2021}
+J.-P. Abegg, Q.~Bramas, and T.~Noël, ``Blockchain using
+  proof-of-interaction,'' in {\em Networked Systems}, pp.~129--143, Springer
+  International Publishing, 2021.
+
+\bibitem{Anceaume_2018}
+E.~Anceaume, A.~Guellier, R.~Ludinard, and B.~Sericola, ``Sycomore: A
+  permissionless distributed ledger that self-adapts to transactions demand,''
+  in {\em 2018 {IEEE} 17th International Symposium on Network Computing and
+  Applications ({NCA})}, {IEEE}, nov 2018.
+
+\bibitem{Biais2019}
+B.~Biais, C.~Bisi{\`{e}}re, M.~Bouvard, and C.~Casamatta, ``The blockchain folk
+  theorem,'' {\em The Review of Financial Studies}, vol.~32, pp.~1662--1715,
+  apr 2019.
+
+\bibitem{xu2021sok}
+J.~Xu, N.~Vavryk, K.~Paruch, and S.~Cousaert, ``Sok: Decentralized exchanges
+  (dex) with automated market maker (amm) protocols,'' 2021.
+
+\bibitem{protocol2017filecoin}
+P.~Labs, ``Filecoin: A decentralized storage network,'' {\em White paper},
+  2017.
+\newblock \url{https://filecoin.io/filecoin.pdf}.
+
+\bibitem{10.5555/296806.296824}
+M.~Castro and B.~Liskov, ``Practical byzantine fault tolerance,'' in {\em
+  Proceedings of the Third Symposium on Operating Systems Design and
+  Implementation}, OSDI '99, (USA), p.~173–186, USENIX Association, 1999.
+
+\bibitem{cryptoeprint:2011:565}
+S.~Al-Kuwari, J.~H. Davenport, and R.~J. Bradford, ``Cryptographic hash
+  functions: Recent design trends and security notions.'' Cryptology ePrint
+  Archive, Report 2011/565, 2011.
+\newblock \url{https://ia.cr/2011/565}.
+
+\bibitem{https://doi.org/10.1142/11857}
+A.~Antonopoulos, {\em Mastering Bitcoin}.
+\newblock O'Reilly UK Ltd., July 2017.
+
+\bibitem{ppcoin}
+S.~King and S.~Nadal, ``Ppcoin: Peer-to-peer crypto-currency with
+  proof-of-stake,'' {\em whitepaper}, 2012.
+
+\bibitem{Hofstad2008}
+R.~van~der Hofstad and M.~Keane, ``An elementary proof of the hitting time
+  theorem,'' {\em The American Mathematical Monthly}, vol.~115, pp.~753--756,
+  oct 2008.
+
+\bibitem{Renault2007}
+M.~Renault, ``Four proofs of the ballot theorem,'' {\em Mathematics Magazine},
+  vol.~80, pp.~345--352, dec 2007.
+
+\bibitem{Takacs1962}
+L.~Tak{\'{a}}cs, ``A generalization of the ballot problem and its application
+  in the theory of queues,'' {\em Journal of the American Statistical
+  Association}, vol.~57, pp.~327--337, jun 1962.
+
+\bibitem{Lefevre2011}
+C.~Lef{\`{e}}vre and P.~Picard, ``A new look at the homogeneous risk model,''
+  {\em Insurance: Mathematics and Economics}, vol.~49, pp.~512--519, nov 2011.
+
+\bibitem{Ta2015}
+B.~Q. Ta, ``Probabilistic approach to appell polynomials,'' {\em Expositiones
+  Mathematicae}, vol.~33, no.~3, pp.~269--294, 2015.
+
+\bibitem{Goffard2018}
+P.-O. Goffard and C.~Lef{\`{e}}vre, ``Duality in ruin problems for ordered risk
+  models,'' {\em Insurance: Mathematics and Economics}, vol.~78, pp.~44--52,
+  jan 2018.
+
+\bibitem{Avanzi2007}
+B.~Avanzi, H.~U. Gerber, and E.~S. Shiu, ``Optimal dividends in the dual
+  model,'' {\em Insurance: Mathematics and Economics}, vol.~41, pp.~111--123,
+  jul 2007.
+
+\bibitem{Goffard2017}
+P.-O. Goffard and C.~Lef{\`{e}}vre, ``Boundary crossing of order statistics
+  point processes,'' {\em Journal of Mathematical Analysis and Applications},
+  vol.~447, pp.~890--907, mar 2017.
+
+\bibitem{Hansjoerg2022}
+H.~Albrecher and P.-O. Goffard, ``On the profitability of selfish blockchain
+  mining under consideration of ruin,'' {\em Operations Research}, vol.~70,
+  pp.~179--200, jan 2022.
+
+\bibitem{Kingman1993}
+J.~F.~C. Kingman, {\em Poisson Processes}.
+\newblock OXFORD UNIV PR, Jan. 1993.
+
+\bibitem{Albrecher2022}
+H.~Albrecher, D.~Finger, and P.-O. Goffard, ``Blockchain mining in pools:
+  Analyzing the trade-off between profitability and ruin,'' {\em Insurance:
+  Mathematics and Economics}, vol.~105, pp.~313--335, jul 2022.
+
+\bibitem{Fanti2019}
+G.~Fanti, L.~Kogan, S.~Oh, K.~Ruan, P.~Viswanath, and G.~Wang, ``Compounding of
+  wealth in proof-of-stake cryptocurrencies,'' in {\em Financial Cryptography
+  and Data Security}, pp.~42--61, Springer International Publishing, 2019.
+
+\bibitem{Goffard2015}
+P.-O. Goffard, S.~Loisel, and D.~Pommeret, ``Polynomial approximations for
+  bivariate aggregate claims amount probability distributions,'' {\em
+  Methodology and Computing in Applied Probability}, vol.~19, pp.~151--174, nov
+  2015.
+
+\bibitem{Goffard2016}
+P.-O. Goffard, S.~Loisel, and D.~Pommeret, ``A polynomial expansion to
+  approximate the ultimate ruin probability in the compound poisson ruin
+  model,'' {\em Journal of Computational and Applied Mathematics}, vol.~296,
+  pp.~499--511, apr 2016.
+
+\bibitem{Asmussen2019}
+S.~Asmussen, P.-O. Goffard, and P.~J. Laub, ``Orthonormal polynomial expansions
+  and lognormal sum densities,'' in {\em Risk and Stochastics}, pp.~127--150,
+  {WORLD} {SCIENTIFIC} ({EUROPE}), apr 2019.
+
+\bibitem{Goffard2020}
+P.-O. Goffard and P.~J. Laub, ``Orthogonal polynomial expansions to evaluate
+  stop-loss premiums,'' {\em Journal of Computational and Applied Mathematics},
+  vol.~370, p.~112648, may 2020.
+
+\bibitem{Barigou2022}
+K.~Barigou, P.-O. Goffard, S.~Loisel, and Y.~Salhi, ``Bayesian model averaging
+  for mortality forecasting using leave-future-out validation,'' {\em
+  International Journal of Forecasting}, mar 2022.
+
+\bibitem{Goffard2017a}
+P.-O. Goffard, ``Two-sided exit problems in the ordered risk model,'' {\em
+  Methodology and Computing in Applied Probability}, vol.~21, pp.~539--549, nov
+  2017.
+
+\bibitem{Goffard2021}
+P.-O. Goffard and P.~J. Laub, ``Approximate bayesian computations to fit and
+  compare insurance loss models,'' {\em Insurance: Mathematics and Economics},
+  vol.~100, pp.~350--371, sep 2021.
+
+\bibitem{levine}
+M.~Levine, ``The crypto story.'' Bloomberg business week, Oct. 2022.
+\newblock
+  \url{https://www.bloomberg.com/features/2022-the-crypto-story/?leadSource=uverify%20wall}.
+
+\bibitem{Lipton2021}
+A.~Lipton and A.~Treccani, {\em Blockchain and Distributed Ledgers}.
+\newblock {WORLD} {SCIENTIFIC}, apr 2021.
+
+\bibitem{Dembo2020}
+A.~Dembo, S.~Kannan, E.~N. Tas, D.~Tse, P.~Viswanath, X.~Wang, and O.~Zeitouni,
+  ``Everything is a race and nakamoto always wins,'' in {\em Proceedings of the
+  2020 {ACM} {SIGSAC} Conference on Computer and Communications Security},
+  {ACM}, oct 2020.
+
+\bibitem{Bayraktar2013}
+E.~Bayraktar, A.~E. Kyprianou, and K.~Yamazaki, ``{ON} {OPTIMAL} {DIVIDENDS}
+  {IN} {THE} {DUAL} {MODEL},'' {\em {ASTIN} Bulletin}, vol.~43, pp.~359--372,
+  jul 2013.
+
+\bibitem{Avram2007}
+F.~Avram, Z.~Palmowski, and M.~R. Pistorius, ``On the optimal dividend problem
+  for a spectrally negative l{\'{e}}vy process,'' {\em
+  https://doi.org/10.1111/j.1467-9868.2009.00736.x}, vol.~17, feb 2007.
+
+\bibitem{Avram2019}
+F.~Avram, A.~Horv{\'{a}}th, S.~Provost, and U.~Solon, ``On the pad{\'{e}} and
+  laguerre{\textendash}tricomi{\textendash}weeks moments based approximations
+  of the scale function w and of the optimal dividends barrier for spectrally
+  negative l{\'{e}}vy risk processes,'' {\em Risks}, vol.~7, p.~121, dec 2019.
+
+\bibitem{Andrieu2010}
+C.~Andrieu, A.~Doucet, and R.~Holenstein, ``Particle markov chain monte carlo
+  methods,'' {\em Journal of the Royal Statistical Society: Series B
+  (Statistical Methodology)}, vol.~72, pp.~269--342, jun 2010.
+
+\bibitem{Goffard2022}
+P.-O. Goffard, ``Sequential monte carlo samplers to fit and compare insurance
+  loss models,'' {\em Scandinavian Actuarial Journal}, pp.~1--23, nov 2022.
+
+\end{thebibliography}

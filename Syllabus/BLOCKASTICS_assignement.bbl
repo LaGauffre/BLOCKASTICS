@@ -1,0 +1,57 @@
+\begin{thebibliography}{10}
+
+\bibitem{Li2018}
+Q.-L. Li, J.-Y. Ma, and Y.-X. Chang, {\em Blockchain Queue Theory}, pp.~25--40.
+\newblock Springer International Publishing, 2018.
+
+\bibitem{Angeris2022}
+G.~Angeris, A.~Agrawal, A.~Evans, T.~Chitra, and S.~Boyd, {\em Constant
+  Function Market Makers: Multi-asset Trades via Convex Optimization},
+  pp.~415--444.
+\newblock Springer International Publishing, 2022.
+
+\bibitem{Cartea2023}
+A.~Cartea, F.~Drissi, and M.~Monga, ``Execution and statistical arbitrage with
+  signals in multiple automated market makers,'' in {\em 2023 IEEE 43rd
+  International Conference on Distributed Computing Systems Workshops
+  (ICDCSW)}, pp.~37--42, 2023.
+
+\bibitem{Hansjoerg2022OR}
+H.~Albrecher and P.-O. Goffard, ``On the profitability of selfish blockchain
+  mining under consideration of ruin,'' {\em Operations Research}, vol.~70,
+  pp.~179--200, Jan. 2022.
+
+\bibitem{Li2024}
+Z.~Li, A.~M. Reppen, and R.~Sircar, ``A mean field games model for
+  cryptocurrency mining,'' {\em Management Science}, vol.~70, pp.~2188--2208,
+  Apr. 2024.
+
+\bibitem{Bowden2020}
+R.~Bowden, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor, ``Modeling and
+  analysis of block arrival times in the bitcoin blockchain,'' {\em Stochastic
+  Models}, vol.~36, pp.~602--637, July 2020.
+
+\bibitem{Tiwari2019}
+A.~K. Tiwari, S.~Kumar, and R.~Pathak, ``Modelling the dynamics of bitcoin and
+  litecoin: Garch versus stochastic volatility models,'' {\em Applied
+  Economics}, vol.~51, pp.~4073--4082, Mar. 2019.
+
+\bibitem{Dembo2020}
+A.~Dembo, S.~Kannan, E.~N. Tas, D.~Tse, P.~Viswanath, X.~Wang, and O.~Zeitouni,
+  ``Everything is a race and nakamoto always wins,'' in {\em Proceedings of the
+  2020 ACM SIGSAC Conference on Computer and Communications Security}, CCS
+  ’20, ACM, Oct. 2020.
+
+\bibitem{Park2023}
+A.~Park, ``The conceptual flaws of decentralized automated market making,''
+  {\em Management Science}, vol.~69, pp.~6731--6751, Nov. 2023.
+
+\bibitem{Rosu2021}
+I.~Roşu and F.~Saleh, ``Evolution of shares in a proof-of-stake
+  cryptocurrency,'' {\em Management Science}, vol.~67, pp.~661--672, Feb. 2021.
+
+\bibitem{Adams2021}
+H.~Adams, N.~Zinsmeister, M.~Salem, R.~Keefer, and D.~Robinson, ``Uniswap v3
+  core,'' {\em Tech. rep., Uniswap, Tech. Rep.}, 2021.
+
+\end{thebibliography}

@@ -1,0 +1,16 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Security of blockchain systems}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Double-spending in PoW}{6}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Random walk model}{7}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Double spending probability}{8}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Double spending time}{11}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Counting process model}{13}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Poisson process, Exponential distributions and friends}{13}{subsection.2.3.1}%
+\contentsline {subsubsection}{A tiny bit of insurance risk theory}{22}{section*.8}%
+\contentsline {subsubsection}{Double spending probability}{24}{section*.10}%
+\contentsline {subsubsection}{Double spending time}{25}{section*.12}%
+\contentsline {section}{\numberline {2.4}Blockwitholding in PoW}{28}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Ruin and expected profit of a miner}{28}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Ruin and expected profit of a selfish miner}{33}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Solo mining versus selfish mining when including a difficulty adjustment}{36}{subsection.2.4.3}%

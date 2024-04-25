@@ -1,0 +1,83 @@
+\documentclass[11pt]{article}
+
+%-----Packages-----%
+\usepackage[margin  = 1in]{geometry}
+\usepackage{float}
+\usepackage{color}
+\usepackage[colorlinks=true]{hyperref}
+
+%-----Course Info-----%
+\def\title{Blockchain Workshop}
+\def\course{BLOCKASTICS: Stochastic models for blockchain analysis }
+% \def\quarter{}
+\def\profName{Pierre-O Goffard }
+\def\catDescrip{Concepts of blockchain; Stochastic models.}
+
+\def\courseWebpage{\href{https://pierre-olivier.goffard.me/BLOCKASTICS/}{https://pierre-olivier.goffard.me/BLOCKASTICS/}}
+\def\courseGithubRepo{\href{https://github.com/LaGauffre/BLOCKASTICS}{https://github.com/LaGauffre/BLOCKASTICS}}
+
+%-----Format-----%
+\setlength\parindent{0pt}
+
+%-----Start document-----%
+\begin{document}
+
+%-----Heading-----%
+{\center \textsc{\Large \title\\
+	\large\course\\
+	 \profName %-- \quarter
+	}\\
+	\vspace*{2em}
+	\hrule
+\vspace*{2em}}
+
+
+
+The last lecture of this course will take the form of a workshop.\\
+
+\noindent You will form $7$ teams of $2$ and choose one paper in the list below. You will give a 10 minutes presentations (with slides) to discuss the paper you chose. The presentation is followed by a 5 minutes of Q$\&$A with the audience (your fellow classmates and myself). 
+\\
+
+Please indicate your team and the paper you will discuss on \url{https://docs.google.com/spreadsheets/d/1wvs-ywgF3asWbr7Frw2NznFk_-p1vmJsXPmJJbaqf4Q/edit?usp=sharing}\\
+
+Here is the list of papers to choose from 
+\begin{enumerate}
+	\item Blockchain Queue Theory, \cite{Li2018} \\
+	Keywords: Blockchain Efficiency, Queueing model, Phase Type Distribution
+	\item Constant Function Market Makers: Multi-Asset Trades via Convex Optimization \cite{Angeris2022}\\
+	Keywords: DeFi, Mathematical Finance, Automated Market Makers
+	\item Execution and Statistical Arbitrage with Signals in Multiple
+Automated Market Makers \cite{Cartea2023}\\
+	Keywords: DeFi, Mathematical Finance, Automated Market Makers, Optimal Control
+	\item On the Profitability of Selfish Blockchain Mining Under
+Consideration of Ruin, \cite{Hansjoerg2022OR}\\
+	Keywords: Blockchain Security, Selfish Mining, Risk Theory, Actuarial Science 
+	\item A Mean Field Games Model for Cryptocurrency Mining \cite{Li2024}\\
+	Keywords: Blockchain Decentralization, Mean Field Game
+	\item Modeling and analysis of block arrival times in the
+Bitcoin blockchain \cite{Bowden2020}\\
+	Keywords: Blockchain Efficiency, Counting processes, Statistics of Stochastic Processes
+	\item Modelling the dynamics of Bitcoin and Litecoin:
+GARCH versus stochastic volatility models, \cite{Tiwari2019}\\
+	Keywords: DeFi, Statistics, Time Series, Stochastic Volatility Models
+	
+	\item Everything is a Race and Nakamoto Always Wins, \cite{Dembo2020}\\
+	Keywords: Blockchain Security, Double spending attack, random walks
+	\item The Conceptual Flaws of Decentralized Automated
+Market Making, \cite{Park2023}\\
+Keywords: DeFi, Mathematical Finance, Automated Market Makers
+	\item Evolution of Shares in a Proof-of-Stake Cryptocurrency, \cite{Rosu2021}\\
+Keywords: Blockchain Decentralisation, Proof of Stakes, Urn model
+	\item Uniswap v3 Core, \cite{Adams2021}\\
+
+\end{enumerate}
+\bibliography{../blockastics}
+\bibliographystyle{ieeetr}
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,193 @@
+\documentclass[a4paper]{report}
+\renewcommand{\baselinestretch}{1.5} 
+
+%% Language and font encodings
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[square,sort&compress]{natbib}    
+\usepackage{booktabs}
+\usepackage[french,english]{babel}
+%% Sets page size and margins
+\usepackage[top=1in,left=1.5in,bottom=1in,right=1in]{geometry}
+
+\usepackage{relsize}
+%% Useful packages
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usepackage[
+	bookmarks       = true,             % Show the bookmarks
+	unicode         = true,             % Use Unicode                 
+	pdftoolbar      = true,             % Show Acrobat’s toolbar
+	pdfmenubar      = true,             % Show Acrobat’s menu
+	pdffitwindow    = false,            % Window fit to page when opened
+	pdfstartview    = {FitH},           % Fit the page width to the window
+	pdfnewwindow    = true,             % Open the links in a new PDF window
+	colorlinks      = true,             % Use colored links
+	linkcolor       = blue,             % Internal links color
+	citecolor       = blue,            % Bibliographic links color
+	filecolor       = cyan,             % File links color
+	urlcolor        = magenta           % External links color
+]{hyperref}
+\usepackage{algorithm}
+% \usepackage{algorithmic}
+\usepackage{algorithmicx}
+\usepackage{listings}
+\usepackage{algcompatible}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usepackage{calc}
+\usepackage{pgfplots}
+\usepackage{pdfpages}
+\pgfplotsset{compat=1.14}
+\usepackage{tikzducks}
+\usetikzlibrary{snakes}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{automata,arrows,positioning,calc}
+% \usepackage{cmbright}
+
+\makeatletter
+\newcounter{algorithmicH}% New algorithmic-like hyperref counter
+\let\oldalgorithmic\algorithmic
+\renewcommand{\algorithmic}{%
+  \stepcounter{algorithmicH}% Step counter
+  \oldalgorithmic}% Do what was always done with algorithmic environment
+\renewcommand{\theHALG@line}{ALG@line.\thealgorithmicH.\arabic{ALG@line}}
+\makeatother
+
+% \geometry{inner=1cm, outer=1cm, top=1cm, bottom=0cm}
+\newcommand\fillin[1]{\makebox[#1]{\dotfill}}
+% Use a modern font (that is not pixelated)
+\usepackage{kpfonts}
+% Use microtype to improve readability
+\usepackage[protrusion = true, expansion = true]{microtype} 
+% Use multiple columns
+\usepackage{multicol}
+% \usepackage{subfigure}
+% \usepackage[subfigure]{tocloft}
+% Display list of Equations
+% \usepackage{tocloft}
+% Insert empty pages
+% \usepackage{afterpage}
+% Configure style aspects of the document
+\usepackage{caption}            % To configure the captions
+\usepackage{siunitx}            % For SI units
+\usepackage{graphicx}           % To include graphics
+% \usepackage[dvipsnames]{xcolor} % To configure colors
+\usepackage{fancyhdr}           % To configure the header and footer
+% \pagestyle{fancy}               % Use a fancy header style
+% \fancyhf{}                      % Set the header format
+% \fancyheadoffset{0.0 cm}        % Set the header offset
+\lhead{\tfm}                    % Set the header right-side contents
+\rhead{\name}                   % Set the header left-side contents
+% \cfoot{\thepage}                % Set the footer page number
+\usepackage{amsthm}
+\usepackage[capitalise,nameinlink,noabbrev]{cleveref}
+\crefname{equation}{}{}
+\crefname{enumi}{}{}
+
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{theo}{Theorem}
+\newtheorem{coro}{Corollary}
+\newtheorem{prop}{Proposition}
+\newtheorem{property}{Property}
+\newtheorem{remark}{Remark}
+\newtheorem{ex}{Example}
+\newtheorem{exercise}{Exercise}
+\newtheorem{definition}{Definition}
+\newtheorem{hp}{Assumption}
+
+% Distributions.
+\newcommand*{\UnifDist}{\mathsf{Unif}}
+\newcommand*{\ExpDist}{\mathsf{Exp}}
+\newcommand*{\DepExpDist}{\mathsf{DepExp}}
+\newcommand*{\GammaDist}{\mathsf{Gamma}}
+\newcommand*{\LognormalDist}{\mathsf{LogNorm}}
+\newcommand*{\WeibullDist}{\mathsf{Weib}}
+\newcommand*{\ParetoDist}{\mathsf{Par}}
+\newcommand*{\NormalDist}{\mathsf{Normal}}
+
+\newcommand*{\GeometricDist}{\mathsf{Geom}}
+\newcommand*{\NegBinomialDist}{\mathsf{NegBin}}
+\newcommand*{\PoissonDist}{\mathsf{Poisson}}
+
+% Sets of numbers.
+\newcommand*{\RL}{\mathbb{R}}
+\newcommand*{\NZ}{\mathbb{N}_0}
+% \newcommand*{\NL}{\mathbb{N}_+}
+
+\newcommand*{\cond}{\mid}
+\newcommand*{\given}{\,;\,}
+
+%Protocol
+\newcommand*{\PoW}{PoW\@\xspace}
+\newcommand*{\PoS}{PoS\@\xspace}
+\newcommand*{\PoSp}{PoSp\@\xspace}
+\newcommand*{\PoI}{PoI\@\xspace}
+% Regarding spacing and abbreviations.
+\usepackage{xspace}
+
+% Acronyms
+% \@\xspace doesn't add space if next char is punctuation
+% However, these will give 2 .'s if used at end of sentence.
+\newcommand*{\eg}{e.g.\@\xspace}
+\newcommand*{\ie}{i.e.\@\xspace}
+\newcommand*{\iid}{i.i.d.\@\xspace}
+\newcommand*{\cf}{c.f.\@\xspace}
+\newcommand*{\pdf}{p.d.f.\@\xspace}
+\newcommand*{\pmf}{p.m.f.\@\xspace}
+\newcommand*{\cdf}{c.d.f.\@\xspace}
+\newcommand*{\SMC}{\textbf{SMC}\@\xspace}
+\newcommand*{\MCMC}{\textbf{MCMC}\@\xspace}
+
+
+\newcommand*{\iidSim}{\overset{\mathrm{i.i.d.}}{\sim}}
+\newcommand*{\bt}{\bm{\theta}}
+\newcommand*{\bTheta}{\bm{\Theta}}
+\newcommand*{\bbeta}{\bm{\beta}}
+\newcommand*{\bx}{\mathbf{x}}
+\newcommand*{\bs}{\bm{s}}
+\newcommand*{\bu}{\bm{u}}
+\newcommand*{\bn}{\bm{n}}
+
+% Roman versions of things.
+\newcommand*{\dd}{\mathop{}\!\mathrm{d}}
+\newcommand*{\e}{\mathrm{e}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand*{\norm}[1]{\lVert{} #1\rVert}
+
+% \DeclarePairedDelimiterXPP{\ind}[1]{\ind_}{\{}{\}}{}{#1}
+\newcommand*{\ind}{\mathbb{I}}
+% \addto\captionsfrench{\def\tablename{{Tableau}}}
+\makeatletter
+
+\makeatother
+\begin{document}
+% \frontmatter
+\title{BLOCKASTICS\\
+[0.2em]\smaller{}Stochastic models for blockchain analysis}
+\author{Pierre-O Goffard}
+
+\date{updated on \today} 
+\maketitle
+
+\tableofcontents
+\input{includes/introduction}
+% \input{includes/consensus_protocol}
+% \input{includes/defi}
+\input{includes/security}
+% \input{includes/decentralization}
+% \input{includes/efficiency}
+% \input{includes/hmm_bitcoin_price}
+
+\bibliography{../blockastics}
+\bibliographystyle{plainnat}
+
+\end{document}
+
+

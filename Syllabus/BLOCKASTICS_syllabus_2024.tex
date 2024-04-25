@@ -1,0 +1,89 @@
+\documentclass[11pt]{article}
+
+%-----Packages-----%
+\usepackage[margin  = 1in]{geometry}
+\usepackage{float}
+\usepackage{color}
+\usepackage[colorlinks=true]{hyperref}
+
+%-----Course Info-----%
+\def\title{Syllabus}
+\def\course{BLOCKASTICS: Stochastic models for blockchain analysis }
+% \def\quarter{}
+\def\profName{Pierre-O Goffard }
+\def\catDescrip{Concepts of blockchain; Stochastic models.}
+
+\def\courseWebpage{\href{https://pierre-olivier.goffard.me/BLOCKASTICS/}{https://pierre-olivier.goffard.me/BLOCKASTICS/}}
+\def\courseGithubRepo{\href{https://github.com/LaGauffre/BLOCKASTICS}{https://github.com/LaGauffre/BLOCKASTICS}}
+
+%-----Format-----%
+\setlength\parindent{0pt}
+
+%-----Start document-----%
+\begin{document}
+
+%-----Heading-----%
+{\center \textsc{\Large \title\\
+	\large\course\\
+	 \profName %-- \quarter
+	}\\
+	\vspace*{2em}
+	\hrule
+\vspace*{2em}}
+
+
+\textsc{Course Overview}\\
+
+%-----Body-----%
+Blockchain technology emerged in 2008 as the foundational technology behind Bitcoin. Since then, it has evolved significantly, with numerous blockchain systems proposed for applications beyond cryptocurrencies. This course explores the intersection of stochastic models and blockchain systems, offering insights into the analysis and understanding of these complex decentralized networks.
+\\
+
+\noindent \textbf{Part 1: Blockchain concepts and consensus protocols}\\
+\noindent A blockchain is a distributed data ledger maintained through consensus among multiple nodes in a peer-to-peer network. Following an overview of foundational definitions and real-world applications of blockchain (like Decentralized finance) we delve into the core consensus protocols that underpin blockchain systems. Additionally, we outline three key evaluation dimensions for blockchain systems: security, decentralization, and efficiency.   
+\\
+
+\noindent \textbf{Part 2: Security of blockchain systems}\\
+\noindent We review mathematical models and tools employed to assess the security of blockchain systems. Specifically, we focus on security concerns associated with the proof-of-work protocol, such as double spending. Our analysis utilizes standard models from applied probability literature, including random walks, Markov chains, and Poisson processes.
+\\
+
+\noindent \textbf{Part 3: Decentralization of blockchain systems}\\
+\noindent Decentralization measures the fairness of decision-making power distribution among peers in a blockchain network. In this section, we will examine the decentralization of proof-of-stake blockchain systems using an urn model. Additionally, we will analyze proof-of-work blockchain decentralization by applying insurance risk theory to study the formation of mining pools.      
+\\
+
+\noindent \textbf{Part 4: Efficiency of blockchain systems}\\
+\noindent Efficiency refers to the capacity of a blockchain system to process data within a given time frame. In this section, we introduce a general queuing model to quantify throughputs (the number of transactions processed per time unit) and latency (the time taken for a transaction to transition from the pending state to confirmed).     
+\\
+
+\noindent \textbf{Part 5: Crypto-currency returns cycles using Hidden Markov Model}\\
+\noindent The cryptocurrency market, akin to real-world assets, exhibits cyclic behaviors known as bear and bull cycles. A prevalent approach to studying these cycles involves assuming that the distribution of log returns depends on the current state of an unobservable Markov chain. In this section, we explore a simple model where log returns follow a Gaussian distribution, and we employ Bayesian algorithms to infer parameters using Bitcoin data.
+\\
+
+\textsc{Prerequisites:}
+\begin{itemize}  
+\item Basic knowledge on stochastic processes such as random walk, Poisson processes and Markov chains (Some reminders will be provided during the lectures)  
+\item The proofs will use standard combinatorial analysis, Martingale techniques and first step analysis. (Some reminders will be provided during the lectures)  
+\item Basic knowledge of coding in Python. We will use Python to do Monte Carlo Simulations using native Python methods and bits of NumPy and SciPy. Examples and illustrations will be done using Python and Jupyter notebooks. My suggestion is to install \href{https://www.anaconda.com/products/individual}{Anaconda} but one can also simply use \href{https://colab.research.google.com/}{Google Colab}. Please bring your laptops!
+\end{itemize}
+
+
+% \begin{itemize}  
+% \item Basic knowledge on stochastic processses such as random walk, Poisson processes and Markov chains (Some reminders will be provided during the lectures)  
+% \item The proofs will use standard combinatorial analysis, Martingale techniques and first step analysis. (Some reminders will be provided during the lessons)  
+% \item Basic knowledge of coding in python. We will use Python to do Monte Carlo Simulations using native python methods and bits of numpy and scipy. Examples and illustrations will be done using python and Jupyter notebooks. My suggestion is to install \href{https://www.anaconda.com/products/individual}{Anaconda} but one can also simply uses \href{https://colab.research.google.com/}{Google collab}. Please bring your laptops!
+% \end{itemize}
+\textsc{Evaluations:}\\
+
+You will be grouped in teams of 2-3 (depending on the number of attendees), and you will be required to deliver a presentation during the final lecture on a research paper related to the topic of blockchain mathematics. I will provide you with a selection of papers to choose from, or you may propose your own paper for approval. Your grade will be based on the quality of your oral presentation and the accompanying presentation materials (slides). The final lecture will take the form of an internal seminar.
+
+\nocite{*}
+
+\bibliography{../blockastics}
+\bibliographystyle{ieeetr}
+
+
+
+
+
+
+
+\end{document}

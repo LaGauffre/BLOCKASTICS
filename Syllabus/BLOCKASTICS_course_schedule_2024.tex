@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+
+%-----Packages-----%
+\usepackage[margin  = 1in]{geometry}
+\usepackage{float}
+\usepackage{color}
+\usepackage[colorlinks=true]{hyperref}
+
+%-----Course Info-----%
+\def\title{Course Schedule}
+\def\course{BLOCKASTICS: Stochastic models for blockchain analysis }
+% \def\quarter{}
+\def\profName{Pierre-O Goffard }
+\def\catDescrip{Concepts of blockchain; Stochastic models.}
+
+\def\courseWebpage{\href{https://pierre-olivier.goffard.me/BLOCKASTICS/}{https://pierre-olivier.goffard.me/BLOCKASTICS/}}
+\def\courseGithubRepo{\href{https://github.com/LaGauffre/BLOCKASTICS}{https://github.com/LaGauffre/BLOCKASTICS}}
+
+%-----Format-----%
+\setlength\parindent{0pt}
+
+%-----Start document-----%
+\begin{document}
+
+%-----Heading-----%
+{\center \textsc{\Large \title\\
+	\large\course\\
+	 \profName %-- \quarter
+	}\\
+	\vspace*{2em}
+	\hrule
+\vspace*{2em}}
+
+
+
+
+\noindent \textbf{Week 1: Blockchain concepts and application}\\
+\begin{itemize}
+	\item What is a blockchain?
+	\item Consensus Protocol
+	\item Security, Decentralization and Efficiency
+	\item Application: Cryptocurrency and Decentralized Finance
+\end{itemize}
+
+
+\noindent \textbf{Week 2: Double spending with random walks}\\
+
+\begin{itemize}
+	\item What is a Double Spending Attack?
+	\item Nakamoto's Random Walk Model
+	\item Double Spending Probability
+	\item Double Spending Time Distribution
+\end{itemize}
+
+
+\noindent \textbf{Week 3: Double spending with Poisson processes}\\
+\begin{itemize}
+	\item Double Spending in Continuous Time with Counting Processes
+	\item Exponential distributrion and Poisson processes
+	\item Exponential Martingale
+	\item Double Spending Probability
+	\item Apell and A-G polynomials
+\end{itemize}
+
+
+
+\noindent \textbf{Week 4: Decentralization in PoS}\\
+\begin{itemize}
+	\item Proof-of-Stake
+	\item Polya's urn model
+	\item The average stake own by the blockchain peers
+	\item Asymptotic distribution of stakes accross the blockchain peers network
+\end{itemize}
+
+
+\noindent \textbf{Week 5: Decentralization in PoW}\\
+\begin{itemize}
+	\item Mining pools and reward distribution systems
+	\item Pay-per-Share and blockchain miners risk management
+	\item Risk of centralization
+\end{itemize}
+
+
+\noindent \textbf{Week 6: Blockchain Efficiency}\\
+\begin{itemize}
+	\item Blockchain queeing model
+	\item Distribution of the queue length
+	\item Estimating Throughputs and Latency
+\end{itemize}
+\noindent \textbf{Week 7: Bitcoins returns and Hidden Markov models}\\
+\begin{itemize}
+	\item Hidden Markov models
+	\item Bayesian estimation of HMM
+	\item Application on the bitcoin prices (rather the bitcoin log-returns)
+\end{itemize}
+\noindent \textbf{Week 8: Blockchain Workshop}\\
+\begin{itemize}
+	\item Schedule TBD
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
