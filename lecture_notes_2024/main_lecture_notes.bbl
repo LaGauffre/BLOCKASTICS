@@ -1,22 +1,37 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{28}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Asmussen and Albrecher(2010)]{Asmussen_2010}
-S{\o}ren Asmussen and Hansjörg Albrecher.
-\newblock \emph{Ruin Probabilities}.
-\newblock {WORLD} {SCIENTIFIC}, sep 2010.
-\newblock \doi{10.1142/7431}.
+\bibitem[Abegg et~al.(2021)Abegg, Bramas, and Noël]{Abegg2021}
+Jean-Philippe Abegg, Quentin Bramas, and Thomas Noël.
+\newblock Blockchain using proof-of-interaction.
+\newblock In \emph{Networked Systems}, pages 129--143. Springer International
+  Publishing, 2021.
+\newblock \doi{10.1007/978-3-030-91014-3_9}.
 
-\bibitem[Avanzi et~al.(2007)Avanzi, Gerber, and Shiu]{Avanzi2007}
-Benjamin Avanzi, Hans~U. Gerber, and Elias~S.W. Shiu.
-\newblock Optimal dividends in the dual model.
-\newblock \emph{Insurance: Mathematics and Economics}, 41\penalty0
-  (1):\penalty0 111--123, jul 2007.
-\newblock \doi{10.1016/j.insmatheco.2006.10.002}.
+\bibitem[Al-Kuwari et~al.(2011)Al-Kuwari, Davenport, and
+  Bradford]{cryptoeprint:2011:565}
+Saif Al-Kuwari, James~H. Davenport, and Russell~J. Bradford.
+\newblock Cryptographic hash functions: Recent design trends and security
+  notions.
+\newblock Cryptology ePrint Archive, Report 2011/565, 2011.
+\newblock \url{https://ia.cr/2011/565}.
+
+\bibitem[Bailey(1954)]{Bailey1954}
+Norman T.~J. Bailey.
+\newblock On queueing processes with bulk service.
+\newblock \emph{Journal of the Royal Statistical Society: Series B
+  (Methodological)}, 16\penalty0 (1):\penalty0 80--87, jan 1954.
+\newblock \doi{10.1111/j.2517-6161.1954.tb00149.x}.
+
+\bibitem[Blackwell and MacQueen(1973)]{Blackwell1973}
+David Blackwell and James~B. MacQueen.
+\newblock Ferguson distributions via polya urn schemes.
+\newblock \emph{The Annals of Statistics}, 1\penalty0 (2), mar 1973.
+\newblock \doi{10.1214/aos/1176342372}.
 
 \bibitem[Bowden et~al.(2020)Bowden, Keeler, Krzesinski, and Taylor]{Bowden2020}
 R.~Bowden, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor.
@@ -27,12 +42,29 @@ R.~Bowden, H.~P. Keeler, A.~E. Krzesinski, and P.~G. Taylor.
 \newblock ISSN 1532-4214.
 \newblock \doi{10.1080/15326349.2020.1786404}.
 
-\bibitem[Eyal and Sirer(2014)]{Eyal2014}
-Ittay Eyal and Emin~Gün Sirer.
-\newblock Majority is not enough: Bitcoin mining is vulnerable.
-\newblock In \emph{Financial Cryptography and Data Security}, pages 436--454.
-  Springer Berlin Heidelberg, 2014.
-\newblock \doi{10.1007/978-3-662-45472-5_28}.
+\bibitem[Castro and Liskov(1999)]{10.5555/296806.296824}
+Miguel Castro and Barbara Liskov.
+\newblock Practical byzantine fault tolerance.
+\newblock In \emph{Proceedings of the Third Symposium on Operating Systems
+  Design and Implementation}, OSDI '99, page 173–186, USA, 1999. USENIX
+  Association.
+\newblock ISBN 1880446391.
+\newblock URL \url{https://dl.acm.org/doi/10.5555/296806.296824}.
+
+\bibitem[Chaudhry and Templeton(1981)]{Chaudhry1981}
+M.L. Chaudhry and J.G.C. Templeton.
+\newblock The queuing system m/{GB}/l and its ramifications.
+\newblock \emph{European Journal of Operational Research}, 6\penalty0
+  (1):\penalty0 56--60, jan 1981.
+\newblock \doi{10.1016/0377-2217(81)90328-3}.
+
+\bibitem[Cox(1955)]{Cox1955}
+D.~R. Cox.
+\newblock The analysis of non-markovian stochastic processes by the inclusion
+  of supplementary variables.
+\newblock \emph{Mathematical Proceedings of the Cambridge Philosophical
+  Society}, 51\penalty0 (3):\penalty0 433--441, jul 1955.
+\newblock \doi{10.1017/s0305004100030437}.
 
 \bibitem[Goffard(2019)]{Goffard2019}
 Pierre-O. Goffard.
@@ -42,12 +74,34 @@ Pierre-O. Goffard.
 \newblock \doi{10.1017/apr.2019.18}.
 \newblock \url{https://hal.archives-ouvertes.fr/hal-01716687v2}.
 
-\bibitem[Goffard and Lef{\`{e}}vre(2017)]{Goffard2017}
-Pierre-Olivier Goffard and Claude Lef{\`{e}}vre.
-\newblock Boundary crossing of order statistics point processes.
-\newblock \emph{Journal of Mathematical Analysis and Applications},
-  447\penalty0 (2):\penalty0 890--907, mar 2017.
-\newblock \doi{10.1016/j.jmaa.2016.10.044}.
+\bibitem[Kawase and Kasahara(2017)]{Kawase2017}
+Yoshiaki Kawase and Shoji Kasahara.
+\newblock Transaction-confirmation time for bitcoin: A~queueing analytical
+  approach to~blockchain~mechanism.
+\newblock In \emph{Queueing Theory and Network Applications}, pages 75--88.
+  Springer International Publishing, 2017.
+\newblock \doi{10.1007/978-3-319-68520-5_5}.
+
+\bibitem[Kawase et~al.(2020)Kawase, , and Kasahara]{Kawase2020}
+Yoshiaki Kawase, , and Shoji Kasahara.
+\newblock Priority queueing analysis of transaction-confirmation time for
+  bitcoin.
+\newblock \emph{Journal of Industrial {\&} Management Optimization},
+  16\penalty0 (3):\penalty0 1077--1098, 2020.
+\newblock \doi{10.3934/jimo.2018193}.
+
+\bibitem[King and Nadal(2012)]{ppcoin}
+Sunny King and Scott Nadal.
+\newblock Ppcoin: Peer-to-peer crypto-currency with proof-of-stake.
+\newblock \emph{whitepaper}, 2012.
+
+\bibitem[Lamport et~al.(1982)Lamport, Shostak, and Pease]{lamport1982the}
+Leslie Lamport, Robert Shostak, and Marshall Pease.
+\newblock The byzantine generals problem.
+\newblock \emph{ACM Transactions on Programming Languages and Systems}, pages
+  382--401, July 1982.
+\newblock URL
+  \url{https://www.microsoft.com/en-us/research/publication/byzantine-generals-problem/}.
 
 \bibitem[Lansky(2018)]{Lansky2018}
 Jan Lansky.
@@ -56,6 +110,40 @@ Jan Lansky.
   19--31, jan 2018.
 \newblock \doi{10.20470/jsi.v9i1.335}.
 
+\bibitem[Li et~al.(2018)Li, Ma, and Chang]{Li2018}
+Quan-Lin Li, Jing-Yu Ma, and Yan-Xia Chang.
+\newblock \emph{Blockchain Queue Theory}, pages 25--40.
+\newblock Springer International Publishing, 2018.
+\newblock ISBN 9783030046484.
+\newblock \doi{10.1007/978-3-030-04648-4_3}.
+
+\bibitem[Li et~al.(2019)Li, Ma, Chang, Ma, and Yu]{Li2019}
+Quan-Lin Li, Jing-Yu Ma, Yan-Xia Chang, Fan-Qi Ma, and Hai-Bo Yu.
+\newblock Markov processes in blockchain systems.
+\newblock \emph{Computational Social Networks}, 6\penalty0 (1), jul 2019.
+\newblock \doi{10.1186/s40649-019-0066-1}.
+
+\bibitem[Lipton and Treccani(2021)]{Lipton2021}
+Alexander Lipton and Adrien Treccani.
+\newblock \emph{Blockchain and Distributed Ledgers}.
+\newblock {WORLD} {SCIENTIFIC}, apr 2021.
+\newblock \doi{10.1142/11857}.
+
+\bibitem[Little(1961)]{Little1961}
+John D.~C. Little.
+\newblock A proof for the queuing formula:{L}= $ \lambda${W}.
+\newblock \emph{Operations Research}, 9\penalty0 (3):\penalty0 383--387, jun
+  1961.
+\newblock \doi{10.1287/opre.9.3.383}.
+
+\bibitem[Moin et~al.(2020)Moin, Sekniqi, and Sirer]{Moin2020}
+Amani Moin, Kevin Sekniqi, and Emin~Gun Sirer.
+\newblock \emph{SoK: A Classification Framework for Stablecoin Designs}, pages
+  174--197.
+\newblock Springer International Publishing, 2020.
+\newblock ISBN 9783030512804.
+\newblock \doi{10.1007/978-3-030-51280-4_11}.
+
 \bibitem[Nakamoto(2008)]{Na08}
 S.~Nakamoto.
 \newblock Bitcoin: A peer-to-peer electronic cash system.
@@ -63,6 +151,14 @@ S.~Nakamoto.
   \href{https://bitcoin.org/bitcoin.pdf}{https://bitcoin.org/bitcoin.pdf},
   2008.
 \newblock URL \url{https://bitcoin.org/bitcoin.pdf}.
+
+\bibitem[Park(2023)]{Park2023}
+Andreas Park.
+\newblock The conceptual flaws of decentralized automated market making.
+\newblock \emph{Management Science}, 69\penalty0 (11):\penalty0 6731--6751,
+  November 2023.
+\newblock ISSN 1526-5501.
+\newblock \doi{10.1287/mnsc.2021.02802}.
 
 \bibitem[Renault(2007)]{Renault2007}
 Marc Renault.
@@ -75,6 +171,13 @@ Marc Renault.
 Meni Rosenfeld.
 \newblock Analysis of hashrate-based double spending.
 \newblock \emph{arXiv preprint arXiv:1402.2009}, 2014.
+
+\bibitem[Saleh(2020)]{Saleh2020}
+Fahad Saleh.
+\newblock Blockchain without waste: Proof-of-stake.
+\newblock \emph{The Review of Financial Studies}, 34\penalty0 (3):\penalty0
+  1156--1190, jul 2020.
+\newblock \doi{10.1093/rfs/hhaa075}.
 
 \bibitem[Tak{\'{a}}cs(1962)]{Takacs1962}
 Lajos Tak{\'{a}}cs.
@@ -96,5 +199,14 @@ Remco van~der Hofstad and Michael Keane.
 Sam~M. Werner, Daniel Perez, Lewis Gudgeon, Ariah Klages-Mundt, Dominik Harz,
   and William~J. Knottenbelt.
 \newblock Sok: Decentralized finance (defi), 2021.
+
+\bibitem[Xu et~al.(2023)Xu, Paruch, Cousaert, and Feng]{Xu2023}
+Jiahua Xu, Krzysztof Paruch, Simon Cousaert, and Yebo Feng.
+\newblock Sok: Decentralized exchanges (dex) with automated market maker (amm)
+  protocols.
+\newblock \emph{ACM Computing Surveys}, 55\penalty0 (11):\penalty0 1--50,
+  February 2023.
+\newblock ISSN 1557-7341.
+\newblock \doi{10.1145/3570639}.
 
 \end{thebibliography}

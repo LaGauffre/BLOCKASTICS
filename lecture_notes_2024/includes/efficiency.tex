@@ -65,6 +65,7 @@ This can be done by studying the distribution of the number of pending transacti
 \begin{equation}\label{eq:stationarity_cond}
 \mu \cdot b > \lambda.
 \end{equation}
+
 Denote by $N^q$ the length of the queue upon stationarity, The following result holds.
 \begin{theo}
 Assume that \eqref{eq:stationarity_cond} holds then $N^q$ is geometrically distributed 
@@ -86,7 +87,7 @@ If $\lambda < \mu\cdot b$ holds then the process admits a limiting distribution 
 \[
 \underset{t\rightarrow\infty}{\lim}P_{n}(x,t) = P_{n}(x).
 \]
-Adding the variable $X_t$ is a known trick going back to \citet{Cox1955}, it allows us to make the process $(N_t^q)_{t\geq0}$ Markovian. We aim at finding the distribution of the queue length upon stationarity
+Adding the variable $X_t$ is a known trick going back to \citet{Cox1955}, it allows us to make the process $(N_t^q)_{t\geq0}$ Markovian (useful if transaction arrival process or the block arrival process are not Poisson processes) but also to study the process as time goes to infinity while keeping a temporal marker (last arrival time). We aim at finding the distribution of the queue length upon stationarity
 \begin{equation}\label{eq:alpha_n}
 \mathbb{P}(N^q=n):=\alpha_n =\int_{0}^\infty P_{n}(x)\text{d}x, \text{ }n\geq0.
 \end{equation}
@@ -147,7 +148,7 @@ Replacing the left hand side of \eqref{eq:G_z_0} by \eqref{eq:G_z_solve_ODE}, mu
 \end{equation}
 where $M(z) = \mu/(\lambda(1-z)+\mu)$. Using Rouche's theorem, we find that both side of the equation shares $b$ zeros inside the circle $\mathcal{C} = \{z\in\mathbb{C}\text{ ; }|z| <1+\epsilon\}$ for some epsilon. 
 \begin{lemma}
-Let $\mathcal{C}\in \mathbb{C}$ and $f$ and $g$ two holomorphic functions on $\mathcal{C}$. Let $\partial\mathcal{C}$ be the contour of $\partial\mathcal{C}$. If 
+Let $\mathcal{C}\subset \mathbb{C}$ and $f$ and $g$ two holomorphic functions on $\mathcal{C}$. Let $\partial\mathcal{C}$ be the contour of $\mathcal{C}$. If 
 $$
 |f(z)-g(z)|<|g(z)|\text{, }\forall z\in\partial\mathcal{C}
 $$ 
@@ -193,7 +194,7 @@ $$
 \begin{itemize}
   \item Latency is the confirmation time of a transaction 
     $$
-    \text{Latency} = W + \frac{1}{\mu} = \frac{\mathbb{E}(N^q)}{\lambda} + \frac{1}{\mu} =  \frac{p}{(1-p)\lambda} + \frac{1}{\mu}.
+    \text{Latency} = W  = \frac{\mathbb{E}(N^q)}{\lambda} =  \frac{p}{(1-p)\lambda} .
     $$
   \item Throughput is the number of transaction confirmed per time unit
   $$

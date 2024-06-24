@@ -130,6 +130,13 @@
 % Regarding spacing and abbreviations.
 \usepackage{xspace}
 
+\newcommand*{\Prob}{\mathbb{P}}
+\newcommand*{\Q}{\mathbb{Q}}
+\newcommand*{\V}{\mathbb{V}}
+\newcommand*{\E}{\mathbb{E}}
+\newcommand*{\F}{\mathcal{F}}
+\newcommand*{\di}{\text{d}}
+
 % Acronyms
 % \@\xspace doesn't add space if next char is punctuation
 % However, these will give 2 .'s if used at end of sentence.
@@ -178,11 +185,11 @@
 
 \tableofcontents
 \input{includes/introduction}
-% \input{includes/consensus_protocol}
-% \input{includes/defi}
+\input{includes/consensus_protocol}
+\input{includes/defi}
 \input{includes/security}
-% \input{includes/decentralization}
-% \input{includes/efficiency}
+\input{includes/decentralization}
+\input{includes/efficiency}
 % \input{includes/hmm_bitcoin_price}
 
 \bibliography{../blockastics}

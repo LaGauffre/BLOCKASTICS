@@ -1,16 +1,34 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Security of blockchain systems}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Double-spending in PoW}{6}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Random walk model}{7}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Double spending probability}{8}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Double spending time}{11}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Counting process model}{13}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Poisson process, Exponential distributions and friends}{13}{subsection.2.3.1}%
-\contentsline {subsubsection}{A tiny bit of insurance risk theory}{22}{section*.8}%
-\contentsline {subsubsection}{Double spending probability}{24}{section*.10}%
-\contentsline {subsubsection}{Double spending time}{25}{section*.12}%
-\contentsline {section}{\numberline {2.4}Blockwitholding in PoW}{28}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Ruin and expected profit of a miner}{28}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Ruin and expected profit of a selfish miner}{33}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Solo mining versus selfish mining when including a difficulty adjustment}{36}{subsection.2.4.3}%
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Consensus protocol}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Voting system}{8}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Two generals problem}{8}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Byzantine General problem}{9}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Leader system}{13}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Proof-of-Work}{13}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Proof-of-SpaceTime and Proof-of-Capacity}{16}{subsection.2.2.2}%
+\contentsline {subsubsection}{Proof-of-Capacity}{16}{section*.10}%
+\contentsline {subsubsection}{Proof-of-Spacetime}{16}{section*.11}%
+\contentsline {subsection}{\numberline {2.2.3}Proof-of-Interaction}{16}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Proof-of-Stake}{16}{subsection.2.2.4}%
+\contentsline {chapter}{\numberline {3}Decentralized Finance and Data Analysis}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Decentralized Finance}{19}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Decentralized Exchanges (DEXs) and Automated Market Makers (AMM)}{20}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Security of blockchain systems}{28}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Double-spending in PoW}{28}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Random walk model}{29}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Double spending probability}{30}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Double spending time}{33}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Counting process model}{35}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Poisson process, Exponential distributions and friends}{36}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Levy process and continuous time martingale}{39}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Double spending probability}{42}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Double spending time}{44}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}Appendix: Appell and Abel-Gontcharov polynomials}{46}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Decentralization of blockchain system}{51}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Decentralization in PoS}{51}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Average stake owned by each peer}{52}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Asymptotic distribution of the stakes}{52}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Efficiency of blockchain systems}{58}{chapter.6}%
+\contentsline {section}{\numberline {6.1}A queueing model with bulk service}{58}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Latency and throughputs computation}{61}{section.6.2}%
