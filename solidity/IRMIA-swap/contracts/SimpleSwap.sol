@@ -15,7 +15,7 @@ contract SimpleSwap {
     // Events
     event LiquidityAdded(address indexed provider, uint256 amountX, uint256 amountY);
     event LiquidityWithdrawn(address indexed provider, uint256 amountX, uint256 amountY);
-    event Swapped(address indexed trader, uint256 amountIn, uint256 amountOut, bool isXtoY);
+    event Swapped(address indexed trader, uint256 amountX, uint256 amountY, bool isXtoY);
 
     constructor(uint256 x, uint256 y) {
         require(x > 0 && y > 0, "Initial liquidity cannot be zero");
@@ -77,11 +77,11 @@ contract SimpleSwap {
         require(x > 0 && x < X, "Invalid amount");
 
         // Calculate amount of Y based on the constant product formula
-        uint256 y = (x * Y) / (X + x);
+        uint256 y = (x * Y) / (X - x);
 
         // Update reserves
-        X += x;
-        Y -= y;
+        X -= x;
+        Y += y;
 
         emit Swapped(msg.sender, x, y, true);
     }
@@ -90,13 +90,13 @@ contract SimpleSwap {
         require(y > 0 && y < Y, "Invalid amount");
 
         // Calculate amount of X based on the constant product formula
-        uint256 x = (y * X) / (Y + y);
+        uint256 x = (y * X) / (Y - y);
 
         // Update reserves
-        Y += y;
-        X -= x;
+        Y -= y;
+        X += x;
 
-        emit Swapped(msg.sender, y, x, false);
+        emit Swapped(msg.sender, x, y, false);
     }
 
     function sqrt(uint256 y) internal pure returns (uint256 z) {
