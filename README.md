@@ -32,7 +32,7 @@ The BLOCKASTICS project aims at building mathematical models to analyse the cons
 
 ## Advanced Topics in Applied Probability at UC, Santa Barbara
 
-I taught a graduate class during spring quarter 2022 (ten weeks) in the PSTAT department at UC, Santa Barbara. Here are the [lecture notes](/lecture_notes/main_lecture_notes.pdf). 
+I taught a graduate class during spring quarter 2022 (ten weeks) in the PSTAT department at UC, Santa Barbara. Here are the [lecture notes](/lecture_notes_2024/main_lecture_notes.pdf). 
 
 *(Please note that it is a work in progress, I am planning to write a more comprehensive overview with additional references)*
 
