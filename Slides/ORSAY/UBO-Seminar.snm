@@ -1,0 +1,11 @@
+\beamer@slide {fig:block_not_mined}{16}
+\beamer@slide {fig:block_mined}{18}
+\beamer@slide {eq:stationarity_cond}{28}
+\beamer@slide {sub:QQplot_gamma}{43}
+\beamer@slide {sub:QQplot_weib}{43}
+\beamer@slide {sub:QQplot_lnorm}{43}
+\beamer@slide {sub:QQplot_pareto}{43}
+\beamer@slide {fig:AMM_initial}{50}
+\beamer@slide {fig:AMM_after_swap}{52}
+\beamer@slide {fig:AMM_after_drop}{54}
+\beamer@slide {fig:imp_loss}{58}
