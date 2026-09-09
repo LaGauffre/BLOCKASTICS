@@ -1029,4 +1029,11 @@ journal = {ACM Transactions on Programming Languages and Systems},
   issn      = {1611-3349},
 }
 
+@Article{Adams2021,
+  author  = {Adams, Hayden and Zinsmeister, Noah and Salem, Moody and Keefer, River and Robinson, Dan},
+  journal = {Tech. rep., Uniswap, Tech. Rep.},
+  title   = {Uniswap v3 core},
+  year    = {2021},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
